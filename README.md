@@ -13,10 +13,11 @@ The navigate into your install folder using *cd* and run the installation code. 
 `bash install_bindcraft.sh --pkg_manager 'mamba' --conda_env '/path/to/mambaforge/'`
 
 ## Google Colab
-We prepared a convenient google colab notebook to test the bindcraft code functionalities. However, as the pipeline requires significant amount of GPU memory to run for larger target+binder complexes, we highly recommend to run it using a local installation and at least 32 Gb of GPU memory.
 <a href="https://colab.research.google.com/github/martinpacesa/BindCraft/blob/main/notebooks/bindcraft.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
+We prepared a convenient google colab notebook to test the bindcraft code functionalities. However, as the pipeline requires significant amount of GPU memory to run for larger target+binder complexes, we highly recommend to run it using a local installation and at least 32 Gb of GPU memory.
+
 
 ## Running the script locally and explanation of settings
 To run the script locally, first you need to configure your target .json file in the *target_settings* folder. In the json file are the following settings:
