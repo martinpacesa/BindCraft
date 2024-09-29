@@ -1,0 +1,1342 @@
+{
+    "MPNN_score": {
+        "threshold": null,
+        "higher": false
+    },
+    "MPNN_seq_recovery": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "1_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "2_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "3_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_pTM": {
+        "threshold": 0.55,
+        "higher": true
+    },
+    "1_pTM": {
+        "threshold": 0.55,
+        "higher": true
+    },
+    "2_pTM": {
+        "threshold": 0.55,
+        "higher": true
+    },
+    "3_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_i_pTM": {
+        "threshold": 0.5,
+        "higher": true
+    },
+    "1_i_pTM": {
+        "threshold": 0.5,
+        "higher": true
+    },
+    "2_i_pTM": {
+        "threshold": 0.5,
+        "higher": true
+    },
+    "3_i_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_i_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_i_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_i_pAE": {
+        "threshold": 0.35,
+        "higher": false
+    },
+    "1_i_pAE": {
+        "threshold": 0.35,
+        "higher": false
+    },
+    "2_i_pAE": {
+        "threshold": 0.35,
+        "higher": false
+    },
+    "3_i_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_i_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_i_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Relaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_Relaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_Relaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_Relaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Relaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Relaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Binder_Energy_Score": {
+        "threshold": 0,
+        "higher": false
+    },
+    "1_Binder_Energy_Score": {
+        "threshold": 0,
+        "higher": false
+    },
+    "2_Binder_Energy_Score": {
+        "threshold": 0,
+        "higher": false
+    },
+    "3_Binder_Energy_Score": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Binder_Energy_Score": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Binder_Energy_Score": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Surface_Hydrophobicity": {
+        "threshold": 0.35,
+        "higher": false
+    },
+    "1_Surface_Hydrophobicity": {
+        "threshold": 0.35,
+        "higher": false
+    },
+    "2_Surface_Hydrophobicity": {
+        "threshold": 0.35,
+        "higher": false
+    },
+    "3_Surface_Hydrophobicity": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Surface_Hydrophobicity": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Surface_Hydrophobicity": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_ShapeComplementarity": {
+        "threshold": 0.6,
+        "higher": true
+    },
+    "1_ShapeComplementarity": {
+        "threshold": 0.55,
+        "higher": true
+    },
+    "2_ShapeComplementarity": {
+        "threshold": 0.55,
+        "higher": true
+    },
+    "3_ShapeComplementarity": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_ShapeComplementarity": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_ShapeComplementarity": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_PackStat": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_PackStat": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_PackStat": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_PackStat": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_PackStat": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_PackStat": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_dG": {
+        "threshold": 0,
+        "higher": false
+    },
+    "1_dG": {
+        "threshold": 0,
+        "higher": false
+    },
+    "2_dG": {
+        "threshold": 0,
+        "higher": false
+    },
+    "3_dG": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_dG": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_dG": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_dSASA": {
+        "threshold": 1,
+        "higher": true
+    },
+    "1_dSASA": {
+        "threshold": 1,
+        "higher": true
+    },
+    "2_dSASA": {
+        "threshold": 1,
+        "higher": true
+    },
+    "3_dSASA": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_dSASA": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_dSASA": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_dG/dSASA": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_dG/dSASA": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_dG/dSASA": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_dG/dSASA": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_dG/dSASA": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_dG/dSASA": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Interface_SASA_%": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_Interface_SASA_%": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_Interface_SASA_%": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_Interface_SASA_%": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_Interface_SASA_%": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_Interface_SASA_%": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Interface_Hydrophobicity": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_Interface_Hydrophobicity": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_Interface_Hydrophobicity": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_Interface_Hydrophobicity": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_Interface_Hydrophobicity": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_Interface_Hydrophobicity": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_n_InterfaceResidues": {
+        "threshold": 7,
+        "higher": true
+    },
+    "1_n_InterfaceResidues": {
+        "threshold": 7,
+        "higher": true
+    },
+    "2_n_InterfaceResidues": {
+        "threshold": 7,
+        "higher": true
+    },
+    "3_n_InterfaceResidues": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_n_InterfaceResidues": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_n_InterfaceResidues": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_n_InterfaceHbonds": {
+        "threshold": 3,
+        "higher": true
+    },
+    "1_n_InterfaceHbonds": {
+        "threshold": 3,
+        "higher": true
+    },
+    "2_n_InterfaceHbonds": {
+        "threshold": 3,
+        "higher": true
+    },
+    "3_n_InterfaceHbonds": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_n_InterfaceHbonds": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_n_InterfaceHbonds": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_InterfaceHbondsPercentage": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_InterfaceHbondsPercentage": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_InterfaceHbondsPercentage": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_InterfaceHbondsPercentage": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_InterfaceHbondsPercentage": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_InterfaceHbondsPercentage": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_n_InterfaceUnsatHbonds": {
+        "threshold": 4,
+        "higher": false
+    },
+    "1_n_InterfaceUnsatHbonds": {
+        "threshold": 4,
+        "higher": false
+    },
+    "2_n_InterfaceUnsatHbonds": {
+        "threshold": 4,
+        "higher": false
+    },
+    "3_n_InterfaceUnsatHbonds": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_n_InterfaceUnsatHbonds": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_n_InterfaceUnsatHbonds": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_InterfaceUnsatHbondsPercentage": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_InterfaceUnsatHbondsPercentage": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_InterfaceUnsatHbondsPercentage": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_InterfaceUnsatHbondsPercentage": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_InterfaceUnsatHbondsPercentage": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_InterfaceUnsatHbondsPercentage": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Interface_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_Interface_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_Interface_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_Interface_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_Interface_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_Interface_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Interface_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_Interface_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_Interface_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_Interface_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_Interface_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_Interface_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Interface_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_Interface_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_Interface_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_Interface_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Interface_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Interface_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Binder_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_Binder_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_Binder_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_Binder_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_Binder_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_Binder_Helix%": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Binder_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_Binder_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_Binder_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_Binder_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_Binder_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_Binder_BetaSheet%": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Binder_Loop%": {
+        "threshold": 90,
+        "higher": false
+    },
+    "1_Binder_Loop%": {
+        "threshold": 90,
+        "higher": false
+    },
+    "2_Binder_Loop%": {
+        "threshold": 90,
+        "higher": false
+    },
+    "3_Binder_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Binder_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Binder_Loop%": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_InterfaceAAs": {
+        "A": {
+            "threshold": null,
+            "higher": false
+        },
+        "C": {
+            "threshold": null,
+            "higher": false
+        },
+        "D": {
+            "threshold": null,
+            "higher": false
+        },
+        "E": {
+            "threshold": null,
+            "higher": false
+        },
+        "F": {
+            "threshold": null,
+            "higher": false
+        },
+        "G": {
+            "threshold": null,
+            "higher": false
+        },
+        "H": {
+            "threshold": null,
+            "higher": false
+        },
+        "I": {
+            "threshold": null,
+            "higher": false
+        },
+        "K": {
+            "threshold": 3,
+            "higher": false
+        },
+        "L": {
+            "threshold": null,
+            "higher": false
+        },
+        "M": {
+            "threshold": 3,
+            "higher": false
+        },
+        "N": {
+            "threshold": null,
+            "higher": false
+        },
+        "P": {
+            "threshold": null,
+            "higher": false
+        },
+        "Q": {
+            "threshold": null,
+            "higher": false
+        },
+        "R": {
+            "threshold": null,
+            "higher": false
+        },
+        "S": {
+            "threshold": null,
+            "higher": false
+        },
+        "T": {
+            "threshold": null,
+            "higher": false
+        },
+        "V": {
+            "threshold": null,
+            "higher": false
+        },
+        "W": {
+            "threshold": null,
+            "higher": false
+        },
+        "Y": {
+            "threshold": null,
+            "higher": false
+        }
+    },
+    "1_InterfaceAAs": {
+        "A": {
+            "threshold": null,
+            "higher": false
+        },
+        "C": {
+            "threshold": null,
+            "higher": false
+        },
+        "D": {
+            "threshold": null,
+            "higher": false
+        },
+        "E": {
+            "threshold": null,
+            "higher": false
+        },
+        "F": {
+            "threshold": null,
+            "higher": false
+        },
+        "G": {
+            "threshold": null,
+            "higher": false
+        },
+        "H": {
+            "threshold": null,
+            "higher": false
+        },
+        "I": {
+            "threshold": null,
+            "higher": false
+        },
+        "K": {
+            "threshold": null,
+            "higher": false
+        },
+        "L": {
+            "threshold": null,
+            "higher": false
+        },
+        "M": {
+            "threshold": null,
+            "higher": false
+        },
+        "N": {
+            "threshold": null,
+            "higher": false
+        },
+        "P": {
+            "threshold": null,
+            "higher": false
+        },
+        "Q": {
+            "threshold": null,
+            "higher": false
+        },
+        "R": {
+            "threshold": null,
+            "higher": false
+        },
+        "S": {
+            "threshold": null,
+            "higher": false
+        },
+        "T": {
+            "threshold": null,
+            "higher": false
+        },
+        "V": {
+            "threshold": null,
+            "higher": false
+        },
+        "W": {
+            "threshold": null,
+            "higher": false
+        },
+        "Y": {
+            "threshold": null,
+            "higher": false
+        }
+    },
+    "2_InterfaceAAs": {
+        "A": {
+            "threshold": null,
+            "higher": false
+        },
+        "C": {
+            "threshold": null,
+            "higher": false
+        },
+        "D": {
+            "threshold": null,
+            "higher": false
+        },
+        "E": {
+            "threshold": null,
+            "higher": false
+        },
+        "F": {
+            "threshold": null,
+            "higher": false
+        },
+        "G": {
+            "threshold": null,
+            "higher": false
+        },
+        "H": {
+            "threshold": null,
+            "higher": false
+        },
+        "I": {
+            "threshold": null,
+            "higher": false
+        },
+        "K": {
+            "threshold": null,
+            "higher": false
+        },
+        "L": {
+            "threshold": null,
+            "higher": false
+        },
+        "M": {
+            "threshold": null,
+            "higher": false
+        },
+        "N": {
+            "threshold": null,
+            "higher": false
+        },
+        "P": {
+            "threshold": null,
+            "higher": false
+        },
+        "Q": {
+            "threshold": null,
+            "higher": false
+        },
+        "R": {
+            "threshold": null,
+            "higher": false
+        },
+        "S": {
+            "threshold": null,
+            "higher": false
+        },
+        "T": {
+            "threshold": null,
+            "higher": false
+        },
+        "V": {
+            "threshold": null,
+            "higher": false
+        },
+        "W": {
+            "threshold": null,
+            "higher": false
+        },
+        "Y": {
+            "threshold": null,
+            "higher": false
+        }
+    },
+    "3_InterfaceAAs": {
+        "A": {
+            "threshold": null,
+            "higher": false
+        },
+        "C": {
+            "threshold": null,
+            "higher": false
+        },
+        "D": {
+            "threshold": null,
+            "higher": false
+        },
+        "E": {
+            "threshold": null,
+            "higher": false
+        },
+        "F": {
+            "threshold": null,
+            "higher": false
+        },
+        "G": {
+            "threshold": null,
+            "higher": false
+        },
+        "H": {
+            "threshold": null,
+            "higher": false
+        },
+        "I": {
+            "threshold": null,
+            "higher": false
+        },
+        "K": {
+            "threshold": null,
+            "higher": false
+        },
+        "L": {
+            "threshold": null,
+            "higher": false
+        },
+        "M": {
+            "threshold": null,
+            "higher": false
+        },
+        "N": {
+            "threshold": null,
+            "higher": false
+        },
+        "P": {
+            "threshold": null,
+            "higher": false
+        },
+        "Q": {
+            "threshold": null,
+            "higher": false
+        },
+        "R": {
+            "threshold": null,
+            "higher": false
+        },
+        "S": {
+            "threshold": null,
+            "higher": false
+        },
+        "T": {
+            "threshold": null,
+            "higher": false
+        },
+        "V": {
+            "threshold": null,
+            "higher": false
+        },
+        "W": {
+            "threshold": null,
+            "higher": false
+        },
+        "Y": {
+            "threshold": null,
+            "higher": false
+        }
+    },
+    "4_InterfaceAAs": {
+        "A": {
+            "threshold": null,
+            "higher": false
+        },
+        "C": {
+            "threshold": null,
+            "higher": false
+        },
+        "D": {
+            "threshold": null,
+            "higher": false
+        },
+        "E": {
+            "threshold": null,
+            "higher": false
+        },
+        "F": {
+            "threshold": null,
+            "higher": false
+        },
+        "G": {
+            "threshold": null,
+            "higher": false
+        },
+        "H": {
+            "threshold": null,
+            "higher": false
+        },
+        "I": {
+            "threshold": null,
+            "higher": false
+        },
+        "K": {
+            "threshold": null,
+            "higher": false
+        },
+        "L": {
+            "threshold": null,
+            "higher": false
+        },
+        "M": {
+            "threshold": null,
+            "higher": false
+        },
+        "N": {
+            "threshold": null,
+            "higher": false
+        },
+        "P": {
+            "threshold": null,
+            "higher": false
+        },
+        "Q": {
+            "threshold": null,
+            "higher": false
+        },
+        "R": {
+            "threshold": null,
+            "higher": false
+        },
+        "S": {
+            "threshold": null,
+            "higher": false
+        },
+        "T": {
+            "threshold": null,
+            "higher": false
+        },
+        "V": {
+            "threshold": null,
+            "higher": false
+        },
+        "W": {
+            "threshold": null,
+            "higher": false
+        },
+        "Y": {
+            "threshold": null,
+            "higher": false
+        }
+    },
+    "5_InterfaceAAs": {
+        "A": {
+            "threshold": null,
+            "higher": false
+        },
+        "C": {
+            "threshold": null,
+            "higher": false
+        },
+        "D": {
+            "threshold": null,
+            "higher": false
+        },
+        "E": {
+            "threshold": null,
+            "higher": false
+        },
+        "F": {
+            "threshold": null,
+            "higher": false
+        },
+        "G": {
+            "threshold": null,
+            "higher": false
+        },
+        "H": {
+            "threshold": null,
+            "higher": false
+        },
+        "I": {
+            "threshold": null,
+            "higher": false
+        },
+        "K": {
+            "threshold": null,
+            "higher": false
+        },
+        "L": {
+            "threshold": null,
+            "higher": false
+        },
+        "M": {
+            "threshold": null,
+            "higher": false
+        },
+        "N": {
+            "threshold": null,
+            "higher": false
+        },
+        "P": {
+            "threshold": null,
+            "higher": false
+        },
+        "Q": {
+            "threshold": null,
+            "higher": false
+        },
+        "R": {
+            "threshold": null,
+            "higher": false
+        },
+        "S": {
+            "threshold": null,
+            "higher": false
+        },
+        "T": {
+            "threshold": null,
+            "higher": false
+        },
+        "V": {
+            "threshold": null,
+            "higher": false
+        },
+        "W": {
+            "threshold": null,
+            "higher": false
+        },
+        "Y": {
+            "threshold": null,
+            "higher": false
+        }
+    },
+    "Average_HotspotRMSD": {
+        "threshold": 6,
+        "higher": false
+    },
+    "1_HotspotRMSD": {
+        "threshold": 6,
+        "higher": false
+    },
+    "2_HotspotRMSD": {
+        "threshold": 6,
+        "higher": false
+    },
+    "3_HotspotRMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_HotspotRMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_HotspotRMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Target_RMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_Target_RMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_Target_RMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_Target_RMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Target_RMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Target_RMSD": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Binder_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "1_Binder_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "2_Binder_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "3_Binder_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "4_Binder_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "5_Binder_pLDDT": {
+        "threshold": 0.8,
+        "higher": true
+    },
+    "Average_Binder_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_Binder_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_Binder_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_Binder_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_Binder_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_Binder_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Binder_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_Binder_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_Binder_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_Binder_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Binder_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Binder_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_Binder_RMSD": {
+        "threshold": 3.5,
+        "higher": false
+    },
+    "1_Binder_RMSD": {
+        "threshold": 3.5,
+        "higher": false
+    },
+    "2_Binder_RMSD": {
+        "threshold": 3.5,
+        "higher": false
+    },
+    "3_Binder_RMSD": {
+        "threshold": 3.5,
+        "higher": false
+    },
+    "4_Binder_RMSD": {
+        "threshold": 3.5,
+        "higher": false
+    },
+    "5_Binder_RMSD": {
+        "threshold": 3.5,
+        "higher": false
+    }
+}
