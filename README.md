@@ -15,7 +15,7 @@ The navigate into your install folder using *cd* and run the installation code. 
 ## Google Colab
 <a href="https://colab.research.google.com/github/martinpacesa/BindCraft/blob/main/notebooks/bindcraft.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
+</a> <br />
 We prepared a convenient google colab notebook to test the bindcraft code functionalities. However, as the pipeline requires significant amount of GPU memory to run for larger target+binder complexes, we highly recommend to run it using a local installation and at least 32 Gb of GPU memory.
 
 
