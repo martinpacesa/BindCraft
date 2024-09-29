@@ -1,0 +1,40 @@
+#!/bin/bash
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH --cpus-per-task 1
+#SBATCH --partition=gpu
+#SBATCH --qos=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --mem 42gb
+#SBATCH --time 72:00:00
+#SBATCH --output=bindcraft_%A.log
+
+# Initialise environment and modules
+conda activate BindCraft
+
+# alternatively you can source the environment directly
+#source /path/to/mambaforge/bin/activate /path/to/mambaforge/envs/BindCraft
+
+
+# Parsing command line options
+SETTINGS=""
+FILTERS=""
+ADVANCED=""
+TEMP=$(getopt -o s:f:a: --long settings:,filters:,advanced: -n 'bindcraft.slurm' -- "$@")
+eval set -- "$TEMP"
+
+while true ; do
+    case "$1" in
+        -s|--settings) SETTINGS="$2" ; shift 2 ;;
+        -f|--filters) FILTERS="$2" ; shift 2 ;;
+        -a|--advanced) ADVANCED="$2" ; shift 2 ;;
+        --) shift ; break ;;
+        *) echo "Invalid Option" ; exit 1 ;;
+    esac
+done
+
+echo "Running the BindCraft pipeline"
+echo "Running binder design for target ${SETTINGS}"
+echo "Design settings used: ${ADVANCED}"
+echo "Filtering designs based on ${FILTERS}"
+python -u /work/lpdi/users/mpacesa/Pipelines/BindCraft/bindcraft.py --settings "${SETTINGS}" --filters "${FILTERS}" --advanced "${ADVANCED}"
