@@ -45,7 +45,7 @@ cd /path/to/install/folder/
 python -u /work/lpdi/users/mpacesa/Pipelines/BindCraft/bindcraft.py --settings 'path/to/settings_target/.json' --filters 'path/to/settings_filters/.json' --advanced 'path/to/settings_advanced/.json'
 ```
 
-We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation. If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 
+**We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 
 
 Below are explanations for individual filters and advanced settings.
 
