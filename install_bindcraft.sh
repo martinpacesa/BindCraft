@@ -68,6 +68,10 @@ wget -P ${install_dir}/params/ https://storage.googleapis.com/alphafold/alphafol
 tar -xvf ${install_dir}/params/alphafold_params_2022-12-06.tar
 rm ${install_dir}/params/alphafold_params_2022-12-06.tar
 
+# chmod executables
+chmod +x ${install_dir}/functions/dssp
+chmod +x ${install_dir}/functions/DAlphaBall.gcc
+
 # finish
 conda deactivate
 printf "BindCraft environment installed\n"
