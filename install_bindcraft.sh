@@ -56,6 +56,7 @@ $pkg_manager install pyrosetta --channel https://conda.graylab.jhu.edu -y
 
 # install ColabDesign
 pip install git+https://github.com/sokrypton/ColabDesign.git
+pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_releases.htm
 
 # install helpful packages
 $pkg_manager install biopython==1.79 scipy"<1.13.0" pdbfixer seaborn tqdm jupyter ffmpeg -y
