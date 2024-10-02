@@ -51,15 +51,15 @@ printf "Installing BindCraft environment\n"
 $pkg_manager create --name BindCraft python=3.9 -y
 source ${conda_env}/bin/activate ${conda_env}/envs/BindCraft
 
-# install PyRosetta
-$pkg_manager install pyrosetta=2024.24+release.ca096da=py39_0 --channel https://levinthal:paradox@conda.graylab.jhu.edu -y
-
 # install ColabDesign
 pip install git+https://github.com/sokrypton/ColabDesign.git
 pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_releases.htm
 
 # install helpful packages
 $pkg_manager install biopython==1.79 scipy"<1.13.0" pdbfixer seaborn tqdm jupyter ffmpeg -y
+
+# install PyRosetta
+$pkg_manager install pyrosetta --channel https://conda.graylab.jhu.edu -y
 
 # Download AlphaFold2 weights
 mkdir -p ${install_dir}/params/
