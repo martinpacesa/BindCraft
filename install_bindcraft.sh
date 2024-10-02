@@ -52,7 +52,7 @@ $pkg_manager create --name BindCraft python=3.9 -y
 source ${conda_env}/bin/activate ${conda_env}/envs/BindCraft
 
 # install PyRosetta
-$pkg_manager install pyrosetta --channel https://conda.graylab.jhu.edu -y
+$pkg_manager install pyrosetta=2024.24+release.ca096da=py39_0 --channel https://levinthal:paradox@conda.graylab.jhu.edu -y
 
 # install ColabDesign
 pip install git+https://github.com/sokrypton/ColabDesign.git
