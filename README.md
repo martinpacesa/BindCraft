@@ -3,6 +3,8 @@
 
 Simple binder design pipeline using AlphaFold2 backpropagation, MPNN, and PyRosetta. Select your target and let the script do the rest of the work and finish once you have enough designs to order!
 
+[Preprint link for BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802v1)
+
 ## Installation
 First you need to clone this repository. Replace **[install_folder]** with the path where you want to install it.
 
