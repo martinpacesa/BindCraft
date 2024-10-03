@@ -54,12 +54,13 @@ source ${conda_env}/bin/activate ${conda_env}/envs/BindCraft
 # install ColabDesign
 pip install git+https://github.com/sokrypton/ColabDesign.git
 pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_releases.htm
+pip install matplotlib==3.7.1
 
 # install helpful packages
 $pkg_manager install biopython==1.79 scipy"<1.13.0" pdbfixer seaborn tqdm jupyter ffmpeg -y
 
 # install PyRosetta
-$pkg_manager install pyrosetta --channel https://conda.graylab.jhu.edu -y
+$pkg_manager install pyrosetta=2024.24+release.ca096da=py39_0 --channel https://conda.graylab.jhu.edu -y
 
 # Download AlphaFold2 weights
 mkdir -p ${install_dir}/params/
