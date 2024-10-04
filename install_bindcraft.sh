@@ -1,9 +1,12 @@
 #!/bin/bash
 ################## BindCraft installation script
 ################## specify conda/mamba folder, and installation folder for git repositories, and whether to use mamba or $pkg_manager
+# Default value for pkg_manager
+pkg_manager='conda'
+
 # Define the short and long options
-OPTIONS=c:p:
-LONGOPTIONS=conda_env:,pkg_manager:
+OPTIONS=p:
+LONGOPTIONS=pkg_manager:
 
 # Parse the command-line options
 PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@")
@@ -12,10 +15,6 @@ eval set -- "$PARSED"
 # Process the command-line options
 while true; do
   case "$1" in
-    -c|--conda_env)
-      conda_env="$2"
-      shift 2
-      ;;
     -p|--pkg_manager)
       pkg_manager="$2"
       shift 2
@@ -31,36 +30,29 @@ while true; do
   esac
 done
 
-# Check that all required options were provided
-if [ -z "$conda_env" ] || [ -z "$pkg_manager" ]; then
-  echo "You must provide the conda_env and pkg_manager options." >&2
-  exit 1
-fi
-
 ############################################################################################################
 ############################################################################################################
 ################## initialisation
 SECONDS=0
 
 # set paths
-conda_env=${conda_env%/}
 install_dir=$(pwd)
 
 ### BindCraft install
 printf "Installing BindCraft environment\n"
 $pkg_manager create --name BindCraft python=3.9 -y
-source ${conda_env}/bin/activate ${conda_env}/envs/BindCraft
+conda activate BindCraft
+
+# install helpful packages
+$pkg_manager install pandas numpy biopython==1.79 scipy"<1.13.0" pdbfixer seaborn tqdm jupyter ffmpeg -y
 
 # install ColabDesign
 pip install git+https://github.com/sokrypton/ColabDesign.git
 pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_releases.htm
 pip install matplotlib==3.7.1
 
-# install helpful packages
-$pkg_manager install biopython==1.79 scipy"<1.13.0" pdbfixer seaborn tqdm jupyter ffmpeg -y
-
 # install PyRosetta
-$pkg_manager install pyrosetta=2024.24+release.ca096da=py39_0 --channel https://conda.graylab.jhu.edu -y
+$pkg_manager install pyrosetta --channel https://conda.graylab.jhu.edu -y
 
 # Download AlphaFold2 weights
 mkdir -p ${install_dir}/params/
