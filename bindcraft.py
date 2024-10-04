@@ -146,7 +146,7 @@ while True:
             traj_seq_notes = validate_design_sequence(trajectory_sequence, num_clashes_relaxed, advanced_settings)
 
             # target structure RMSD compared to input PDB
-            trajectory_target_rmsd = unaligned_rmsd(target_settings["starting_pdb"], trajectory_pdb, target_settings["chains"], 'A')
+            trajectory_target_rmsd = target_pdb_rmsd(trajectory_pdb, target_settings["starting_pdb"], target_settings["chains"])
 
             # save trajectory statistics into CSV
             trajectory_data = [design_name, advanced_settings["design_algorithm"], length, seed, helicity_value, target_settings["target_hotspot_residues"], trajectory_sequence, trajectory_interface_residues, 
@@ -251,7 +251,7 @@ while True:
                                 rmsd_site = unaligned_rmsd(trajectory_pdb, mpnn_design_pdb, binder_chain, binder_chain)
 
                                 # calculate RMSD of target compared to input PDB
-                                target_rmsd = unaligned_rmsd(target_settings["starting_pdb"], mpnn_design_pdb, target_settings["chains"], 'A')
+                                target_rmsd = target_pdb_rmsd(mpnn_design_pdb, target_settings["starting_pdb"], target_settings["chains"])
 
                                 # add the additional statistics to the mpnn_complex_statistics dictionary
                                 mpnn_complex_statistics[model_num+1].update({
