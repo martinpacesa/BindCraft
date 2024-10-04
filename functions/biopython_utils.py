@@ -8,9 +8,10 @@ import numpy as np
 from collections import defaultdict
 from scipy.spatial import cKDTree
 from Bio import BiopythonWarning
-from Bio.PDB import PDBParser, DSSP, Selection, Polypeptide, PDBIO, Select, Chain
+from Bio.PDB import PDBParser, DSSP, Selection, Polypeptide, PDBIO, Select, Chain,  Superimposer
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from Bio.PDB.Selection import unfold_entities
+from Bio.PDB.Polypeptide import is_aa
 
 # analyze sequence composition of design
 def validate_design_sequence(sequence, num_clashes, advanced_settings):
@@ -42,6 +43,45 @@ def validate_design_sequence(sequence, num_clashes, advanced_settings):
     notes = ' '.join(note_array)
 
     return notes
+
+# temporary function, calculate RMSD of input PDB and trajectory target
+def target_pdb_rmsd(trajectory_pdb, starting_pdb, chain_ids_string):
+    # Parse the PDB files
+    parser = PDBParser(QUIET=True)
+    structure_trajectory = parser.get_structure('trajectory', trajectory_pdb)
+    structure_starting = parser.get_structure('starting', starting_pdb)
+    
+    # Extract chain A from trajectory_pdb
+    chain_trajectory = structure_trajectory[0]['A']
+    
+    # Extract the specified chains from starting_pdb
+    chain_ids = chain_ids_string.split(',')
+    residues_starting = []
+    for chain_id in chain_ids:
+        chain_id = chain_id.strip()
+        chain = structure_starting[0][chain_id]
+        for residue in chain:
+            if is_aa(residue, standard=True):
+                residues_starting.append(residue)
+    
+    # Extract residues from chain A in trajectory_pdb
+    residues_trajectory = [residue for residue in chain_trajectory if is_aa(residue, standard=True)]
+    
+    # Ensure that both structures have the same number of residues
+    min_length = min(len(residues_starting), len(residues_trajectory))
+    residues_starting = residues_starting[:min_length]
+    residues_trajectory = residues_trajectory[:min_length]
+    
+    # Collect CA atoms from the two sets of residues
+    atoms_starting = [residue['CA'] for residue in residues_starting if 'CA' in residue]
+    atoms_trajectory = [residue['CA'] for residue in residues_trajectory if 'CA' in residue]
+    
+    # Calculate RMSD using structural alignment
+    sup = Superimposer()
+    sup.set_atoms(atoms_starting, atoms_trajectory)
+    rmsd = sup.rms
+    
+    return round(rmsd, 2)
 
 # detect C alpha clashes for deformed trajectories
 def calculate_clash_score(pdb_file, threshold=2.4, only_ca=False):
