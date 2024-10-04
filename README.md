@@ -10,9 +10,9 @@ First you need to clone this repository. Replace **[install_folder]** with the p
 
 `git clone https://github.com/martinpacesa/BindCraft [install_folder]`
 
-The navigate into your install folder using *cd* and run the installation code. In *pkg_manager* specify whether you are using 'mamba' or 'conda' and in the *conda_env* specify the path to your package manger installation. For example: */path/to/mambaforge/*
+The navigate into your install folder using *cd* and run the installation code. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default.
 
-`bash install_bindcraft.sh --pkg_manager 'mamba' --conda_env '/path/to/mambaforge/'`
+`bash install_bindcraft.sh --pkg_manager 'conda'`
 
 ## Google Colab
 <a href="https://colab.research.google.com/github/martinpacesa/BindCraft/blob/main/notebooks/BindCraft.ipynb">
@@ -25,13 +25,13 @@ We prepared a convenient google colab notebook to test the bindcraft code functi
 To run the script locally, first you need to configure your target .json file in the *target_settings* folder. In the json file are the following settings:
 
 ```
-design_path 				-> path where to save designs and statistics
-binder_name 				-> what to prefix your designed binder files with
-starting_pdb 				-> the path to the PDB of your target protein
-chains          			-> which chains to target in your protein, rest will be ignored
-target_hotspot_residues 	-> which position to target for binder design, for example `1,2-10` or chain specific `A1-10,B1-20` or entire chains `A`, set to null if you want AF2 to select binding site; better to select multiple target residues or a small patch to reduce search space for binder
-lengths 					-> range of binder lengths to design
-number_of_final_designs 	-> how many designs that pass all filters to aim for, script will stop if this many are reached
+design_path         -> path where to save designs and statistics
+binder_name         -> what to prefix your designed binder files with
+starting_pdb        -> the path to the PDB of your target protein
+chains                -> which chains to target in your protein, rest will be ignored
+target_hotspot_residues   -> which position to target for binder design, for example `1,2-10` or chain specific `A1-10,B1-20` or entire chains `A`, set to null if you want AF2 to select binding site; better to select multiple target residues or a small patch to reduce search space for binder
+lengths           -> range of binder lengths to design
+number_of_final_designs   -> how many designs that pass all filters to aim for, script will stop if this many are reached
 ```
 Then run the binder design script:
 
@@ -142,44 +142,44 @@ enable_rejection_check          -> enable rejection rate check
 ## Filters
 Here are the features by which your designs will be filtered, if you don't want to use some, just set *null* as threshold. *higher* option indicates whether values higher than threshold should be kept (true) or lower (false). Features starting with N_ correspond to statistics per each AlphaFold model, Averages are accross all models predicted.
 ```
-MPNN_score						-> MPNN sequence score, generally not recommended as it depends on protein
-MPNN_seq_recovery				-> MPNN sequence recovery of original trajectory
-pLDDT							-> pLDDT confidence score of AF2 complex prediction, normalised to 0-1
-pTM								-> pTM confidence score of AF2 complex prediction, normalised to 0-1
-i_pTM							-> interface pTM confidence score of AF2 complex prediction, normalised to 0-1
-pAE								-> predicted alignment error of AF2 complex prediction, normalised compared AF2 by n/31 to 0-1
-i_pAE							-> predicted interface alignment error of AF2 complex prediction,  normalised compared AF2 by n/31 to 0-1
-i_pLDDT 						-> interface pLDDT confidence score of AF2 complex prediction, normalised to 0-1
-ss_pLDDT 						-> secondary structure pLDDT confidence score of AF2 complex prediction, normalised to 0-1
-Unrelaxed_Clashes				-> number of interface clashes before relaxation
-Relaxed_Clashes					-> number of interface clashes after relaxation
-Binder_Energy_Score				-> Rosetta energy score for binder alone
-Surface_Hydrophobicity			-> surface hydrophobicity fraction for binder
-ShapeComplementarity			-> interface shape complementarity
-PackStat						-> interface packstat rosetta score
-dG								-> interface rosetta dG energy
-dSASA							-> interface delta SASA (size)
-dG/dSASA						-> interface energy divided by interface size
-Interface_SASA_%				-> Fraction of binder surface covered by the interface
+MPNN_score            -> MPNN sequence score, generally not recommended as it depends on protein
+MPNN_seq_recovery       -> MPNN sequence recovery of original trajectory
+pLDDT             -> pLDDT confidence score of AF2 complex prediction, normalised to 0-1
+pTM               -> pTM confidence score of AF2 complex prediction, normalised to 0-1
+i_pTM             -> interface pTM confidence score of AF2 complex prediction, normalised to 0-1
+pAE               -> predicted alignment error of AF2 complex prediction, normalised compared AF2 by n/31 to 0-1
+i_pAE             -> predicted interface alignment error of AF2 complex prediction,  normalised compared AF2 by n/31 to 0-1
+i_pLDDT             -> interface pLDDT confidence score of AF2 complex prediction, normalised to 0-1
+ss_pLDDT            -> secondary structure pLDDT confidence score of AF2 complex prediction, normalised to 0-1
+Unrelaxed_Clashes       -> number of interface clashes before relaxation
+Relaxed_Clashes         -> number of interface clashes after relaxation
+Binder_Energy_Score       -> Rosetta energy score for binder alone
+Surface_Hydrophobicity      -> surface hydrophobicity fraction for binder
+ShapeComplementarity      -> interface shape complementarity
+PackStat            -> interface packstat rosetta score
+dG                -> interface rosetta dG energy
+dSASA             -> interface delta SASA (size)
+dG/dSASA            -> interface energy divided by interface size
+Interface_SASA_%        -> Fraction of binder surface covered by the interface
 Interface_Hydrophobicity        -> Interface hydrophobicity fraction of binder interface
-n_InterfaceResidues				-> number of interface residues
-n_InterfaceHbonds				-> number of hydrogen bonds at the interface
-InterfaceHbondsPercentage		-> number of hydrogen bonds compared to interface size
-n_InterfaceUnsatHbonds			-> number of unsatisfied buried hydrogen bonds at the interface
-InterfaceUnsatHbondsPercentage	-> number of unsatisfied buried hydrogen bonds compared to interface size
-Interface_Helix%				-> proportion of alfa helices at the interface
-Interface_BetaSheet%			-> proportion of beta sheets at the interface
-Interface_Loop%					-> proportion of loops at the interface
-Binder_Helix%					-> proportion of alfa helices in the binder structure
-Binder_BetaSheet%				-> proportion of beta sheets in the binder structure
-Binder_Loop%					-> proportion of loops in the binder structure
-InterfaceAAs					-> number of amino acids of each type at the interface
-HotspotRMSD						-> unaligned RMSD of binder compared to original trajectory, in other words how far is binder in the repredicted complex from the original binding site
-Target_RMSD						-> RMSD of target predicted in context of the designed binder compared to input PDB
-Binder_pLDDT					-> pLDDT confidence score of binder predicted alone
-Binder_pTM						-> pTM confidence score of binder predicted alone
-Binder_pAE						-> predicted alignment error of binder predicted alone
-Binder_RMSD						-> RMSD of binder predicted alone compared to original trajectory
+n_InterfaceResidues       -> number of interface residues
+n_InterfaceHbonds       -> number of hydrogen bonds at the interface
+InterfaceHbondsPercentage   -> number of hydrogen bonds compared to interface size
+n_InterfaceUnsatHbonds      -> number of unsatisfied buried hydrogen bonds at the interface
+InterfaceUnsatHbondsPercentage  -> number of unsatisfied buried hydrogen bonds compared to interface size
+Interface_Helix%        -> proportion of alfa helices at the interface
+Interface_BetaSheet%      -> proportion of beta sheets at the interface
+Interface_Loop%         -> proportion of loops at the interface
+Binder_Helix%         -> proportion of alfa helices in the binder structure
+Binder_BetaSheet%       -> proportion of beta sheets in the binder structure
+Binder_Loop%          -> proportion of loops in the binder structure
+InterfaceAAs          -> number of amino acids of each type at the interface
+HotspotRMSD           -> unaligned RMSD of binder compared to original trajectory, in other words how far is binder in the repredicted complex from the original binding site
+Target_RMSD           -> RMSD of target predicted in context of the designed binder compared to input PDB
+Binder_pLDDT          -> pLDDT confidence score of binder predicted alone
+Binder_pTM            -> pTM confidence score of binder predicted alone
+Binder_pAE            -> predicted alignment error of binder predicted alone
+Binder_RMSD           -> RMSD of binder predicted alone compared to original trajectory
 ```
 
 ## Implemented design algorithms
