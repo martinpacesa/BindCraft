@@ -34,9 +34,10 @@ advanced_file = os.path.basename(advanced_path).split('.')[0]
 design_models, prediction_models, multimer_validation = load_af2_models(advanced_settings["use_multimer_design"])
 
 ### set package settings
-advanced_settings["af_params_dir"] = os.path.realpath('')
-advanced_settings["dssp_path"] = os.path.join(os.path.realpath(''), 'functions/dssp')
-advanced_settings["dalphaball_path"] = os.path.join(os.path.realpath(''), 'functions/DAlphaBall.gcc')
+current_script_folder = os.path.dirname(os.path.realpath(__file__))
+advanced_settings["af_params_dir"] = current_script_folder
+advanced_settings["dssp_path"] = os.path.join(current_script_folder, 'functions/dssp')
+advanced_settings["dalphaball_path"] = os.path.join(current_script_folder, 'functions/DAlphaBall.gcc')
 
 ### generate directories, design path names can be found within the function
 design_paths = generate_directories(target_settings["design_path"])
