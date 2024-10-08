@@ -61,7 +61,6 @@ design_algorithm                -> which design algorithm for the trajecory to u
 use_multimer_design             -> whether to use AF2-ptm or AF2-multimer for binder design; the other model will be used for validation then
 num_recycles_design             -> how many recycles of AF2 for design
 num_recycles_validation         -> how many recycles of AF2 use for structure prediction and validation
-af_params_dir                   -> where the AF2 weights are stored
 sample_models = True            -> whether to randomly sample parameters from AF2 models, recommended to avoid overfitting
 rm_template_seq_design          -> remove target template sequence for design (increases target flexibility)
 rm_template_seq_predict         -> remove target template sequence for reprediction (increases target flexibility)
@@ -112,7 +111,6 @@ mpnn_weights                    -> whether to use "original" mpnn weights or "so
 save_mpnn_fasta                 -> whether to save MPNN sequences as fasta files, normally not needed as the sequence is also in the CSV file
 
 # AF2 design settings - advanced
-af_params_dir                   -> path to the directory with AF2 weights
 num_recycles_design             -> how many recycles of AF2 for design
 num_recycles_validation         -> how many recycles of AF2 use for structure prediction and validation
 optimise_beta                   -> optimise predictions if beta sheeted trajectory detected?
@@ -120,13 +118,11 @@ optimise_beta_extra_soft        -> how many extra soft iterations to add if beta
 optimise_beta_extra_temp        -> how many extra temporary iterations to add if beta sheets detected
 optimise_beta_recycles_design   -> how many recycles to do during design if beta sheets detected
 optimise_beta_recycles_valid    -> how many recycles to do during reprediction if beta sheets detected
-extract_interfaces              -> whether to isolate interfaces for further analysis
 
 # Optimise script
 remove_unrelaxed_trajectory     -> remove the PDB files of unrelaxed designed trajectories, relaxed PDBs are retained
 remove_unrelaxed_complex        -> remove the PDB files of unrelaxed predicted MPNN-optimised complexes, relaxed PDBs are retained
 remove_binder_monomer           -> remove the PDB files of predicted binder monomers after scoring to save space
-run_foldseek                    -> run foldseek to analyse TM score and sequence identity of binders against each other and the PDB
 zip_animations                  -> at the end, zip Animations trajectory folder to save space
 zip_plots                       -> at the end, zip Plots trajectory folder to save space
 save_trajectory_pickle          -> save pickle file of the generated trajectory, careful, takes up a lot of storage space!
