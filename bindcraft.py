@@ -375,9 +375,10 @@ while True:
                             insert_data(final_csv, final_data)
 
                             # copy animation from accepted trajectory
-                            accepted_animation = os.path.join(design_paths["Accepted/Animation"], f"{design_name}.html")
-                            if not os.path.exists(accepted_animation):
-                                shutil.copy(os.path.join(design_paths["Trajectory/Animation"], f"{design_name}.html"), accepted_animation)
+                            if advanced_settings["save_design_animations"]:
+                                accepted_animation = os.path.join(design_paths["Accepted/Animation"], f"{design_name}.html")
+                                if not os.path.exists(accepted_animation):
+                                    shutil.copy(os.path.join(design_paths["Trajectory/Animation"], f"{design_name}.html"), accepted_animation)
 
                             # copy plots of accepted trajectory
                             plot_files = os.listdir(design_paths["Trajectory/Plots"])
