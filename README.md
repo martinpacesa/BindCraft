@@ -22,7 +22,7 @@ We prepared a convenient google colab notebook to test the bindcraft code functi
 
 
 ## Running the script locally and explanation of settings
-To run the script locally, first you need to configure your target .json file in the *target_settings* folder. In the json file are the following settings:
+To run the script locally, first you need to configure your target .json file in the *settings_target* folder. In the json file are the following settings:
 
 ```
 design_path         -> path where to save designs and statistics
