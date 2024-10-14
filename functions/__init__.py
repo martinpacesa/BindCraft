@@ -13,7 +13,7 @@ from .colabdesign_utils import *
 from .biopython_utils import *
 from .generic_utils import *
 
-# set slurm environment modules and suppress warnings
+# suppress warnings
 #os.environ["SLURM_STEP_NODELIST"] = os.environ["SLURM_NODELIST"]
 warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.simplefilter(action='ignore', category=DeprecationWarning)

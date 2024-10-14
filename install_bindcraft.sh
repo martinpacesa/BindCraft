@@ -3,10 +3,11 @@
 ################## specify conda/mamba folder, and installation folder for git repositories, and whether to use mamba or $pkg_manager
 # Default value for pkg_manager
 pkg_manager='conda'
+cuda=''
 
 # Define the short and long options
-OPTIONS=p:
-LONGOPTIONS=pkg_manager:
+OPTIONS=p:c:
+LONGOPTIONS=pkg_manager:,cuda:
 
 # Parse the command-line options
 PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@")
@@ -17,6 +18,10 @@ while true; do
   case "$1" in
     -p|--pkg_manager)
       pkg_manager="$2"
+      shift 2
+      ;;
+    -c|--cuda)
+      cuda="$2"
       shift 2
       ;;
     --)
@@ -30,6 +35,10 @@ while true; do
   esac
 done
 
+# Example usage of the parsed variables
+echo "Package manager: $pkg_manager"
+echo "CUDA version (if provided): $cuda"
+
 ############################################################################################################
 ############################################################################################################
 ################## initialisation
@@ -40,26 +49,26 @@ install_dir=$(pwd)
 
 ### BindCraft install
 printf "Installing BindCraft environment\n"
-$pkg_manager create --name BindCraft python=3.9 -y
-conda activate BindCraft
+$pkg_manager create --name BindCraft python=3.10 -y
+CONDA_BASE=$(conda info --base)
+source ${CONDA_BASE}/bin/activate ${CONDA_BASE}/envs/BindCraft
+printf "BindCraft environment activated at ${CONDA_BASE}/envs/BindCraft"
 
-# install helpful packages
-$pkg_manager install pandas numpy biopython==1.79 scipy"<1.13.0" pdbfixer seaborn tqdm jupyter ffmpeg -y
+# install required packages
+if [ -n "$cuda" ]; then
+    CONDA_OVERRIDE_CUDA="$cuda" $pkg_manager install pip pandas matplotlib numpy"<2.0.0" biopython scipy pdbfixer seaborn tqdm jupyter ffmpeg pyrosetta fsspec py3dmol chex dm-haiku dm-tree joblib ml-collections immutabledict optax jaxlib=*=*cuda* jax cuda-nvcc cudnn -c conda-forge -c anaconda -c nvidia  --channel https://conda.graylab.jhu.edu -y
+else
+    $pkg_manager install pip pandas matplotlib numpy"<2.0.0" biopython scipy pdbfixer seaborn tqdm jupyter ffmpeg pyrosetta fsspec py3dmol chex dm-haiku dm-tree joblib ml-collections immutabledict optax jaxlib=*=*cuda* jax cuda-nvcc cudnn -c conda-forge -c anaconda -c nvidia  --channel https://conda.graylab.jhu.edu -y
+fi
 
 # install ColabDesign
-pip install git+https://github.com/sokrypton/ColabDesign.git
-pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_releases.htm
-pip install matplotlib==3.7.1
-
-# install PyRosetta
-$pkg_manager install pyrosetta --channel https://conda.graylab.jhu.edu -y
+pip3 install git+https://github.com/sokrypton/ColabDesign.git --no-deps
 
 # Download AlphaFold2 weights
 mkdir -p ${install_dir}/params/
 cd ${install_dir}/params/
 wget -P ${install_dir}/params/ https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar
 tar -xvf ${install_dir}/params/alphafold_params_2022-12-06.tar
-rm ${install_dir}/params/alphafold_params_2022-12-06.tar
 
 # chmod executables
 chmod +x ${install_dir}/functions/dssp
@@ -79,6 +88,6 @@ printf "$pkg_manager cleaned up\n"
 ################## finish script
 t=$SECONDS 
 printf "Finished setting up BindCraft environment\n"
-printf "Activate environment using command: \"conda activate BindCraft\""
+printf "Activate environment using command: \"$pkg_manager activate BindCraft\""
 printf "\n"
 printf "Installation took $(($t / 3600)) hours, $((($t / 60) % 60)) minutes and $(($t % 60)) seconds."

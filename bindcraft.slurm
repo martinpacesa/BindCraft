@@ -15,6 +15,8 @@ conda activate BindCraft
 # alternatively you can source the environment directly
 #source /path/to/mambaforge/bin/activate /path/to/mambaforge/envs/BindCraft
 
+# Get the directory where the bindcraft script is located
+SCRIPT_DIR=$(dirname "$0")
 
 # Parsing command line options
 SETTINGS=""
@@ -37,4 +39,4 @@ echo "Running the BindCraft pipeline"
 echo "Running binder design for target ${SETTINGS}"
 echo "Design settings used: ${ADVANCED}"
 echo "Filtering designs based on ${FILTERS}"
-python -u ./bindcraft.py --settings "${SETTINGS}" --filters "${FILTERS}" --advanced "${ADVANCED}"
+python -u "${SCRIPT_DIR}/bindcraft.py" --settings "${SETTINGS}" --filters "${FILTERS}" --advanced "${ADVANCED}"

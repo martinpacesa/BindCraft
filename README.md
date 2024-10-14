@@ -10,9 +10,9 @@ First you need to clone this repository. Replace **[install_folder]** with the p
 
 `git clone https://github.com/martinpacesa/BindCraft [install_folder]`
 
-The navigate into your install folder using *cd* and run the installation code. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default.
+The navigate into your install folder using *cd* and run the installation code. BindCraft requires a CUDA-compatible Nvidia graphics card to run. In the *cuda* setting, please specify the CUDA version compatible with your graphics card, for example '11.8'. If unsure, leave blank but it's possible that the installation might select the wrong version, which will lead to errors. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default. 
 
-`bash install_bindcraft.sh --pkg_manager 'conda'`
+`bash install_bindcraft.sh --cuda '12.4' --pkg_manager 'conda'`
 
 ## Google Colab
 <a href="https://colab.research.google.com/github/martinpacesa/BindCraft/blob/main/notebooks/BindCraft.ipynb">
@@ -20,9 +20,13 @@ The navigate into your install folder using *cd* and run the installation code. 
 </a> <br />
 We prepared a convenient google colab notebook to test the bindcraft code functionalities. However, as the pipeline requires significant amount of GPU memory to run for larger target+binder complexes, we highly recommend to run it using a local installation and at least 32 Gb of GPU memory.
 
+**Always try to trim the input target PDB to the smallest size possible! It will significantly speed up the binder generation and minimise the GPU memory requirements.**
+
+**Be ready to run at least a few hundred trajectories to see some accepted binders, for difficult targets it might even be a few thousand.**
+
 
 ## Running the script locally and explanation of settings
-To run the script locally, first you need to configure your target .json file in the *target_settings* folder. In the json file are the following settings:
+To run the script locally, first you need to configure your target .json file in the *settings_target* folder. In the json file are the following settings:
 
 ```
 design_path         -> path where to save designs and statistics
@@ -35,7 +39,7 @@ number_of_final_designs   -> how many designs that pass all filters to aim for, 
 ```
 Then run the binder design script:
 
-`sbatch bindcraft.slurm --settings 'path/to/settings_target/.json' --filters 'path/to/settings_filters/.json' --advanced 'path/to/settings_advanced/.json'`
+`sbatch ./bindcraft.slurm --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/4stage_multimer.json'`
 
 The *settings* flag should point to your target .json which you set above. The *filters* flag points to the json where the design filters are specified (default is ./filters/default_filters.json). The *advanced* flag points to your advanced settings (default is ./advanced_settings/4stage_multimer.json). If you leave out the filters and advanced settings flags it will automatically point to the defaults.
 
@@ -43,8 +47,8 @@ Alternatively, if your machine does not support SLURM, you can run the code dire
 
 ```
 conda activate BindCraft
-cd /path/to/install/folder/
-python -u /work/lpdi/users/mpacesa/Pipelines/BindCraft/bindcraft.py --settings 'path/to/settings_target/.json' --filters 'path/to/settings_filters/.json' --advanced 'path/to/settings_advanced/.json'
+cd /path/to/bindcraft/folder/
+python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/4stage_multimer.json'
 ```
 
 **We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 

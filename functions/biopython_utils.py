@@ -8,7 +8,7 @@ import numpy as np
 from collections import defaultdict
 from scipy.spatial import cKDTree
 from Bio import BiopythonWarning
-from Bio.PDB import PDBParser, DSSP, Selection, Polypeptide, PDBIO, Select, Chain,  Superimposer
+from Bio.PDB import PDBParser, DSSP, Selection, Polypeptide, PDBIO, Select, Chain, Superimposer
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from Bio.PDB.Selection import unfold_entities
 from Bio.PDB.Polypeptide import is_aa
@@ -126,6 +126,13 @@ def calculate_clash_score(pdb_file, threshold=2.4, only_ca=False):
 
     return len(valid_pairs)
 
+three_to_one_map = {
+    'ALA': 'A', 'CYS': 'C', 'ASP': 'D', 'GLU': 'E', 'PHE': 'F',
+    'GLY': 'G', 'HIS': 'H', 'ILE': 'I', 'LYS': 'K', 'LEU': 'L',
+    'MET': 'M', 'ASN': 'N', 'PRO': 'P', 'GLN': 'Q', 'ARG': 'R',
+    'SER': 'S', 'THR': 'T', 'VAL': 'V', 'TRP': 'W', 'TYR': 'Y'
+}
+
 # identify interacting residues at the binder interface
 def hotspot_residues(trajectory_pdb, binder_chain="B", atom_distance_cutoff=4.0):
     # Parse the PDB file
@@ -154,8 +161,10 @@ def hotspot_residues(trajectory_pdb, binder_chain="B", atom_distance_cutoff=4.0)
     for binder_idx, close_indices in enumerate(pairs):
         binder_residue = binder_atoms[binder_idx].get_parent()
         binder_resname = binder_residue.get_resname()
-        if binder_resname in Polypeptide.standard_aa_names:
-            aa_single_letter = Polypeptide.three_to_one(binder_resname)
+
+        # Convert three-letter code to single-letter code using the manual dictionary
+        if binder_resname in three_to_one_map:
+            aa_single_letter = three_to_one_map[binder_resname]
             for close_idx in close_indices:
                 target_residue = target_atoms[close_idx].get_parent()
                 interacting_residues[binder_residue.id[1]] = aa_single_letter
