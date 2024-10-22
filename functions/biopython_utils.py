@@ -22,10 +22,11 @@ def validate_design_sequence(sequence, num_clashes, advanced_settings):
         note_array.append('Relaxed structure contains clashes.')
 
     # Check if the sequence contains disallowed amino acids
-    restricted_AAs = advanced_settings["omit_AAs"].split(',')
-    for restricted_AA in restricted_AAs:
-        if restricted_AA in sequence:
-            note_array.append('Contains: '+restricted_AA+'!')
+    if advanced_settings["omit_AAs"]:
+        restricted_AAs = advanced_settings["omit_AAs"].split(',')
+        for restricted_AA in restricted_AAs:
+            if restricted_AA in sequence:
+                note_array.append('Contains: '+restricted_AA+'!')
 
     # Analyze the protein
     analysis = ProteinAnalysis(sequence)
