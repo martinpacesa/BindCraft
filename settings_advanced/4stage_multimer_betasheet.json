@@ -58,5 +58,5 @@
     "max_trajectories": false,
     "enable_rejection_check": true,
     "acceptance_rate": 0.01,
-    "start_monitoring": 50
+    "start_monitoring": 200
 }
