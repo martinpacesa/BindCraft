@@ -57,6 +57,6 @@
     "save_trajectory_pickle": false,
     "max_trajectories": false,
     "enable_rejection_check": true,
-    "acceptance_rate": 0.05,
-    "start_monitoring": 50
+    "acceptance_rate": 0.01,
+    "start_monitoring": 200
 }
