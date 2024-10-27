@@ -230,7 +230,6 @@ while True:
                         # if AF2 filters are not passed then skip the scoring
                         if not pass_af2_filters:
                             print(f"Base AF2 filters not passed for {mpnn_design_name}, skipping interface scoring")
-                            mpnn_n += 1
                             continue
 
                         # calculate statistics for each model individually
