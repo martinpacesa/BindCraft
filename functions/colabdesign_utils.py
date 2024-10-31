@@ -202,8 +202,8 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
             binder_contacts = hotspot_residues(model_pdb_path)
             binder_contacts_n = len(binder_contacts.items())
 
-            # if less than 7 contacts then protein is floating above and is not binder
-            if binder_contacts_n < 7:
+            # if less than 3 contacts then protein is floating above and is not binder
+            if binder_contacts_n < 3:
                 af_model.aux["log"]["terminate"] = "LowConfidence"
                 update_failures(failure_csv, 'Trajectory_Contacts')
                 print("Too few contacts at the interface, skipping analysis and MPNN optimisation")
