@@ -248,15 +248,15 @@
         "higher": false
     },
     "Average_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": null,
         "higher": false
     },
     "1_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": null,
         "higher": false
     },
     "2_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": null,
         "higher": false
     },
     "3_Surface_Hydrophobicity": {
