@@ -1,9 +1,12 @@
 #!/bin/bash
+set -e
+set -x
+
 ################## BindCraft installation script
 ################## specify conda/mamba folder, and installation folder for git repositories, and whether to use mamba or $pkg_manager
 # Default value for pkg_manager
 pkg_manager='conda'
-cuda=''
+cuda='12.4'
 
 # Define the short and long options
 OPTIONS=p:c:
@@ -61,6 +64,9 @@ else
     $pkg_manager install pip pandas matplotlib numpy"<2.0.0" biopython scipy pdbfixer seaborn tqdm jupyter ffmpeg pyrosetta fsspec py3dmol chex dm-haiku dm-tree joblib ml-collections immutabledict optax jaxlib jax cuda-nvcc cudnn -c conda-forge -c anaconda -c nvidia  --channel https://conda.graylab.jhu.edu -y
 fi
 
+# Downgrade flax to make jax work again
+$pkg_manager install -p "${CONDA_BASE}/envs/BindCraft" 'flax=0.9.0'
+
 # install ColabDesign
 pip3 install git+https://github.com/sokrypton/ColabDesign.git --no-deps
 
@@ -86,7 +92,7 @@ $pkg_manager clean -a -y
 printf "$pkg_manager cleaned up\n"
 
 ################## finish script
-t=$SECONDS 
+t=$SECONDS
 printf "Finished setting up BindCraft environment\n"
 printf "Activate environment using command: \"$pkg_manager activate BindCraft\""
 printf "\n"
