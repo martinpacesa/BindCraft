@@ -12,6 +12,8 @@ First you need to clone this repository. Replace **[install_folder]** with the p
 
 The navigate into your install folder using *cd* and run the installation code. BindCraft requires a CUDA-compatible Nvidia graphics card to run. In the *cuda* setting, please specify the CUDA version compatible with your graphics card, for example '11.8'. If unsure, leave blank but it's possible that the installation might select the wrong version, which will lead to errors. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default. 
 
+Note: This install script will install PyRosetta, which requires a license for commercial purposes.
+
 `bash install_bindcraft.sh --cuda '12.4' --pkg_manager 'conda'`
 
 ## Google Colab
@@ -39,16 +41,16 @@ number_of_final_designs   -> how many designs that pass all filters to aim for, 
 ```
 Then run the binder design script:
 
-`sbatch ./bindcraft.slurm --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/4stage_multimer.json'`
+`sbatch ./bindcraft.slurm --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'`
 
-The *settings* flag should point to your target .json which you set above. The *filters* flag points to the json where the design filters are specified (default is ./filters/default_filters.json). The *advanced* flag points to your advanced settings (default is ./advanced_settings/4stage_multimer.json). If you leave out the filters and advanced settings flags it will automatically point to the defaults.
+The *settings* flag should point to your target .json which you set above. The *filters* flag points to the json where the design filters are specified (default is ./filters/default_filters.json). The *advanced* flag points to your advanced settings (default is ./advanced_settings/default_4stage_multimer.json). If you leave out the filters and advanced settings flags it will automatically point to the defaults.
 
 Alternatively, if your machine does not support SLURM, you can run the code directly by activating the environment in conda and running the python code:
 
 ```
 conda activate BindCraft
 cd /path/to/bindcraft/folder/
-python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/4stage_multimer.json'
+python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
 ```
 
 **We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 

@@ -10,7 +10,9 @@
 #SBATCH --output=bindcraft_%A.log
 
 # Initialise environment and modules
-conda activate BindCraft
+CONDA_BASE=$(conda info --base)
+source ${CONDA_BASE}/bin/activate ${CONDA_BASE}/envs/BindCraft
+export LD_LIBRARY_PATH=${CONDA_BASE}/lib
 
 # alternatively you can source the environment directly
 #source /path/to/mambaforge/bin/activate /path/to/mambaforge/envs/BindCraft

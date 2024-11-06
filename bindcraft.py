@@ -15,7 +15,7 @@ parser.add_argument('--settings', '-s', type=str, required=True,
                     help='Path to the basic settings.json file. Required.')
 parser.add_argument('--filters', '-f', type=str, default='./settings_filters/default_filters.json',
                     help='Path to the filters.json file used to filter design. If not provided, default will be used.')
-parser.add_argument('--advanced', '-a', type=str, default='./settings_advanced/4stage_multimer.json',
+parser.add_argument('--advanced', '-a', type=str, default='./settings_advanced/default_4stage_multimer.json',
                     help='Path to the advanced.json file with additional design settings. If not provided, default will be used.')
 
 args = parser.parse_args()
@@ -33,11 +33,9 @@ advanced_file = os.path.basename(advanced_path).split('.')[0]
 ### load AF2 model settings
 design_models, prediction_models, multimer_validation = load_af2_models(advanced_settings["use_multimer_design"])
 
-### set package settings
+### perform checks on advanced_settings
 bindcraft_folder = os.path.dirname(os.path.realpath(__file__))
-advanced_settings["af_params_dir"] = bindcraft_folder
-advanced_settings["dssp_path"] = os.path.join(bindcraft_folder, 'functions/dssp')
-advanced_settings["dalphaball_path"] = os.path.join(bindcraft_folder, 'functions/DAlphaBall.gcc')
+advanced_settings = perform_advanced_settings_check(advanced_settings, bindcraft_folder)
 
 ### generate directories, design path names can be found within the function
 design_paths = generate_directories(target_settings["design_path"])
@@ -66,7 +64,6 @@ pr.init(f'-ignore_unrecognized_res -ignore_zero_occupancy -mute all -holes:dalph
 script_start_time = time.time()
 trajectory_n = 1
 accepted_designs = 0
-rejected_designs = 0
 
 ### start design loop
 while True:
@@ -170,44 +167,47 @@ while True:
 
                 ### MPNN redesign of starting binder
                 mpnn_trajectories = mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residues, advanced_settings)
+                existing_mpnn_sequences = set(pd.read_csv(mpnn_csv, usecols=['Sequence'])['Sequence'].values)
 
-                # whether to hard reject sequences with excluded amino acids
-                if advanced_settings["force_reject_AA"]:
-                    restricted_AAs = set(advanced_settings["omit_AAs"].split(','))
-                    mpnn_sequences = [{'seq': mpnn_trajectories['seq'][n][-length:], 'score': mpnn_trajectories['score'][n], 'seqid': mpnn_trajectories['seqid'][n]}
-                        for n in range(advanced_settings["num_seqs"])
-                        if not any(restricted_AA in mpnn_trajectories['seq'][n] for restricted_AA in restricted_AAs)]
-                else:
-                    mpnn_sequences = [{'seq': mpnn_trajectories['seq'][n][-length:], 'score': mpnn_trajectories['score'][n], 'seqid': mpnn_trajectories['seqid'][n]}
-                        for n in range(advanced_settings["num_seqs"])]
+                # create set of MPNN sequences with allowed amino acid composition
+                restricted_AAs = set(aa.strip().upper() for aa in advanced_settings["omit_AAs"].split(',')) if advanced_settings["force_reject_AA"] else set()
 
-                # sort MPNN sequences by lowest MPNN score
-                mpnn_sequences.sort(key=lambda x: x['score'])
+                mpnn_sequences = sorted({
+                    mpnn_trajectories['seq'][n][-length:]: {
+                        'seq': mpnn_trajectories['seq'][n][-length:],
+                        'score': mpnn_trajectories['score'][n],
+                        'seqid': mpnn_trajectories['seqid'][n]
+                    } for n in range(advanced_settings["num_seqs"])
+                    if (not restricted_AAs or not any(aa in mpnn_trajectories['seq'][n][-length:].upper() for aa in restricted_AAs))
+                    and mpnn_trajectories['seq'][n][-length:] not in existing_mpnn_sequences
+                }.values(), key=lambda x: x['score'])
 
-                # add optimisation for increasing recycles if trajectory is beta sheeted
-                if advanced_settings["optimise_beta"] and float(trajectory_beta) > 15:
-                    advanced_settings["num_recycles_validation"] = advanced_settings["optimise_beta_recycles_valid"]
+                del existing_mpnn_sequences
+  
+                # check whether any sequences are left after amino acid rejection and duplication check, and if yes proceed with prediction
+                if mpnn_sequences:
+                    # add optimisation for increasing recycles if trajectory is beta sheeted
+                    if advanced_settings["optimise_beta"] and float(trajectory_beta) > 15:
+                        advanced_settings["num_recycles_validation"] = advanced_settings["optimise_beta_recycles_valid"]
 
-                ### Compile prediction models once for faster prediction of MPNN sequences
-                clear_mem()
-                # compile complex prediction model
-                complex_prediction_model = mk_afdesign_model(protocol="binder", num_recycles=advanced_settings["num_recycles_validation"], data_dir=advanced_settings["af_params_dir"], 
-                                                            use_multimer=multimer_validation)
-                complex_prediction_model.prep_inputs(pdb_filename=target_settings["starting_pdb"], chain=target_settings["chains"], binder_len=length, rm_target_seq=advanced_settings["rm_template_seq_predict"],
-                                                    rm_target_sc=advanced_settings["rm_template_sc_predict"])
+                    ### Compile prediction models once for faster prediction of MPNN sequences
+                    clear_mem()
+                    # compile complex prediction model
+                    complex_prediction_model = mk_afdesign_model(protocol="binder", num_recycles=advanced_settings["num_recycles_validation"], data_dir=advanced_settings["af_params_dir"], 
+                                                                use_multimer=multimer_validation)
+                    complex_prediction_model.prep_inputs(pdb_filename=target_settings["starting_pdb"], chain=target_settings["chains"], binder_len=length, rm_target_seq=advanced_settings["rm_template_seq_predict"],
+                                                        rm_target_sc=advanced_settings["rm_template_sc_predict"])
 
-                # compile binder monomer prediction model
-                binder_prediction_model = mk_afdesign_model(protocol="hallucination", use_templates=False, initial_guess=False, 
-                                                            use_initial_atom_pos=False, num_recycles=advanced_settings["num_recycles_validation"], 
-                                                            data_dir=advanced_settings["af_params_dir"], use_multimer=multimer_validation)
-                binder_prediction_model.prep_inputs(length=length)
+                    # compile binder monomer prediction model
+                    binder_prediction_model = mk_afdesign_model(protocol="hallucination", use_templates=False, initial_guess=False, 
+                                                                use_initial_atom_pos=False, num_recycles=advanced_settings["num_recycles_validation"], 
+                                                                data_dir=advanced_settings["af_params_dir"], use_multimer=multimer_validation)
+                    binder_prediction_model.prep_inputs(length=length)
 
-                # iterate over designed sequences        
-                for mpnn_sequence in mpnn_sequences:
-                    mpnn_time = time.time()
+                    # iterate over designed sequences        
+                    for mpnn_sequence in mpnn_sequences:
+                        mpnn_time = time.time()
 
-                    # compile sequences dictionary with scores and remove duplicate sequences
-                    if mpnn_sequence['seq'] not in [v['seq'] for v in mpnn_dict.values()]:
                         # generate mpnn design name numbering
                         mpnn_design_name = design_name + "_mpnn" + str(mpnn_n)
                         mpnn_score = round(mpnn_sequence['score'],2)
@@ -230,6 +230,7 @@ while True:
                         # if AF2 filters are not passed then skip the scoring
                         if not pass_af2_filters:
                             print(f"Base AF2 filters not passed for {mpnn_design_name}, skipping interface scoring")
+                            mpnn_n += 1
                             continue
 
                         # calculate statistics for each model individually
@@ -415,14 +416,17 @@ while True:
                         # if enough mpnn sequences of the same trajectory pass filters then stop
                         if accepted_mpnn >= advanced_settings["max_mpnn_sequences"]:
                             break
-                    else:
-                        print("Skipping duplicate sequence")
 
-                if accepted_mpnn >= 1:
-                    print("Found "+str(accepted_mpnn)+" MPNN designs passing filters")
+                    if accepted_mpnn >= 1:
+                        print("Found "+str(accepted_mpnn)+" MPNN designs passing filters")
+                        print("")
+                    else:
+                        print("No accepted MPNN designs found for this trajectory.")
+                        print("")
+
                 else:
-                    print("No accepted MPNN designs found for this trajectory.")
-                    rejected_designs += 1
+                    print('Duplicate MPNN designs sampled with different trajectory, skipping current trajectory optimisation')
+                    print("")
 
                 # save space by removing unrelaxed design trajectory PDB
                 if advanced_settings["remove_unrelaxed_trajectory"]:
