@@ -2,15 +2,64 @@
 ################## General functions
 ####################################
 ### Import dependencies
-import os
 import json
-import jax
+import os
 import shutil
 import zipfile
-import random
-import math
-import pandas as pd
+from dataclasses import dataclass
+
+import jax
 import numpy as np
+import pandas as pd
+
+
+@dataclass
+class TrajectoryData:
+    Design: str
+    Protocol: str
+    Length: int
+    Seed: int
+    Helicity: float
+    Target_Hotspot: str
+    Sequence: str
+    InterfaceResidues: str
+    pLDDT: float
+    pTM: float
+    i_pTM: float
+    pAE: float
+    i_pAE: float
+    i_pLDDT: float
+    ss_pLDDT: float
+    Unrelaxed_Clashes: int
+    Relaxed_Clashes: int
+    Binder_Energy_Score: float
+    Surface_Hydrophobicity: float
+    ShapeComplementarity: float
+    PackStat: float
+    dG: float
+    dSASA: float
+    dG_dSASA_ratio: float
+    Interface_SASA_percent: float
+    Interface_Hydrophobicity: float
+    n_InterfaceResidues: int
+    n_InterfaceHbonds: int
+    InterfaceHbondsPercentage: float
+    n_InterfaceDeltaUnsatHbonds: int
+    InterfaceDeltaUnsatHbondsPercentage: float
+    Interface_Helix_percent: float
+    Interface_BetaSheet_percent: float
+    Interface_Loop_percent: float
+    Binder_Helix_percent: float
+    Binder_BetaSheet_percent: float
+    Binder_Loop_percent: float
+    InterfaceAAs: dict[str, int]
+    Target_RMSD: float
+    TrajectoryTime: str
+    Notes: str
+    TargetSettings: str
+    Filters: str
+    AdvancedSettings: str
+
 
 # Define labels for dataframes
 def generate_dataframe_labels():
