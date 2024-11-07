@@ -1,18 +1,16 @@
-####################################
-###################### BindCraft Run
-####################################
-### Import dependencies
+"""Main entry script for running BindCraft."""
+
 import argparse
 import os
 import shutil
 import time
 import warnings
+from typing import Any
 
 import numpy as np
 import pandas as pd
 import pyrosetta as pr
 from Bio import BiopythonWarning
-
 from functions.biopython_utils import target_pdb_rmsd, validate_design_sequence
 from functions.colabdesign_utils import (
     binder_hallucination,
@@ -55,6 +53,7 @@ warnings.simplefilter(action="ignore", category=BiopythonWarning)
 
 
 def parse_input_paths():
+    """Parse command line arguments for configs of BindCraft."""
     parser = argparse.ArgumentParser(
         description="Script to run BindCraft binder design."
     )
@@ -84,20 +83,48 @@ def parse_input_paths():
     return parser.parse_args()
 
 
-def mpnn_design_loop(
+def mpnn_optimize_trajectory(
     traj_data: TrajectoryData,
-    prediction_models,
-    design_paths,
-    target_settings,
-    advanced_settings,
-    filter_settings,
-    mpnn_csv,
-    mpnn_csv_labels,
-    failure_csv,
-    final_csv,
+    prediction_models: list[int],
+    design_paths: dict[str, str],
+    target_settings: dict[str, Any],
+    advanced_settings: dict[str, Any],
+    filter_settings: dict[str, Any],
+    mpnn_csv: str,
+    mpnn_csv_labels: list[str],
+    failure_csv: str,
+    final_csv: str,
     multimer_validation: bool,
     binder_chain: str = "B",
 ):
+    """Optimize the trajectory using ProteinMPNN (soluble weights).
+
+    This function performs the following steps:
+    1. Generates MPNN sequences for the given trajectory.
+    2. Filters out sequences based on amino acid composition and duplicates.
+    3. Compiles prediction models for apo and holo structures.
+    4. Iterates over designed sequences to predict and score them.
+    5. Calculates various statistics and scores for each sequence.
+    6. Validates sequences against filter thresholds.
+    7. Saves accepted sequences and their statistics to CSV files.
+
+    Args:
+        traj_data: Trajectory data containing information from `init_design_trajectory`.
+        prediction_models: List of model numbers to use for structure prediction.
+        design_paths: Dictionary containing paths for saving designs and statistics.
+        target_settings: Dictionary containing target-specific settings.
+        advanced_settings: Dictionary containing advanced design settings.
+        filter_settings: Dictionary containing filter settings.
+        mpnn_csv: Path to the CSV file for MPNN data.
+        mpnn_csv_labels: Column labels for the MPNN CSV file.
+        failure_csv: Path to the CSV file for logging failure statistics.
+        final_csv: Path to the final CSV file for accepted designs.
+        multimer_validation: Boolean indicating whether to use multimer validation.
+        binder_chain: Chain identifier for the binder (default is "B"). This is a placeholder in case multi-chain parsing in ColabDesign gets changed.
+
+    Returns:
+        Number of accepted MPNN designs.
+    """
     # initialise MPNN counters
     mpnn_n = 1
     accepted_mpnn = 0
@@ -364,10 +391,7 @@ def mpnn_design_loop(
 
             if os.path.exists(mpnn_binder_pdb):
                 rmsd_binder = unaligned_rmsd(
-                    trajectory_pdb,
-                    mpnn_binder_pdb,
-                    binder_chain,
-                    "A",
+                    trajectory_pdb, mpnn_binder_pdb, binder_chain, "A"
                 )
 
             # append to statistics
@@ -589,20 +613,33 @@ def mpnn_design_loop(
     return accepted_mpnn
 
 
-def main_design_loop(
-    design_models,
-    design_paths,
-    target_settings,
-    advanced_settings,
-    failure_csv,
-    basic_settings_filename,
-    filters_filename,
-    advanced_settings_filename,
-    binder_chain="B",
+def init_design_trajectory(
+    design_models: list[int],
+    design_paths: dict[str, str],
+    target_settings: dict[str, Any],
+    advanced_settings: dict[str, Any],
+    failure_csv: str,
+    basic_settings_filename: str,
+    filters_filename: str,
+    advanced_settings_filename: str,
+    binder_chain: str = "B",
 ):
-    """
+    """Main function to start the design trajectory for a new binder.
 
-    # define binder chain, placeholder in case multi-chain parsing in ColabDesign gets changed
+    Args:
+        design_models: List of model numbers to use for ColabDesign.
+        design_paths: Dictionary containing paths for saving designs and statistics.
+        target_settings: Dictionary containing target-specific settings.
+        advanced_settings: Dictionary containing advanced design settings.
+        failure_csv: Path to CSV file for logging failure statistics.
+        basic_settings_filename: Name of the target-specific settings file
+        filters_filename: Name of the filters configuration file.
+        advanced_settings_filename: Name of the advanced settings file.
+        binder_chain: Chain identifier for the binder. This is a placeholder in case multi-chain parsing in ColabDesign gets changed.
+
+    Returns:
+        List containing trajectory data in the order defined in
+        `functions.generic_utils.TrajectoryData`.
     """
     ### Initialise design
     # measure time to generate design
@@ -851,7 +888,7 @@ if __name__ == "__main__":
         # measure time to generate design
         trajectory_start_time = time.time()
 
-        trajectory_data = main_design_loop(
+        trajectory_data = init_design_trajectory(
             design_models,
             design_paths,
             target_settings,
@@ -867,7 +904,7 @@ if __name__ == "__main__":
 
         if advanced_settings["enable_mpnn"]:
             traj_data = TrajectoryData(*trajectory_data)
-            num_mpnn_designs = mpnn_design_loop(
+            num_mpnn_designs = mpnn_optimize_trajectory(
                 traj_data,
                 prediction_models,
                 design_paths,
