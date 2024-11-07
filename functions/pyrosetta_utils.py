@@ -99,9 +99,11 @@ def score_interface(pdb_file, binder_chain="B"):
         interface_binder_fraction = 0
 
     # calculate surface hydrophobicity
+    binder_pose = {pose.pdb_info().chain(pose.conformation().chain_begin(i)): p for i, p in zip(range(1, pose.num_chains()+1), pose.split_by_chain())}[binder_chain]
+
     layer_sel = pr.rosetta.core.select.residue_selector.LayerSelector()
     layer_sel.set_layers(pick_core = False, pick_boundary = False, pick_surface = True)
-    surface_res = layer_sel.apply(pose)
+    surface_res = layer_sel.apply(binder_pose)
 
     exp_apol_count = 0
     total_count = 0 
@@ -109,7 +111,7 @@ def score_interface(pdb_file, binder_chain="B"):
     # count apolar and aromatic residues at the surface
     for i in range(1, len(surface_res) + 1):
         if surface_res[i] == True:
-            res = pose.residue(i)
+            res = binder_pose.residue(i)
 
             # count apolar and aromatic residues as hydrophobic
             if res.is_apolar() == True or res.name() == 'PHE' or res.name() == 'TRP' or res.name() == 'TYR':

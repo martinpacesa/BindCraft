@@ -274,9 +274,34 @@ def perform_input_check(args):
 
     # Set a random advanced json settings file if not provided
     if not args.advanced:
-        args.advanced = os.path.join(binder_script_path, 'settings_advanced', '4stage_multimer.json')
+        args.advanced = os.path.join(binder_script_path, 'settings_advanced', 'default_4stage_multimer.json')
 
     return args.settings, args.filters, args.advanced
+
+# check specific advanced settings
+def perform_advanced_settings_check(advanced_settings, bindcraft_folder):
+    # set paths to model weights and executables
+    if bindcraft_folder == "colab":
+        advanced_settings["af_params_dir"] = '/content/bindcraft/params/'
+        advanced_settings["dssp_path"] = '/content/bindcraft/functions/dssp'
+        advanced_settings["dalphaball_path"] = '/content/bindcraft/functions/DAlphaBall.gcc'
+    else:
+        # Set paths individually if they are not already set
+        if not advanced_settings["af_params_dir"]:
+            advanced_settings["af_params_dir"] = bindcraft_folder
+        if not advanced_settings["dssp_path"]:
+            advanced_settings["dssp_path"] = os.path.join(bindcraft_folder, 'functions', 'dssp')
+        if not advanced_settings["dalphaball_path"]:
+            advanced_settings["dalphaball_path"] = os.path.join(bindcraft_folder, 'functions', 'DAlphaBall.gcc')
+
+    # check formatting of omit_AAs setting
+        omit_aas = advanced_settings["omit_AAs"]
+    if advanced_settings["omit_AAs"] in [None, False, '']:
+        advanced_settings["omit_AAs"] = None
+    elif isinstance(advanced_settings["omit_AAs"], str):
+        advanced_settings["omit_AAs"] = advanced_settings["omit_AAs"].strip()
+
+    return advanced_settings
 
 # Load settings from JSONs
 def load_json_settings(settings_json, filters_json, advanced_json):

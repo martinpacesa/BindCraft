@@ -357,7 +357,7 @@ def mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residue
     mpnn_model.prep_inputs(pdb_filename=trajectory_pdb, chain=design_chains, fix_pos=fixed_positions, rm_aa=advanced_settings["omit_AAs"])
 
     # sample MPNN sequences in parallel
-    mpnn_sequences = mpnn_model.sample_parallel(temperature=advanced_settings["sampling_temp"], num=advanced_settings["num_seqs"], batch=advanced_settings["sample_seq_parallel"])
+    mpnn_sequences = mpnn_model.sample(temperature=advanced_settings["sampling_temp"], num=advanced_settings["num_seqs"], batch=advanced_settings["num_seqs"])
 
     return mpnn_sequences
 

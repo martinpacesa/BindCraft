@@ -41,6 +41,7 @@ from functions.generic_utils import (
     load_af2_models,
     load_helicity,
     load_json_settings,
+    perform_advanced_settings_check,
     perform_input_check,
     save_fasta,
 )
@@ -76,7 +77,7 @@ def parse_input_paths():
         "--advanced",
         "-a",
         type=str,
-        default="./settings_advanced/4stage_multimer.json",
+        default="./settings_advanced/default_4stage_multimer.json",
         help="Path to the advanced.json file with additional design settings. If not provided, default will be used.",
     )
 
@@ -113,33 +114,44 @@ def mpnn_design_loop(
         advanced_settings,
     )
 
-    # whether to hard reject sequences with excluded amino acids
-    if advanced_settings["force_reject_AA"]:
-        restricted_AAs = set(advanced_settings["omit_AAs"].split(","))
-        mpnn_sequences = [
-            {
+    existing_mpnn_sequences = set(
+        pd.read_csv(mpnn_csv, usecols=["Sequence"])["Sequence"].values
+    )
+    # create set of MPNN sequences with allowed amino acid composition
+    restricted_AAs = (
+        set(aa.strip().upper() for aa in advanced_settings["omit_AAs"].split(","))
+        if advanced_settings["force_reject_AA"]
+        else set()
+    )
+    mpnn_sequences = sorted(
+        {
+            mpnn_trajectories["seq"][n][-traj_data.Length :]: {
                 "seq": mpnn_trajectories["seq"][n][-traj_data.Length :],
                 "score": mpnn_trajectories["score"][n],
                 "seqid": mpnn_trajectories["seqid"][n],
             }
             for n in range(advanced_settings["num_seqs"])
-            if not any(
-                restricted_AA in mpnn_trajectories["seq"][n]
-                for restricted_AA in restricted_AAs
+            if (
+                not restricted_AAs
+                or not any(
+                    aa in mpnn_trajectories["seq"][n][-traj_data.Length :].upper()
+                    for aa in restricted_AAs
+                )
             )
-        ]
-    else:
-        mpnn_sequences = [
-            {
-                "seq": mpnn_trajectories["seq"][n][-traj_data.Length :],
-                "score": mpnn_trajectories["score"][n],
-                "seqid": mpnn_trajectories["seqid"][n],
-            }
-            for n in range(advanced_settings["num_seqs"])
-        ]
+            and mpnn_trajectories["seq"][n][-traj_data.Length :]
+            not in existing_mpnn_sequences
+        }.values(),
+        key=lambda x: x["score"],
+    )
+    del existing_mpnn_sequences
 
-    # sort MPNN sequences by lowest MPNN score
-    mpnn_sequences.sort(key=lambda x: x["score"])
+    # check whether any sequences are left after amino acid rejection and duplication check, and if yes proceed with prediction
+    if not mpnn_sequences:
+        print(
+            "Duplicate MPNN designs sampled with different trajectory, skipping current trajectory optimisation"
+        )
+        print("")
+        return 0
 
     # add optimisation for increasing recycles if trajectory is beta sheeted
     if (
@@ -149,7 +161,6 @@ def mpnn_design_loop(
         advanced_settings["num_recycles_validation"] = advanced_settings[
             "optimise_beta_recycles_valid"
         ]
-
     ### Compile prediction models once for faster prediction of MPNN sequences
     clear_mem()
     # compile complex prediction model
@@ -166,7 +177,6 @@ def mpnn_design_loop(
         rm_target_seq=advanced_settings["rm_template_seq_predict"],
         rm_target_sc=advanced_settings["rm_template_sc_predict"],
     )
-
     # compile binder monomer prediction model
     binder_prediction_model = mk_afdesign_model(
         protocol="hallucination",
@@ -225,6 +235,7 @@ def mpnn_design_loop(
             print(
                 f"Base AF2 filters not passed for {mpnn_design_name}, skipping interface scoring"
             )
+            mpnn_n += 1
             continue
 
         # calculate statistics for each model individually
@@ -779,10 +790,8 @@ if __name__ == "__main__":
 
     ### set package settings
     bindcraft_folder = os.path.dirname(os.path.realpath(__file__))
-    advanced_settings["af_params_dir"] = bindcraft_folder
-    advanced_settings["dssp_path"] = os.path.join(bindcraft_folder, "functions/dssp")
-    advanced_settings["dalphaball_path"] = os.path.join(
-        bindcraft_folder, "functions/DAlphaBall.gcc"
+    advanced_settings = perform_advanced_settings_check(
+        advanced_settings, bindcraft_folder
     )
 
     ### generate directories, design path names can be found within the function
@@ -816,7 +825,6 @@ if __name__ == "__main__":
     script_start_time = time.time()
     trajectory_n = 1
     accepted_designs = 0
-    rejected_designs = 0
 
     ### start design loop
     while True:
@@ -872,10 +880,7 @@ if __name__ == "__main__":
                 final_csv,
                 multimer_validation,
             )
-            if num_mpnn_designs == 0:
-                rejected_designs += 1
-            else:
-                accepted_designs += num_mpnn_designs
+            accepted_designs += num_mpnn_designs
 
         # analyse the rejection rate of trajectories to see if we need to readjust the design weights
         if (
