@@ -447,6 +447,10 @@ while True:
 
         # increase trajectory number
         trajectory_n += 1
+      
+        # garbage collection
+        del trajectory, trajectory_data, trajectory_metrics, mpnn_trajectories, existing_mpnn_sequences, complex_prediction_model, binder_prediction_model, mpnn_complex_statistics, binder_statistics, mpnn_data
+        gc.collect()
 
 ### Script finished
 elapsed_time = time.time() - script_start_time
