@@ -106,7 +106,7 @@ while True:
         trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chains"],
                                             target_settings["target_hotspot_residues"], length, seed, helicity_value,
                                             design_models, advanced_settings, design_paths, failure_csv)
-        trajectory_metrics = copy_dict(trajectory.aux["log"]) # contains plddt, ptm, i_ptm, pae, i_pae
+        trajectory_metrics = copy_dict(trajectory._tmp["best"]["aux"]["log"]) # contains plddt, ptm, i_ptm, pae, i_pae
         trajectory_pdb = os.path.join(design_paths["Trajectory"], design_name + ".pdb")
 
         # round the metrics to two decimal places
@@ -119,7 +119,7 @@ while True:
         print("")
 
         # Proceed if there is no trajectory termination signal
-        if trajectory_metrics['terminate'] == "":
+        if trajectory.aux["log"]['terminate'] == "":
             # Relax binder to calculate statistics
             trajectory_relaxed = os.path.join(design_paths["Trajectory/Relaxed"], design_name + ".pdb")
             pr_relax(trajectory_pdb, trajectory_relaxed)
