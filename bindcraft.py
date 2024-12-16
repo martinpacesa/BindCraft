@@ -437,10 +437,6 @@ while True:
                 design_time_text = f"{'%d hours, %d minutes, %d seconds' % (int(design_time // 3600), int((design_time % 3600) // 60), int(design_time % 60))}"
                 print("Design and validation of trajectory "+design_name+" took: "+design_time_text)
 
-                # garbage collection
-                del trajectory, trajectory_data, trajectory_metrics, mpnn_trajectories, existing_mpnn_sequences, complex_prediction_model, binder_prediction_model, mpnn_complex_statistics, binder_statistics, mpnn_data
-                gc.collect()
-
             # analyse the rejection rate of trajectories to see if we need to readjust the design weights
             if trajectory_n >= advanced_settings["start_monitoring"] and advanced_settings["enable_rejection_check"]:
                 acceptance = accepted_designs / trajectory_n
@@ -451,6 +447,7 @@ while True:
 
         # increase trajectory number
         trajectory_n += 1
+        gc.collect()
 
 ### Script finished
 elapsed_time = time.time() - script_start_time
