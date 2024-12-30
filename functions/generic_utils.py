@@ -303,7 +303,7 @@ def save_fasta(design_name, sequence, design_paths):
 def clean_pdb(pdb_file):
     # Read the pdb file and filter relevant lines
     with open(pdb_file, 'r') as f_in:
-        relevant_lines = [line for line in f_in if line.startswith(('ATOM', 'HETATM', 'MODEL', 'TER', 'END'))]
+        relevant_lines = [line for line in f_in if line.startswith(('ATOM', 'HETATM', 'MODEL', 'TER', 'END', 'LINK'))]
 
     # Write the cleaned lines back to the original pdb file
     with open(pdb_file, 'w') as f_out:

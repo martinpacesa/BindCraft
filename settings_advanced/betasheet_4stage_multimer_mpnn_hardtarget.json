@@ -8,7 +8,7 @@
     "rm_template_seq_predict": false,
     "rm_template_sc_design": false,
     "rm_template_sc_predict": false,
-    "predict_initial_guess": false,
+    "predict_initial_guess": true,
     "predict_bigbang": false,
     "soft_iterations": 75,
     "temporary_iterations": 45,

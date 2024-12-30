@@ -58,6 +58,9 @@ generate_filter_pass_csv(failure_csv, args.filters)
 ####################################
 ### initialise PyRosetta
 pr.init(f'-ignore_unrecognized_res -ignore_zero_occupancy -mute all -holes:dalphaball {advanced_settings["dalphaball_path"]} -corrections::beta_nov16 true -relax:default_repeats 1')
+print(f"Running binder design for target {settings_file}")
+print(f"Design settings used: {advanced_file}")
+print(f"Filtering designs based on {filters_file}")
 
 ####################################
 # initialise counters
@@ -119,7 +122,7 @@ while True:
         print("")
 
         # Proceed if there is no trajectory termination signal
-        if trajectory.aux["log"]['terminate'] == "":
+        if trajectory.aux["log"]["terminate"] == "":
             # Relax binder to calculate statistics
             trajectory_relaxed = os.path.join(design_paths["Trajectory/Relaxed"], design_name + ".pdb")
             pr_relax(trajectory_pdb, trajectory_relaxed)
@@ -194,9 +197,13 @@ while True:
                     clear_mem()
                     # compile complex prediction model
                     complex_prediction_model = mk_afdesign_model(protocol="binder", num_recycles=advanced_settings["num_recycles_validation"], data_dir=advanced_settings["af_params_dir"], 
-                                                                use_multimer=multimer_validation)
-                    complex_prediction_model.prep_inputs(pdb_filename=target_settings["starting_pdb"], chain=target_settings["chains"], binder_len=length, rm_target_seq=advanced_settings["rm_template_seq_predict"],
-                                                        rm_target_sc=advanced_settings["rm_template_sc_predict"])
+                                                                use_multimer=multimer_validation, use_initial_guess=advanced_settings["predict_initial_guess"], use_initial_atom_pos=advanced_settings["predict_bigbang"])
+                    if advanced_settings["predict_initial_guess"] or advanced_settings["predict_bigbang"]:
+                        complex_prediction_model.prep_inputs(pdb_filename=trajectory_pdb, chain='A', binder_chain='B', binder_len=length, use_binder_template=True, rm_target_seq=advanced_settings["rm_template_seq_predict"],
+                                                            rm_target_sc=advanced_settings["rm_template_sc_predict"], rm_template_ic=True)
+                    else:
+                        complex_prediction_model.prep_inputs(pdb_filename=target_settings["starting_pdb"], chain=target_settings["chains"], binder_len=length, rm_target_seq=advanced_settings["rm_template_seq_predict"],
+                                                            rm_target_sc=advanced_settings["rm_template_sc_predict"])
 
                     # compile binder monomer prediction model
                     binder_prediction_model = mk_afdesign_model(protocol="hallucination", use_templates=False, initial_guess=False, 
@@ -221,7 +228,7 @@ while True:
                             save_fasta(mpnn_design_name, mpnn_sequence['seq'], design_paths)
                         
                         ### Predict mpnn redesigned binder complex using masked templates
-                        mpnn_complex_statistics, pass_af2_filters = masked_binder_predict(complex_prediction_model,
+                        mpnn_complex_statistics, pass_af2_filters = predict_binder_complex(complex_prediction_model,
                                                                                         mpnn_sequence['seq'], mpnn_design_name,
                                                                                         target_settings["starting_pdb"], target_settings["chains"],
                                                                                         length, trajectory_pdb, prediction_models, advanced_settings,

@@ -3,7 +3,9 @@
 
 Simple binder design pipeline using AlphaFold2 backpropagation, MPNN, and PyRosetta. Select your target and let the script do the rest of the work and finish once you have enough designs to order!
 
-[Preprint link for BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802v1)
+[Take the user experience poll!](https://forms.gle/XsGHDCyHtczVbamPA)
+
+[Preprint link for BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802)
 
 ## Installation
 First you need to clone this repository. Replace **[install_folder]** with the path where you want to install it.
@@ -72,6 +74,8 @@ rm_template_seq_design          -> remove target template sequence for design (i
 rm_template_seq_predict         -> remove target template sequence for reprediction (increases target flexibility)
 rm_template_sc_design           -> remove sidechains from target template for design
 rm_template_sc_predict          -> remove sidechains from target template for reprediction
+predict_initial_guess           -> Introduce bias by providing binder atom positions as a starting point for prediction. Recommended if designs fail after MPNN optimization.
+predict_bigbang                 -> Introduce atom position bias into the structure module for atom initilisation. Recommended if target and design are large (more than 600 amino acids).
 
 # Design iterations
 soft_iterations                 -> number of soft iterations (all amino acids considered at all positions)
@@ -100,6 +104,7 @@ use_rg_loss                     -> use radius of gyration loss?
 weights_rg                      -> Design weight - radius of gyration weight for binder
 use_termini_distance_loss       -> Try to minimise distance between N- and C-terminus of binder? Helpful for grafting
 weights_termini_loss            -> Design weight - N- and C-terminus distance minimisation weight of binder
+cyclize_peptide                 -> Make the binder/peptide design cyclic
 
 # MPNN settings
 mpnn_fix_interface              -> whether to fix the interface designed in the starting trajectory

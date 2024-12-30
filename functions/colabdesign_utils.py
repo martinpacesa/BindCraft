@@ -236,7 +236,7 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
     return af_model
 
 # run prediction for binder with masked template target
-def masked_binder_predict(prediction_model, binder_sequence, mpnn_design_name, target_pdb, chain, length, trajectory_pdb, prediction_models, advanced_settings, filters, design_paths, failure_csv, seed=None):
+def predict_binder_complex(prediction_model, binder_sequence, mpnn_design_name, target_pdb, chain, length, trajectory_pdb, prediction_models, advanced_settings, filters, design_paths, failure_csv, seed=None):
     prediction_stats = {}
 
     # clean sequence
@@ -245,6 +245,10 @@ def masked_binder_predict(prediction_model, binder_sequence, mpnn_design_name, t
     # reset filtering conditionals
     pass_af2_filters = True
     filter_failures = {}
+
+    if advanced_settings["cyclize_peptide"]:
+        # make macrocycle peptide
+        add_cyclic_offset(prediction_model)
 
     # start prediction per AF2 model, 2 are used by default due to masked templates
     for model_num in prediction_models:
@@ -312,6 +316,10 @@ def predict_binder_alone(prediction_model, binder_sequence, mpnn_design_name, le
     # prepare sequence for prediction
     binder_sequence = re.sub("[^A-Z]", "", binder_sequence.upper())
     prediction_model.set_seq(binder_sequence)
+
+    if advanced_settings["cyclize_peptide"]:
+        # make macrocycle peptide
+        add_cyclic_offset(prediction_model)
 
     # predict each model separately
     for model_num in prediction_models:
