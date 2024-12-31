@@ -246,10 +246,6 @@ def predict_binder_complex(prediction_model, binder_sequence, mpnn_design_name, 
     pass_af2_filters = True
     filter_failures = {}
 
-    if advanced_settings["cyclize_peptide"]:
-        # make macrocycle peptide
-        add_cyclic_offset(prediction_model)
-
     # start prediction per AF2 model, 2 are used by default due to masked templates
     for model_num in prediction_models:
         # check to make sure prediction does not exist already
