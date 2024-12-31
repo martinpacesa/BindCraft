@@ -104,7 +104,6 @@ use_rg_loss                     -> use radius of gyration loss?
 weights_rg                      -> Design weight - radius of gyration weight for binder
 use_termini_distance_loss       -> Try to minimise distance between N- and C-terminus of binder? Helpful for grafting
 weights_termini_loss            -> Design weight - N- and C-terminus distance minimisation weight of binder
-cyclize_peptide                 -> Make the binder/peptide design cyclic
 
 # MPNN settings
 mpnn_fix_interface              -> whether to fix the interface designed in the starting trajectory
