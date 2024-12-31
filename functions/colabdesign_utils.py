@@ -313,10 +313,6 @@ def predict_binder_alone(prediction_model, binder_sequence, mpnn_design_name, le
     binder_sequence = re.sub("[^A-Z]", "", binder_sequence.upper())
     prediction_model.set_seq(binder_sequence)
 
-    if advanced_settings["cyclize_peptide"]:
-        # make macrocycle peptide
-        add_cyclic_offset(prediction_model)
-
     # predict each model separately
     for model_num in prediction_models:
         # check to make sure prediction does not exist already
