@@ -153,7 +153,6 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
                     print("One-hot trajectory pLDDT good, continuing: "+str(onehot_plddt))
                     if advanced_settings["greedy_iterations"] > 0:
                         print("Stage 4: PSSM Semigreedy Optimisation")
-                        af_model.clear_best()
                         af_model.design_pssm_semigreedy(soft_iters=0, hard_iters=advanced_settings["greedy_iterations"], tries=greedy_tries, models=design_models, 
                                                         num_models=1, sample_models=advanced_settings["sample_models"], ramp_models=False, save_best=True)
 
@@ -349,6 +348,7 @@ def mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residue
 
     if advanced_settings["mpnn_fix_interface"]:
         fixed_positions = 'A,' + trajectory_interface_residues
+        fixed_positions = fixed_positions.rstrip(",")
         print("Fixing interface residues: "+trajectory_interface_residues)
     else:
         fixed_positions = 'A'
