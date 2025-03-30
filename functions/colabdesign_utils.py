@@ -11,14 +11,26 @@ from scipy.special import softmax
 from colabdesign import mk_afdesign_model, clear_mem
 from colabdesign.mpnn import mk_mpnn_model
 from colabdesign.af.alphafold.common import residue_constants
+#, restype_order, restype_order_with_x, sequence_to_onehot
 from colabdesign.af.loss import get_ptm, mask_loss, get_dgram_bins, _get_con_loss
 from colabdesign.shared.utils import copy_dict
 from .biopython_utils import hotspot_residues, calculate_clash_score, calc_ss_percentage, calculate_percentages
 from .pyrosetta_utils import pr_relax, align_pdbs
 from .generic_utils import update_failures
 
+def compare_binder_to_initial(af_model, binder_redesign_sequence):
+    if binder_redesign_sequence:
+        current_binder_seq = af_model.get_seqs()[0]
+        differences = 0
+        for curr_char, init_char in zip(current_binder_seq, binder_redesign_sequence):
+            if init_char != 'X' and curr_char != init_char:
+                differences += 1
+        print(f"Comparing current binder to initial binder sequence: {differences} differences")
+
 # hallucinate a binder
-def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residues, length, seed, helicity_value, design_models, advanced_settings, design_paths, failure_csv):
+def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residues, length, seed, helicity_value, design_models, advanced_settings, design_paths, failure_csv, binder_redesign_sequence=None):
+
+
     model_pdb_path = os.path.join(design_paths["Trajectory"], design_name+".pdb")
 
     # clear GPU memory for new trajectory
@@ -35,6 +47,34 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
 
     af_model.prep_inputs(pdb_filename=starting_pdb, chain=chain, binder_len=length, hotspot=target_hotspot_residues, seed=seed, rm_aa=advanced_settings["omit_AAs"],
                         rm_target_seq=advanced_settings["rm_template_seq_design"], rm_target_sc=advanced_settings["rm_template_sc_design"])
+    
+    # If we have an initial sequence, set it and fix non-X positions
+    if binder_redesign_sequence:
+        print(f"Setting initial binder sequence: {binder_redesign_sequence}")
+        
+        seq_bias = np.zeros((len(binder_redesign_sequence), 20))
+        seq_onehot = residue_constants.sequence_to_onehot(binder_redesign_sequence, residue_constants.restype_order_with_x)
+        # Convert seq_onehot to float type to avoid type errors during operations
+        seq_onehot = seq_onehot.astype(af_model._params["seq"].dtype)
+        seq_bias = seq_bias.astype(af_model._inputs["bias"].dtype)
+
+        # Get indices where binder_redesign_sequence is 'X'
+        redesign_indices = np.where(np.array(list(binder_redesign_sequence)) == 'X')[0]
+        fixed_indices    = np.where(np.array(list(binder_redesign_sequence)) != 'X')[0]
+
+        seq_aatype = np.argmax(seq_onehot, axis=-1)
+        seq_aatype[redesign_indices] = -1
+
+        # For those positions, keep the randomly initialized values from af_model._params["seq"]
+        seq_onehot[redesign_indices, :20] = af_model._params["seq"][0, redesign_indices]
+
+        # Create a mask for non-selected amino acids at fixed positions
+        seq_bias[fixed_indices, :20] = np.where(seq_onehot[fixed_indices, :20] > 0, 1e6, -1e6)
+            
+        af_model.opt["fix_pos"] = fixed_indices
+
+        af_model._wt_aatype = seq_aatype
+        af_model.set_seq(seq=seq_onehot[...,:20], bias=seq_bias)
 
     ### Update weights based on specified settings
     af_model.opt["weights"].update({"pae":advanced_settings["weights_pae_intra"],
@@ -96,6 +136,8 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
         print("Stage 1: Test Logits")
         af_model.design_logits(iters=50, e_soft=0.9, models=design_models, num_models=1, sample_models=advanced_settings["sample_models"], save_best=True)
 
+        compare_binder_to_initial(af_model, binder_redesign_sequence)
+
         # determine pLDDT of best iteration according to lowest 'loss' value
         initial_plddt = get_best_plddt(af_model, length)
         
@@ -125,6 +167,8 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
                 af_model._tmp["seq_logits"] = af_model.aux["seq"]["logits"]
                 logit_plddt = get_best_plddt(af_model, length)
                 print("Optimised logit trajectory pLDDT: "+str(logit_plddt))
+                compare_binder_to_initial(af_model, binder_redesign_sequence)
+
             else:
                 logit_plddt = initial_plddt
 
@@ -135,6 +179,8 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
                 af_model.design_soft(advanced_settings["temporary_iterations"], e_temp=1e-2, models=design_models, num_models=1,
                                     sample_models=advanced_settings["sample_models"], ramp_recycles=False, save_best=True)
                 softmax_plddt = get_best_plddt(af_model, length)
+                compare_binder_to_initial(af_model, binder_redesign_sequence)
+
             else:
                 softmax_plddt = logit_plddt
 
@@ -147,7 +193,7 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
                     af_model.design_hard(advanced_settings["hard_iterations"], temp=1e-2, models=design_models, num_models=1,
                                     sample_models=advanced_settings["sample_models"], dropout=False, ramp_recycles=False, save_best=True)
                     onehot_plddt = get_best_plddt(af_model, length)
-
+                    compare_binder_to_initial(af_model, binder_redesign_sequence)
                 if onehot_plddt > 0.65:
                     # perform greedy mutation optimisation
                     print("One-hot trajectory pLDDT good, continuing: "+str(onehot_plddt))
@@ -155,7 +201,8 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
                         print("Stage 4: PSSM Semigreedy Optimisation")
                         af_model.design_pssm_semigreedy(soft_iters=0, hard_iters=advanced_settings["greedy_iterations"], tries=greedy_tries, models=design_models, 
                                                         num_models=1, sample_models=advanced_settings["sample_models"], ramp_models=False, save_best=True)
-
+                        onehot_plddt = get_best_plddt(af_model, length)
+                        compare_binder_to_initial(af_model, binder_redesign_sequence)
                 else:
                     update_failures(failure_csv, 'Trajectory_one-hot_pLDDT')
                     print("One-hot trajectory pLDDT too low to continue: "+str(onehot_plddt))
@@ -336,7 +383,7 @@ def predict_binder_alone(prediction_model, binder_sequence, mpnn_design_name, le
     return binder_stats
 
 # run MPNN to generate sequences for binders
-def mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residues, advanced_settings):
+def mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residues, advanced_settings, binder_redesign_sequence=None):
     # clear GPU memory
     clear_mem()
 
@@ -346,13 +393,18 @@ def mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residue
     # check whether keep the interface generated by the trajectory or whether to redesign with MPNN
     design_chains = 'A,' + binder_chain
 
+    fixed_positions = {'A'}
     if advanced_settings["mpnn_fix_interface"]:
-        fixed_positions = 'A,' + trajectory_interface_residues
-        fixed_positions = fixed_positions.rstrip(",")
-        print("Fixing interface residues: "+trajectory_interface_residues)
-    else:
-        fixed_positions = 'A'
+        interface_residues = trajectory_interface_residues.split(',')
+        print(f"Fixing interface residues: {','.join(interface_residues)}")
+        fixed_positions.update(interface_residues)
 
+    if binder_redesign_sequence:
+        binder_redesign_sequence_fixed_indices = [f'B{i+1}' for i in np.where(np.array(list(binder_redesign_sequence)) != 'X')[0]]
+        fixed_positions.update(binder_redesign_sequence_fixed_indices)
+        print(f"Fixing binder redesign sequence positions: {','.join(binder_redesign_sequence_fixed_indices)}")
+
+    fixed_positions = ','.join(sorted(fixed_positions))
     # prepare inputs for MPNN
     mpnn_model.prep_inputs(pdb_filename=trajectory_pdb, chain=design_chains, fix_pos=fixed_positions, rm_aa=advanced_settings["omit_AAs"])
 

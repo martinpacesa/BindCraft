@@ -90,9 +90,17 @@ while True:
     # generate random seed to vary designs
     seed = int(np.random.randint(0, high=999999, size=1, dtype=int)[0])
 
-    # sample binder design length randomly from defined distribution
-    samples = np.arange(min(target_settings["lengths"]), max(target_settings["lengths"]) + 1)
-    length = np.random.choice(samples)
+    # Check if we're using binder_redesign
+    if "binder_sequences" in target_settings:
+        # Select a random sequence from the binder_redesign FASTA
+        binder_redesign_sequence = np.random.choice(target_settings["binder_sequences"])
+        length = len(binder_redesign_sequence)
+        print(f"Using binder sequence from FASTA file. Length: {length}")
+    else:
+        # Traditional approach: sample length randomly
+        samples = np.arange(min(target_settings["lengths"]), max(target_settings["lengths"]) + 1)
+        length = np.random.choice(samples)
+        binder_redesign_sequence = None
 
     # load desired helicity value to sample different secondary structure contents
     helicity_value = load_helicity(advanced_settings)
@@ -108,7 +116,7 @@ while True:
         ### Begin binder hallucination
         trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chains"],
                                             target_settings["target_hotspot_residues"], length, seed, helicity_value,
-                                            design_models, advanced_settings, design_paths, failure_csv)
+                                            design_models, advanced_settings, design_paths, failure_csv, binder_redesign_sequence)
         trajectory_metrics = copy_dict(trajectory._tmp["best"]["aux"]["log"]) # contains plddt, ptm, i_ptm, pae, i_pae
         trajectory_pdb = os.path.join(design_paths["Trajectory"], design_name + ".pdb")
 
@@ -169,7 +177,8 @@ while True:
                 design_start_time = time.time()
 
                 ### MPNN redesign of starting binder
-                mpnn_trajectories = mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residues, advanced_settings)
+                # Pass initial sequence to MPNN if using binder_redesign
+                mpnn_trajectories = mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residues, advanced_settings, binder_redesign_sequence)
                 existing_mpnn_sequences = set(pd.read_csv(mpnn_csv, usecols=['Sequence'])['Sequence'].values)
 
                 # create set of MPNN sequences with allowed amino acid composition

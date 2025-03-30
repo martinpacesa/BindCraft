@@ -265,8 +265,41 @@ def load_json_settings(settings_json, filters_json, advanced_json):
 
     with open(filters_json, 'r') as file:
         filters = json.load(file)
-
+    
+    # Handle binder_redesign FASTA file if it exists
+    if "binder_redesign" in target_settings and target_settings["binder_redesign"]:
+        target_settings["binder_sequences"] = load_fasta_sequences(target_settings["binder_redesign"])
+    
     return target_settings, advanced_settings, filters
+
+def load_fasta_sequences(fasta_path):
+    """Load sequences from a FASTA file.
+    
+    Args:
+        fasta_path: Path to the FASTA file
+        
+    Returns:
+        A list of sequences from the FASTA file
+    """
+    sequences = []
+    current_seq = ""
+    
+    with open(fasta_path, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith('>'):
+                if current_seq:
+                    sequences.append(current_seq)
+                current_seq = ""
+            else:
+                current_seq += line
+                
+    if current_seq:
+        sequences.append(current_seq)
+        
+    return sequences
 
 # AF2 model settings, make sure non-overlapping models with template option are being used for design and re-prediction
 def load_af2_models(af_multimer_setting):
