@@ -38,12 +38,17 @@ binder_name         -> what to prefix your designed binder files with
 starting_pdb        -> the path to the PDB of your target protein
 chains                -> which chains to target in your protein, rest will be ignored
 target_hotspot_residues   -> which position to target for binder design, for example `1,2-10` or chain specific `A1-10,B1-20` or entire chains `A`, set to null if you want AF2 to select binding site; better to select multiple target residues or a small patch to reduce search space for binder
-lengths           -> range of binder lengths to design
+lengths           -> range of binder lengths to design (only used if binder_redesign isn't specified)
 number_of_final_designs   -> how many designs that pass all filters to aim for, script will stop if this many are reached
+binder_redesign    -> path to a FASTA file containing sequences to redesign (see Binder Redesign section below)
 ```
 Then run the binder design script:
 
 `sbatch ./bindcraft.slurm --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'`
+
+For redesigning a binder from a sequence:
+
+`sbatch ./bindcraft.slurm --settings './settings_target/PDL1_redesign_from_sequence.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'`
 
 The *settings* flag should point to your target .json which you set above. The *filters* flag points to the json where the design filters are specified (default is ./filters/default_filters.json). The *advanced* flag points to your advanced settings (default is ./advanced_settings/default_4stage_multimer.json). If you leave out the filters and advanced settings flags it will automatically point to the defaults.
 
@@ -196,6 +201,48 @@ Binder_RMSD           -> RMSD of binder predicted alone compared to original tra
  <li>greedy - design with random mutations that decrease loss (less memory intensive, slower, less efficient)</li>
  <li>mcmc - design with random mutations that decrease loss, similar to Wicky et al. (less memory intensive, slower, less efficient)</li>
 </ul>
+
+## Binder Redesign from Sequence
+BindCraft supports redesigning existing binder sequences instead of designing new ones from scratch. This is useful when you have a known binder sequence that you want to optimize or diversify.
+
+To use this feature:
+1. Create a FASTA file with one or more binder sequences to redesign
+2. In your target settings JSON file, specify this file using the `binder_redesign` parameter
+3. Use 'X' characters in your sequences to indicate positions that should be redesigned. Non-X characters will remain fixed during the design process
+4. Run BindCraft normally using the settings file
+
+Example settings file (`PDL1_redesign_from_sequence.json`):
+```json
+{
+    "design_path": "./design_path/PDL1_redesign/",
+    "binder_name": "PDL1",
+    "starting_pdb": "./example/PDL1.pdb", 
+    "chains": "A",
+    "target_hotspot_residues": "56",
+    "binder_redesign": "./example/PDL1_binder_to_redesign.fasta",
+    "number_of_final_designs": 100
+}
+```
+
+Example FASTA file with redesignable positions marked as 'X':
+```
+>1_PDL1_l134_s18725_mpnn1_model2_A
+MKKAVELLSEEELTPKEGETFVEFMKRQLDLIEERAGKLYEEGDKEEAVNYFIYEFSRVLKVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYXXXXXXXXXXXXXXXXXXXXXXEKYKPKKP
+>1_PDL1_l134_s18725_mpnn1_model2_B
+MKKAVELLSEEELTPKEGETFVEFXXXXXXXXXXXXXXXLYEEGDKEEAVNYFIYEFSRVLKVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYFLKMMFKHFSRRSFERTVDYFIEKYKPKKP
+```
+
+The binder redesign feature will:
+1. Randomly select one of the sequences from your FASTA file
+2. Keep the specified (non-X) positions fixed during design
+3. Only redesign the 'X' positions in the sequence
+4. Compare the redesigned sequence to the original template during the design process
+5. Maintain the fixed positions during MPNN sequence generation
+
+Running example:
+```
+python -u ./bindcraft.py --settings ./settings_target/PDL1_redesign_from_sequence.json --filters ./settings_filters/default_filters.json --advanced ./settings_advanced/default_4stage_multimer.json
+```
 
 ## Known limitations
 <ul>

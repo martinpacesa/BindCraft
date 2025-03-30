@@ -1,0 +1,9 @@
+{
+    "design_path": "./design_path/PDL1_redesign/",
+    "binder_name": "PDL1",
+    "starting_pdb": "./example/PDL1.pdb", 
+    "chains": "A",
+    "target_hotspot_residues": "56",
+    "binder_redesign": "./example/PDL1_binder_to_redesign.fasta",
+    "number_of_final_designs": 100
+}
