@@ -268,21 +268,30 @@ def load_json_settings(settings_json, filters_json, advanced_json):
     
     # Handle binder_redesign FASTA file if it exists
     if "binder_redesign" in target_settings and target_settings["binder_redesign"]:
-        target_settings["binder_sequences"] = load_fasta_sequences(target_settings["binder_redesign"])
+        target_settings["binder_sequences"] = load_redesignable_sequences(target_settings["binder_redesign"])
     
     return target_settings, advanced_settings, filters
 
-def load_fasta_sequences(fasta_path):
-    """Load sequences from a FASTA file.
+def load_redesignable_sequences(fasta_path):
+    """Load redesignable sequences from a FASTA file.
     
     Args:
         fasta_path: Path to the FASTA file
         
     Returns:
-        A list of sequences from the FASTA file
+        A list of sequences from the FASTA file with at least one redesignable residue ('X')
+        
+    Raises:
+        ValueError: If no sequences with redesignable residues are found
     """
+    import re
+    
     sequences = []
+    valid_sequences = []
     current_seq = ""
+    current_id = ""
+    
+    print(f"Loading redesignable sequences from FASTA file: {fasta_path}")
     
     with open(fasta_path, 'r') as file:
         for line in file:
@@ -291,15 +300,58 @@ def load_fasta_sequences(fasta_path):
                 continue
             if line.startswith('>'):
                 if current_seq:
+                    # Process the previous sequence
                     sequences.append(current_seq)
+                    x_count = current_seq.count('X')
+                    print(f"{current_id}\n{current_seq}")
+                    
+                    if x_count > 0:
+                        # Find positions of X characters using regex
+                        x_positions = []
+                        for match in re.finditer('X+', current_seq):
+                            start, end = match.span()
+                            if start == end - 1:
+                                x_positions.append(f"{start+1}")
+                            else:
+                                x_positions.append(f"{start+1}-{end}")
+                        
+                        print(f"{x_count} redesignable residues at positions: {', '.join(x_positions)}")
+                        valid_sequences.append(current_seq)
+                    else:
+                        print(f"WARNING: NO REDESIGNABLE RESIDUES FOUND IN {current_id}. IGNORING SEQUENCE.")
+                
+                current_id = line
                 current_seq = ""
             else:
                 current_seq += line
                 
     if current_seq:
+        # Process the last sequence
         sequences.append(current_seq)
+        x_count = current_seq.count('X')
+        print(f"{current_id}\n{current_seq}")
         
-    return sequences
+        if x_count > 0:
+            # Find positions of X characters using regex
+            x_positions = []
+            for match in re.finditer('X+', current_seq):
+                start, end = match.span()
+                if start == end - 1:
+                    x_positions.append(f"{start+1}")
+                else:
+                    x_positions.append(f"{start+1}-{end}")
+            
+            print(f"{x_count} redesignable residues at positions: {', '.join(x_positions)}")
+            valid_sequences.append(current_seq)
+        else:
+            print(f"WARNING: NO REDESIGNABLE RESIDUES FOUND IN {current_id}. IGNORING SEQUENCE.")
+    
+    print(f"Loaded {len(valid_sequences)} valid sequences with redesignable residues out of {len(sequences)} total.")
+    
+    if not valid_sequences:
+        raise ValueError(f"No valid sequences with redesignable residues found in {fasta_path}. All sequences must contain at least one 'X' character marking a position to redesign.")
+        
+    return valid_sequences
 
 # AF2 model settings, make sure non-overlapping models with template option are being used for design and re-prediction
 def load_af2_models(af_multimer_setting):
