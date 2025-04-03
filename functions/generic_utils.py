@@ -285,56 +285,26 @@ def load_redesignable_sequences(fasta_path):
         ValueError: If no sequences with redesignable residues are found
     """
     import re
+    from Bio import SeqIO
     
-    sequences = []
-    valid_sequences = []
-    current_seq = ""
-    current_id = ""
-    
-    print(f"Loading redesignable sequences from FASTA file: {fasta_path}")
-    
-    with open(fasta_path, 'r') as file:
-        for line in file:
-            line = line.strip()
-            if not line:
-                continue
-            if line.startswith('>'):
-                if current_seq:
-                    # Process the previous sequence
-                    sequences.append(current_seq)
-                    x_count = current_seq.count('X')
-                    print(f"{current_id}\n{current_seq}")
-                    
-                    if x_count > 0:
-                        # Find positions of X characters using regex
-                        x_positions = []
-                        for match in re.finditer('X+', current_seq):
-                            start, end = match.span()
-                            if start == end - 1:
-                                x_positions.append(f"{start+1}")
-                            else:
-                                x_positions.append(f"{start+1}-{end}")
-                        
-                        print(f"{x_count} redesignable residues at positions: {', '.join(x_positions)}")
-                        valid_sequences.append(current_seq)
-                    else:
-                        print(f"WARNING: NO REDESIGNABLE RESIDUES FOUND IN {current_id}. IGNORING SEQUENCE.")
-                
-                current_id = line
-                current_seq = ""
-            else:
-                current_seq += line
-                
-    if current_seq:
-        # Process the last sequence
-        sequences.append(current_seq)
-        x_count = current_seq.count('X')
-        print(f"{current_id}\n{current_seq}")
+    def process_sequence(seq_id, seq):
+        """Process a single sequence, checking for redesignable residues.
+        
+        Args:
+            seq_id: Identifier for the sequence
+            seq: The sequence to process
+            
+        Returns:
+            bool: True if the sequence is valid (contains 'X'), False otherwise
+        """
+        seq_str = str(seq)
+        x_count = seq_str.count('X')
+        print(f"{seq_id}\n{seq_str}")
         
         if x_count > 0:
             # Find positions of X characters using regex
             x_positions = []
-            for match in re.finditer('X+', current_seq):
+            for match in re.finditer('X+', seq_str):
                 start, end = match.span()
                 if start == end - 1:
                     x_positions.append(f"{start+1}")
@@ -342,9 +312,24 @@ def load_redesignable_sequences(fasta_path):
                     x_positions.append(f"{start+1}-{end}")
             
             print(f"{x_count} redesignable residues at positions: {', '.join(x_positions)}")
-            valid_sequences.append(current_seq)
+            return True
         else:
-            print(f"WARNING: NO REDESIGNABLE RESIDUES FOUND IN {current_id}. IGNORING SEQUENCE.")
+            print(f"WARNING: NO REDESIGNABLE RESIDUES FOUND IN {seq_id}. IGNORING SEQUENCE.")
+            return False
+    
+    sequences = []
+    valid_sequences = []
+    
+    print(f"Loading redesignable sequences from FASTA file: {fasta_path}")
+    
+    # Use BioPython's SeqIO to parse FASTA file
+    for record in SeqIO.parse(fasta_path, "fasta"):
+        seq_id = f">{record.description}"
+        seq = record.seq
+        sequences.append(str(seq))
+        
+        if process_sequence(seq_id, seq):
+            valid_sequences.append(str(seq))
     
     print(f"Loaded {len(valid_sequences)} valid sequences with redesignable residues out of {len(sequences)} total.")
     
