@@ -222,13 +222,59 @@ Example settings file (`PDL1_redesign_from_sequence.json`):
 }
 ```
 
+### Example FASTA File Format
+
+Your FASTA file can contain multiple sequences, including a reference sequence and different redesign templates. Use 'X' characters to mark positions for redesign.
+
 Example FASTA file with redesignable positions marked as 'X':
 ```
->1_PDL1_l134_s18725_mpnn1_model2_A
+>PDL1_l134_s18725_mpnn1_model2:B Chain B from PDB PDL1_l134_s18725_mpnn1_model2 (SEQRES records)
+MKKAVELLSEEELTPKEGETFVEFMKRQLDLIEERAGKLYEEGDKEEAVNYFIYEFSRVL
+KVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYFLKMMFKHFSRRSFER
+TVDYFIEKYKPKKP
+>PDL1_l134_s18725_mpnn1_model2_B redesign template 1
 MKKAVELLSEEELTPKEGETFVEFMKRQLDLIEERAGKLYEEGDKEEAVNYFIYEFSRVLKVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYXXXXXXXXXXXXXXXXXXXXXXEKYKPKKP
->1_PDL1_l134_s18725_mpnn1_model2_B
+>PDL1_l134_s18725_mpnn1_model2_B redesign template 2
 MKKAVELLSEEELTPKEGETFVEFXXXXXXXXXXXXXXXLYEEGDKEEAVNYFIYEFSRVLKVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYFLKMMFKHFSRRSFERTVDYFIEKYKPKKP
 ```
+
+Notes:
+- The first sequence can be a reference without any 'X' characters (will be ignored for redesign)
+- Multiple redesign templates can target different regions of the protein
+- Sequence headers can include descriptions after the identifier (preserved in output)
+- Multi-line sequences are fully supported
+
+### Example Sequence Validation Output
+
+When loading redesignable sequences, BindCraft validates each sequence and reports the positions of redesignable residues:
+
+```
+Loading redesignable sequences from FASTA file: ./example/PDL1_binder_to_redesign.fasta
+>PDL1_l134_s18725_mpnn1_model2:B Chain B from PDB PDL1_l134_s18725_mpnn1_model2 (SEQRES records)
+MKKAVELLSEEELTPKEGETFVEFMKRQLDLIEERAGKLYEEGDKEEAVNYFIYEFSRVLKVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYFLKMMFKHFSRRSFERTVDYFIEKYKPKKP
+WARNING: NO REDESIGNABLE RESIDUES FOUND IN >PDL1_l134_s18725_mpnn1_model2:B Chain B from PDB PDL1_l134_s18725_mpnn1_model2 (SEQRES records). IGNORING SEQUENCE.
+>PDL1_l134_s18725_mpnn1_model2_B redesign template 1
+MKKAVELLSEEELTPKEGETFVEFMKRQLDLIEERAGKLYEEGDKEEAVNYFIYEFSRVLKVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYXXXXXXXXXXXXXXXXXXXXXXEKYKPKKP
+22 redesignable residues at positions: 105-126
+>PDL1_l134_s18725_mpnn1_model2_B redesign template 2
+MKKAVELLSEEELTPKEGETFVEFXXXXXXXXXXXXXXXLYEEGDKEEAVNYFIYEFSRVLKVVLENEKLLAELEEGLEELEPYIEEIISKFDEVTAKRLRSHYYFLKMMFKHFSRRSFERTVDYFIEKYKPKKP
+15 redesignable residues at positions: 25-39
+Loaded 2 valid sequences with redesignable residues out of 3 total.
+```
+
+### Troubleshooting FASTA Files
+
+Common issues and solutions:
+
+1. **No redesignable sequences found**: Ensure at least one sequence contains 'X' characters to mark redesignable positions.
+
+2. **Formatting issues**: 
+   - Make sure each sequence header starts with '>' 
+   - Avoid special characters in sequence (except 'X' for redesignable positions)
+   - Standard amino acid letters (ACDEFGHIKLMNPQRSTVWY) and 'X' are accepted
+
+3. **Sequence ID handling**:
+   - The full header including description is preserved in output
 
 The binder redesign feature will:
 1. Randomly select one of the sequences from your FASTA file
