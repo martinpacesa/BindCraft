@@ -34,7 +34,6 @@
     "weights_rg": 0.3,
     "use_termini_distance_loss": false,
     "weights_termini_loss": 0.1,
-    "cyclize_peptide": false,
     "enable_mpnn": true,
     "mpnn_fix_interface": true,
     "num_seqs": 10,
