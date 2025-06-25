@@ -3,16 +3,21 @@
 ####################################
 
 # MODIFICATION FOR PARALLEL EXECUTION
-# Minimal changes from v1.5.1 to allow safe execution as a SLURM job array.
+# Minimal changes from v1.5.1 to allow safe execution as multiple concurrent processes
+# using either a job scheduler (like SLURM) or local background jobs.
 #
 # 1. File locking is used to prevent data corruption when writing to shared CSV files.
 # 2. A central counter file (_progress_counter.txt) tracks the total accepted designs,
 #    allowing all processes to stop once the target is reached.
 #
-# Example SLURM Usage:
+# Requires FileLock library:
+# conda install -c conda-forge filelock
+#
+# Example SLURM usage:
 # #SBATCH --array=0-31
 #
-# requires FileLock library - run "pip install filelock"
+# Example local background jobs:
+# for i in {1..8}; do nohup python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json' > output_${i}.log 2> error_${i}.log & done
 
 ### Import dependencies
 from functions import *
@@ -109,13 +114,6 @@ while True:
     
     if accepted_count >= target_settings["number_of_final_designs"]:
         print(f"Target of {target_settings['number_of_final_designs']} designs reached. Worker process is shutting down.")
-        break
-
-    ### check if we have the target number of binders
-    final_designs_reached = check_accepted_designs(design_paths, mpnn_csv, final_labels, final_csv, advanced_settings, target_settings, design_labels, finalization_lock, mpnn_csv_lock, final_csv_lock)
-
-    if final_designs_reached:
-        # stop design loop execution
         break
 
     ### check if we reached maximum allowed trajectories
@@ -431,8 +429,14 @@ while True:
                             with progress_lock:
                                 with open(progress_counter_file, 'r') as f:
                                     current_count = int(f.read())
+                                new_count = current_count + 1
                                 with open(progress_counter_file, 'w') as f:
-                                    f.write(str(current_count + 1))
+                                    f.write(str(new_count))
+
+                            # If this process just saved the final design, it will trigger the ranking.
+                            if new_count >= target_settings["number_of_final_designs"]:
+                                print(f"FINAL DESIGN ({new_count}) FOUND! TRIGGERING FINAL RANKING...")
+                                check_accepted_designs(design_paths, mpnn_csv, final_labels, final_csv, advanced_settings, target_settings, design_labels, finalization_lock, mpnn_csv_lock, final_csv_lock)
 
                             # copy animation from accepted trajectory
                             if advanced_settings["save_design_animations"]:
