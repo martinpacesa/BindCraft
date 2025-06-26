@@ -433,16 +433,13 @@ while True:
                                 with open(progress_counter_file, 'w') as f:
                                     f.write(str(new_count))
 
-                            # If this process just saved the final design, it will trigger the ranking.
-                            if new_count >= target_settings["number_of_final_designs"]:
-                                print(f"FINAL DESIGN ({new_count}) FOUND! TRIGGERING FINAL RANKING...")
-                                check_accepted_designs(design_paths, mpnn_csv, final_labels, final_csv, advanced_settings, target_settings, design_labels, finalization_lock, mpnn_csv_lock, final_csv_lock)
-
                             # copy animation from accepted trajectory
                             if advanced_settings["save_design_animations"]:
                                 accepted_animation = os.path.join(design_paths["Accepted/Animation"], f"{design_name}.html")
                                 if not os.path.exists(accepted_animation):
-                                    shutil.copy(os.path.join(design_paths["Trajectory/Animation"], f"{design_name}.html"), accepted_animation)
+                                    source_animation = os.path.join(design_paths["Trajectory/Animation"], f"{design_name}.html")
+                                    if os.path.exists(source_animation):
+                                        shutil.copy(source_animation, accepted_animation)
 
                             # copy plots of accepted trajectory
                             plot_files = os.listdir(design_paths["Trajectory/Plots"])
@@ -451,7 +448,13 @@ while True:
                                 source_plot = os.path.join(design_paths["Trajectory/Plots"], accepted_plot)
                                 target_plot = os.path.join(design_paths["Accepted/Plots"], accepted_plot)
                                 if not os.path.exists(target_plot):
-                                    shutil.copy(source_plot, target_plot)
+                                    if os.path.exists(source_plot):
+                                        shutil.copy(source_plot, target_plot)
+
+                            # If this process just saved the final design, it will trigger the ranking.
+                            if new_count >= target_settings["number_of_final_designs"]:
+                                print(f"FINAL DESIGN ({new_count}) FOUND! TRIGGERING FINAL RANKING...")
+                                check_accepted_designs(design_paths, mpnn_csv, final_labels, final_csv, advanced_settings, target_settings, design_labels, finalization_lock, mpnn_csv_lock, final_csv_lock)
 
                         else:
                             print(f"Unmet filter conditions for {mpnn_design_name}")
