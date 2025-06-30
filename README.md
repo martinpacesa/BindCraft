@@ -109,12 +109,9 @@ weights_termini_loss            -> Design weight - N- and C-terminus distance mi
 mpnn_fix_interface              -> whether to fix the interface designed in the starting trajectory
 num_seqs                        -> number of MPNN generated sequences to sample and predict per binder
 max_mpnn_sequences              -> how many maximum MPNN sequences per trajectory to save if several pass filters
-max_tm-score_filter             -> filter out final lower ranking designs by this TM score cut off relative to all passing designs
-max_seq-similarity_filter       -> filter out final lower ranking designs by this sequence similarity cut off relative to all passing designs
 sampling_temp = 0.1             -> sampling temperature for amino acids, T=0.0 means taking argmax, T>>1.0 means sampling randomly.")
 
 # MPNN settings - advanced
-sample_seq_parallel             -> how many sequences to sample in parallel, reduce if running out of memory
 backbone_noise                  -> backbone noise during sampling, 0.00-0.02 are good values
 model_path                      -> path to the MPNN model weights
 mpnn_weights                    -> whether to use "original" mpnn weights or "soluble" weights
