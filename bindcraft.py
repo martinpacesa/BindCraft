@@ -160,6 +160,10 @@ while True:
                                 trajectory_alpha_interface, trajectory_beta_interface, trajectory_loops_interface, trajectory_alpha, trajectory_beta, trajectory_loops, trajectory_interface_AA, trajectory_target_rmsd, 
                                 trajectory_time_text, traj_seq_notes, settings_file, filters_file, advanced_file]
             insert_data(trajectory_csv, trajectory_data)
+
+            if not trajectory_interface_residues:
+                print("No interface residues found for "+str(design_name)+", skipping MPNN optimization")
+                continue
             
             if advanced_settings["enable_mpnn"]:
                 # initialise MPNN counters
