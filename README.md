@@ -5,6 +5,8 @@ Simple binder design pipeline using AlphaFold2 backpropagation, MPNN, and PyRose
 
 [Preprint link for BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802)
 
+**Note: Before posting an issue, read the complete wiki <a href="https://github.com/martinpacesa/BindCraft/wiki/De-novo-binder-design-with-BindCraft">here</a>. Issues that are covered in the wiki will be closed without an answer.**
+
 ## Installation
 First you need to clone this repository. Replace **[install_folder]** with the path where you want to install it.
 
