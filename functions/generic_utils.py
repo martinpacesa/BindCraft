@@ -125,7 +125,7 @@ def update_failures(failure_csv, failure_column_or_dict):
 
 # Check if number of trajectories generated
 def check_n_trajectories(design_paths, advanced_settings):
-    n_trajectories = [f for f in os.listdir(design_paths["Trajectory/Relaxed"]) if f.endswith('.pdb')]
+    n_trajectories = [f for f in os.listdir(design_paths["Trajectory/Relaxed"]) if f.endswith('.pdb') and not f.startswith('.')]
 
     if advanced_settings["max_trajectories"] is not False and len(n_trajectories) >= advanced_settings["max_trajectories"]:
         print(f"Target number of {str(len(n_trajectories))} trajectories reached, stopping execution...")
@@ -135,7 +135,7 @@ def check_n_trajectories(design_paths, advanced_settings):
 
 # Check if we have required number of accepted targets, rank them, and analyse sequence and structure properties
 def check_accepted_designs(design_paths, mpnn_csv, final_labels, final_csv, advanced_settings, target_settings, design_labels):
-    accepted_binders = [f for f in os.listdir(design_paths["Accepted"]) if f.endswith('.pdb')]
+    accepted_binders = [f for f in os.listdir(design_paths["Accepted"]) if f.endswith('.pdb') and not f.startswith('.')]
 
     if len(accepted_binders) >= target_settings["number_of_final_designs"]:
         print(f"Target number {str(len(accepted_binders))} of designs reached! Reranking...")
