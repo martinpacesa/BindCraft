@@ -5,12 +5,14 @@ Simple binder design pipeline using AlphaFold2 backpropagation, MPNN, and PyRose
 
 [Preprint link for BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802)
 
+**Note: Before posting an issue, read the complete wiki <a href="https://github.com/martinpacesa/BindCraft/wiki/De-novo-binder-design-with-BindCraft">here</a>. Issues that are covered in the wiki will be closed without an answer.**
+
 ## Installation
 First you need to clone this repository. Replace **[install_folder]** with the path where you want to install it.
 
 `git clone https://github.com/martinpacesa/BindCraft [install_folder]`
 
-The navigate into your install folder using *cd* and run the installation code. BindCraft requires a CUDA-compatible Nvidia graphics card to run. In the *cuda* setting, please specify the CUDA version compatible with your graphics card, for example '11.8'. If unsure, leave blank but it's possible that the installation might select the wrong version, which will lead to errors. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default. 
+The navigate into your install folder using *cd* and run the installation code. BindCraft requires a CUDA-compatible Nvidia graphics card to run. In the *cuda* setting, please specify the CUDA version compatible with your graphics card, for example '11.8'. If unsure, leave blank but it's possible that the installation might select the wrong version, which will lead to errors. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default.
 
 Note: This install script will install PyRosetta, which requires a license for commercial purposes. The code requires about 2 Mb of storage space, while the AlphaFold2 weights take up about 5.3 Gb.
 
@@ -62,7 +64,7 @@ cd /path/to/bindcraft/folder/
 python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
 ```
 
-**We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 
+**We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding.
 
 Below are explanations for individual filters and advanced settings.
 
@@ -116,12 +118,9 @@ weights_termini_loss            -> Design weight - N- and C-terminus distance mi
 mpnn_fix_interface              -> whether to fix the interface designed in the starting trajectory
 num_seqs                        -> number of MPNN generated sequences to sample and predict per binder
 max_mpnn_sequences              -> how many maximum MPNN sequences per trajectory to save if several pass filters
-max_tm-score_filter             -> filter out final lower ranking designs by this TM score cut off relative to all passing designs
-max_seq-similarity_filter       -> filter out final lower ranking designs by this sequence similarity cut off relative to all passing designs
 sampling_temp = 0.1             -> sampling temperature for amino acids, T=0.0 means taking argmax, T>>1.0 means sampling randomly.")
 
 # MPNN settings - advanced
-sample_seq_parallel             -> how many sequences to sample in parallel, reduce if running out of memory
 backbone_noise                  -> backbone noise during sampling, 0.00-0.02 are good values
 model_path                      -> path to the MPNN model weights
 mpnn_weights                    -> whether to use "original" mpnn weights or "soluble" weights
