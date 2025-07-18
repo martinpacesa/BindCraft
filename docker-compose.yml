@@ -1,0 +1,25 @@
+services:
+  bindcraft:
+    build:
+      context: ../BindCraft
+      dockerfile: Dockerfile
+    image: bindcraft:latest
+    container_name: bindcraft
+    volumes:
+      - ./results:/opt/BindCraft/results
+      - ./settings_target:/opt/BindCraft/settings_target
+      - ./example:/opt/BindCraft/example
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: >
+      python -u bindcraft.py
+            --settings './settings_target/PDL1.json'
+            --filters './settings_filters/no_filters.json'
+            --advanced './settings_advanced/default_4stage_multimer.json'
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
