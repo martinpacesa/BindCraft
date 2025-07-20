@@ -18,7 +18,7 @@ services:
               capabilities: [gpu]
     command: >
       python -u bindcraft.py
-            --settings './settings_target/PDL1.json'
+            --settings './settings_target/PDL1-docker.json'
             --filters './settings_filters/no_filters.json'
             --advanced './settings_advanced/default_4stage_multimer.json'
     environment:

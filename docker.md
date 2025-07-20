@@ -103,7 +103,7 @@ docker run --gpus all \
   -v ./example:/opt/BindCraft/example \
   bindcraft:latest \
   python -u bindcraft.py \
-  --settings './settings_target/PDL1.json' \
+  --settings './settings_target/PDL1-docker.json' \
   --filters './settings_filters/default_filters.json' \
   --advanced './settings_advanced/default_4stage_multimer.json'
 ```

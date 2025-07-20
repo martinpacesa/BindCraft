@@ -33,7 +33,7 @@ You can modify the command parameters in the docker-compose.yml file to use diff
 
 ## Example Target JSON
 
-Create a file like `settings_target/PDL1.json` with content:
+Create a file like `settings_target/PDL1-docker.json` with content:
 
 ```json
 {

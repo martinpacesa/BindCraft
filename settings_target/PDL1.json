@@ -1,9 +1,9 @@
 {
-    "design_path": "./results/PDL1/",
+    "design_path": "/content/drive/My Drive/BindCraft/PDL1/",
     "binder_name": "PDL1",
-    "starting_pdb": "./example/PDL1.pdb",
+    "starting_pdb": "/content/bindcraft/example/PDL1.pdb",
     "chains": "A",
     "target_hotspot_residues": "56",
     "lengths": [65, 150],
-    "number_of_final_designs": 1
+    "number_of_final_designs": 100
 }
