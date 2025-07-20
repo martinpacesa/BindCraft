@@ -1,0 +1,34 @@
+name: BindCraft
+channels:
+  - conda-forge
+  - nvidia
+  - https://conda.rosettacommons.org
+dependencies:
+  - pip=25.1.1=pyh8b19718_0
+  - pandas=2.3.0=py310h5eaa309_0
+  - matplotlib=3.10.3=py310hff52083_0
+  - numpy=1.26.4=py310hb13e2d6_0
+  - biopython=1.85=py310ha75aee5_1
+  - scipy=1.15.2=py310h1d65ade_0
+  - pdbfixer=1.11=pyhd8ed1ab_0
+  - seaborn=0.13.2=hd8ed1ab_3
+  - libgfortran5=15.1.0=hcea5267_3
+  - tqdm=4.67.1=pyhd8ed1ab_1
+  - ffmpeg=7.1.1=gpl_h127656b_906
+  - fsspec=2025.5.1=pyhd8ed1ab_0
+  - py3dmol=2.5.0=pyhd8ed1ab_0
+  - chex=0.1.88=pyhd8ed1ab_1
+  - dm-haiku=0.0.14=pyhd8ed1ab_0
+  - dm-tree=0.1.9=py310hbd8f40d_1
+  - flax=0.9.0=pyhd8ed1ab_1
+  - joblib=1.5.1=pyhd8ed1ab_0
+  - ml-collections=1.0.0=pyh29332c3_0
+  - immutabledict=4.2.1=pyhd8ed1ab_1
+  - optax=0.2.4=pyhd8ed1ab_1
+  - jax=0.6.0=pyhd8ed1ab_0
+  - jaxlib=0.6.0=cuda126py310hec873cc_200
+  - cuda-nvcc=12.9.86=hcdd1206_1
+  - cudnn=9.10.1.4=h7646684_0
+  - pyrosetta=2025.24+release.8e1e5e54f0=py310_0
+
+prefix: "/opt/conda/envs/BindCraft"

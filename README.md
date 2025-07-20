@@ -12,11 +12,20 @@ First you need to clone this repository. Replace **[install_folder]** with the p
 
 `git clone https://github.com/martinpacesa/BindCraft [install_folder]`
 
-The navigate into your install folder using *cd* and run the installation code. BindCraft requires a CUDA-compatible Nvidia graphics card to run. In the *cuda* setting, please specify the CUDA version compatible with your graphics card, for example '11.8'. If unsure, leave blank but it's possible that the installation might select the wrong version, which will lead to errors. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default. 
+The navigate into your install folder using *cd* and run the installation code. BindCraft requires a CUDA-compatible Nvidia graphics card to run. In the *cuda* setting, please specify the CUDA version compatible with your graphics card, for example '11.8'. If unsure, leave blank but it's possible that the installation might select the wrong version, which will lead to errors. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default.
 
 Note: This install script will install PyRosetta, which requires a license for commercial purposes. The code requires about 2 Mb of storage space, while the AlphaFold2 weights take up about 5.3 Gb.
 
 `bash install_bindcraft.sh --cuda '12.4' --pkg_manager 'conda'`
+
+## Docker Installation
+
+Alternatively, you can run BindCraft using Docker. We provide a Dockerfile and docker-compose configuration for easy deployment:
+
+- See [docker.md](docker.md) for detailed instructions on building and running the Docker image
+- See [docker-compose.md](docker-compose.md) for information on using Docker Compose with BindCraft
+
+This approach is recommended if you want to avoid potential dependency conflicts or prefer containerized applications.
 
 ## Google Colab
 <a href="https://colab.research.google.com/github/martinpacesa/BindCraft/blob/main/notebooks/BindCraft.ipynb">
@@ -55,7 +64,7 @@ cd /path/to/bindcraft/folder/
 python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
 ```
 
-**We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 
+**We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding.
 
 Below are explanations for individual filters and advanced settings.
 
