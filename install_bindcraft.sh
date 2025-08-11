@@ -63,9 +63,19 @@ echo -e "BindCraft environment activated at ${CONDA_BASE}/envs/BindCraft"
 # install required conda packages
 echo -e "Instaling conda requirements\n"
 if [ -n "$cuda" ]; then
-    CONDA_OVERRIDE_CUDA="$cuda" $pkg_manager install pip pandas matplotlib numpy"<2.0.0" biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol chex dm-haiku flax"<0.10.0" dm-tree joblib ml-collections immutabledict optax jaxlib=*=*cuda* jax cuda-nvcc cudnn -c conda-forge -c nvidia  --channel https://conda.graylab.jhu.edu -y || { echo -e "Error: Failed to install conda packages."; exit 1; }
+  CONDA_OVERRIDE_CUDA="$cuda" $pkg_manager install \
+    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
+    chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
+    'jax>=0.4,<0.7' 'jaxlib>=0.4,<0.7=*cuda*' cuda-nvcc cudnn \
+    -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y \
+  || { echo -e "Error: Failed to install conda packages."; exit 1; }
 else
-    $pkg_manager install pip pandas matplotlib numpy"<2.0.0" biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol chex dm-haiku flax"<0.10.0" dm-tree joblib ml-collections immutabledict optax jaxlib jax cuda-nvcc cudnn -c conda-forge -c nvidia  --channel https://conda.graylab.jhu.edu -y || { echo -e "Error: Failed to install conda packages."; exit 1; }
+  $pkg_manager install \
+    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
+    chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
+    'jax>=0.4,<0.7' 'jaxlib>=0.4,<0.7' \
+    -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y \
+  || { echo -e "Error: Failed to install conda packages."; exit 1; }
 fi
 
 # make sure all required packages were installed
