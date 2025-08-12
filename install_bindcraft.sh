@@ -66,14 +66,14 @@ if [ -n "$cuda" ]; then
   CONDA_OVERRIDE_CUDA="$cuda" $pkg_manager install \
     pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
     chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
-    'jax>=0.4,<0.7' 'jaxlib>=0.4,<0.7=*cuda*' cuda-nvcc cudnn \
+    'jax>=0.4,<=0.6.0' 'jaxlib>=0.4,<=0.6.0=*cuda*' cuda-nvcc cudnn \
     -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y \
   || { echo -e "Error: Failed to install conda packages."; exit 1; }
 else
   $pkg_manager install \
     pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
     chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
-    'jax>=0.4,<0.7' 'jaxlib>=0.4,<0.7' \
+    'jax>=0.4,<=0.6.0' 'jaxlib>=0.4,<=0.6.0' \
     -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y \
   || { echo -e "Error: Failed to install conda packages."; exit 1; }
 fi
