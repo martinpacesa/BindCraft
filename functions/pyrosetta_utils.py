@@ -14,7 +14,7 @@ from pyrosetta.rosetta.core.select import get_residues_from_subset
 from pyrosetta.rosetta.core.io import pose_from_pose
 from pyrosetta.rosetta.protocols.rosetta_scripts import XmlObjects
 from .generic_utils import clean_pdb
-from .biopython_utils import hotspot_residues
+from .biotite_utils import hotspot_residues
 
 # Rosetta interface scores
 def score_interface(pdb_file, binder_chain="B"):
