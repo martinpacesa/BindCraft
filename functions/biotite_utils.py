@@ -4,7 +4,6 @@
 ### Import dependencies
 from biotite.application.application import AppState, requires_state
 from biotite.application.localapp import get_version, cleanup_tempfile, LocalApp
-from collections import defaultdict
 from scipy.spatial import KDTree
 from subprocess import SubprocessError
 from tempfile import NamedTemporaryFile
@@ -53,8 +52,8 @@ def target_pdb_rmsd(trajectory_pdb, starting_pdb, chain_ids_string):
     file_trajectory = fastpdb.PDBFile.read(trajectory_pdb)
     file_starting = fastpdb.PDBFile.read(starting_pdb)
 
-    aa_trajectory = file_trajectory.get_stucture(model=1)
-    aa_starting = file_starting.get_stucture(model=1)
+    aa_trajectory = file_trajectory.get_structure(model=1)
+    aa_starting = file_starting.get_structure(model=1)
 
     # Extract CA atoms from starting_pdb
     chain_ids = [chain_id.strip() for chain_id in chain_ids_string.split(',')]
@@ -71,7 +70,7 @@ def target_pdb_rmsd(trajectory_pdb, starting_pdb, chain_ids_string):
                                   & (b_structure.filter_canonical_amino_acids(aa_trajectory))]
     
     # Ensure that both structures have the same number of residues
-    min_length = np.min(aa_starting.array_length(), aa_trajectory.array_length())
+    min_length = min(aa_starting.array_length(), aa_trajectory.array_length())
     aa_starting = aa_starting[:min_length]
     aa_trajectory = aa_trajectory[:min_length]
     
