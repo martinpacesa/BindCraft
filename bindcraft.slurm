@@ -3,19 +3,19 @@
 #SBATCH --ntasks 1
 #SBATCH --cpus-per-task 1
 #SBATCH --partition=gpu
-#SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --mem 42gb
-#SBATCH --time 72:00:00
+#SBATCH --time 03:00:00
 #SBATCH --output=bindcraft_%A.log
 
-# Initialise environment and modules
-CONDA_BASE=$(conda info --base)
-source ${CONDA_BASE}/bin/activate ${CONDA_BASE}/envs/BindCraft
-export LD_LIBRARY_PATH=${CONDA_BASE}/lib
 
 # alternatively you can source the environment directly
 #source /path/to/mambaforge/bin/activate /path/to/mambaforge/envs/BindCraft
+
+module load miniforge
+module load cuda/12.6
+conda activate BindCraft
+
 
 # Get the directory where the bindcraft script is located
 SCRIPT_DIR=$(dirname "$0")
@@ -44,4 +44,5 @@ if [ -z "$SETTINGS" ]; then
 fi
 
 echo "Running the BindCraft pipeline"
-python -u "${SCRIPT_DIR}/bindcraft.py" --settings "${SETTINGS}" --filters "${FILTERS}" --advanced "${ADVANCED}"
+# python -u "${SCRIPT_DIR}/bindcraft.py" --settings "${SETTINGS}" --filters "${FILTERS}" --advanced "${ADVANCED}"
+python -u "./bindcraft.py" --settings "${SETTINGS}" --filters "${FILTERS}" --advanced "${ADVANCED}"

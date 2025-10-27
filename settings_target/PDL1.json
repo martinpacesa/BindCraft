@@ -1,9 +1,9 @@
 {
-    "design_path": "/content/drive/My Drive/BindCraft/PDL1/",
+    "design_path": "/users/phyaha/bindcraft_tests/PDL1/",
     "binder_name": "PDL1",
-    "starting_pdb": "/content/bindcraft/example/PDL1.pdb",
+    "starting_pdb": "/users/phyaha/BindCraft/example/PDL1.pdb",
     "chains": "A",
     "target_hotspot_residues": "56",
     "lengths": [65, 150],
-    "number_of_final_designs": 100
+    "number_of_final_designs": 50
 }
