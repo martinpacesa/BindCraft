@@ -1,4 +1,4 @@
-import os, re, shutil, time, json
+import os, re, shutil, time, json, gc
 import argparse
 import pickle
 import warnings

@@ -10,7 +10,9 @@
 #SBATCH --output=bindcraft_%A.log
 
 # Initialise environment and modules
-conda activate BindCraft
+CONDA_BASE=$(conda info --base)
+source ${CONDA_BASE}/bin/activate ${CONDA_BASE}/envs/BindCraft
+export LD_LIBRARY_PATH=${CONDA_BASE}/lib
 
 # alternatively you can source the environment directly
 #source /path/to/mambaforge/bin/activate /path/to/mambaforge/envs/BindCraft
@@ -35,8 +37,11 @@ while true ; do
     esac
 done
 
+# Ensure that SETTINGS is not empty
+if [ -z "$SETTINGS" ]; then
+    echo "Error: The -s or --settings option is required."
+    exit 1
+fi
+
 echo "Running the BindCraft pipeline"
-echo "Running binder design for target ${SETTINGS}"
-echo "Design settings used: ${ADVANCED}"
-echo "Filtering designs based on ${FILTERS}"
 python -u "${SCRIPT_DIR}/bindcraft.py" --settings "${SETTINGS}" --filters "${FILTERS}" --advanced "${ADVANCED}"

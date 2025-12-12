@@ -32,15 +32,15 @@
         "higher": true
     },
     "Average_pTM": {
-        "threshold": 0.55,
+        "threshold": 0.45,
         "higher": true
     },
     "1_pTM": {
-        "threshold": 0.55,
+        "threshold": 0.45,
         "higher": true
     },
     "2_pTM": {
-        "threshold": 0.55,
+        "threshold": 0.45,
         "higher": true
     },
     "3_pTM": {
@@ -104,15 +104,15 @@
         "higher": false
     },
     "Average_i_pAE": {
-        "threshold": 0.35,
+        "threshold": 0.4,
         "higher": false
     },
     "1_i_pAE": {
-        "threshold": 0.35,
+        "threshold": 0.4,
         "higher": false
     },
     "2_i_pAE": {
-        "threshold": 0.35,
+        "threshold": 0.4,
         "higher": false
     },
     "3_i_pAE": {
@@ -248,15 +248,15 @@
         "higher": false
     },
     "Average_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": 0.37,
         "higher": false
     },
     "1_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": 0.37,
         "higher": false
     },
     "2_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": 0.37,
         "higher": false
     },
     "3_Surface_Hydrophobicity": {
@@ -272,15 +272,15 @@
         "higher": false
     },
     "Average_ShapeComplementarity": {
-        "threshold": 0.6,
+        "threshold": 0.5,
         "higher": true
     },
     "1_ShapeComplementarity": {
-        "threshold": 0.55,
+        "threshold": 0.5,
         "higher": true
     },
     "2_ShapeComplementarity": {
-        "threshold": 0.55,
+        "threshold": 0.5,
         "higher": true
     },
     "3_ShapeComplementarity": {
@@ -440,15 +440,15 @@
         "higher": true
     },
     "Average_n_InterfaceResidues": {
-        "threshold": 7,
+        "threshold": 6,
         "higher": true
     },
     "1_n_InterfaceResidues": {
-        "threshold": 7,
+        "threshold": 6,
         "higher": true
     },
     "2_n_InterfaceResidues": {
-        "threshold": 7,
+        "threshold": 6,
         "higher": true
     },
     "3_n_InterfaceResidues": {
@@ -464,15 +464,15 @@
         "higher": true
     },
     "Average_n_InterfaceHbonds": {
-        "threshold": 3,
+        "threshold": 2,
         "higher": true
     },
     "1_n_InterfaceHbonds": {
-        "threshold": 3,
+        "threshold": 2,
         "higher": true
     },
     "2_n_InterfaceHbonds": {
-        "threshold": 3,
+        "threshold": 2,
         "higher": true
     },
     "3_n_InterfaceHbonds": {
@@ -512,15 +512,15 @@
         "higher": true
     },
     "Average_n_InterfaceUnsatHbonds": {
-        "threshold": 4,
+        "threshold": 6,
         "higher": false
     },
     "1_n_InterfaceUnsatHbonds": {
-        "threshold": 4,
+        "threshold": 6,
         "higher": false
     },
     "2_n_InterfaceUnsatHbonds": {
-        "threshold": 4,
+        "threshold": 6,
         "higher": false
     },
     "3_n_InterfaceUnsatHbonds": {
@@ -737,7 +737,7 @@
             "higher": false
         },
         "K": {
-            "threshold": 3,
+            "threshold": 5,
             "higher": false
         },
         "L": {
@@ -745,7 +745,7 @@
             "higher": false
         },
         "M": {
-            "threshold": 3,
+            "threshold": 5,
             "higher": false
         },
         "N": {
@@ -1316,27 +1316,27 @@
         "higher": false
     },
     "Average_Binder_RMSD": {
-        "threshold": 3.5,
+        "threshold": 4.5,
         "higher": false
     },
     "1_Binder_RMSD": {
-        "threshold": 3.5,
+        "threshold": 4.5,
         "higher": false
     },
     "2_Binder_RMSD": {
-        "threshold": 3.5,
+        "threshold": 4.5,
         "higher": false
     },
     "3_Binder_RMSD": {
-        "threshold": 3.5,
+        "threshold": 4.5,
         "higher": false
     },
     "4_Binder_RMSD": {
-        "threshold": 3.5,
+        "threshold": 4.5,
         "higher": false
     },
     "5_Binder_RMSD": {
-        "threshold": 3.5,
+        "threshold": 4.5,
         "higher": false
     }
 }

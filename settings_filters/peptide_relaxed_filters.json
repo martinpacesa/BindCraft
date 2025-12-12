@@ -32,15 +32,15 @@
         "higher": true
     },
     "Average_pTM": {
-        "threshold": 0.55,
+        "threshold": 0.45,
         "higher": true
     },
     "1_pTM": {
-        "threshold": 0.55,
+        "threshold": 0.45,
         "higher": true
     },
     "2_pTM": {
-        "threshold": 0.55,
+        "threshold": 0.45,
         "higher": true
     },
     "3_pTM": {
@@ -56,15 +56,15 @@
         "higher": true
     },
     "Average_i_pTM": {
-        "threshold": 0.5,
+        "threshold": 0.4,
         "higher": true
     },
     "1_i_pTM": {
-        "threshold": 0.5,
+        "threshold": 0.4,
         "higher": true
     },
     "2_i_pTM": {
-        "threshold": 0.5,
+        "threshold": 0.4,
         "higher": true
     },
     "3_i_pTM": {
@@ -248,15 +248,15 @@
         "higher": false
     },
     "Average_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": 0.5,
         "higher": false
     },
     "1_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": 0.5,
         "higher": false
     },
     "2_Surface_Hydrophobicity": {
-        "threshold": 0.35,
+        "threshold": 0.5,
         "higher": false
     },
     "3_Surface_Hydrophobicity": {
@@ -272,15 +272,15 @@
         "higher": false
     },
     "Average_ShapeComplementarity": {
-        "threshold": 0.6,
+        "threshold": null,
         "higher": true
     },
     "1_ShapeComplementarity": {
-        "threshold": 0.55,
+        "threshold": null,
         "higher": true
     },
     "2_ShapeComplementarity": {
-        "threshold": 0.55,
+        "threshold": null,
         "higher": true
     },
     "3_ShapeComplementarity": {
@@ -440,15 +440,15 @@
         "higher": true
     },
     "Average_n_InterfaceResidues": {
-        "threshold": 7,
+        "threshold": 2,
         "higher": true
     },
     "1_n_InterfaceResidues": {
-        "threshold": 7,
+        "threshold": 2,
         "higher": true
     },
     "2_n_InterfaceResidues": {
-        "threshold": 7,
+        "threshold": 2,
         "higher": true
     },
     "3_n_InterfaceResidues": {
@@ -464,15 +464,15 @@
         "higher": true
     },
     "Average_n_InterfaceHbonds": {
-        "threshold": 3,
+        "threshold": null,
         "higher": true
     },
     "1_n_InterfaceHbonds": {
-        "threshold": 3,
+        "threshold": null,
         "higher": true
     },
     "2_n_InterfaceHbonds": {
-        "threshold": 3,
+        "threshold": null,
         "higher": true
     },
     "3_n_InterfaceHbonds": {
@@ -512,15 +512,15 @@
         "higher": true
     },
     "Average_n_InterfaceUnsatHbonds": {
-        "threshold": 4,
+        "threshold": null,
         "higher": false
     },
     "1_n_InterfaceUnsatHbonds": {
-        "threshold": 4,
+        "threshold": null,
         "higher": false
     },
     "2_n_InterfaceUnsatHbonds": {
-        "threshold": 4,
+        "threshold": null,
         "higher": false
     },
     "3_n_InterfaceUnsatHbonds": {
@@ -680,15 +680,15 @@
         "higher": true
     },
     "Average_Binder_Loop%": {
-        "threshold": 90,
+        "threshold": null,
         "higher": false
     },
     "1_Binder_Loop%": {
-        "threshold": 90,
+        "threshold": null,
         "higher": false
     },
     "2_Binder_Loop%": {
-        "threshold": 90,
+        "threshold": null,
         "higher": false
     },
     "3_Binder_Loop%": {
@@ -1196,15 +1196,15 @@
         }
     },
     "Average_Hotspot_RMSD": {
-        "threshold": 6,
+        "threshold": 3.5,
         "higher": false
     },
     "1_Hotspot_RMSD": {
-        "threshold": 6,
+        "threshold": 3.5,
         "higher": false
     },
     "2_Hotspot_RMSD": {
-        "threshold": 6,
+        "threshold": 3.5,
         "higher": false
     },
     "3_Hotspot_RMSD": {
@@ -1244,27 +1244,27 @@
         "higher": false
     },
     "Average_Binder_pLDDT": {
-        "threshold": 0.8,
+        "threshold": 0.75,
         "higher": true
     },
     "1_Binder_pLDDT": {
-        "threshold": 0.8,
+        "threshold": 0.75,
         "higher": true
     },
     "2_Binder_pLDDT": {
-        "threshold": 0.8,
+        "threshold": 0.75,
         "higher": true
     },
     "3_Binder_pLDDT": {
-        "threshold": 0.8,
+        "threshold": 0.75,
         "higher": true
     },
     "4_Binder_pLDDT": {
-        "threshold": 0.8,
+        "threshold": 0.75,
         "higher": true
     },
     "5_Binder_pLDDT": {
-        "threshold": 0.8,
+        "threshold": 0.75,
         "higher": true
     },
     "Average_Binder_pTM": {

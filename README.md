@@ -3,7 +3,9 @@
 
 Simple binder design pipeline using AlphaFold2 backpropagation, MPNN, and PyRosetta. Select your target and let the script do the rest of the work and finish once you have enough designs to order!
 
-[Preprint link for BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802v1)
+[Preprint link for BindCraft](https://www.biorxiv.org/content/10.1101/2024.09.30.615802)
+
+**Note: Before posting an issue, read the complete wiki <a href="https://github.com/martinpacesa/BindCraft/wiki/De-novo-binder-design-with-BindCraft">here</a>. Issues that are covered in the wiki will be closed without an answer.**
 
 ## Installation
 First you need to clone this repository. Replace **[install_folder]** with the path where you want to install it.
@@ -11,6 +13,8 @@ First you need to clone this repository. Replace **[install_folder]** with the p
 `git clone https://github.com/martinpacesa/BindCraft [install_folder]`
 
 The navigate into your install folder using *cd* and run the installation code. BindCraft requires a CUDA-compatible Nvidia graphics card to run. In the *cuda* setting, please specify the CUDA version compatible with your graphics card, for example '11.8'. If unsure, leave blank but it's possible that the installation might select the wrong version, which will lead to errors. In *pkg_manager* specify whether you are using 'mamba' or 'conda', if left blank it will use 'conda' by default. 
+
+Note: This install script will install PyRosetta, which requires a license for commercial purposes. The code requires about 2 Mb of storage space, while the AlphaFold2 weights take up about 5.3 Gb.
 
 `bash install_bindcraft.sh --cuda '12.4' --pkg_manager 'conda'`
 
@@ -39,16 +43,16 @@ number_of_final_designs   -> how many designs that pass all filters to aim for, 
 ```
 Then run the binder design script:
 
-`sbatch ./bindcraft.slurm --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/4stage_multimer.json'`
+`sbatch ./bindcraft.slurm --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'`
 
-The *settings* flag should point to your target .json which you set above. The *filters* flag points to the json where the design filters are specified (default is ./filters/default_filters.json). The *advanced* flag points to your advanced settings (default is ./advanced_settings/4stage_multimer.json). If you leave out the filters and advanced settings flags it will automatically point to the defaults.
+The *settings* flag should point to your target .json which you set above. The *filters* flag points to the json where the design filters are specified (default is ./filters/default_filters.json). The *advanced* flag points to your advanced settings (default is ./advanced_settings/default_4stage_multimer.json). If you leave out the filters and advanced settings flags it will automatically point to the defaults.
 
 Alternatively, if your machine does not support SLURM, you can run the code directly by activating the environment in conda and running the python code:
 
 ```
 conda activate BindCraft
 cd /path/to/bindcraft/folder/
-python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/4stage_multimer.json'
+python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
 ```
 
 **We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 
@@ -70,6 +74,8 @@ rm_template_seq_design          -> remove target template sequence for design (i
 rm_template_seq_predict         -> remove target template sequence for reprediction (increases target flexibility)
 rm_template_sc_design           -> remove sidechains from target template for design
 rm_template_sc_predict          -> remove sidechains from target template for reprediction
+predict_initial_guess           -> Introduce bias by providing binder atom positions as a starting point for prediction. Recommended if designs fail after MPNN optimization.
+predict_bigbang                 -> Introduce atom position bias into the structure module for atom initilisation. Recommended if target and design are large (more than 600 amino acids).
 
 # Design iterations
 soft_iterations                 -> number of soft iterations (all amino acids considered at all positions)
@@ -103,12 +109,9 @@ weights_termini_loss            -> Design weight - N- and C-terminus distance mi
 mpnn_fix_interface              -> whether to fix the interface designed in the starting trajectory
 num_seqs                        -> number of MPNN generated sequences to sample and predict per binder
 max_mpnn_sequences              -> how many maximum MPNN sequences per trajectory to save if several pass filters
-max_tm-score_filter             -> filter out final lower ranking designs by this TM score cut off relative to all passing designs
-max_seq-similarity_filter       -> filter out final lower ranking designs by this sequence similarity cut off relative to all passing designs
 sampling_temp = 0.1             -> sampling temperature for amino acids, T=0.0 means taking argmax, T>>1.0 means sampling randomly.")
 
 # MPNN settings - advanced
-sample_seq_parallel             -> how many sequences to sample in parallel, reduce if running out of memory
 backbone_noise                  -> backbone noise during sampling, 0.00-0.02 are good values
 model_path                      -> path to the MPNN model weights
 mpnn_weights                    -> whether to use "original" mpnn weights or "soluble" weights

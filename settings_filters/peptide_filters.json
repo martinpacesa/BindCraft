@@ -296,15 +296,15 @@
         "higher": true
     },
     "Average_PackStat": {
-        "threshold": 0.35,
+        "threshold": null,
         "higher": true
     },
     "1_PackStat": {
-        "threshold": 0.35,
+        "threshold": null,
         "higher": true
     },
     "2_PackStat": {
-        "threshold": 0.35,
+        "threshold": null,
         "higher": true
     },
     "3_PackStat": {
@@ -1195,27 +1195,27 @@
             "higher": false
         }
     },
-    "Average_HotspotRMSD": {
+    "Average_Hotspot_RMSD": {
         "threshold": 3,
         "higher": false
     },
-    "1_HotspotRMSD": {
+    "1_Hotspot_RMSD": {
         "threshold": 3,
         "higher": false
     },
-    "2_HotspotRMSD": {
+    "2_Hotspot_RMSD": {
         "threshold": 3,
         "higher": false
     },
-    "3_HotspotRMSD": {
+    "3_Hotspot_RMSD": {
         "threshold": null,
         "higher": false
     },
-    "4_HotspotRMSD": {
+    "4_Hotspot_RMSD": {
         "threshold": null,
         "higher": false
     },
-    "5_HotspotRMSD": {
+    "5_Hotspot_RMSD": {
         "threshold": null,
         "higher": false
     },

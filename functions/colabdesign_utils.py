@@ -153,7 +153,6 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
                     print("One-hot trajectory pLDDT good, continuing: "+str(onehot_plddt))
                     if advanced_settings["greedy_iterations"] > 0:
                         print("Stage 4: PSSM Semigreedy Optimisation")
-                        af_model.clear_best()
                         af_model.design_pssm_semigreedy(soft_iters=0, hard_iters=advanced_settings["greedy_iterations"], tries=greedy_tries, models=design_models, 
                                                         num_models=1, sample_models=advanced_settings["sample_models"], ramp_models=False, save_best=True)
 
@@ -202,8 +201,8 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
             binder_contacts = hotspot_residues(model_pdb_path)
             binder_contacts_n = len(binder_contacts.items())
 
-            # if less than 7 contacts then protein is floating above and is not binder
-            if binder_contacts_n < 7:
+            # if less than 3 contacts then protein is floating above and is not binder
+            if binder_contacts_n < 3:
                 af_model.aux["log"]["terminate"] = "LowConfidence"
                 update_failures(failure_csv, 'Trajectory_Contacts')
                 print("Too few contacts at the interface, skipping analysis and MPNN optimisation")
@@ -236,7 +235,7 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
     return af_model
 
 # run prediction for binder with masked template target
-def masked_binder_predict(prediction_model, binder_sequence, mpnn_design_name, target_pdb, chain, length, trajectory_pdb, prediction_models, advanced_settings, filters, design_paths, failure_csv, seed=None):
+def predict_binder_complex(prediction_model, binder_sequence, mpnn_design_name, target_pdb, chain, length, trajectory_pdb, prediction_models, advanced_settings, filters, design_paths, failure_csv, seed=None):
     prediction_stats = {}
 
     # clean sequence
@@ -349,6 +348,7 @@ def mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residue
 
     if advanced_settings["mpnn_fix_interface"]:
         fixed_positions = 'A,' + trajectory_interface_residues
+        fixed_positions = fixed_positions.rstrip(",")
         print("Fixing interface residues: "+trajectory_interface_residues)
     else:
         fixed_positions = 'A'
@@ -357,7 +357,7 @@ def mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residue
     mpnn_model.prep_inputs(pdb_filename=trajectory_pdb, chain=design_chains, fix_pos=fixed_positions, rm_aa=advanced_settings["omit_AAs"])
 
     # sample MPNN sequences in parallel
-    mpnn_sequences = mpnn_model.sample_parallel(temperature=advanced_settings["sampling_temp"], num=advanced_settings["num_seqs"], batch=advanced_settings["sample_seq_parallel"])
+    mpnn_sequences = mpnn_model.sample(temperature=advanced_settings["sampling_temp"], num=1, batch=advanced_settings["num_seqs"])
 
     return mpnn_sequences
 
