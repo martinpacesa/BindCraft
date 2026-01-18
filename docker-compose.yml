@@ -1,0 +1,111 @@
+version: '3.8'
+
+services:
+  # BindCraft API Server
+  bindcraft-api:
+    image: bindcraft:latest
+    container_name: bindcraft-api
+    build:
+      context: .
+      dockerfile: Dockerfile.bindcraft
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']  # GPU 0 (RTX 4090)
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - TOKENIZERS_PARALLELISM=false
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/inputs:/data/inputs
+      - ./data/outputs:/data/outputs
+      - ./data/pdbs:/data/pdbs
+      - ./weights:/weights:ro
+    working_dir: /workspace
+    command: api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - bindcraft-net
+
+  # Optional: BindCraft inference worker (GPU 1)
+  bindcraft-worker:
+    image: bindcraft:latest
+    container_name: bindcraft-worker
+    build:
+      context: .
+      dockerfile: Dockerfile.bindcraft
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['1']  # GPU 1 (RTX 5080)
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=1
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - TOKENIZERS_PARALLELISM=false
+    volumes:
+      - ./data/inputs:/data/inputs
+      - ./data/outputs:/data/outputs
+      - ./data/pdbs:/data/pdbs
+      - ./weights:/weights:ro
+    working_dir: /workspace
+    command: bash  # Interactive for on-demand processing
+    profiles:
+      - worker  # Only start with: docker-compose --profile worker up
+    networks:
+      - bindcraft-net
+
+  # Optional: Monitoring dashboard
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: bindcraft-prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    profiles:
+      - monitoring
+    networks:
+      - bindcraft-net
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: bindcraft-grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    profiles:
+      - monitoring
+    networks:
+      - bindcraft-net
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  bindcraft-net:
+    driver: bridge

@@ -1,0 +1,146 @@
+# Multi-stage Dockerfile for BindCraft inference on RTX
+# Optimized for RTX 4090 (24GB) and RTX 5080 (16GB)
+
+# Stage 1: Builder base with CUDA
+FROM nvidia/cuda:12.4-devel-ubuntu22.04 as builder
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    CUDA_HOME=/usr/local/cuda \
+    PATH=/usr/local/cuda/bin:$PATH \
+    LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    wget \
+    curl \
+    ca-certificates \
+    python3.10 \
+    python3.10-venv \
+    python3.10-dev \
+    libtiff5-dev \
+    libjpeg8-dev \
+    libopenjp2-7-dev \
+    zlib1g-dev \
+    liblcms2-dev \
+    libwebp-dev \
+    tcl8.6-dev \
+    tk8.6-dev \
+    libharfbuzz0b \
+    libfreetype6 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Miniconda
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
+    bash /tmp/miniconda.sh -b -p /opt/conda && \
+    rm /tmp/miniconda.sh && \
+    /opt/conda/bin/conda clean -afy
+
+ENV PATH=/opt/conda/bin:$PATH
+
+# Stage 2: BindCraft environment
+FROM builder as bindcraft-base
+
+WORKDIR /workspace
+
+# Clone BindCraft
+RUN git clone https://github.com/martinpacesa/BindCraft.git /workspace/bindcraft && \
+    cd /workspace/bindcraft && \
+    git log --oneline -1
+
+# Create conda environment for BindCraft
+RUN conda create -n bindcraft python=3.10 -y && \
+    echo "source activate bindcraft" > ~/.bashrc
+
+# Install core dependencies
+RUN /bin/bash -c "source activate bindcraft && \
+    conda install -c conda-forge -y \
+    pytorch::pytorch \
+    pytorch::pytorch-cuda=12.4 \
+    pytorch::torchvision \
+    pytorch::torchaudio \
+    biopython=1.83 \
+    numpy \
+    scipy \
+    matplotlib \
+    requests \
+    tqdm && \
+    pip install --upgrade pip setuptools wheel"
+
+# Install ColabFold/AlphaFold2 dependencies (lightweight version)
+RUN /bin/bash -c "source activate bindcraft && \
+    pip install --no-cache-dir \
+    dm-tree \
+    absl-py \
+    ml-collections \
+    immutables \
+    jax \
+    jaxlib \
+    flax \
+    optax \
+    chex"
+
+# Install ProteinMPNN
+RUN /bin/bash -c "source activate bindcraft && \
+    cd /workspace && \
+    git clone https://github.com/dauparas/ProteinMPNN.git && \
+    cd ProteinMPNN && \
+    pip install --no-cache-dir -e ."
+
+# Install PyRosetta (non-commercial license)
+RUN /bin/bash -c "source activate bindcraft && \
+    pip install --no-cache-dir \
+    pyrosetta-distro"
+
+# Install FastAPI + Uvicorn for API
+RUN /bin/bash -c "source activate bindcraft && \
+    pip install --no-cache-dir \
+    fastapi \
+    uvicorn[standard] \
+    pydantic \
+    python-multipart \
+    aiofiles"
+
+# Download AlphaFold2 weights (5.3GB) - can be very large, optional
+ENV AF2_WEIGHTS=/weights/alphafold2_weights
+RUN mkdir -p $AF2_WEIGHTS && echo "Note: AF2 weights can be downloaded on first run"
+
+# Stage 3: Final production image
+FROM bindcraft-base as production
+
+WORKDIR /workspace
+
+# Copy inference wrapper scripts
+COPY docker/api_server.py /workspace/api_server.py
+COPY docker/inference_pipeline.py /workspace/inference_pipeline.py
+COPY docker/entrypoint.sh /workspace/entrypoint.sh
+
+# Mount points for data
+VOLUME ["/data/inputs", "/data/outputs", "/data/pdbs"]
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# GPU optimization environment variables
+ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+    CUDA_LAUNCH_BLOCKING=0 \
+    TOKENIZERS_PARALLELISM=false \
+    OMP_NUM_THREADS=1
+
+# Expose API port
+EXPOSE 8000
+
+# Run API server by default
+RUN chmod +x /workspace/entrypoint.sh
+ENTRYPOINT ["/workspace/entrypoint.sh"]
+CMD ["api"]
+
+# Labels for metadata
+LABEL maintainer="BindCraft Team" \
+      version="latest" \
+      description="BindCraft Docker image optimized for RTX GPUs" \
+      cuda="12.4" \
+      base_image="nvidia/cuda:12.4-devel-ubuntu22.04"
