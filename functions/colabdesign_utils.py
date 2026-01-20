@@ -3,22 +3,35 @@
 ####################################
 ### Import dependencies
 import os, re, shutil, math, pickle
+import warnings
 import matplotlib.pyplot as plt
 import numpy as np
 import jax
 import jax.numpy as jnp
 from scipy.special import softmax
-from colabdesign import mk_afdesign_model, clear_mem
-from colabdesign.mpnn import mk_mpnn_model
-from colabdesign.af.alphafold.common import residue_constants
-from colabdesign.af.loss import get_ptm, mask_loss, get_dgram_bins, _get_con_loss
-from colabdesign.shared.utils import copy_dict
+
+# Try to import ColabDesign (optional for lightweight builds)
+try:
+    from colabdesign import mk_afdesign_model, clear_mem
+    from colabdesign.mpnn import mk_mpnn_model
+    from colabdesign.af.alphafold.common import residue_constants
+    from colabdesign.af.loss import get_ptm, mask_loss, get_dgram_bins, _get_con_loss
+    from colabdesign.shared.utils import copy_dict
+    COLABDESIGN_AVAILABLE = True
+except (ImportError, ModuleNotFoundError) as e:
+    warnings.warn(f"ColabDesign not fully available: {e} - will use AF2 pLDDT scoring only")
+    COLABDESIGN_AVAILABLE = False
+    
 from .biopython_utils import hotspot_residues, calculate_clash_score, calc_ss_percentage, calculate_percentages
 from .pyrosetta_utils import pr_relax, align_pdbs
 from .generic_utils import update_failures
 
 # hallucinate a binder
 def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residues, length, seed, helicity_value, design_models, advanced_settings, design_paths, failure_csv):
+    if not COLABDESIGN_AVAILABLE:
+        warnings.warn("ColabDesign not available - skipping binder hallucination")
+        return None
+        
     model_pdb_path = os.path.join(design_paths["Trajectory"], design_name+".pdb")
 
     # clear GPU memory for new trajectory

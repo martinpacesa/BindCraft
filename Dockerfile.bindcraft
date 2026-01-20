@@ -1,146 +1,112 @@
-# Multi-stage Dockerfile for BindCraft inference on RTX
-# Optimized for RTX 4090 (24GB) and RTX 5080 (16GB)
+############################################
+# BindCraft Optimized Docker Image
+# Lean build that avoids conda resolution bottleneck
+############################################
 
-# Stage 1: Builder base with CUDA
-FROM nvidia/cuda:12.4-devel-ubuntu22.04 as builder
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
-    CUDA_HOME=/usr/local/cuda \
-    PATH=/usr/local/cuda/bin:$PATH \
-    LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    CONDA_DIR=/opt/conda
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    git \
-    wget \
-    curl \
-    ca-certificates \
-    python3.10 \
-    python3.10-venv \
-    python3.10-dev \
-    libtiff5-dev \
-    libjpeg8-dev \
-    libopenjp2-7-dev \
-    zlib1g-dev \
-    liblcms2-dev \
-    libwebp-dev \
-    tcl8.6-dev \
-    tk8.6-dev \
-    libharfbuzz0b \
-    libfreetype6 \
+    build-essential git wget curl ca-certificates \
+    python3.10 python3.10-dev python3.10-venv python3-pip \
+    ffmpeg libopenblas-dev liblapack-dev gfortran \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Miniconda
+# Install Miniconda lightweight
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
-    bash /tmp/miniconda.sh -b -p /opt/conda && \
+    bash /tmp/miniconda.sh -b -p $CONDA_DIR && \
     rm /tmp/miniconda.sh && \
-    /opt/conda/bin/conda clean -afy
+    $CONDA_DIR/bin/conda clean -afy && \
+    $CONDA_DIR/bin/conda config --system --prepend channels conda-forge && \
+    $CONDA_DIR/bin/conda config --system --set auto_update_conda false
 
-ENV PATH=/opt/conda/bin:$PATH
-
-# Stage 2: BindCraft environment
-FROM builder as bindcraft-base
-
-WORKDIR /workspace
-
-# Clone BindCraft
-RUN git clone https://github.com/martinpacesa/BindCraft.git /workspace/bindcraft && \
-    cd /workspace/bindcraft && \
-    git log --oneline -1
-
-# Create conda environment for BindCraft
-RUN conda create -n bindcraft python=3.10 -y && \
-    echo "source activate bindcraft" > ~/.bashrc
-
-# Install core dependencies
-RUN /bin/bash -c "source activate bindcraft && \
-    conda install -c conda-forge -y \
-    pytorch::pytorch \
-    pytorch::pytorch-cuda=12.4 \
-    pytorch::torchvision \
-    pytorch::torchaudio \
-    biopython=1.83 \
-    numpy \
-    scipy \
-    matplotlib \
-    requests \
-    tqdm && \
-    pip install --upgrade pip setuptools wheel"
-
-# Install ColabFold/AlphaFold2 dependencies (lightweight version)
-RUN /bin/bash -c "source activate bindcraft && \
-    pip install --no-cache-dir \
-    dm-tree \
-    absl-py \
-    ml-collections \
-    immutables \
-    jax \
-    jaxlib \
-    flax \
-    optax \
-    chex"
-
-# Install ProteinMPNN
-RUN /bin/bash -c "source activate bindcraft && \
-    cd /workspace && \
-    git clone https://github.com/dauparas/ProteinMPNN.git && \
-    cd ProteinMPNN && \
-    pip install --no-cache-dir -e ."
-
-# Install PyRosetta (non-commercial license)
-RUN /bin/bash -c "source activate bindcraft && \
-    pip install --no-cache-dir \
-    pyrosetta-distro"
-
-# Install FastAPI + Uvicorn for API
-RUN /bin/bash -c "source activate bindcraft && \
-    pip install --no-cache-dir \
-    fastapi \
-    uvicorn[standard] \
-    pydantic \
-    python-multipart \
-    aiofiles"
-
-# Download AlphaFold2 weights (5.3GB) - can be very large, optional
-ENV AF2_WEIGHTS=/weights/alphafold2_weights
-RUN mkdir -p $AF2_WEIGHTS && echo "Note: AF2 weights can be downloaded on first run"
-
-# Stage 3: Final production image
-FROM bindcraft-base as production
+ENV PATH=$CONDA_DIR/bin:$PATH
 
 WORKDIR /workspace
 
-# Copy inference wrapper scripts
-COPY docker/api_server.py /workspace/api_server.py
-COPY docker/inference_pipeline.py /workspace/inference_pipeline.py
-COPY docker/entrypoint.sh /workspace/entrypoint.sh
+# Clone BindCraft repo
+RUN git clone https://github.com/martinpacesa/BindCraft.git /workspace/BindCraft && \
+    cd /workspace/BindCraft && git log --oneline -1
 
-# Mount points for data
-VOLUME ["/data/inputs", "/data/outputs", "/data/pdbs"]
+WORKDIR /workspace/BindCraft
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
+# Accept Conda ToS upfront
+RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
-# GPU optimization environment variables
-ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
-    CUDA_LAUNCH_BLOCKING=0 \
-    TOKENIZERS_PARALLELISM=false \
-    OMP_NUM_THREADS=1
+# Create minimal BindCraft environment - skip full conda solve by being explicit
+RUN conda create -n BindCraft -y -c conda-forge python=3.10 && \
+    echo "source activate BindCraft" > ~/.bashrc
 
-# Expose API port
-EXPOSE 8000
+# Install core Python packages
+RUN /bin/bash -c "source activate BindCraft && \
+    conda install -y -c conda-forge \
+      numpy 'scipy<1.14' matplotlib pandas biopython pip \
+    && pip install --no-cache-dir --upgrade pip setuptools wheel"
 
-# Run API server by default
-RUN chmod +x /workspace/entrypoint.sh
-ENTRYPOINT ["/workspace/entrypoint.sh"]
-CMD ["api"]
+# Install PyTorch with CUDA 12.1 support
+RUN /bin/bash -c "source activate BindCraft && \
+    pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121"
 
-# Labels for metadata
-LABEL maintainer="BindCraft Team" \
-      version="latest" \
-      description="BindCraft Docker image optimized for RTX GPUs" \
-      cuda="12.4" \
-      base_image="nvidia/cuda:12.4-devel-ubuntu22.04"
+# Install ML stack (JAX, Flax)
+RUN /bin/bash -c "source activate BindCraft && \
+    pip install --no-cache-dir 'jax[cuda12_cudnn]' 'jaxlib[cuda12_cudnn]' \
+      dm-tree ml-collections immutables flax optax chex"
+
+# Install ColabDesign (AF2 backprop)
+RUN /bin/bash -c "source activate BindCraft && \
+    pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps"
+
+# Clone ProteinMPNN (no pip install needed - it's a script repo)
+RUN cd /workspace && git clone https://github.com/dauparas/ProteinMPNN.git
+
+# Install PyRosetta from conda channel (not pip!)
+RUN /bin/bash -c "source activate BindCraft && \
+    conda install -y -c https://conda.graylab.jhu.edu pyrosetta"
+
+# Install other deps (pdbfixer via conda, not pip)
+RUN /bin/bash -c "source activate BindCraft && \
+    conda install -y -c conda-forge pdbfixer && \
+    pip install --no-cache-dir py3dmol seaborn tqdm fsspec joblib"
+
+# Download AlphaFold2 weights (~5.3GB)
+RUN mkdir -p /workspace/BindCraft/params && \
+    cd /workspace/BindCraft/params && \
+    wget https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar && \
+    tar -xvf alphafold_params_2022-12-06.tar && \
+    rm alphafold_params_2022-12-06.tar
+
+# Ensure executables
+RUN chmod +x /workspace/BindCraft/functions/dssp && \
+    chmod +x /workspace/BindCraft/functions/DAlphaBall.gcc
+
+# Setup volumes
+RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
+
+VOLUME ["/workspace/BindCraft/params", "/data/inputs", "/data/outputs", "/workspace/BindCraft/results"]
+
+# Entrypoint
+COPY <<'EOF' /entrypoint.sh
+#!/usr/bin/env bash
+set -e
+source /opt/conda/bin/activate BindCraft
+export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
+echo "=== BindCraft Environment ===" 
+echo "Python: $(python --version)"
+echo "Conda env: $CONDA_DEFAULT_ENV"
+python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta"
+echo "============================"
+echo ""
+exec "$@"
+EOF
+
+RUN chmod +x /entrypoint.sh
+
+WORKDIR /workspace/BindCraft
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bash"]

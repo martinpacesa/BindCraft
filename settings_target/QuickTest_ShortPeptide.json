@@ -1,0 +1,13 @@
+{
+  "design_name": "QuickTest_ShortPeptide",
+  "description": "Quick test - Short peptides, fast generation",
+  "starting_pdb": "./example/6X18.pdb",
+  "chain": "A",
+  "design_path": "./results/QuickTest_ShortPeptide",
+  "binder_name": "quick_peptide",
+  "target_hotspot_residues": "140,145,150",
+  "lengths": [20, 25],
+  "number_of_final_designs": 3,
+  "number_of_trajectories": 30,
+  "number_of_mpnn_designs": 2
+}

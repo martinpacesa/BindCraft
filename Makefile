@@ -32,15 +32,15 @@ help:
 
 # Build targets
 build:
-	@echo "🔨 Building BindCraft Docker image..."
-	docker build -f Dockerfile.bindcraft -t $(DOCKER_IMAGE) .
+	@echo "🔨 Building BindCraft Lightweight Docker image (AF2+MPNN, no PyRosetta)..."
+	docker build -f Dockerfile.light -t $(DOCKER_IMAGE) .
 	@echo "✅ Build complete: $(DOCKER_IMAGE)"
 
 build-prod:
 	@echo "🔨 Building production image (multi-stage optimization)..."
 	docker build \
 		--target production \
-		-f Dockerfile.bindcraft \
+		-f Dockerfile.light \
 		-t $(DOCKER_IMAGE)-prod \
 		--build-arg CUDA_VERSION=12.4 \
 		.

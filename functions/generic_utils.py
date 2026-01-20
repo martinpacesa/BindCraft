@@ -202,8 +202,8 @@ def check_jax_gpu():
     has_gpu = any(device.platform == 'gpu' for device in devices)
 
     if not has_gpu:
-        print("No GPU device found, terminating.")
-        exit()
+        print("⚠ No GPU device found for JAX - will continue with CPU (slow)")
+        # Don't exit, allow CPU-only mode for testing
     else:
         print("Available GPUs:")
         for i, device in enumerate(devices):
