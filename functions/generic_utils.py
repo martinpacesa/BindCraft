@@ -197,17 +197,18 @@ def load_helicity(advanced_settings):
 
 # Report JAX-capable devices
 def check_jax_gpu():
-    devices = jax.devices()
-
-    has_gpu = any(device.platform == 'gpu' for device in devices)
-
-    if not has_gpu:
-        print("⚠ No GPU device found for JAX - will continue with CPU (slow)")
-        # Don't exit, allow CPU-only mode for testing
-    else:
-        print("Available GPUs:")
-        for i, device in enumerate(devices):
-            print(f"{device.device_kind}{i + 1}: {device.platform}")
+    try:
+        devices = jax.devices()
+        has_gpu = any(device.platform == 'gpu' for device in devices)
+        
+        if not has_gpu:
+            print("⚠ JAX CPU mode - ColabFold will use PyTorch GPU instead")
+        else:
+            print("✓ JAX GPU available:")
+            for i, device in enumerate(devices):
+                print(f"  {device.device_kind}{i + 1}: {device.platform}")
+    except Exception as e:
+        print(f"⚠ JAX status check failed: {e} - proceeding with PyTorch")
 
 # check all input files being passed
 def perform_input_check(args):

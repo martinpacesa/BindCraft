@@ -1,6 +1,11 @@
 ####################################
 ###################### BindCraft Run
 ####################################
+### Set JAX to use GPU if available, fallback to CPU
+import os
+if 'JAX_PLATFORMS' not in os.environ:
+    os.environ['JAX_PLATFORMS'] = 'gpu,cpu'  # Try GPU first, fallback to CPU
+
 ### Import dependencies
 from functions import *
 
