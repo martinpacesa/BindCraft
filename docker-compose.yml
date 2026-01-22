@@ -7,7 +7,7 @@ services:
     container_name: bindcraft-api
     build:
       context: .
-      dockerfile: Dockerfile.optimized
+      dockerfile: Dockerfile.bindcraft
     runtime: nvidia
     deploy:
       resources:
