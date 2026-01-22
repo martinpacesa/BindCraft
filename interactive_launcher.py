@@ -58,13 +58,15 @@ def launch_pipeline(target, algorithm, filters):
     """Launch pipeline via Docker"""
     cmd = [
         "bash",
-        "/home/vincent/code/repo/biotech/BindCraft/launch_pipeline.sh",
-        target,
-        algorithm,
-        filters
+        "-c",
+        f"""
+export CUDA_VISIBLE_DEVICES=1
+cd /home/vincent/code/repo/biotech/BindCraft
+./launch_pipeline.sh {target} {algorithm} {filters}
+"""
     ]
     
-    print(f"\n🚀 Launching pipeline...")
+    print(f"\n🚀 Launching pipeline on GPU RTX 4090 (CUDA:1)...")
     subprocess.run(cmd, cwd="/home/vincent/code/repo/biotech/BindCraft")
 
 def main():

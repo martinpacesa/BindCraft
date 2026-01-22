@@ -69,7 +69,7 @@ echo -e "${YELLOW}(This may take 30min - 2h depending on parameters)${NC}\n"
 docker exec bindcraft-api bash -c "
   source /opt/conda/bin/activate BindCraft && \
   cd /workspace/BindCraft && \
-  python bindcraft.py \
+  CUDA_VISIBLE_DEVICES=1 python bindcraft.py \
     -s $TARGET_CONFIG \
     -a $ALGORITHM_CONFIG \
     -f $FILTERS_CONFIG 2>&1 | tee /workspace/BindCraft/logs/pipeline_${DESIGN_NAME}.log
