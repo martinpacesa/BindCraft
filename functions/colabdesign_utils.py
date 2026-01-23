@@ -6,6 +6,11 @@ import os, re, shutil, math, pickle
 import warnings
 import matplotlib.pyplot as plt
 import numpy as np
+
+# Force CPU mode BEFORE importing JAX
+os.environ['JAX_PLATFORMS'] = 'cpu'
+os.environ['JAX_JIT_COMPILE_MODE'] = 'off'
+
 import jax
 import jax.numpy as jnp
 from scipy.special import softmax
@@ -31,6 +36,9 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
     if not COLABDESIGN_AVAILABLE:
         warnings.warn("ColabDesign not available - skipping binder hallucination")
         return None
+    
+    # Force JAX CPU mode to support Docker without GPU
+    os.environ['JAX_PLATFORMS'] = 'cpu'
         
     model_pdb_path = os.path.join(design_paths["Trajectory"], design_name+".pdb")
 

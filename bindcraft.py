@@ -9,8 +9,8 @@ if 'JAX_PLATFORMS' not in os.environ:
 ### Import dependencies
 from functions import *
 
-# Check if JAX-capable GPU is available, otherwise exit
-check_jax_gpu()
+# Note: check_jax_gpu() disabled - we support CPU fallback for Docker compatibility
+# check_jax_gpu()
 
 ######################################
 ### parse input paths
