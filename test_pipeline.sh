@@ -1,13 +1,78 @@
 #!/bin/bash
-# Test BindCraft pipeline in Docker with full validation
+#############################################
+# BindCraft Docker Pipeline Test Script
+# Tests full vanilla pipeline with GPU/CPU
+#############################################
 
 set -e
 
-CONTAINER="bindcraft-api"
-SETTINGS_JSON="settings_target/QuickTest_ShortPeptide.json"
-OUTPUT_DIR="results/PipelineTest_$(date +%s)"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$SCRIPT_DIR"
 
-echo "=========================================="
+echo "=================================================="
+echo "  BindCraft Docker Pipeline Test"
+echo "=================================================="
+echo ""
+
+# 1. Check Docker is running
+echo "[1/5] Checking Docker setup..."
+if ! docker ps > /dev/null 2>&1; then
+    echo "❌ Docker not running. Please start Docker."
+    exit 1
+fi
+echo "✓ Docker running"
+
+# 2. Build or use existing image
+echo ""
+echo "[2/5] Building Docker image..."
+docker compose build 2>&1 | grep -E "Successfully|error|ERROR" | tail -5 || true
+
+# 3. Start container
+echo ""
+echo "[3/5] Starting BindCraft container..."
+docker compose up -d
+sleep 10
+
+# 4. Validate environment
+echo ""
+echo "[4/5] Validating environment..."
+docker exec bindcraft-api bash -c "
+echo 'Python: '$(python --version)
+echo 'JAX GPU:'
+python -c 'import jax; d=jax.devices(); print(f\"  Devices: {d}\"); print(f\"  Status: {'✓ GPU' if any(\"cuda\" in str(x).lower() for x in d) else '⚠ CPU'}\")'
+echo 'PyRosetta:'
+python -c 'try: import pyrosetta; print(\"  ✓ Available\"); except: print(\"  ⚠ Not available\")' 2>/dev/null || true
+"
+
+# 5. Run test pipeline
+echo ""
+echo "[5/5] Running BindCraft pipeline test..."
+echo "  Settings: QuickTest_ShortPeptide"
+echo "  Advanced: default_4stage_multimer"
+echo "  Timeout: 10 min"
+echo ""
+
+docker exec bindcraft-api bash -c "
+cd /workspace/BindCraft && \
+timeout 600 python bindcraft.py \
+  --settings settings_target/QuickTest_ShortPeptide.json \
+  --advanced settings_advanced/default_4stage_multimer.json \
+  --filters settings_filters/default_filters.json \
+  2>&1
+"
+
+echo ""
+echo "=================================================="
+echo "  Pipeline test completed!"
+echo "=================================================="
+echo ""
+echo "Results should be in:"
+echo "  /workspace/BindCraft/results/"
+echo ""
+echo "To check output structures:"
+echo "  docker exec bindcraft-api ls -lh /workspace/BindCraft/results/"
+echo ""
+
 echo "  BindCraft Pipeline Test"
 echo "=========================================="
 echo ""

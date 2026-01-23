@@ -34,7 +34,7 @@ WORKDIR /workspace/BindCraft
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
     pip install --no-cache-dir \
       dm-tree ml-collections immutables immutabledict chex einops dm-haiku \
-      biopython scipy pandas matplotlib seaborn py3dmol tqdm joblib pdbfixer
+      biopython scipy pandas matplotlib seaborn py3dmol tqdm joblib
 
 # Install ColabDesign (AF2 backprop with JAX GPU)
 RUN pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
