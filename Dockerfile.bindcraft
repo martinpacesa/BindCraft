@@ -51,12 +51,11 @@ RUN /bin/bash -c "source activate BindCraft && \
 RUN /bin/bash -c "source activate BindCraft && \
     pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121"
 
-# Install ML stack (JAX with CUDA support via conda, Flax)
+# Install ML stack (JAX with CUDA support via pip wheels)
 RUN /bin/bash -c "source activate BindCraft && \
-    conda install -y -c conda-forge \
-      jax jaxlib cuda-version=12.1 \
-      dm-tree ml-collections immutables flax optax chex && \
-    pip install --no-cache-dir einops"
+    pip install --no-cache-dir --upgrade 'jax[cuda12_cudnn]' && \
+    pip install --no-cache-dir \
+      dm-tree ml-collections immutables flax optax chex einops"
 
 # Install ColabDesign (AF2 backprop)
 RUN /bin/bash -c "source activate BindCraft && \
