@@ -37,7 +37,7 @@ RUN pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git 
 
 # Install additional dependencies
 # PyRosetta - try pip first, fall back if not available
-RUN pip install --no-cache-dir pdbfixer py3dmol seaborn tqdm fsspec joblib && \
+RUN pip install --no-cache-dir pdbfixer py3dmol seaborn tqdm fsspec joblib matplotlib && \
     pip install --no-cache-dir pyrosetta-distributed 2>/dev/null || echo "PyRosetta unavailable from pip"
 
 # Download AlphaFold2 weights (~5.3GB)
