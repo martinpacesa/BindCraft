@@ -1,29 +1,21 @@
 ############################################
-# BindCraft Optimized Docker Image
-# Lean build that avoids conda resolution bottleneck
+# BindCraft Docker Image with JAX GPU Support
+# Based on NVIDIA JAX-Toolbox official image
+# Includes JAX + CUDA 13 + cuDNN pre-compiled
 ############################################
 
-FROM ubuntu:22.04
+# Use NVIDIA's official JAX image with CUDA support
+# This image already has JAX, jaxlib, PyTorch, CUDA, cuDNN compiled
+FROM ghcr.io/nvidia/jax:jax
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    PYTHONUNBUFFERED=1 \
-    CONDA_DIR=/opt/conda
+    PYTHONUNBUFFERED=1
 
+# Install system dependencies for BindCraft
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential git wget curl ca-certificates \
-    python3.10 python3.10-dev python3.10-venv python3-pip \
     ffmpeg libopenblas-dev liblapack-dev gfortran \
     && rm -rf /var/lib/apt/lists/*
-
-# Install Miniconda lightweight
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
-    bash /tmp/miniconda.sh -b -p $CONDA_DIR && \
-    rm /tmp/miniconda.sh && \
-    $CONDA_DIR/bin/conda clean -afy && \
-    $CONDA_DIR/bin/conda config --system --prepend channels conda-forge && \
-    $CONDA_DIR/bin/conda config --system --set auto_update_conda false
-
-ENV PATH=$CONDA_DIR/bin:$PATH
 
 WORKDIR /workspace
 
@@ -33,50 +25,20 @@ RUN git clone https://github.com/martinpacesa/BindCraft.git /workspace/BindCraft
 
 WORKDIR /workspace/BindCraft
 
-# Accept Conda ToS upfront
-RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
-    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
-
-# Create minimal BindCraft environment - skip full conda solve by being explicit
-RUN conda create -n BindCraft -y -c conda-forge python=3.10 && \
-    echo "source activate BindCraft" > ~/.bashrc
-
-# Install core Python packages
-RUN /bin/bash -c "source activate BindCraft && \
-    conda install -y -c conda-forge \
-      numpy 'scipy<1.14' matplotlib pandas biopython pip \
-    && pip install --no-cache-dir --upgrade pip setuptools wheel"
-
-# Install PyTorch with CUDA 12.1 support
-RUN /bin/bash -c "source activate BindCraft && \
-    pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121"
-
-# Install ML stack (JAX - CPU fallback for ColabDesign)
-# Note: CUDA jaxlib wheels removed from PyPI, using CPU version
-# JAX will work but slower without GPU for hallucination step
-RUN /bin/bash -c "source activate BindCraft && \
-    pip install --no-cache-dir --upgrade pip && \
+# Skip creating a separate environment - use the base Python directly
+# The NVIDIA JAX image already has JAX nightly with CUDA pre-built
+# Just install BindCraft-specific dependencies
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
     pip install --no-cache-dir \
-      'jaxlib==0.4.20' \
-      'jax==0.4.20' && \
-    pip install --no-cache-dir \
-      dm-tree ml-collections immutables immutabledict flax optax chex einops dm-haiku || true"
+      dm-tree ml-collections immutables immutabledict chex einops dm-haiku
 
-# Install ColabDesign (AF2 backprop)
-RUN /bin/bash -c "source activate BindCraft && \
-    pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps"
+# Install ColabDesign (AF2 backprop) - relies on JAX in base image
+RUN pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
 
-# Clone ProteinMPNN (no pip install needed - it's a script repo)
-RUN cd /workspace && git clone https://github.com/dauparas/ProteinMPNN.git
-
-# Install PyRosetta from conda channel (not pip!)
-RUN /bin/bash -c "source activate BindCraft && \
-    conda install -y -c https://conda.graylab.jhu.edu pyrosetta"
-
-# Install other deps (pdbfixer via conda, not pip)
-RUN /bin/bash -c "source activate BindCraft && \
-    conda install -y -c conda-forge pdbfixer && \
-    pip install --no-cache-dir py3dmol seaborn tqdm fsspec joblib"
+# Install additional dependencies
+# PyRosetta - try pip first, fall back if not available
+RUN pip install --no-cache-dir pdbfixer py3dmol seaborn tqdm fsspec joblib && \
+    pip install --no-cache-dir pyrosetta-distributed 2>/dev/null || echo "PyRosetta unavailable from pip"
 
 # Download AlphaFold2 weights (~5.3GB)
 RUN mkdir -p /workspace/BindCraft/params && \
@@ -94,21 +56,20 @@ RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
 
 VOLUME ["/workspace/BindCraft/params", "/data/inputs", "/data/outputs", "/workspace/BindCraft/results"]
 
-# Entrypoint
-COPY <<'EOF' /entrypoint.sh
+# Setup entrypoint with environment validation
+RUN cat > /entrypoint.sh << 'ENTRYPOINT_EOF'
 #!/usr/bin/env bash
 set -e
-source /opt/conda/bin/activate BindCraft
 export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
 echo "=== BindCraft Environment ===" 
 echo "Python: $(python --version)"
-echo "Conda env: $CONDA_DEFAULT_ENV"
+python -c "import jax; d=jax.devices(); print('JAX Devices:', d); print('GPU Support:', 'YES' if any('gpu' in str(x).lower() for x in d) else 'NO')"
 python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
 python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta"
 echo "============================"
 echo ""
 exec "$@"
-EOF
+ENTRYPOINT_EOF
 
 RUN chmod +x /entrypoint.sh
 
