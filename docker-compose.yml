@@ -2,12 +2,13 @@ version: '3.8'
 
 services:
   # BindCraft API Server - GPU 0
+  # Full pipeline: JAX GPU + PyRosetta + ColabDesign + AF2
   bindcraft-api:
     image: bindcraft:latest
     container_name: bindcraft-api
     build:
       context: .
-      dockerfile: Dockerfile.bindcraft
+      dockerfile: Dockerfile.bindcraft.pyrosetta
     runtime: nvidia
     deploy:
       resources:

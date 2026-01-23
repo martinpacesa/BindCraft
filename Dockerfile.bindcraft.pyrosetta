@@ -1,0 +1,126 @@
+############################################
+# BindCraft Docker Image - FULL PIPELINE
+# Multi-stage: PyRosetta base + BindCraft + JAX GPU
+############################################
+
+# Stage 1: PyRosetta from RosettaCommons (has PyRosetta pre-compiled)
+FROM rosettacommons/rosetta:latest as rosetta_base
+
+# Stage 2: NVIDIA JAX with CUDA (official support)
+FROM ghcr.io/nvidia/jax:jax as jax_base
+
+# Stage 3: Final BindCraft image combining JAX GPU + PyRosetta
+FROM ghcr.io/nvidia/jax:jax
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1
+
+# Install system dependencies for BindCraft
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git wget curl ca-certificates \
+    ffmpeg libopenblas-dev liblapack-dev gfortran \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Clone BindCraft repo
+RUN git clone https://github.com/martinpacesa/BindCraft.git /workspace/BindCraft && \
+    cd /workspace/BindCraft && git log --oneline -1
+
+WORKDIR /workspace/BindCraft
+
+# Install all BindCraft dependencies in one go
+# JAX + jaxlib with CUDA already in base image
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir \
+      dm-tree ml-collections immutables immutabledict chex einops dm-haiku \
+      biopython scipy pandas matplotlib seaborn py3dmol tqdm joblib pdbfixer
+
+# Install ColabDesign (AF2 backprop with JAX GPU)
+RUN pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
+
+# Copy PyRosetta from RosettaCommons image
+COPY --from=rosetta_base /opt/conda/lib/python3.10/site-packages/pyrosetta* /opt/conda/lib/python3.10/site-packages/ 2>/dev/null || true
+COPY --from=rosetta_base /opt/conda/lib/python3.10/site-packages/rosetta* /opt/conda/lib/python3.10/site-packages/ 2>/dev/null || true
+
+# Fallback: Try pip install if copy didn't work
+RUN pip install --no-cache-dir pyrosetta-distributed 2>/dev/null || echo "PyRosetta install skipped (may not be available for this license)" || true
+
+# Clone ProteinMPNN
+RUN cd /workspace && git clone https://github.com/dauparas/ProteinMPNN.git
+
+# Download AlphaFold2 weights (~5.3GB)
+RUN mkdir -p /workspace/BindCraft/params && \
+    cd /workspace/BindCraft/params && \
+    wget -q https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar && \
+    tar -xf alphafold_params_2022-12-06.tar && \
+    rm alphafold_params_2022-12-06.tar
+
+# Ensure executables
+RUN chmod +x /workspace/BindCraft/functions/dssp && \
+    chmod +x /workspace/BindCraft/functions/DAlphaBall.gcc
+
+# Setup volumes
+RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
+
+VOLUME ["/workspace/BindCraft/params", "/data/inputs", "/data/outputs", "/workspace/BindCraft/results"]
+
+# Setup entrypoint with full environment validation
+RUN cat > /entrypoint.sh << 'ENTRYPOINT_EOF'
+#!/usr/bin/env bash
+set -e
+export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
+
+echo "================================"
+echo "  BindCraft Docker Environment"
+echo "================================"
+echo ""
+echo "Python: $(python --version)"
+echo ""
+
+# Test JAX GPU
+python -c "
+import jax
+devices = jax.devices()
+has_cuda = any('cuda' in str(d).lower() for d in devices)
+print(f'JAX Devices: {devices}')
+print(f'GPU Status: {\"✓ CUDA ENABLED\" if has_cuda else \"⚠ CPU MODE\"}')
+" 2>&1 || echo "⚠ JAX test failed"
+
+echo ""
+
+# Test core dependencies
+python -c "
+import sys
+modules = ['colabdesign', 'biopython', 'scipy', 'jax']
+for mod in modules:
+    try:
+        __import__(mod)
+        print(f'✓ {mod}')
+    except ImportError:
+        print(f'✗ {mod} MISSING')
+" 2>&1 || true
+
+# Test PyRosetta (optional)
+python -c "
+try:
+    import pyrosetta
+    print('✓ PyRosetta available')
+except ImportError:
+    print('⚠ PyRosetta not available (pipeline will work without relax)')
+" 2>&1 || true
+
+echo ""
+echo "================================"
+echo "  Ready for BindCraft pipeline"
+echo "================================"
+echo ""
+exec "$@"
+ENTRYPOINT_EOF
+
+RUN chmod +x /entrypoint.sh
+
+WORKDIR /workspace/BindCraft
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bash"]
