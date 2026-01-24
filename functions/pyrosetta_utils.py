@@ -17,16 +17,21 @@ class PyRosettaStub:
 # Try to import pyrosetta (optional for lightweight builds)
 try:
     import pyrosetta as pr
-    from pyrosetta.rosetta.core.kinematics import MoveMap
-    from pyrosetta.rosetta.core.select.residue_selector import ChainSelector
-    from pyrosetta.rosetta.protocols.simple_moves import AlignChainMover
-    from pyrosetta.rosetta.protocols.analysis import InterfaceAnalyzerMover
-    from pyrosetta.rosetta.protocols.relax import FastRelax
-    from pyrosetta.rosetta.core.simple_metrics.metrics import RMSDMetric
-    from pyrosetta.rosetta.core.select import get_residues_from_subset
-    from pyrosetta.rosetta.core.io import pose_from_pose
-    from pyrosetta.rosetta.protocols.rosetta_scripts import XmlObjects
-    PYROSETTA_AVAILABLE = True
+    try:
+        from pyrosetta.rosetta.core.kinematics import MoveMap
+        from pyrosetta.rosetta.core.select.residue_selector import ChainSelector
+        from pyrosetta.rosetta.protocols.simple_moves import AlignChainMover
+        from pyrosetta.rosetta.protocols.analysis import InterfaceAnalyzerMover
+        from pyrosetta.rosetta.protocols.relax import FastRelax
+        from pyrosetta.rosetta.core.simple_metrics.metrics import RMSDMetric
+        from pyrosetta.rosetta.core.select import get_residues_from_subset
+        from pyrosetta.rosetta.core.io import pose_from_pose
+        from pyrosetta.rosetta.protocols.rosetta_scripts import XmlObjects
+        PYROSETTA_AVAILABLE = True
+    except (ImportError, ModuleNotFoundError, AttributeError):
+        warnings.warn("PyRosetta submodules not available - using AF2 scoring only")
+        pr = PyRosettaStub()
+        PYROSETTA_AVAILABLE = False
 except (ImportError, ModuleNotFoundError) as e:
     warnings.warn(f"PyRosetta not available: {e} - will use AF2 pLDDT scoring only")
     pr = PyRosettaStub()

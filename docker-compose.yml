@@ -8,7 +8,7 @@ services:
     container_name: bindcraft-api
     build:
       context: .
-      dockerfile: Dockerfile.bindcraft.pyrosetta
+      dockerfile: Dockerfile.bindcraft
     runtime: nvidia
     deploy:
       resources:
@@ -21,6 +21,8 @@ services:
       - CUDA_VISIBLE_DEVICES=0
       - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
       - TOKENIZERS_PARALLELISM=false
+      - JAX_PLATFORMS=  # Let JAX auto-detect GPU
+      - XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/local/cuda
     volumes:
       - ./data/inputs:/data/inputs                      # PDB files entrée
       - ./data/outputs:/data/outputs                    # Résultats temporaires

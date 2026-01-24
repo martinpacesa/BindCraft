@@ -30,15 +30,15 @@ WORKDIR /workspace/BindCraft
 # Just install BindCraft-specific dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
     pip install --no-cache-dir \
-      dm-tree ml-collections immutables immutabledict chex einops dm-haiku
+      dm-tree ml-collections immutables immutabledict chex einops dm-haiku \
+      biopython scipy pandas matplotlib seaborn py3dmol tqdm joblib openmm
 
 # Install ColabDesign (AF2 backprop) - relies on JAX in base image
 RUN pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
 
 # Install additional dependencies
-# PyRosetta - try pip first, fall back if not available
-RUN pip install --no-cache-dir pdbfixer py3dmol seaborn tqdm fsspec joblib matplotlib && \
-    pip install --no-cache-dir pyrosetta-distributed 2>/dev/null || echo "PyRosetta unavailable from pip"
+# Note: pyrosetta requires conda installation from specialized channel - skipping for lightweight Docker
+# Pipeline will still run, just without PyRosetta relax step (optional)
 
 # Download AlphaFold2 weights (~5.3GB)
 RUN mkdir -p /workspace/BindCraft/params && \
