@@ -2,7 +2,7 @@
   "design_path": "/workspace/BindCraft/results/THP_Native/",
   "binder_name": "THP_Native",
   "starting_pdb": "/workspace/BindCraft/example/THP_variantXG.pdb",
-  "chain": "A",
+  "chains": ["A"],
   "target_hotspot_residues": "15-25",
   "lengths": [15, 20, 25],
   "number_of_final_designs": 5,

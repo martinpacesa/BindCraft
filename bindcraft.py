@@ -1,10 +1,10 @@
 ####################################
 ###################### BindCraft Run
 ####################################
-### Set JAX to use GPU if available, fallback to CPU
+### Set JAX to use CUDA GPU only (not ROCm or others)
 import os
 if 'JAX_PLATFORMS' not in os.environ:
-    os.environ['JAX_PLATFORMS'] = 'gpu,cpu'  # Try GPU first, fallback to CPU
+    os.environ['JAX_PLATFORMS'] = 'cuda'  # Force CUDA backend for consistency
 
 ### Import dependencies
 from functions import *
@@ -111,7 +111,7 @@ while True:
         print("Starting trajectory: "+design_name)
 
         ### Begin binder hallucination
-        trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chain"],
+        trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chains"][0],
                                             target_settings["target_hotspot_residues"], length, seed, helicity_value,
                                             design_models, advanced_settings, design_paths, failure_csv)
         trajectory_metrics = copy_dict(trajectory._tmp["best"]["aux"]["log"]) # contains plddt, ptm, i_ptm, pae, i_pae
