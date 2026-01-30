@@ -1,9 +1,9 @@
 {
-  "design_name": "GLP1_6X18_FullPipeline",
-  "description": "GLP-1 receptor peptide - Full BindCraft pipeline",
+  "design_name": "GLP1_6X18_Real",
+  "description": "GLP-1 receptor peptide - Paramètres natifs BindCraft",
   "starting_pdb": "./example/6X18.pdb",
   "chain": "A",
-  "design_path": "./results/GLP1_6X18_FullPipeline",
+  "design_path": "./results/GLP1_6X18_Real",
   "binder_name": "glp1_peptide",
   "target_hotspot_residues": "140,143,146,149,152",
   "lengths": [30, 35, 40],

@@ -1,0 +1,83 @@
+############################################
+# BindCraft Hybrid: JAX NVIDIA + PyRosetta minimal
+# Base qui marche + PyRosetta from GrayLab
+############################################
+
+# Start from working JAX NVIDIA image
+FROM ghcr.io/nvidia/jax:jax
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1
+
+# System deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git wget curl ca-certificates \
+    ffmpeg libopenblas-dev liblapack-dev gfortran libgfortran5 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Copy BindCraft from build context (use local version, not GitHub clone)
+COPY BindCraft /workspace/BindCraft
+
+WORKDIR /workspace/BindCraft
+
+# Install core deps via pip (proven working setup)
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir \
+      dm-tree ml-collections immutables immutabledict chex einops dm-haiku \
+      biopython scipy pandas matplotlib seaborn py3dmol tqdm joblib openmm
+
+# Force JAX CUDA backend (set env vars)
+RUN echo 'export JAX_PLATFORMS=cuda' >> /root/.bashrc && \
+    mkdir -p /etc/profile.d && \
+    echo 'export JAX_PLATFORMS=cuda' > /etc/profile.d/jax.sh
+
+# ColabDesign (with JAX CUDA already set)
+RUN JAX_PLATFORMS=cuda pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
+
+# Install miniforge for PyRosetta ONLY
+RUN wget -q https://github.com/conda-forge/miniforge/releases/download/24.3.0-0/Miniforge3-24.3.0-0-Linux-x86_64.sh -O miniforge.sh && \
+    bash miniforge.sh -b -p /opt/miniforge && \
+    rm miniforge.sh
+
+# Create minimal PyRosetta-only env
+RUN /opt/miniforge/bin/mamba create -n pyrosetta python=3.10 -y && \
+    /opt/miniforge/bin/mamba install -n pyrosetta pyrosetta \
+      --channel https://conda.graylab.jhu.edu -c conda-forge -y && \
+    /opt/miniforge/bin/mamba clean -a -y
+
+# AlphaFold2 weights
+RUN mkdir -p /workspace/BindCraft/params && \
+    cd /workspace/BindCraft/params && \
+    wget https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar && \
+    tar -xvf alphafold_params_2022-12-06.tar && \
+    rm alphafold_params_2022-12-06.tar
+
+# ProteinMPNN
+RUN cd /workspace && git clone https://github.com/dauparas/ProteinMPNN.git
+
+# Executables
+RUN chmod +x /workspace/BindCraft/functions/dssp && \
+    chmod +x /workspace/BindCraft/functions/DAlphaBall.gcc
+
+# Setup dirs
+RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
+
+# Entrypoint with PyRosetta check
+RUN cat > /entrypoint.sh << 'EOF' && chmod +x /entrypoint.sh
+#!/usr/bin/env bash
+set -e
+export JAX_PLATFORMS=cuda
+export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
+echo "=== BindCraft Environment ===" 
+python -c "import jax; print('JAX:', jax.devices())" 2>/dev/null || echo "⚠ JAX"
+python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta (will use fallback)"
+echo "============================="
+exec "$@"
+EOF
+
+WORKDIR /workspace/BindCraft
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bash"]

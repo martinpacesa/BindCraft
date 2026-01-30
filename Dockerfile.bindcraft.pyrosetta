@@ -4,10 +4,10 @@
 ############################################
 
 # Stage 1: PyRosetta from RosettaCommons (has PyRosetta pre-compiled)
-FROM rosettacommons/rosetta:latest as rosetta_base
+FROM rosettacommons/rosetta:latest AS rosetta_base
 
 # Stage 2: NVIDIA JAX with CUDA (official support)
-FROM ghcr.io/nvidia/jax:jax as jax_base
+FROM ghcr.io/nvidia/jax:jax AS jax_base
 
 # Stage 3: Final BindCraft image combining JAX GPU + PyRosetta
 FROM ghcr.io/nvidia/jax:jax
@@ -40,8 +40,8 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
 RUN pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
 
 # Copy PyRosetta from RosettaCommons image
-COPY --from=rosetta_base /opt/conda/lib/python3.10/site-packages/pyrosetta* /opt/conda/lib/python3.10/site-packages/ 2>/dev/null || true
-COPY --from=rosetta_base /opt/conda/lib/python3.10/site-packages/rosetta* /opt/conda/lib/python3.10/site-packages/ 2>/dev/null || true
+COPY --from=rosetta_base /opt/conda/lib/python3.10/site-packages/pyrosetta* /opt/conda/lib/python3.10/site-packages/
+COPY --from=rosetta_base /opt/conda/lib/python3.10/site-packages/rosetta* /opt/conda/lib/python3.10/site-packages/
 
 # Fallback: Try pip install if copy didn't work
 RUN pip install --no-cache-dir pyrosetta-distributed 2>/dev/null || echo "PyRosetta install skipped (may not be available for this license)" || true
@@ -66,59 +66,17 @@ RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
 VOLUME ["/workspace/BindCraft/params", "/data/inputs", "/data/outputs", "/workspace/BindCraft/results"]
 
 # Setup entrypoint with full environment validation
-RUN cat > /entrypoint.sh << 'ENTRYPOINT_EOF'
+RUN cat > /entrypoint.sh << 'EOF' && chmod +x /entrypoint.sh
 #!/usr/bin/env bash
 set -e
 export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
-
-echo "================================"
-echo "  BindCraft Docker Environment"
-echo "================================"
-echo ""
-echo "Python: $(python --version)"
-echo ""
-
-# Test JAX GPU
-python -c "
-import jax
-devices = jax.devices()
-has_cuda = any('cuda' in str(d).lower() for d in devices)
-print(f'JAX Devices: {devices}')
-print(f'GPU Status: {\"✓ CUDA ENABLED\" if has_cuda else \"⚠ CPU MODE\"}')
-" 2>&1 || echo "⚠ JAX test failed"
-
-echo ""
-
-# Test core dependencies
-python -c "
-import sys
-modules = ['colabdesign', 'biopython', 'scipy', 'jax']
-for mod in modules:
-    try:
-        __import__(mod)
-        print(f'✓ {mod}')
-    except ImportError:
-        print(f'✗ {mod} MISSING')
-" 2>&1 || true
-
-# Test PyRosetta (optional)
-python -c "
-try:
-    import pyrosetta
-    print('✓ PyRosetta available')
-except ImportError:
-    print('⚠ PyRosetta not available (pipeline will work without relax)')
-" 2>&1 || true
-
-echo ""
-echo "================================"
-echo "  Ready for BindCraft pipeline"
-echo "================================"
-echo ""
+echo "=== BindCraft Environment ===" 
+python -c "import jax; print('JAX:', jax.devices())" 2>/dev/null || echo "⚠ JAX"
+python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta (will use fallback)"
+echo "============================="
 exec "$@"
-ENTRYPOINT_EOF
-
-RUN chmod +x /entrypoint.sh
+EOF
 
 WORKDIR /workspace/BindCraft
 

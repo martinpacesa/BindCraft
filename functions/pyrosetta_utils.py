@@ -3,7 +3,10 @@
 ####################################
 ### Import dependencies
 import os
+import shutil
 import warnings
+import subprocess
+import sys
 
 # Stub class for PyRosetta when not available
 class PyRosettaStub:
@@ -15,6 +18,9 @@ class PyRosettaStub:
         return None
 
 # Try to import pyrosetta (optional for lightweight builds)
+pr = None
+PYROSETTA_AVAILABLE = False
+
 try:
     import pyrosetta as pr
     try:
@@ -232,6 +238,12 @@ def unaligned_rmsd(reference_pdb, align_pdb, reference_chain_id, align_chain_id)
 # Relax designed structure
 def pr_relax(pdb_file, relaxed_pdb_path):
     if not os.path.exists(relaxed_pdb_path):
+        # Check if PyRosetta is available
+        if pr is None:
+            warnings.warn("PyRosetta not available - copying structure without relaxation")
+            shutil.copy(pdb_file, relaxed_pdb_path)
+            return
+        
         # Generate pose
         pose = pr.pose_from_pdb(pdb_file)
         start_pose = pose.clone()

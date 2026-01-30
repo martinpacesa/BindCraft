@@ -57,21 +57,17 @@ RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
 VOLUME ["/workspace/BindCraft/params", "/data/inputs", "/data/outputs", "/workspace/BindCraft/results"]
 
 # Setup entrypoint with environment validation
-RUN cat > /entrypoint.sh << 'ENTRYPOINT_EOF'
+RUN cat > /entrypoint.sh << 'EOF' && chmod +x /entrypoint.sh
 #!/usr/bin/env bash
 set -e
 export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
 echo "=== BindCraft Environment ===" 
-echo "Python: $(python --version)"
-python -c "import jax; d=jax.devices(); print('JAX Devices:', d); print('GPU Support:', 'YES' if any('gpu' in str(x).lower() for x in d) else 'NO')"
+python -c "import jax; print('JAX:', jax.devices())" 2>/dev/null || echo "⚠ JAX"
 python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
-python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta"
-echo "============================"
-echo ""
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta (will use fallback)"
+echo "============================="
 exec "$@"
-ENTRYPOINT_EOF
-
-RUN chmod +x /entrypoint.sh
+EOF
 
 WORKDIR /workspace/BindCraft
 

@@ -7,17 +7,29 @@ import warnings
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Force CPU mode BEFORE importing JAX
-os.environ['JAX_PLATFORMS'] = 'cpu'
+# Force CUDA backend (don't use cpu or rocm)
+os.environ['JAX_PLATFORMS'] = 'cuda'
 os.environ['JAX_JIT_COMPILE_MODE'] = 'off'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TF warnings
 
 import jax
 import jax.numpy as jnp
 from scipy.special import softmax
 
+# Compatibility function for clear_mem (newer JAX versions)
+def clear_mem():
+    """Clear JAX memory - compatible with both old and new JAX versions"""
+    try:
+        import jax
+        # WORKAROUND: JAX 0.4-0.6 has PJRT bug on ReleaseDeviceMemoryOwnership
+        # Just skip cleanup - structures already computed, no need to force cleanup
+        pass
+    except Exception as e:
+        pass  # Silently skip on any error
+
 # Try to import ColabDesign (optional for lightweight builds)
 try:
-    from colabdesign import mk_afdesign_model, clear_mem
+    from colabdesign import mk_afdesign_model
     from colabdesign.mpnn import mk_mpnn_model
     from colabdesign.af.alphafold.common import residue_constants
     from colabdesign.af.loss import get_ptm, mask_loss, get_dgram_bins, _get_con_loss
@@ -37,8 +49,8 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
         warnings.warn("ColabDesign not available - skipping binder hallucination")
         return None
     
-    # Force JAX CPU mode to support Docker without GPU
-    os.environ['JAX_PLATFORMS'] = 'cpu'
+    # Force CUDA for design
+    os.environ['JAX_PLATFORMS'] = 'cuda'
         
     model_pdb_path = os.path.join(design_paths["Trajectory"], design_name+".pdb")
 
