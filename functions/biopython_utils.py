@@ -56,7 +56,11 @@ def target_pdb_rmsd(trajectory_pdb, starting_pdb, chain_ids_string):
     chain_trajectory = structure_trajectory[0]['A']
     
     # Extract the specified chains from starting_pdb
-    chain_ids = chain_ids_string.split(',')
+    # Handle both string ("A,B") and list (["A", "B"]) formats
+    if isinstance(chain_ids_string, list):
+        chain_ids = chain_ids_string
+    else:
+        chain_ids = chain_ids_string.split(',')
     residues_starting = []
     for chain_id in chain_ids:
         chain_id = chain_id.strip()
