@@ -60,7 +60,7 @@ def target_pdb_rmsd(trajectory_pdb, starting_pdb, chain_ids_string):
     if isinstance(chain_ids_string, list):
         chain_ids = chain_ids_string
     else:
-        chain_ids = chain_ids_string.split(',')
+        chain_ids = [c.strip() for c in chain_ids_string.split(',')]
     residues_starting = []
     for chain_id in chain_ids:
         chain_id = chain_id.strip()

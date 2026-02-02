@@ -111,7 +111,7 @@ while True:
         print("Starting trajectory: "+design_name)
 
         ### Begin binder hallucination
-        trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chains"][0],
+        trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chains"],
                                             target_settings["target_hotspot_residues"], length, seed, helicity_value,
                                             design_models, advanced_settings, design_paths, failure_csv)
         trajectory_metrics = copy_dict(trajectory._tmp["best"]["aux"]["log"]) # contains plddt, ptm, i_ptm, pae, i_pae
