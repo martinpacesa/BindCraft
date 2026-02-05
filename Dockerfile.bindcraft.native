@@ -1,0 +1,87 @@
+############################################
+# BindCraft Native: Reproduce install_bindcraft.sh exactly in Docker
+# Base: Ubuntu + Miniforge (conda)
+# JAX: 0.4-0.6.0 CUDA (like native)
+# Goal: GPU-enabled pipeline that works like native
+############################################
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PATH="/opt/miniforge/bin:$PATH"
+
+# System dependencies (from install_bindcraft.sh requirements)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git wget curl ca-certificates \
+    ffmpeg libopenblas-dev liblapack-dev gfortran libgfortran5 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Copy BindCraft from build context
+COPY BindCraft /workspace/BindCraft
+
+WORKDIR /workspace/BindCraft
+
+# Install Miniforge (conda package manager)
+RUN wget -q https://github.com/conda-forge/miniforge/releases/download/24.3.0-0/Miniforge3-24.3.0-0-Linux-x86_64.sh -O /tmp/miniforge.sh && \
+    bash /tmp/miniforge.sh -b -p /opt/miniforge && \
+    rm /tmp/miniforge.sh && \
+    conda clean -a -y
+
+# Create BindCraft conda environment (exactly like install_bindcraft.sh)
+RUN conda create --name BindCraft python=3.10 -y && \
+    conda clean -a -y
+
+# Install CUDA toolkit + cudnn (needed for JAX CUDA)
+RUN conda run -n BindCraft conda install \
+    cuda-nvcc cudnn -c nvidia -y && \
+    conda clean -a -y
+
+# Install all conda packages with JAX CUDA variant (exactly like install_bindcraft.sh)
+RUN CONDA_OVERRIDE_CUDA=12.2 conda run -n BindCraft conda install \
+    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
+    chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
+    'jax>=0.4,<=0.6.0' 'jaxlib>=0.4,<=0.6.0' \
+    -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y && \
+    conda clean -a -y
+
+# Install ColabDesign via pip in the conda environment
+RUN conda run -n BindCraft pip install --no-cache-dir \
+    git+https://github.com/sokrypton/ColabDesign.git --no-deps
+
+# Clone ProteinMPNN
+RUN cd /workspace && git clone https://github.com/dauparas/ProteinMPNN.git
+
+# Executables
+RUN chmod +x /workspace/BindCraft/functions/dssp && \
+    chmod +x /workspace/BindCraft/functions/DAlphaBall.gcc
+
+# Setup d
+RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
+
+# Download AlphaFold2 weights (~5.3GB) - LAST STEP
+RUN mkdir -p /workspace/BindCraft/params && \
+    cd /workspace/BindCraft/params && \
+    wget https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar && \
+    tar -xf alphafold_params_2022-12-06.tar && \
+    rm alphafold_params_2022-12-06.tar
+
+# Entrypoint: activate conda environment and set up PATH
+RUN cat > /entrypoint.sh << 'EOF' && chmod +x /entrypoint.sh
+#!/usr/bin/env bash
+set -e
+source /opt/miniforge/bin/activate /opt/miniforge/envs/BindCraft
+export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
+echo "=== BindCraft Environment (Native Conda) ===" 
+python -c "import jax; print('✓ JAX:', jax.devices())" 2>/dev/null || echo "⚠ JAX"
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta (will use fallback)"
+python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
+echo "============================="
+exec "$@"
+EOF
+
+WORKDIR /workspace/BindCraft
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["tail", "-f", "/dev/null"]

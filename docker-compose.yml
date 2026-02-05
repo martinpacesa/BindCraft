@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # BindCraft API Server - GPU 0
+  # Full pipeline: JAX GPU + PyRosetta + ColabDesign + AF2
+  bindcraft-api:
+    image: bindcraft:latest
+    container_name: bindcraft-api
+    build:
+      context: .
+      dockerfile: Dockerfile.bindcraft
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - TOKENIZERS_PARALLELISM=false
+      - JAX_PLATFORMS=  # Let JAX auto-detect GPU
+      - XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/local/cuda
+    volumes:
+      - ./data/inputs:/data/inputs                      # PDB files entrée
+      - ./data/outputs:/data/outputs                    # Résultats temporaires
+      - ./results:/workspace/BindCraft/results          # Peptides finaux (PERSIST)
+      - bindcraft-weights:/workspace/BindCraft/params   # AF2 weights cache (PERSIST)
+    working_dir: /workspace/BindCraft
+    command: /bin/sleep infinity
+    restart: unless-stopped
+    networks:
+      - bindcraft-net
+
+  # Optional: BindCraft worker - GPU 1
+  bindcraft-worker:
+    image: bindcraft:latest
+    container_name: bindcraft-worker
+    build:
+      context: .
+      dockerfile: Dockerfile.bindcraft
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['1']
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=1
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - TOKENIZERS_PARALLELISM=false
+    volumes:
+      - ./data/inputs:/data/inputs
+      - ./data/outputs:/data/outputs
+      - ./results:/workspace/BindCraft/results
+      - bindcraft-weights:/workspace/BindCraft/params
+    working_dir: /workspace/BindCraft
+    profiles:
+      - worker
+    networks:
+      - bindcraft-net
+
+volumes:
+  bindcraft-weights:
+    driver: local
+
+networks:
+  bindcraft-net:
+    driver: bridge

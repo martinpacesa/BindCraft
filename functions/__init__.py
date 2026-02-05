@@ -8,7 +8,13 @@ import pandas as pd
 import math, random
 import matplotlib.pyplot as plt
 
-from .pyrosetta_utils import *
+# Try to import pyrosetta (optional for lightweight builds)
+try:
+    from .pyrosetta_utils import *
+except (ModuleNotFoundError, ImportError) as e:
+    warnings.warn(f"PyRosetta not available ({str(e)}) - using AF2 pLDDT scoring only")
+    from .pyrosetta_utils_stub import *
+
 from .colabdesign_utils import *
 from .biopython_utils import *
 from .generic_utils import *
