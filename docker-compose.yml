@@ -4,11 +4,8 @@ services:
   # BindCraft API Server - GPU 0
   # Full pipeline: JAX GPU + PyRosetta + ColabDesign + AF2
   bindcraft-api:
-    image: bindcraft:latest
+    image: bindcraft:native
     container_name: bindcraft-api
-    build:
-      context: .
-      dockerfile: Dockerfile.bindcraft
     runtime: nvidia
     deploy:
       resources:
@@ -24,12 +21,13 @@ services:
       - JAX_PLATFORMS=  # Let JAX auto-detect GPU
       - XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/local/cuda
     volumes:
-      - ./data/inputs:/data/inputs                      # PDB files entrée
-      - ./data/outputs:/data/outputs                    # Résultats temporaires
-      - ./results:/workspace/BindCraft/results          # Peptides finaux (PERSIST)
-      - bindcraft-weights:/workspace/BindCraft/params   # AF2 weights cache (PERSIST)
+      - .:/workspace/BindCraft                         # Source code + settings
+      - ./data/inputs:/data/inputs                     # PDB files entrée
+      - ./data/outputs:/data/outputs                   # Résultats temporaires
+      - ./results:/workspace/BindCraft/results         # Peptides finaux (PERSIST)
+      - bindcraft-weights:/workspace/BindCraft/params  # AF2 weights cache (PERSIST)
     working_dir: /workspace/BindCraft
-    command: /bin/sleep infinity
+    command: python bindcraft.py --settings './settings_target/THP_NoFilters.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
     restart: unless-stopped
     networks:
       - bindcraft-net

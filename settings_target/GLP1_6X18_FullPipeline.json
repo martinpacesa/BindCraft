@@ -1,7 +1,7 @@
 {
   "design_name": "GLP1_6X18_Real",
   "description": "GLP-1 receptor peptide - Paramètres natifs BindCraft",
-  "starting_pdb": "./example/6X18.pdb",
+  "starting_pdb": "./example/6X18_real.pdb",
   "chain": "A",
   "design_path": "./results/GLP1_6X18_Real",
   "binder_name": "glp1_peptide",

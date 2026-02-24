@@ -36,16 +36,12 @@ RUN echo 'export JAX_PLATFORMS=cuda' >> /root/.bashrc && \
 # ColabDesign (with JAX CUDA already set)
 RUN JAX_PLATFORMS=cuda pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
 
-# Install miniforge for PyRosetta ONLY
-RUN wget -q https://github.com/conda-forge/miniforge/releases/download/24.3.0-0/Miniforge3-24.3.0-0-Linux-x86_64.sh -O miniforge.sh && \
-    bash miniforge.sh -b -p /opt/miniforge && \
-    rm miniforge.sh
+# Install conda + PyRosetta (simpler - just use conda)
+RUN apt-get update && apt-get install -y conda && rm -rf /var/lib/apt/lists/*
 
-# Create minimal PyRosetta-only env
-RUN /opt/miniforge/bin/mamba create -n pyrosetta python=3.10 -y && \
-    /opt/miniforge/bin/mamba install -n pyrosetta pyrosetta \
-      --channel https://conda.graylab.jhu.edu -c conda-forge -y && \
-    /opt/miniforge/bin/mamba clean -a -y
+# PyRosetta
+RUN conda install -c https://conda.graylab.jhu.edu -c conda-forge pyrosetta -y && \
+    conda clean -a
 
 # AlphaFold2 weights
 RUN mkdir -p /workspace/BindCraft/params && \
@@ -64,20 +60,20 @@ RUN chmod +x /workspace/BindCraft/functions/dssp && \
 # Setup dirs
 RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
 
-# Entrypoint with PyRosetta check
+# Entrypoint - simple check + launch
 RUN cat > /entrypoint.sh << 'EOF' && chmod +x /entrypoint.sh
 #!/usr/bin/env bash
-set -e
 export JAX_PLATFORMS=cuda
 export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
 echo "=== BindCraft Environment ===" 
-python -c "import jax; print('JAX:', jax.devices())" 2>/dev/null || echo "⚠ JAX"
-python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
-python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta (will use fallback)"
+python -c "import jax; print('✓ JAX:', jax.devices())" 2>/dev/null
+python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null
 echo "============================="
 exec "$@"
 EOF
 
 WORKDIR /workspace/BindCraft
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bash"]
 CMD ["bash"]

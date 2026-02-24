@@ -1,7 +1,7 @@
 {
   "design_name": "QuickTest_ShortPeptide",
   "description": "Quick test - Short peptides, fast generation",
-  "starting_pdb": "./example/6X18.pdb",
+  "starting_pdb": "./example/6X18_real.pdb",
   "chain": "A",
   "design_path": "./results/QuickTest_ShortPeptide",
   "binder_name": "quick_peptide",

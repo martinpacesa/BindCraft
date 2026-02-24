@@ -58,7 +58,7 @@ RUN cd /workspace && git clone https://github.com/dauparas/ProteinMPNN.git
 RUN chmod +x /workspace/BindCraft/functions/dssp && \
     chmod +x /workspace/BindCraft/functions/DAlphaBall.gcc
 
-# Setup d
+# Setup dirs
 RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
 
 # Download AlphaFold2 weights (~5.3GB) - LAST STEP
