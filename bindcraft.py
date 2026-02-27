@@ -176,6 +176,7 @@ while True:
 
                 ### MPNN redesign of starting binder
                 mpnn_trajectories = mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residues, advanced_settings)
+                trajectory_runtime.invalidate()
                 existing_mpnn_sequences = set(pd.read_csv(mpnn_csv, usecols=['Sequence'])['Sequence'].values)
 
                 # create set of MPNN sequences with allowed amino acid composition
