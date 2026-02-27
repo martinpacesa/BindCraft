@@ -32,6 +32,16 @@ class TrajectoryDesignRuntime:
         self._helix_loss_added = False
 
     def _ensure_model(self):
+        """
+        (Re)initialize the AF2 design model if needed.
+
+        The model is rebuilt when ``af_model`` is ``None`` – either on first
+        use or after an explicit ``invalidate()`` call.  External calls to
+        ``clear_mem()`` (e.g. during MPNN validation) free the underlying
+        JAX device buffers, so callers **must** call ``invalidate()`` after
+        any such ``clear_mem()`` invocation to ensure a fresh model is
+        created on the next trajectory.
+        """
         if self.af_model is not None:
             return
 
@@ -45,6 +55,18 @@ class TrajectoryDesignRuntime:
             best_metric="loss",
         )
         print("Initialised reusable AF2 trajectory model.")
+
+    def invalidate(self):
+        """Mark the cached model as stale so ``_ensure_model`` rebuilds it.
+
+        Call this after any external ``clear_mem()`` invocation that may
+        have freed the JAX device buffers backing ``self.af_model``.
+        """
+        self.af_model = None
+        self._rg_loss_added = False
+        self._iptm_loss_added = False
+        self._termini_loss_added = False
+        self._helix_loss_added = False
 
     def prepare_trajectory(
         self,
@@ -105,6 +127,8 @@ class TrajectoryDesignRuntime:
                 self._rg_loss_added = True
             else:
                 self.af_model.opt["weights"]["rg"] = self.advanced_settings["weights_rg"]
+        elif self._rg_loss_added:
+            self.af_model.opt["weights"]["rg"] = 0.0
 
         if self.advanced_settings["use_i_ptm_loss"]:
             if not self._iptm_loss_added:
@@ -112,6 +136,8 @@ class TrajectoryDesignRuntime:
                 self._iptm_loss_added = True
             else:
                 self.af_model.opt["weights"]["i_ptm"] = self.advanced_settings["weights_iptm"]
+        elif self._iptm_loss_added:
+            self.af_model.opt["weights"]["i_ptm"] = 0.0
 
         if self.advanced_settings["use_termini_distance_loss"]:
             if not self._termini_loss_added:
@@ -123,6 +149,8 @@ class TrajectoryDesignRuntime:
                 self.af_model.opt["weights"]["NC"] = self.advanced_settings[
                     "weights_termini_loss"
                 ]
+        elif self._termini_loss_added:
+            self.af_model.opt["weights"]["NC"] = 0.0
 
         if not self._helix_loss_added:
             add_helix_loss(self.af_model, helicity_value)
