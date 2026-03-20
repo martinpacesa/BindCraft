@@ -64,22 +64,22 @@ echo -e "BindCraft environment activated at ${CONDA_BASE}/envs/BindCraft"
 echo -e "Instaling conda requirements\n"
 if [ -n "$cuda" ]; then
   CONDA_OVERRIDE_CUDA="$cuda" $pkg_manager install \
-    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
+    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg fsspec py3dmol \
     chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
     'jax>=0.4,<=0.6.0' 'jaxlib>=0.4,<=0.6.0=*cuda*' cuda-nvcc cudnn \
-    -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y \
+    -c conda-forge -c nvidia -y \
   || { echo -e "Error: Failed to install conda packages."; exit 1; }
 else
   $pkg_manager install \
-    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
+    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 tqdm jupyter ffmpeg fsspec py3dmol \
     chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
     'jax>=0.4,<=0.6.0' 'jaxlib>=0.4,<=0.6.0' \
-    -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y \
+    -c conda-forge -c nvidia -y \
   || { echo -e "Error: Failed to install conda packages."; exit 1; }
 fi
 
 # make sure all required packages were installed
-required_packages=(pip pandas libgfortran5 matplotlib numpy biopython scipy pdbfixer seaborn tqdm jupyter ffmpeg pyrosetta fsspec py3dmol chex dm-haiku dm-tree joblib ml-collections immutabledict optax jaxlib jax cuda-nvcc cudnn)
+required_packages=(pip pandas libgfortran5 matplotlib numpy biopython scipy pdbfixer seaborn tqdm jupyter ffmpeg fsspec py3dmol chex dm-haiku dm-tree joblib ml-collections immutabledict optax jaxlib jax cuda-nvcc cudnn)
 missing_packages=()
 
 # Check each package
@@ -100,6 +100,11 @@ fi
 echo -e "Installing ColabDesign\n"
 pip3 install git+https://github.com/sokrypton/ColabDesign.git --no-deps || { echo -e "Error: Failed to install ColabDesign"; exit 1; }
 python -c "import colabdesign" >/dev/null 2>&1 || { echo -e "Error: colabdesign module not found after installation"; exit 1; }
+
+# install PyRosetta
+echo -e "Installing PyRosetta\n"
+pip install pyrosetta --find-links https://west.rosettacommons.org/pyrosetta/quarterly/release.cxx11thread.serialization
+python -c "import pyrosetta" >/dev/null 2>&1 || { echo -e "Error: pyrosetta module not found after installation"; exit 1; }
 
 # AlphaFold2 weights
 echo -e "Downloading AlphaFold2 model weights \n"
