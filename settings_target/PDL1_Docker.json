@@ -2,7 +2,7 @@
     "design_path": "/workspace/BindCraft/results/PDL1_Docker/",
     "binder_name": "PDL1",
     "starting_pdb": "/workspace/BindCraft/example/PDL1.pdb",
-    "chain": "A",
+    "chains": "A",
     "target_hotspot_residues": "56",
     "lengths": [20, 25],
     "number_of_final_designs": 3,

@@ -1,0 +1,6 @@
+results/
+results_GLP1_peptides/
+build.log
+*.pyc
+__pycache__/
+.env

@@ -239,7 +239,7 @@ def unaligned_rmsd(reference_pdb, align_pdb, reference_chain_id, align_chain_id)
 def pr_relax(pdb_file, relaxed_pdb_path):
     if not os.path.exists(relaxed_pdb_path):
         # Check if PyRosetta is available
-        if pr is None:
+        if not PYROSETTA_AVAILABLE:
             warnings.warn("PyRosetta not available - copying structure without relaxation")
             shutil.copy(pdb_file, relaxed_pdb_path)
             return
