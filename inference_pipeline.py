@@ -4,6 +4,7 @@ High-performance inference pipeline for BindCraft.
 Optimized for RTX GPUs with memory management and batching.
 """
 
+import os
 import torch
 import logging
 from pathlib import Path

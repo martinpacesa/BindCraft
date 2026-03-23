@@ -247,7 +247,6 @@ def perform_advanced_settings_check(advanced_settings, bindcraft_folder):
             advanced_settings["dalphaball_path"] = os.path.join(bindcraft_folder, 'functions', 'DAlphaBall.gcc')
 
     # check formatting of omit_AAs setting
-        omit_aas = advanced_settings["omit_AAs"]
     if advanced_settings["omit_AAs"] in [None, False, '']:
         advanced_settings["omit_AAs"] = None
     elif isinstance(advanced_settings["omit_AAs"], str):
