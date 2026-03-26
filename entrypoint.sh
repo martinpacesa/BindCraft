@@ -4,8 +4,10 @@
 
 set -e
 
-# Activate conda environment
-source /opt/conda/bin/activate bindcraft
+# Activate conda environment if available (not needed in JAX base image)
+if [ -f /opt/conda/bin/activate ]; then
+    source /opt/conda/bin/activate bindcraft
+fi
 
 # Setup environment
 export PYTHONUNBUFFERED=1
@@ -29,12 +31,12 @@ case "${1:-api}" in
     # Start API server
     api)
         echo "🚀 Starting FastAPI server..."
-        exec uvicorn api_server:app \
+        exec python -m uvicorn api_server:app \
             --host 0.0.0.0 \
             --port 8000 \
+            --root-path /bindcraft \
             --log-level info \
-            --access-log \
-            --reload
+            --access-log
         ;;
     
     # Run single inference
