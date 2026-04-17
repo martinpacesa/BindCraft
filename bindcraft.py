@@ -67,6 +67,7 @@ print(f"Filtering designs based on {filters_file}")
 script_start_time = time.time()
 trajectory_n = 1
 accepted_designs = 0
+trajectory_runtime = TrajectoryDesignRuntime(advanced_settings)
 
 ### start design loop
 while True:
@@ -108,7 +109,8 @@ while True:
         ### Begin binder hallucination
         trajectory = binder_hallucination(design_name, target_settings["starting_pdb"], target_settings["chains"],
                                             target_settings["target_hotspot_residues"], length, seed, helicity_value,
-                                            design_models, advanced_settings, design_paths, failure_csv)
+                                            design_models, advanced_settings, design_paths, failure_csv,
+                                            runtime=trajectory_runtime)
         trajectory_metrics = copy_dict(trajectory._tmp["best"]["aux"]["log"]) # contains plddt, ptm, i_ptm, pae, i_pae
         trajectory_pdb = os.path.join(design_paths["Trajectory"], design_name + ".pdb")
 
@@ -174,6 +176,7 @@ while True:
 
                 ### MPNN redesign of starting binder
                 mpnn_trajectories = mpnn_gen_sequence(trajectory_pdb, binder_chain, trajectory_interface_residues, advanced_settings)
+                trajectory_runtime.invalidate()
                 existing_mpnn_sequences = set(pd.read_csv(mpnn_csv, usecols=['Sequence'])['Sequence'].values)
 
                 # create set of MPNN sequences with allowed amino acid composition
