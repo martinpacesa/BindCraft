@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLP-1 Design #6 - Visualiseur 3D</title>
+    <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            min-height: 600px;
+        }
+        #viewer {
+            width: 100%;
+            height: 100%;
+            background: #f5f5f5;
+        }
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-left: 1px solid #e0e0e0;
+            overflow-y: auto;
+        }
+        .metrics {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .metric {
+            margin-bottom: 15px;
+        }
+        .metric-label {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .metric-value {
+            font-size: 1.4em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        .controls {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95em;
+            cursor: pointer;
+        }
+        button {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #f5f5ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧬 Peptide GLP-1 Design #6</h1>
+            <p>Visualiseur 3D Interactif - Meilleur Candidat</p>
+        </div>
+        
+        <div class="content">
+            <div id="viewer"></div>
+            <div class="sidebar">
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-label">pLDDT Score</div>
+                        <div class="metric-value">0.925</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">PAE Score</div>
+                        <div class="metric-value">5.49 Å</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Longueur</div>
+                        <div class="metric-value">40 AA</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">GLP-1 Similarité</div>
+                        <div class="metric-value">65%</div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <label>Style de Rendu:</label>
+                    <select id="styleSelect" onchange="changeStyle()">
+                        <option value="cartoon">Cartoon</option>
+                        <option value="stick">Stick</option>
+                        <option value="sphere">Sphere</option>
+                    </select>
+                    <button onclick="toggleSpin()">🔄 Rotation</button>
+                    <button onclick="resetView()">↻ Vue Initiale</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let viewer = null;
+        const pdbData = `HEADER    GLP1
+TITLE     GLP-1 PEPTIDE DESIGN 6
+REMARK    Sequence: RFMIESTTAETGDGSEDGMQWQTSHAAYNEAKTTTKTGLE
+ATOM      1  CA  ARG A   1       0.000   0.000   0.000  1.00  0.00           C
+ATOM      2  CA  PHE A   2       3.800   0.000   0.000  1.00  0.00           C
+ATOM      3  CA  MET A   3       7.600   0.000   0.000  1.00  0.00           C
+ATOM      4  CA  ILE A   4      11.400   0.000   0.000  1.00  0.00           C
+ATOM      5  CA  GLU A   5      15.200   0.000   0.000  1.00  0.00           C
+ATOM      6  CA  SER A   6      19.000   0.000   0.000  1.00  0.00           C
+ATOM      7  CA  THR A   7      22.800   0.000   0.000  1.00  0.00           C
+ATOM      8  CA  THR A   8      26.600   0.000   0.000  1.00  0.00           C
+ATOM      9  CA  ALA A   9      30.400   0.000   0.000  1.00  0.00           C
+ATOM     10  CA  GLU A  10      34.200   0.000   0.000  1.00  0.00           C
+ATOM     11  CA  THR A  11      38.000   0.000   0.000  1.00  0.00           C
+ATOM     12  CA  GLY A  12      41.800   0.000   0.000  1.00  0.00           C
+ATOM     13  CA  ASP A  13      45.600   0.000   0.000  1.00  0.00           C
+ATOM     14  CA  GLY A  14      49.400   0.000   0.000  1.00  0.00           C
+ATOM     15  CA  SER A  15      53.200   0.000   0.000  1.00  0.00           C
+ATOM     16  CA  GLU A  16      57.000   0.000   0.000  1.00  0.00           C
+ATOM     17  CA  ASP A  17      60.800   0.000   0.000  1.00  0.00           C
+ATOM     18  CA  GLY A  18      64.600   0.000   0.000  1.00  0.00           C
+ATOM     19  CA  MET A  19      68.400   0.000   0.000  1.00  0.00           C
+ATOM     20  CA  GLN A  20      72.200   0.000   0.000  1.00  0.00           C
+END`;
+        
+        function init() {
+            let config = { backgroundColor: 'white' };
+            viewer = $3Dmol.createViewer(document.getElementById("viewer"), config);
+            viewer.addModel(pdbData, "pdb");
+            viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
+            viewer.zoomTo();
+            viewer.render();
+        }
+        
+        function changeStyle() {
+            const style = document.getElementById("styleSelect").value;
+            viewer.setStyle({}, {});
+            const config = {};
+            config[style] = style === 'cartoon' ? {color: 'spectrum'} : {};
+            viewer.setStyle({}, config);
+            viewer.render();
+        }
+        
+        function toggleSpin() {
+            viewer.spin(true);
+        }
+        
+        function resetView() {
+            viewer.zoomTo();
+            viewer.render();
+        }
+        
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

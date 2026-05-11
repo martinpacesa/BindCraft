@@ -1,0 +1,12 @@
+{
+  "design_name": "GLP1_Permissive",
+  "description": "GLP1 binder design - Relaxed filters for peptide validation",
+  "starting_pdb": "./example/PDL1.pdb",
+  "chains": "A",
+  "design_path": "./results/GLP1_Permissive",
+  "binder_name": "GLP1_binder",
+  "target_hotspot_residues": "56,57,58",
+  "lengths": [10, 12, 15, 18, 20],
+  "number_of_final_designs": 10,
+  "number_of_trajectories": 3
+}

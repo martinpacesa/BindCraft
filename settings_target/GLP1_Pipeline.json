@@ -1,0 +1,12 @@
+{
+  "design_name": "GLP1_Pipeline_10to20AA",
+  "description": "GLP1 binder design - peptides 10-20 AA",
+  "starting_pdb": "./example/PDL1.pdb",
+  "chains": "A",
+  "design_path": "./results/GLP1_Pipeline_10to20AA",
+  "binder_name": "GLP1_binder",
+  "target_hotspot_residues": "56,57,58",
+  "lengths": [10, 15, 20],
+  "number_of_final_designs": 5,
+  "number_of_trajectories": 5
+}

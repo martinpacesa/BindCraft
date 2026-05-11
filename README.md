@@ -7,7 +7,42 @@ Simple binder design pipeline using AlphaFold2 backpropagation, MPNN, and PyRose
 
 **Note: Before posting an issue, read the complete wiki <a href="https://github.com/martinpacesa/BindCraft/wiki/De-novo-binder-design-with-BindCraft">here</a>. Issues that are covered in the wiki will be closed without an answer.**
 
-## Installation
+## Quick Start (Docker - Recommended for RTX GPUs)
+
+For easy setup on RTX 4090/5080 GPUs, use Docker:
+
+```bash
+# 1. Setup validation
+bash setup.sh
+
+# 2. Build Docker image
+make build
+
+# 3. Start API server
+make up
+
+# 4. Access at http://localhost:8000/docs
+```
+
+**API Usage Example:**
+```bash
+# Upload target PDB
+curl -X POST -F "file=@target.pdb" http://localhost:8000/upload
+
+# Design peptide
+curl -X POST http://localhost:8000/design \
+  -H "Content-Type: application/json" \
+  -d '{
+    "target_pdb_file": "target.pdb",
+    "binder_name": "my_binder",
+    "binder_lengths": "35-50",
+    "num_designs": 100
+  }'
+```
+
+See [DOCKER.md](DOCKER.md) for full Docker documentation.
+
+## Installation (Conda - Traditional)
 First you need to clone this repository. Replace **[install_folder]** with the path where you want to install it.
 
 `git clone https://github.com/martinpacesa/BindCraft [install_folder]`
