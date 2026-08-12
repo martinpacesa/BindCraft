@@ -23,7 +23,11 @@ def score_interface(pdb_file, binder_chain="B"):
 
     # analyze interface statistics
     iam = InterfaceAnalyzerMover()
-    iam.set_interface("A_B")
+    interface = "A_B"
+    docking_partners_type = getattr(pr.rosetta.core.pose, "DockingPartners", None)
+    if docking_partners_type is not None:
+        interface = docking_partners_type.docking_partners_from_string(interface)
+    iam.set_interface(interface)
     scorefxn = pr.get_fa_scorefxn()
     iam.set_scorefunction(scorefxn)
     iam.set_compute_packstat(True)
