@@ -187,14 +187,14 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
     ca_clashes = calculate_clash_score(model_pdb_path, 2.5, only_ca=True)
 
     #if clash_interface > 25 or ca_clashes > 0:
-    if ca_clashes > 0:
+    if ca_clashes > advanced_settings.get("trajectory_max_ca_clashes", 0):
         af_model.aux["log"]["terminate"] = "Clashing"
         update_failures(failure_csv, 'Trajectory_Clashes')
         print("Severe clashes detected, skipping analysis and MPNN optimisation")
         print("")
     else:
         # check if low quality prediction
-        if final_plddt < 0.7:
+        if final_plddt < advanced_settings.get("trajectory_min_plddt", 0.7):
             af_model.aux["log"]["terminate"] = "LowConfidence"
             update_failures(failure_csv, 'Trajectory_final_pLDDT')
             print("Trajectory starting confidence low, skipping analysis and MPNN optimisation")
@@ -205,7 +205,7 @@ def binder_hallucination(design_name, starting_pdb, chain, target_hotspot_residu
             binder_contacts_n = len(binder_contacts.items())
 
             # if less than 3 contacts then protein is floating above and is not binder
-            if binder_contacts_n < 3:
+            if binder_contacts_n < advanced_settings.get("trajectory_min_contacts", 3):
                 af_model.aux["log"]["terminate"] = "LowConfidence"
                 update_failures(failure_csv, 'Trajectory_Contacts')
                 print("Too few contacts at the interface, skipping analysis and MPNN optimisation")

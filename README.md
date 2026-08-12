@@ -105,6 +105,11 @@ weights_rg                      -> Design weight - radius of gyration weight for
 use_termini_distance_loss       -> Try to minimise distance between N- and C-terminus of binder? Helpful for grafting
 weights_termini_loss            -> Design weight - N- and C-terminus distance minimisation weight of binder
 
+# Trajectory quality thresholds
+trajectory_max_ca_clashes       -> Maximum number of CA clashes allowed before discarding trajectory as Clashing (default: 0)
+trajectory_min_plddt            -> Minimum final pLDDT required to keep trajectory, below this it is marked LowConfidence (default: 0.7)
+trajectory_min_contacts         -> Minimum number of interface contacts required, below this trajectory is marked LowConfidence (default: 3)
+
 # MPNN settings
 mpnn_fix_interface              -> whether to fix the interface designed in the starting trajectory
 num_seqs                        -> number of MPNN generated sequences to sample and predict per binder
