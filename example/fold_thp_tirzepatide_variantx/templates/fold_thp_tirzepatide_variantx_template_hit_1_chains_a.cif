@@ -1,0 +1,1274 @@
+data_6phm
+#
+_entry.id 6phm
+#
+loop_
+_chem_comp.formula
+_chem_comp.formula_weight
+_chem_comp.id
+_chem_comp.mon_nstd_flag
+_chem_comp.name
+_chem_comp.pdbx_synonyms
+_chem_comp.type
+"C3 H7 N O2"     89.093  DAL y D-ALANINE         ? "D-peptide linking" 
+"C6 H15 N4 O2 1" 175.209 DAR y D-ARGININE        ? "D-peptide linking" 
+"C4 H7 N O4"     133.103 DAS y "D-ASPARTIC ACID" ? "D-peptide linking" 
+"C5 H10 N2 O3"   146.144 DGN y D-GLUTAMINE       ? "D-peptide linking" 
+"C6 H10 N3 O2 1" 156.162 DHI y D-HISTIDINE       ? "D-peptide linking" 
+"C6 H13 N O2"    131.173 DLE y D-LEUCINE         ? "D-peptide linking" 
+"C6 H14 N2 O2"   146.188 DLY y D-LYSINE          ? "D-peptide linking" 
+"C9 H11 N O2"    165.189 DPN y D-PHENYLALANINE   ? "D-peptide linking" 
+"C4 H8 N2 O3"    132.118 DSG y D-ASPARAGINE      ? "D-peptide linking" 
+"C3 H7 N O3"     105.093 DSN y D-SERINE          ? "D-peptide linking" 
+"C4 H9 N O3"     119.119 DTH y D-THREONINE       ? "D-peptide linking" 
+"C11 H12 N2 O2"  204.225 DTR y D-TRYPTOPHAN      ? "D-peptide linking" 
+"C9 H11 N O3"    181.189 DTY y D-TYROSINE        ? "D-peptide linking" 
+"C5 H11 N O2"    117.146 DVA y D-VALINE          ? "D-peptide linking" 
+"C2 H5 N O2"     75.067  GLY y GLYCINE           ? "peptide linking"   
+"H2 O"           18.015  HOH . WATER             ? non-polymer         
+"C5 H11 N O2 S"  149.211 MED y D-METHIONINE      ? "D-peptide linking" 
+"O4 S -2"        96.063  SO4 . "SULFATE ION"     ? non-polymer         
+#
+loop_
+_chem_comp_atom.atom_id
+_chem_comp_atom.charge
+_chem_comp_atom.comp_id
+_chem_comp_atom.pdbx_leaving_atom_flag
+_chem_comp_atom.pdbx_model_Cartn_x_ideal
+_chem_comp_atom.pdbx_model_Cartn_y_ideal
+_chem_comp_atom.pdbx_model_Cartn_z_ideal
+_chem_comp_atom.pdbx_ordinal
+_chem_comp_atom.type_symbol
+N    ? DAL ? ? ? ? 1   N 
+CA   ? DAL ? ? ? ? 2   C 
+CB   ? DAL ? ? ? ? 3   C 
+C    ? DAL ? ? ? ? 4   C 
+O    ? DAL ? ? ? ? 5   O 
+OXT  ? DAL ? ? ? ? 6   O 
+H    ? DAL ? ? ? ? 7   H 
+H2   ? DAL ? ? ? ? 8   H 
+HA   ? DAL ? ? ? ? 9   H 
+HB1  ? DAL ? ? ? ? 10  H 
+HB2  ? DAL ? ? ? ? 11  H 
+HB3  ? DAL ? ? ? ? 12  H 
+HXT  ? DAL ? ? ? ? 13  H 
+N    ? DAR ? ? ? ? 14  N 
+CA   ? DAR ? ? ? ? 15  C 
+CB   ? DAR ? ? ? ? 16  C 
+CG   ? DAR ? ? ? ? 17  C 
+CD   ? DAR ? ? ? ? 18  C 
+NE   ? DAR ? ? ? ? 19  N 
+CZ   ? DAR ? ? ? ? 20  C 
+NH1  ? DAR ? ? ? ? 21  N 
+NH2  ? DAR ? ? ? ? 22  N 
+C    ? DAR ? ? ? ? 23  C 
+O    ? DAR ? ? ? ? 24  O 
+OXT  ? DAR ? ? ? ? 25  O 
+H    ? DAR ? ? ? ? 26  H 
+H2   ? DAR ? ? ? ? 27  H 
+HA   ? DAR ? ? ? ? 28  H 
+HB2  ? DAR ? ? ? ? 29  H 
+HB3  ? DAR ? ? ? ? 30  H 
+HG2  ? DAR ? ? ? ? 31  H 
+HG3  ? DAR ? ? ? ? 32  H 
+HD2  ? DAR ? ? ? ? 33  H 
+HD3  ? DAR ? ? ? ? 34  H 
+HE   ? DAR ? ? ? ? 35  H 
+HH11 ? DAR ? ? ? ? 36  H 
+HH12 ? DAR ? ? ? ? 37  H 
+HH21 ? DAR ? ? ? ? 38  H 
+HH22 ? DAR ? ? ? ? 39  H 
+HXT  ? DAR ? ? ? ? 40  H 
+N    ? DAS ? ? ? ? 41  N 
+CA   ? DAS ? ? ? ? 42  C 
+C    ? DAS ? ? ? ? 43  C 
+O    ? DAS ? ? ? ? 44  O 
+CB   ? DAS ? ? ? ? 45  C 
+CG   ? DAS ? ? ? ? 46  C 
+OD1  ? DAS ? ? ? ? 47  O 
+OD2  ? DAS ? ? ? ? 48  O 
+OXT  ? DAS ? ? ? ? 49  O 
+H    ? DAS ? ? ? ? 50  H 
+H2   ? DAS ? ? ? ? 51  H 
+HA   ? DAS ? ? ? ? 52  H 
+HB2  ? DAS ? ? ? ? 53  H 
+HB3  ? DAS ? ? ? ? 54  H 
+HD2  ? DAS ? ? ? ? 55  H 
+HXT  ? DAS ? ? ? ? 56  H 
+N    ? DGN ? ? ? ? 57  N 
+CA   ? DGN ? ? ? ? 58  C 
+C    ? DGN ? ? ? ? 59  C 
+O    ? DGN ? ? ? ? 60  O 
+OXT  ? DGN ? ? ? ? 61  O 
+CB   ? DGN ? ? ? ? 62  C 
+CG   ? DGN ? ? ? ? 63  C 
+CD   ? DGN ? ? ? ? 64  C 
+OE1  ? DGN ? ? ? ? 65  O 
+NE2  ? DGN ? ? ? ? 66  N 
+H    ? DGN ? ? ? ? 67  H 
+H2   ? DGN ? ? ? ? 68  H 
+HA   ? DGN ? ? ? ? 69  H 
+HXT  ? DGN ? ? ? ? 70  H 
+HB2  ? DGN ? ? ? ? 71  H 
+HB3  ? DGN ? ? ? ? 72  H 
+HG2  ? DGN ? ? ? ? 73  H 
+HG3  ? DGN ? ? ? ? 74  H 
+HE21 ? DGN ? ? ? ? 75  H 
+HE22 ? DGN ? ? ? ? 76  H 
+N    ? DHI ? ? ? ? 77  N 
+CA   ? DHI ? ? ? ? 78  C 
+C    ? DHI ? ? ? ? 79  C 
+O    ? DHI ? ? ? ? 80  O 
+CB   ? DHI ? ? ? ? 81  C 
+CG   ? DHI ? ? ? ? 82  C 
+ND1  ? DHI ? ? ? ? 83  N 
+CD2  ? DHI ? ? ? ? 84  C 
+CE1  ? DHI ? ? ? ? 85  C 
+NE2  ? DHI ? ? ? ? 86  N 
+OXT  ? DHI ? ? ? ? 87  O 
+H    ? DHI ? ? ? ? 88  H 
+H2   ? DHI ? ? ? ? 89  H 
+HA   ? DHI ? ? ? ? 90  H 
+HB2  ? DHI ? ? ? ? 91  H 
+HB3  ? DHI ? ? ? ? 92  H 
+HD1  ? DHI ? ? ? ? 93  H 
+HD2  ? DHI ? ? ? ? 94  H 
+HE1  ? DHI ? ? ? ? 95  H 
+HE2  ? DHI ? ? ? ? 96  H 
+HXT  ? DHI ? ? ? ? 97  H 
+N    ? DLE ? ? ? ? 98  N 
+CA   ? DLE ? ? ? ? 99  C 
+CB   ? DLE ? ? ? ? 100 C 
+CG   ? DLE ? ? ? ? 101 C 
+CD1  ? DLE ? ? ? ? 102 C 
+CD2  ? DLE ? ? ? ? 103 C 
+C    ? DLE ? ? ? ? 104 C 
+O    ? DLE ? ? ? ? 105 O 
+OXT  ? DLE ? ? ? ? 106 O 
+H    ? DLE ? ? ? ? 107 H 
+H2   ? DLE ? ? ? ? 108 H 
+HA   ? DLE ? ? ? ? 109 H 
+HB2  ? DLE ? ? ? ? 110 H 
+HB3  ? DLE ? ? ? ? 111 H 
+HG   ? DLE ? ? ? ? 112 H 
+HD11 ? DLE ? ? ? ? 113 H 
+HD12 ? DLE ? ? ? ? 114 H 
+HD13 ? DLE ? ? ? ? 115 H 
+HD21 ? DLE ? ? ? ? 116 H 
+HD22 ? DLE ? ? ? ? 117 H 
+HD23 ? DLE ? ? ? ? 118 H 
+HXT  ? DLE ? ? ? ? 119 H 
+N    ? DLY ? ? ? ? 120 N 
+CA   ? DLY ? ? ? ? 121 C 
+C    ? DLY ? ? ? ? 122 C 
+O    ? DLY ? ? ? ? 123 O 
+CB   ? DLY ? ? ? ? 124 C 
+CG   ? DLY ? ? ? ? 125 C 
+CD   ? DLY ? ? ? ? 126 C 
+CE   ? DLY ? ? ? ? 127 C 
+NZ   ? DLY ? ? ? ? 128 N 
+OXT  ? DLY ? ? ? ? 129 O 
+H    ? DLY ? ? ? ? 130 H 
+H2   ? DLY ? ? ? ? 131 H 
+HA   ? DLY ? ? ? ? 132 H 
+HB2  ? DLY ? ? ? ? 133 H 
+HB3  ? DLY ? ? ? ? 134 H 
+HG2  ? DLY ? ? ? ? 135 H 
+HG3  ? DLY ? ? ? ? 136 H 
+HD2  ? DLY ? ? ? ? 137 H 
+HD3  ? DLY ? ? ? ? 138 H 
+HE2  ? DLY ? ? ? ? 139 H 
+HE3  ? DLY ? ? ? ? 140 H 
+HZ1  ? DLY ? ? ? ? 141 H 
+HZ2  ? DLY ? ? ? ? 142 H 
+HXT  ? DLY ? ? ? ? 143 H 
+N    ? DPN ? ? ? ? 144 N 
+CA   ? DPN ? ? ? ? 145 C 
+C    ? DPN ? ? ? ? 146 C 
+O    ? DPN ? ? ? ? 147 O 
+OXT  ? DPN ? ? ? ? 148 O 
+CB   ? DPN ? ? ? ? 149 C 
+CG   ? DPN ? ? ? ? 150 C 
+CD1  ? DPN ? ? ? ? 151 C 
+CD2  ? DPN ? ? ? ? 152 C 
+CE1  ? DPN ? ? ? ? 153 C 
+CE2  ? DPN ? ? ? ? 154 C 
+CZ   ? DPN ? ? ? ? 155 C 
+H    ? DPN ? ? ? ? 156 H 
+H2   ? DPN ? ? ? ? 157 H 
+HA   ? DPN ? ? ? ? 158 H 
+HXT  ? DPN ? ? ? ? 159 H 
+HB2  ? DPN ? ? ? ? 160 H 
+HB3  ? DPN ? ? ? ? 161 H 
+HD1  ? DPN ? ? ? ? 162 H 
+HD2  ? DPN ? ? ? ? 163 H 
+HE1  ? DPN ? ? ? ? 164 H 
+HE2  ? DPN ? ? ? ? 165 H 
+HZ   ? DPN ? ? ? ? 166 H 
+N    ? DSG ? ? ? ? 167 N 
+CA   ? DSG ? ? ? ? 168 C 
+C    ? DSG ? ? ? ? 169 C 
+O    ? DSG ? ? ? ? 170 O 
+CB   ? DSG ? ? ? ? 171 C 
+CG   ? DSG ? ? ? ? 172 C 
+OD1  ? DSG ? ? ? ? 173 O 
+ND2  ? DSG ? ? ? ? 174 N 
+OXT  ? DSG ? ? ? ? 175 O 
+H    ? DSG ? ? ? ? 176 H 
+H2   ? DSG ? ? ? ? 177 H 
+HA   ? DSG ? ? ? ? 178 H 
+HB2  ? DSG ? ? ? ? 179 H 
+HB3  ? DSG ? ? ? ? 180 H 
+HD21 ? DSG ? ? ? ? 181 H 
+HD22 ? DSG ? ? ? ? 182 H 
+HXT  ? DSG ? ? ? ? 183 H 
+N    ? DSN ? ? ? ? 184 N 
+CA   ? DSN ? ? ? ? 185 C 
+C    ? DSN ? ? ? ? 186 C 
+O    ? DSN ? ? ? ? 187 O 
+OXT  ? DSN ? ? ? ? 188 O 
+CB   ? DSN ? ? ? ? 189 C 
+OG   ? DSN ? ? ? ? 190 O 
+H    ? DSN ? ? ? ? 191 H 
+H2   ? DSN ? ? ? ? 192 H 
+HA   ? DSN ? ? ? ? 193 H 
+HXT  ? DSN ? ? ? ? 194 H 
+HB2  ? DSN ? ? ? ? 195 H 
+HB3  ? DSN ? ? ? ? 196 H 
+HG   ? DSN ? ? ? ? 197 H 
+N    ? DTH ? ? ? ? 198 N 
+CA   ? DTH ? ? ? ? 199 C 
+CB   ? DTH ? ? ? ? 200 C 
+CG2  ? DTH ? ? ? ? 201 C 
+OG1  ? DTH ? ? ? ? 202 O 
+C    ? DTH ? ? ? ? 203 C 
+O    ? DTH ? ? ? ? 204 O 
+OXT  ? DTH ? ? ? ? 205 O 
+H    ? DTH ? ? ? ? 206 H 
+H2   ? DTH ? ? ? ? 207 H 
+HA   ? DTH ? ? ? ? 208 H 
+HB   ? DTH ? ? ? ? 209 H 
+HG21 ? DTH ? ? ? ? 210 H 
+HG22 ? DTH ? ? ? ? 211 H 
+HG23 ? DTH ? ? ? ? 212 H 
+HG1  ? DTH ? ? ? ? 213 H 
+HXT  ? DTH ? ? ? ? 214 H 
+N    ? DTR ? ? ? ? 215 N 
+CA   ? DTR ? ? ? ? 216 C 
+CB   ? DTR ? ? ? ? 217 C 
+CG   ? DTR ? ? ? ? 218 C 
+CD1  ? DTR ? ? ? ? 219 C 
+NE1  ? DTR ? ? ? ? 220 N 
+CE2  ? DTR ? ? ? ? 221 C 
+CZ2  ? DTR ? ? ? ? 222 C 
+CH2  ? DTR ? ? ? ? 223 C 
+CZ3  ? DTR ? ? ? ? 224 C 
+CE3  ? DTR ? ? ? ? 225 C 
+CD2  ? DTR ? ? ? ? 226 C 
+C    ? DTR ? ? ? ? 227 C 
+O    ? DTR ? ? ? ? 228 O 
+OXT  ? DTR ? ? ? ? 229 O 
+H    ? DTR ? ? ? ? 230 H 
+H2   ? DTR ? ? ? ? 231 H 
+HA   ? DTR ? ? ? ? 232 H 
+HB2  ? DTR ? ? ? ? 233 H 
+HB3  ? DTR ? ? ? ? 234 H 
+HD1  ? DTR ? ? ? ? 235 H 
+HE1  ? DTR ? ? ? ? 236 H 
+HZ2  ? DTR ? ? ? ? 237 H 
+HH2  ? DTR ? ? ? ? 238 H 
+HZ3  ? DTR ? ? ? ? 239 H 
+HE3  ? DTR ? ? ? ? 240 H 
+HXT  ? DTR ? ? ? ? 241 H 
+N    ? DTY ? ? ? ? 242 N 
+CA   ? DTY ? ? ? ? 243 C 
+C    ? DTY ? ? ? ? 244 C 
+O    ? DTY ? ? ? ? 245 O 
+CB   ? DTY ? ? ? ? 246 C 
+CG   ? DTY ? ? ? ? 247 C 
+CD1  ? DTY ? ? ? ? 248 C 
+CD2  ? DTY ? ? ? ? 249 C 
+CE1  ? DTY ? ? ? ? 250 C 
+CE2  ? DTY ? ? ? ? 251 C 
+CZ   ? DTY ? ? ? ? 252 C 
+OH   ? DTY ? ? ? ? 253 O 
+OXT  ? DTY ? ? ? ? 254 O 
+H    ? DTY ? ? ? ? 255 H 
+H2   ? DTY ? ? ? ? 256 H 
+HA   ? DTY ? ? ? ? 257 H 
+HB2  ? DTY ? ? ? ? 258 H 
+HB3  ? DTY ? ? ? ? 259 H 
+HD1  ? DTY ? ? ? ? 260 H 
+HD2  ? DTY ? ? ? ? 261 H 
+HE1  ? DTY ? ? ? ? 262 H 
+HE2  ? DTY ? ? ? ? 263 H 
+HH   ? DTY ? ? ? ? 264 H 
+HXT  ? DTY ? ? ? ? 265 H 
+N    ? DVA ? ? ? ? 266 N 
+CA   ? DVA ? ? ? ? 267 C 
+CB   ? DVA ? ? ? ? 268 C 
+CG1  ? DVA ? ? ? ? 269 C 
+CG2  ? DVA ? ? ? ? 270 C 
+C    ? DVA ? ? ? ? 271 C 
+O    ? DVA ? ? ? ? 272 O 
+OXT  ? DVA ? ? ? ? 273 O 
+H    ? DVA ? ? ? ? 274 H 
+H2   ? DVA ? ? ? ? 275 H 
+HA   ? DVA ? ? ? ? 276 H 
+HB   ? DVA ? ? ? ? 277 H 
+HG11 ? DVA ? ? ? ? 278 H 
+HG12 ? DVA ? ? ? ? 279 H 
+HG13 ? DVA ? ? ? ? 280 H 
+HG21 ? DVA ? ? ? ? 281 H 
+HG22 ? DVA ? ? ? ? 282 H 
+HG23 ? DVA ? ? ? ? 283 H 
+HXT  ? DVA ? ? ? ? 284 H 
+N    ? GLY ? ? ? ? 285 N 
+CA   ? GLY ? ? ? ? 286 C 
+C    ? GLY ? ? ? ? 287 C 
+O    ? GLY ? ? ? ? 288 O 
+OXT  ? GLY ? ? ? ? 289 O 
+H    ? GLY ? ? ? ? 290 H 
+H2   ? GLY ? ? ? ? 291 H 
+HA2  ? GLY ? ? ? ? 292 H 
+HA3  ? GLY ? ? ? ? 293 H 
+HXT  ? GLY ? ? ? ? 294 H 
+O    ? HOH ? ? ? ? 295 O 
+H1   ? HOH ? ? ? ? 296 H 
+H2   ? HOH ? ? ? ? 297 H 
+N    ? MED ? ? ? ? 298 N 
+CA   ? MED ? ? ? ? 299 C 
+C    ? MED ? ? ? ? 300 C 
+O    ? MED ? ? ? ? 301 O 
+CB   ? MED ? ? ? ? 302 C 
+CG   ? MED ? ? ? ? 303 C 
+SD   ? MED ? ? ? ? 304 S 
+CE   ? MED ? ? ? ? 305 C 
+OXT  ? MED ? ? ? ? 306 O 
+H    ? MED ? ? ? ? 307 H 
+H2   ? MED ? ? ? ? 308 H 
+HA   ? MED ? ? ? ? 309 H 
+HB2  ? MED ? ? ? ? 310 H 
+HB3  ? MED ? ? ? ? 311 H 
+HG2  ? MED ? ? ? ? 312 H 
+HG3  ? MED ? ? ? ? 313 H 
+HE1  ? MED ? ? ? ? 314 H 
+HE2  ? MED ? ? ? ? 315 H 
+HE3  ? MED ? ? ? ? 316 H 
+HXT  ? MED ? ? ? ? 317 H 
+S    ? SO4 ? ? ? ? 318 S 
+O1   ? SO4 ? ? ? ? 319 O 
+O2   ? SO4 ? ? ? ? 320 O 
+O3   ? SO4 ? ? ? ? 321 O 
+O4   ? SO4 ? ? ? ? 322 O 
+#
+loop_
+_chem_comp_bond.atom_id_1
+_chem_comp_bond.atom_id_2
+_chem_comp_bond.comp_id
+_chem_comp_bond.pdbx_aromatic_flag
+_chem_comp_bond.pdbx_stereo_config
+_chem_comp_bond.value_order
+N   CA   DAL N N sing 
+N   H    DAL N N sing 
+N   H2   DAL N N sing 
+CA  CB   DAL N N sing 
+CA  C    DAL N N sing 
+CA  HA   DAL N N sing 
+CB  HB1  DAL N N sing 
+CB  HB2  DAL N N sing 
+CB  HB3  DAL N N sing 
+C   O    DAL N N doub 
+C   OXT  DAL N N sing 
+OXT HXT  DAL N N sing 
+N   CA   DAR N N sing 
+N   H    DAR N N sing 
+N   H2   DAR N N sing 
+CA  CB   DAR N N sing 
+CA  C    DAR N N sing 
+CA  HA   DAR N N sing 
+CB  CG   DAR N N sing 
+CB  HB2  DAR N N sing 
+CB  HB3  DAR N N sing 
+CG  CD   DAR N N sing 
+CG  HG2  DAR N N sing 
+CG  HG3  DAR N N sing 
+CD  NE   DAR N N sing 
+CD  HD2  DAR N N sing 
+CD  HD3  DAR N N sing 
+NE  CZ   DAR N N sing 
+NE  HE   DAR N N sing 
+CZ  NH1  DAR N N sing 
+CZ  NH2  DAR N N doub 
+NH1 HH11 DAR N N sing 
+NH1 HH12 DAR N N sing 
+NH2 HH21 DAR N N sing 
+NH2 HH22 DAR N N sing 
+C   O    DAR N N doub 
+C   OXT  DAR N N sing 
+OXT HXT  DAR N N sing 
+N   CA   DAS N N sing 
+N   H    DAS N N sing 
+N   H2   DAS N N sing 
+CA  C    DAS N N sing 
+CA  CB   DAS N N sing 
+CA  HA   DAS N N sing 
+C   O    DAS N N doub 
+C   OXT  DAS N N sing 
+CB  CG   DAS N N sing 
+CB  HB2  DAS N N sing 
+CB  HB3  DAS N N sing 
+CG  OD1  DAS N N doub 
+CG  OD2  DAS N N sing 
+OD2 HD2  DAS N N sing 
+OXT HXT  DAS N N sing 
+N   CA   DGN N N sing 
+N   H    DGN N N sing 
+N   H2   DGN N N sing 
+CA  C    DGN N N sing 
+CA  CB   DGN N N sing 
+CA  HA   DGN N N sing 
+C   O    DGN N N doub 
+C   OXT  DGN N N sing 
+OXT HXT  DGN N N sing 
+CB  CG   DGN N N sing 
+CB  HB2  DGN N N sing 
+CB  HB3  DGN N N sing 
+CG  CD   DGN N N sing 
+CG  HG2  DGN N N sing 
+CG  HG3  DGN N N sing 
+CD  OE1  DGN N N doub 
+CD  NE2  DGN N N sing 
+NE2 HE21 DGN N N sing 
+NE2 HE22 DGN N N sing 
+N   CA   DHI N N sing 
+N   H    DHI N N sing 
+N   H2   DHI N N sing 
+CA  C    DHI N N sing 
+CA  CB   DHI N N sing 
+CA  HA   DHI N N sing 
+C   O    DHI N N doub 
+C   OXT  DHI N N sing 
+CB  CG   DHI N N sing 
+CB  HB2  DHI N N sing 
+CB  HB3  DHI N N sing 
+CG  ND1  DHI Y N sing 
+CG  CD2  DHI Y N doub 
+ND1 CE1  DHI Y N doub 
+ND1 HD1  DHI N N sing 
+CD2 NE2  DHI Y N sing 
+CD2 HD2  DHI N N sing 
+CE1 NE2  DHI Y N sing 
+CE1 HE1  DHI N N sing 
+NE2 HE2  DHI N N sing 
+OXT HXT  DHI N N sing 
+N   CA   DLE N N sing 
+N   H    DLE N N sing 
+N   H2   DLE N N sing 
+CA  CB   DLE N N sing 
+CA  C    DLE N N sing 
+CA  HA   DLE N N sing 
+CB  CG   DLE N N sing 
+CB  HB2  DLE N N sing 
+CB  HB3  DLE N N sing 
+CG  CD1  DLE N N sing 
+CG  CD2  DLE N N sing 
+CG  HG   DLE N N sing 
+CD1 HD11 DLE N N sing 
+CD1 HD12 DLE N N sing 
+CD1 HD13 DLE N N sing 
+CD2 HD21 DLE N N sing 
+CD2 HD22 DLE N N sing 
+CD2 HD23 DLE N N sing 
+C   O    DLE N N doub 
+C   OXT  DLE N N sing 
+OXT HXT  DLE N N sing 
+N   CA   DLY N N sing 
+N   H    DLY N N sing 
+N   H2   DLY N N sing 
+CA  C    DLY N N sing 
+CA  CB   DLY N N sing 
+CA  HA   DLY N N sing 
+C   O    DLY N N doub 
+C   OXT  DLY N N sing 
+CB  CG   DLY N N sing 
+CB  HB2  DLY N N sing 
+CB  HB3  DLY N N sing 
+CG  CD   DLY N N sing 
+CG  HG2  DLY N N sing 
+CG  HG3  DLY N N sing 
+CD  CE   DLY N N sing 
+CD  HD2  DLY N N sing 
+CD  HD3  DLY N N sing 
+CE  NZ   DLY N N sing 
+CE  HE2  DLY N N sing 
+CE  HE3  DLY N N sing 
+NZ  HZ1  DLY N N sing 
+NZ  HZ2  DLY N N sing 
+OXT HXT  DLY N N sing 
+N   CA   DPN N N sing 
+N   H    DPN N N sing 
+N   H2   DPN N N sing 
+CA  C    DPN N N sing 
+CA  CB   DPN N N sing 
+CA  HA   DPN N N sing 
+C   O    DPN N N doub 
+C   OXT  DPN N N sing 
+OXT HXT  DPN N N sing 
+CB  CG   DPN N N sing 
+CB  HB2  DPN N N sing 
+CB  HB3  DPN N N sing 
+CG  CD1  DPN Y N doub 
+CG  CD2  DPN Y N sing 
+CD1 CE1  DPN Y N sing 
+CD1 HD1  DPN N N sing 
+CD2 CE2  DPN Y N doub 
+CD2 HD2  DPN N N sing 
+CE1 CZ   DPN Y N doub 
+CE1 HE1  DPN N N sing 
+CE2 CZ   DPN Y N sing 
+CE2 HE2  DPN N N sing 
+CZ  HZ   DPN N N sing 
+N   CA   DSG N N sing 
+N   H    DSG N N sing 
+N   H2   DSG N N sing 
+CA  C    DSG N N sing 
+CA  CB   DSG N N sing 
+CA  HA   DSG N N sing 
+C   O    DSG N N doub 
+C   OXT  DSG N N sing 
+CB  CG   DSG N N sing 
+CB  HB2  DSG N N sing 
+CB  HB3  DSG N N sing 
+CG  OD1  DSG N N doub 
+CG  ND2  DSG N N sing 
+ND2 HD21 DSG N N sing 
+ND2 HD22 DSG N N sing 
+OXT HXT  DSG N N sing 
+N   CA   DSN N N sing 
+N   H    DSN N N sing 
+N   H2   DSN N N sing 
+CA  C    DSN N N sing 
+CA  CB   DSN N N sing 
+CA  HA   DSN N N sing 
+C   O    DSN N N doub 
+C   OXT  DSN N N sing 
+OXT HXT  DSN N N sing 
+CB  OG   DSN N N sing 
+CB  HB2  DSN N N sing 
+CB  HB3  DSN N N sing 
+OG  HG   DSN N N sing 
+N   CA   DTH N N sing 
+N   H    DTH N N sing 
+N   H2   DTH N N sing 
+CA  CB   DTH N N sing 
+CA  C    DTH N N sing 
+CA  HA   DTH N N sing 
+CB  CG2  DTH N N sing 
+CB  OG1  DTH N N sing 
+CB  HB   DTH N N sing 
+CG2 HG21 DTH N N sing 
+CG2 HG22 DTH N N sing 
+CG2 HG23 DTH N N sing 
+OG1 HG1  DTH N N sing 
+C   O    DTH N N doub 
+C   OXT  DTH N N sing 
+OXT HXT  DTH N N sing 
+N   CA   DTR N N sing 
+N   H    DTR N N sing 
+N   H2   DTR N N sing 
+CA  CB   DTR N N sing 
+CA  C    DTR N N sing 
+CA  HA   DTR N N sing 
+CB  CG   DTR N N sing 
+CB  HB2  DTR N N sing 
+CB  HB3  DTR N N sing 
+CG  CD1  DTR Y N doub 
+CG  CD2  DTR Y N sing 
+CD1 NE1  DTR Y N sing 
+CD1 HD1  DTR N N sing 
+NE1 CE2  DTR Y N sing 
+NE1 HE1  DTR N N sing 
+CE2 CZ2  DTR Y N doub 
+CE2 CD2  DTR Y N sing 
+CZ2 CH2  DTR Y N sing 
+CZ2 HZ2  DTR N N sing 
+CH2 CZ3  DTR Y N doub 
+CH2 HH2  DTR N N sing 
+CZ3 CE3  DTR Y N sing 
+CZ3 HZ3  DTR N N sing 
+CE3 CD2  DTR Y N doub 
+CE3 HE3  DTR N N sing 
+C   O    DTR N N doub 
+C   OXT  DTR N N sing 
+OXT HXT  DTR N N sing 
+N   CA   DTY N N sing 
+N   H    DTY N N sing 
+N   H2   DTY N N sing 
+CA  C    DTY N N sing 
+CA  CB   DTY N N sing 
+CA  HA   DTY N N sing 
+C   O    DTY N N doub 
+C   OXT  DTY N N sing 
+CB  CG   DTY N N sing 
+CB  HB2  DTY N N sing 
+CB  HB3  DTY N N sing 
+CG  CD1  DTY Y N doub 
+CG  CD2  DTY Y N sing 
+CD1 CE1  DTY Y N sing 
+CD1 HD1  DTY N N sing 
+CD2 CE2  DTY Y N doub 
+CD2 HD2  DTY N N sing 
+CE1 CZ   DTY Y N doub 
+CE1 HE1  DTY N N sing 
+CE2 CZ   DTY Y N sing 
+CE2 HE2  DTY N N sing 
+CZ  OH   DTY N N sing 
+OH  HH   DTY N N sing 
+OXT HXT  DTY N N sing 
+N   CA   DVA N N sing 
+N   H    DVA N N sing 
+N   H2   DVA N N sing 
+CA  CB   DVA N N sing 
+CA  C    DVA N N sing 
+CA  HA   DVA N N sing 
+CB  CG1  DVA N N sing 
+CB  CG2  DVA N N sing 
+CB  HB   DVA N N sing 
+CG1 HG11 DVA N N sing 
+CG1 HG12 DVA N N sing 
+CG1 HG13 DVA N N sing 
+CG2 HG21 DVA N N sing 
+CG2 HG22 DVA N N sing 
+CG2 HG23 DVA N N sing 
+C   O    DVA N N doub 
+C   OXT  DVA N N sing 
+OXT HXT  DVA N N sing 
+N   CA   GLY N N sing 
+N   H    GLY N N sing 
+N   H2   GLY N N sing 
+CA  C    GLY N N sing 
+CA  HA2  GLY N N sing 
+CA  HA3  GLY N N sing 
+C   O    GLY N N doub 
+C   OXT  GLY N N sing 
+OXT HXT  GLY N N sing 
+O   H1   HOH N N sing 
+O   H2   HOH N N sing 
+N   CA   MED N N sing 
+N   H    MED N N sing 
+N   H2   MED N N sing 
+CA  C    MED N N sing 
+CA  CB   MED N N sing 
+CA  HA   MED N N sing 
+C   O    MED N N doub 
+C   OXT  MED N N sing 
+CB  CG   MED N N sing 
+CB  HB2  MED N N sing 
+CB  HB3  MED N N sing 
+CG  SD   MED N N sing 
+CG  HG2  MED N N sing 
+CG  HG3  MED N N sing 
+SD  CE   MED N N sing 
+CE  HE1  MED N N sing 
+CE  HE2  MED N N sing 
+CE  HE3  MED N N sing 
+OXT HXT  MED N N sing 
+S   O1   SO4 N N doub 
+S   O2   SO4 N N doub 
+S   O3   SO4 N N sing 
+S   O4   SO4 N N sing 
+#
+_entity.id               1
+_entity.pdbx_description D-glucagon
+_entity.type             polymer
+#
+_entity_poly.entity_id      1
+_entity_poly.pdbx_strand_id A
+_entity_poly.type           polypeptide(D)
+#
+loop_
+_entity_poly_seq.entity_id
+_entity_poly_seq.hetero
+_entity_poly_seq.mon_id
+_entity_poly_seq.num
+1 n DHI 1  
+1 n DSN 2  
+1 n DGN 3  
+1 n GLY 4  
+1 n DTH 5  
+1 n DPN 6  
+1 n DTH 7  
+1 n DSN 8  
+1 n DAS 9  
+1 n DTY 10 
+1 n DSN 11 
+1 n DLY 12 
+1 n DTY 13 
+1 n DLE 14 
+1 n DAS 15 
+1 n DSN 16 
+1 n DAR 17 
+1 n DAR 18 
+1 n DAL 19 
+1 n DGN 20 
+1 n DAS 21 
+1 n DPN 22 
+1 n DVA 23 
+1 n DGN 24 
+1 n DTR 25 
+1 n DLE 26 
+1 n MED 27 
+1 n DSG 28 
+1 n DTH 29 
+#
+_exptl.method "X-RAY DIFFRACTION"
+#
+_pdbx_audit_revision_history.revision_date 2020-07-01
+#
+_pdbx_database_status.recvd_initial_deposition_date 2020-07-01
+#
+loop_
+_pdbx_poly_seq_scheme.asym_id
+_pdbx_poly_seq_scheme.auth_seq_num
+_pdbx_poly_seq_scheme.entity_id
+_pdbx_poly_seq_scheme.hetero
+_pdbx_poly_seq_scheme.mon_id
+_pdbx_poly_seq_scheme.pdb_ins_code
+_pdbx_poly_seq_scheme.pdb_seq_num
+_pdbx_poly_seq_scheme.pdb_strand_id
+_pdbx_poly_seq_scheme.seq_id
+A ?  1 n DHI . 1  A 1  
+A 2  1 n DSN . 2  A 2  
+A 3  1 n DGN . 3  A 3  
+A 4  1 n GLY . 4  A 4  
+A 5  1 n DTH . 5  A 5  
+A 6  1 n DPN . 6  A 6  
+A 7  1 n DTH . 7  A 7  
+A 8  1 n DSN . 8  A 8  
+A 9  1 n DAS . 9  A 9  
+A 10 1 n DTY . 10 A 10 
+A 11 1 n DSN . 11 A 11 
+A 12 1 n DLY . 12 A 12 
+A 13 1 n DTY . 13 A 13 
+A 14 1 n DLE . 14 A 14 
+A 15 1 n DAS . 15 A 15 
+A 16 1 n DSN . 16 A 16 
+A 17 1 n DAR . 17 A 17 
+A 18 1 n DAR . 18 A 18 
+A 19 1 n DAL . 19 A 19 
+A 20 1 n DGN . 20 A 20 
+A 21 1 n DAS . 21 A 21 
+A 22 1 n DPN . 22 A 22 
+A 23 1 n DVA . 23 A 23 
+A 24 1 n DGN . 24 A 24 
+A 25 1 n DTR . 25 A 25 
+A 26 1 n DLE . 26 A 26 
+A 27 1 n MED . 27 A 27 
+A 28 1 n DSG . 28 A 28 
+A 29 1 n DTH . 29 A 29 
+#
+_pdbx_struct_assembly.details            author_and_software_defined_assembly
+_pdbx_struct_assembly.id                 1
+_pdbx_struct_assembly.method_details     PISA
+_pdbx_struct_assembly.oligomeric_count   1
+_pdbx_struct_assembly.oligomeric_details monomeric
+#
+_pdbx_struct_assembly_gen.assembly_id     1
+_pdbx_struct_assembly_gen.asym_id_list    A,B,C
+_pdbx_struct_assembly_gen.oper_expression 1
+#
+_pdbx_struct_oper_list.id                 1
+_pdbx_struct_oper_list.matrix[1][1]       1.0000000000
+_pdbx_struct_oper_list.matrix[1][2]       0.0000000000
+_pdbx_struct_oper_list.matrix[1][3]       0.0000000000
+_pdbx_struct_oper_list.matrix[2][1]       0.0000000000
+_pdbx_struct_oper_list.matrix[2][2]       1.0000000000
+_pdbx_struct_oper_list.matrix[2][3]       0.0000000000
+_pdbx_struct_oper_list.matrix[3][1]       0.0000000000
+_pdbx_struct_oper_list.matrix[3][2]       0.0000000000
+_pdbx_struct_oper_list.matrix[3][3]       1.0000000000
+_pdbx_struct_oper_list.name               1_555
+_pdbx_struct_oper_list.symmetry_operation x,y,z
+_pdbx_struct_oper_list.type               "identity operation"
+_pdbx_struct_oper_list.vector[1]          0.0000000000
+_pdbx_struct_oper_list.vector[2]          0.0000000000
+_pdbx_struct_oper_list.vector[3]          0.0000000000
+#
+_refine.ls_d_res_high 1.10
+#
+_software.classification other
+_software.name           "DeepMind Structure Class"
+_software.pdbx_ordinal   1
+_software.version        2.0.0
+#
+_struct_asym.entity_id 1
+_struct_asym.id        A
+#
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_entity_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.B_iso_or_equiv
+_atom_site.auth_seq_id
+_atom_site.auth_asym_id
+_atom_site.pdbx_PDB_model_num
+HETATM 1   N N    . DSN A 1 2  ? -9.255  23.689  -4.546 1.00 40.16 2  A 1 
+HETATM 2   C CA   . DSN A 1 2  ? -9.024  22.283  -4.192 1.00 39.63 2  A 1 
+HETATM 3   C C    . DSN A 1 2  ? -8.422  22.112  -2.799 1.00 39.22 2  A 1 
+HETATM 4   O O    . DSN A 1 2  ? -8.531  22.993  -1.940 1.00 40.42 2  A 1 
+HETATM 5   C CB   . DSN A 1 2  ? -10.330 21.511  -4.284 1.00 40.07 2  A 1 
+HETATM 6   O OG   . DSN A 1 2  ? -10.904 21.760  -5.539 1.00 39.92 2  A 1 
+HETATM 7   H HA   . DSN A 1 2  ? -8.383  21.914  -4.820 1.00 47.64 2  A 1 
+HETATM 8   H HB2  . DSN A 1 2  ? -10.934 21.809  -3.586 1.00 48.17 2  A 1 
+HETATM 9   H HB3  . DSN A 1 2  ? -10.155 20.562  -4.189 1.00 48.17 2  A 1 
+HETATM 10  H HG   . DSN A 1 2  ? -10.639 22.494  -5.851 1.00 48.00 2  A 1 
+HETATM 11  N N    . DGN A 1 3  ? -7.769  20.979  -2.566 1.00 37.49 3  A 1 
+HETATM 12  C CA   . DGN A 1 3  ? -7.228  20.727  -1.240 1.00 37.19 3  A 1 
+HETATM 13  C C    . DGN A 1 3  ? -8.389  20.685  -0.239 1.00 33.28 3  A 1 
+HETATM 14  O O    . DGN A 1 3  ? -9.399  20.015  -0.481 1.00 32.56 3  A 1 
+HETATM 15  C CB   . DGN A 1 3  ? -6.422  19.436  -1.207 1.00 41.08 3  A 1 
+HETATM 16  C CG   . DGN A 1 3  ? -5.210  19.451  -2.132 1.00 44.54 3  A 1 
+HETATM 17  C CD   . DGN A 1 3  ? -4.619  18.048  -2.324 1.00 47.45 3  A 1 
+HETATM 18  O OE1  . DGN A 1 3  ? -4.339  17.612  -3.472 1.00 48.46 3  A 1 
+HETATM 19  N NE2  . DGN A 1 3  ? -4.440  17.318  -1.198 1.00 47.77 3  A 1 
+HETATM 20  H H    . DGN A 1 3  ? -7.631  20.358  -3.145 1.00 45.07 3  A 1 
+HETATM 21  H HA   . DGN A 1 3  ? -6.612  21.431  -0.986 1.00 44.72 3  A 1 
+HETATM 22  H HB2  . DGN A 1 3  ? -6.995  18.703  -1.480 1.00 49.38 3  A 1 
+HETATM 23  H HB3  . DGN A 1 3  ? -6.104  19.289  -0.303 1.00 49.38 3  A 1 
+HETATM 24  H HG2  . DGN A 1 3  ? -4.523  20.019  -1.750 1.00 53.54 3  A 1 
+HETATM 25  H HG3  . DGN A 1 3  ? -5.475  19.790  -3.001 1.00 53.54 3  A 1 
+HETATM 26  H HE21 . DGN A 1 3  ? -4.643  17.646  -0.428 1.00 57.42 3  A 1 
+HETATM 27  H HE22 . DGN A 1 3  ? -4.111  16.523  -1.244 1.00 57.42 3  A 1 
+ATOM   28  N N    . GLY A 1 4  ? -8.225  21.423  0.872  1.00 29.54 4  A 1 
+ATOM   29  C CA   . GLY A 1 4  ? -9.179  21.464  1.969  1.00 25.64 4  A 1 
+ATOM   30  C C    . GLY A 1 4  ? -9.044  20.315  2.950  1.00 22.16 4  A 1 
+ATOM   31  O O    . GLY A 1 4  ? -8.244  19.405  2.736  1.00 19.93 4  A 1 
+ATOM   32  H H    . GLY A 1 4  ? -7.540  21.924  1.011  1.00 35.54 4  A 1 
+ATOM   33  H HA2  . GLY A 1 4  ? -9.058  22.292  2.460  1.00 30.86 4  A 1 
+ATOM   34  H HA3  . GLY A 1 4  ? -10.078 21.442  1.605  1.00 30.86 4  A 1 
+HETATM 35  N N    . DTH A 1 5  ? -9.853  20.366  4.014  1.00 21.87 5  A 1 
+HETATM 36  C CA   . DTH A 1 5  ? -9.859  19.322  5.040  1.00 21.24 5  A 1 
+HETATM 37  C CB   . DTH A 1 5  ? -11.005 19.528  6.059  1.00 25.43 5  A 1 
+HETATM 38  C CG2  . DTH A 1 5  ? -10.898 20.877  6.714  1.00 26.96 5  A 1 
+HETATM 39  O OG1  . DTH A 1 5  ? -10.932 18.548  7.104  1.00 29.11 5  A 1 
+HETATM 40  C C    . DTH A 1 5  ? -8.549  19.244  5.812  1.00 18.04 5  A 1 
+HETATM 41  O O    . DTH A 1 5  ? -8.069  18.159  6.071  1.00 17.80 5  A 1 
+HETATM 42  H H    . DTH A 1 5  ? -10.412 21.002  4.164  1.00 26.34 5  A 1 
+HETATM 43  H HA   . DTH A 1 5  ? -9.982  18.474  4.587  1.00 25.57 5  A 1 
+HETATM 44  H HB   . DTH A 1 5  ? -11.846 19.454  5.583  1.00 30.61 5  A 1 
+HETATM 45  H HG21 . DTH A 1 5  ? -10.388 20.808  7.536  1.00 32.44 5  A 1 
+HETATM 46  H HG22 . DTH A 1 5  ? -11.783 21.217  6.920  1.00 32.44 5  A 1 
+HETATM 47  H HG23 . DTH A 1 5  ? -10.453 21.500  6.119  1.00 32.44 5  A 1 
+HETATM 48  H HG1  . DTH A 1 5  ? -11.702 18.248  7.275  1.00 35.02 5  A 1 
+HETATM 49  N N    . DPN A 1 6  ? -7.960  20.394  6.165  1.00 15.14 6  A 1 
+HETATM 50  C CA   . DPN A 1 6  ? -6.703  20.342  6.898  1.00 13.06 6  A 1 
+HETATM 51  C C    . DPN A 1 6  ? -5.649  19.596  6.091  1.00 11.80 6  A 1 
+HETATM 52  O O    . DPN A 1 6  ? -5.000  18.696  6.575  1.00 11.91 6  A 1 
+HETATM 53  C CB   . DPN A 1 6  ? -6.227  21.761  7.214  1.00 12.90 6  A 1 
+HETATM 54  C CG   . DPN A 1 6  ? -5.004  21.820  8.088  1.00 12.62 6  A 1 
+HETATM 55  C CD1  . DPN A 1 6  ? -3.738  21.923  7.551  1.00 13.93 6  A 1 
+HETATM 56  C CD2  . DPN A 1 6  ? -5.103  21.787  9.444  1.00 13.11 6  A 1 
+HETATM 57  C CE1  . DPN A 1 6  ? -2.604  21.992  8.394  1.00 14.57 6  A 1 
+HETATM 58  C CE2  . DPN A 1 6  ? -4.018  21.891  10.227 1.00 12.98 6  A 1 
+HETATM 59  C CZ   . DPN A 1 6  ? -2.747  21.978  9.711  1.00 13.57 6  A 1 
+HETATM 60  H H    . DPN A 1 6  ? -8.261  21.181  5.996  1.00 18.26 6  A 1 
+HETATM 61  H HA   . DPN A 1 6  ? -6.827  19.872  7.737  1.00 15.77 6  A 1 
+HETATM 62  H HB2  . DPN A 1 6  ? -6.940  22.233  7.672  1.00 15.57 6  A 1 
+HETATM 63  H HB3  . DPN A 1 6  ? -6.014  22.210  6.380  1.00 15.57 6  A 1 
+HETATM 64  H HD1  . DPN A 1 6  ? -3.629  21.948  6.627  1.00 16.81 6  A 1 
+HETATM 65  H HD2  . DPN A 1 6  ? -5.940  21.689  9.837  1.00 15.83 6  A 1 
+HETATM 66  H HE1  . DPN A 1 6  ? -1.754  22.048  8.021  1.00 17.57 6  A 1 
+HETATM 67  H HE2  . DPN A 1 6  ? -4.130  21.906  11.151 1.00 15.67 6  A 1 
+HETATM 68  H HZ   . DPN A 1 6  ? -2.006  22.025  10.272 1.00 16.38 6  A 1 
+HETATM 69  N N    . DTH A 1 7  ? -5.439  20.002  4.850  1.00 13.09 7  A 1 
+HETATM 70  C CA   . DTH A 1 7  ? -4.436  19.370  4.015  1.00 14.62 7  A 1 
+HETATM 71  C CB   . DTH A 1 7  ? -4.296  20.147  2.690  1.00 18.34 7  A 1 
+HETATM 72  C CG2  . DTH A 1 7  ? -3.310  19.496  1.787  1.00 20.27 7  A 1 
+HETATM 73  O OG1  . DTH A 1 7  ? -3.817  21.466  2.977  1.00 21.08 7  A 1 
+HETATM 74  C C    . DTH A 1 7  ? -4.753  17.925  3.749  1.00 12.73 7  A 1 
+HETATM 75  O O    . DTH A 1 7  ? -3.878  17.080  3.763  1.00 12.28 7  A 1 
+HETATM 76  H H    . DTH A 1 7  ? -5.867  20.643  4.468  1.00 15.80 7  A 1 
+HETATM 77  H HA   . DTH A 1 7  ? -3.578  19.370  4.467  1.00 17.63 7  A 1 
+HETATM 78  H HB   . DTH A 1 7  ? -5.158  20.174  2.247  1.00 22.09 7  A 1 
+HETATM 79  H HG21 . DTH A 1 7  ? -3.017  20.124  1.108  1.00 24.41 7  A 1 
+HETATM 80  H HG22 . DTH A 1 7  ? -3.714  18.729  1.353  1.00 24.41 7  A 1 
+HETATM 81  H HG23 . DTH A 1 7  ? -2.539  19.201  2.295  1.00 24.41 7  A 1 
+HETATM 82  H HG1  . DTH A 1 7  ? -4.434  21.934  3.323  1.00 25.39 7  A 1 
+HETATM 83  N N    . DSN A 1 8  ? -6.007  17.611  3.508  0.72 12.72 8  A 1 
+HETATM 84  C CA   . DSN A 1 8  ? -6.379  16.251  3.211  0.72 13.07 8  A 1 
+HETATM 85  C C    . DSN A 1 8  ? -6.206  15.376  4.444  0.72 11.83 8  A 1 
+HETATM 86  O O    . DSN A 1 8  ? -5.766  14.226  4.336  0.72 12.54 8  A 1 
+HETATM 87  C CB   . DSN A 1 8  ? -7.821  16.222  2.727  0.72 14.19 8  A 1 
+HETATM 88  O OG   . DSN A 1 8  ? -7.917  16.842  1.463  0.72 15.80 8  A 1 
+HETATM 89  H H    . DSN A 1 8  ? -6.661  18.170  3.511  0.72 15.36 8  A 1 
+HETATM 90  H HA   . DSN A 1 8  ? -5.816  15.887  2.510  0.72 15.77 8  A 1 
+HETATM 91  H HB2  . DSN A 1 8  ? -8.380  16.700  3.360  0.72 17.11 8  A 1 
+HETATM 92  H HB3  . DSN A 1 8  ? -8.116  15.301  2.654  0.72 17.11 8  A 1 
+HETATM 93  H HG   . DSN A 1 8  ? -7.753  17.671  1.529  0.72 19.05 8  A 1 
+HETATM 94  N N    . DAS A 1 9  ? -6.599  15.873  5.617  1.00 12.33 9  A 1 
+HETATM 95  C CA   . DAS A 1 9  ? -6.421  15.138  6.875  1.00 11.21 9  A 1 
+HETATM 96  C C    . DAS A 1 9  ? -4.945  14.973  7.228  1.00 10.53 9  A 1 
+HETATM 97  O O    . DAS A 1 9  ? -4.556  13.931  7.683  1.00 10.67 9  A 1 
+HETATM 98  C CB   . DAS A 1 9  ? -7.171  15.770  8.033  1.00 12.79 9  A 1 
+HETATM 99  C CG   . DAS A 1 9  ? -8.680  15.609  7.889  1.00 16.64 9  A 1 
+HETATM 100 O OD1  . DAS A 1 9  ? -9.144  14.700  7.146  1.00 18.93 9  A 1 
+HETATM 101 O OD2  . DAS A 1 9  ? -9.470  16.398  8.482  1.00 18.73 9  A 1 
+HETATM 102 H H    . DAS A 1 9  ? -6.976  16.640  5.714  1.00 14.88 9  A 1 
+HETATM 103 H HA   . DAS A 1 9  ? -6.803  14.255  6.746  1.00 13.54 9  A 1 
+HETATM 104 H HB2  . DAS A 1 9  ? -6.969  16.718  8.065  1.00 15.44 9  A 1 
+HETATM 105 H HB3  . DAS A 1 9  ? -6.898  15.345  8.861  1.00 15.44 9  A 1 
+HETATM 106 N N    . DTY A 1 10 ? -4.136  15.999  6.953  1.00 9.77  10 A 1 
+HETATM 107 C CA   . DTY A 1 10 ? -2.731  15.896  7.152  1.00 9.76  10 A 1 
+HETATM 108 C C    . DTY A 1 10 ? -2.182  14.793  6.244  1.00 9.74  10 A 1 
+HETATM 109 O O    . DTY A 1 10 ? -1.336  14.010  6.653  1.00 9.75  10 A 1 
+HETATM 110 C CB   . DTY A 1 10 ? -2.028  17.237  6.897  1.00 10.43 10 A 1 
+HETATM 111 C CG   . DTY A 1 10 ? -0.528  17.162  7.170  1.00 11.21 10 A 1 
+HETATM 112 C CD1  . DTY A 1 10 ? -0.035  16.970  8.442  1.00 13.27 10 A 1 
+HETATM 113 C CD2  . DTY A 1 10 ? 0.384   17.241  6.144  1.00 13.56 10 A 1 
+HETATM 114 C CE1  . DTY A 1 10 ? 1.346   16.903  8.711  1.00 14.56 10 A 1 
+HETATM 115 C CE2  . DTY A 1 10 ? 1.745   17.172  6.397  1.00 15.44 10 A 1 
+HETATM 116 C CZ   . DTY A 1 10 ? 2.194   16.972  7.684  1.00 15.09 10 A 1 
+HETATM 117 O OH   . DTY A 1 10 ? 3.537   16.870  7.936  1.00 17.55 10 A 1 
+HETATM 118 H H    . DTY A 1 10 ? -4.398  16.760  6.651  1.00 11.81 10 A 1 
+HETATM 119 H HA   . DTY A 1 10 ? -2.536  15.669  8.075  1.00 11.80 10 A 1 
+HETATM 120 H HB2  . DTY A 1 10 ? -2.408  17.911  7.482  1.00 12.61 10 A 1 
+HETATM 121 H HB3  . DTY A 1 10 ? -2.155  17.491  5.970  1.00 12.61 10 A 1 
+HETATM 122 H HD1  . DTY A 1 10 ? -0.635  16.880  9.147  1.00 16.02 10 A 1 
+HETATM 123 H HD2  . DTY A 1 10 ? 0.084   17.342  5.270  1.00 16.37 10 A 1 
+HETATM 124 H HE1  . DTY A 1 10 ? 1.659   16.813  9.582  1.00 17.56 10 A 1 
+HETATM 125 H HE2  . DTY A 1 10 ? 2.354   17.261  5.700  1.00 18.61 10 A 1 
+HETATM 126 H HH   . DTY A 1 10 ? 3.993   17.181  7.299  1.00 21.15 10 A 1 
+HETATM 127 N N    . DSN A 1 11 ? -2.639  14.730  5.014  0.69 10.96 11 A 1 
+HETATM 128 C CA   . DSN A 1 11 ? -2.231  13.661  4.094  0.69 12.21 11 A 1 
+HETATM 129 C C    . DSN A 1 11 ? -2.550  12.287  4.692  0.69 9.87  11 A 1 
+HETATM 130 O O    . DSN A 1 11 ? -1.746  11.380  4.655  0.69 10.53 11 A 1 
+HETATM 131 C CB   . DSN A 1 11 ? -2.930  13.910  2.744  0.69 14.71 11 A 1 
+HETATM 132 O OG   . DSN A 1 11 ? -2.416  13.080  1.747  0.69 16.04 11 A 1 
+HETATM 133 H H    . DSN A 1 11 ? -3.193  15.293  4.674  0.69 13.24 11 A 1 
+HETATM 134 H HA   . DSN A 1 11 ? -1.274  13.658  3.935  0.69 14.75 11 A 1 
+HETATM 135 H HB2  . DSN A 1 11 ? -2.793  14.834  2.485  0.69 17.74 11 A 1 
+HETATM 136 H HB3  . DSN A 1 11 ? -3.878  13.730  2.844  0.69 17.74 11 A 1 
+HETATM 137 H HG   . DSN A 1 11 ? -2.605  12.277  1.925  0.69 19.34 11 A 1 
+HETATM 138 N N    . DLY A 1 12 ? -3.740  12.114  5.230  1.00 9.73  12 A 1 
+HETATM 139 C CA   . DLY A 1 12 ? -4.101  10.842  5.875  1.00 10.56 12 A 1 
+HETATM 140 C C    . DLY A 1 12 ? -3.229  10.522  7.039  1.00 9.47  12 A 1 
+HETATM 141 O O    . DLY A 1 12 ? -2.844  9.356   7.221  1.00 9.63  12 A 1 
+HETATM 142 C CB   . DLY A 1 12 ? -5.568  10.853  6.276  1.00 13.08 12 A 1 
+HETATM 143 C CG   . DLY A 1 12 ? -6.477  10.765  5.005  1.00 16.50 12 A 1 
+HETATM 144 C CD   . DLY A 1 12 ? -7.942  10.936  5.244  1.00 18.63 12 A 1 
+HETATM 145 C CE   . DLY A 1 12 ? -8.612  9.665   5.608  1.00 19.73 12 A 1 
+HETATM 146 N NZ   . DLY A 1 12 ? -10.103 9.869   5.726  1.00 19.49 12 A 1 
+HETATM 147 H H    . DLY A 1 12 ? -4.362  12.708  5.241  1.00 11.76 12 A 1 
+HETATM 148 H HA   . DLY A 1 12 ? -3.968  10.125  5.235  1.00 12.77 12 A 1 
+HETATM 149 H HB2  . DLY A 1 12 ? -5.771  11.676  6.747  1.00 15.78 12 A 1 
+HETATM 150 H HB3  . DLY A 1 12 ? -5.756  10.090  6.845  1.00 15.78 12 A 1 
+HETATM 151 H HG2  . DLY A 1 12 ? -6.352  9.892   4.601  1.00 19.89 12 A 1 
+HETATM 152 H HG3  . DLY A 1 12 ? -6.204  11.460  4.386  1.00 19.89 12 A 1 
+HETATM 153 H HD2  . DLY A 1 12 ? -8.358  11.273  4.435  1.00 22.44 12 A 1 
+HETATM 154 H HD3  . DLY A 1 12 ? -8.074  11.564  5.971  1.00 22.44 12 A 1 
+HETATM 155 H HE2  . DLY A 1 12 ? -8.274  9.353   6.462  1.00 23.77 12 A 1 
+HETATM 156 H HE3  . DLY A 1 12 ? -8.444  9.001   4.922  1.00 23.77 12 A 1 
+HETATM 157 H HZ1  . DLY A 1 12 ? -10.505 9.091   5.883  1.00 23.47 12 A 1 
+HETATM 158 H HZ2  . DLY A 1 12 ? -10.424 10.214  4.971  1.00 23.47 12 A 1 
+HETATM 159 H HZ3  . DLY A 1 12 ? -10.281 10.427  6.397  1.00 23.47 12 A 1 
+HETATM 160 N N    . DTY A 1 13 ? -2.838  11.521  7.839  1.00 8.96  13 A 1 
+HETATM 161 C CA   . DTY A 1 13 ? -1.831  11.336  8.870  1.00 8.87  13 A 1 
+HETATM 162 C C    . DTY A 1 13 ? -0.518  10.863  8.268  1.00 8.79  13 A 1 
+HETATM 163 O O    . DTY A 1 13 ? 0.087   9.934   8.781  1.00 8.62  13 A 1 
+HETATM 164 C CB   . DTY A 1 13 ? -1.698  12.609  9.674  1.00 8.60  13 A 1 
+HETATM 165 C CG   . DTY A 1 13 ? -0.468  12.663  10.489 1.00 10.55 13 A 1 
+HETATM 166 C CD1  . DTY A 1 13 ? -0.289  11.919  11.611 1.00 13.85 13 A 1 
+HETATM 167 C CD2  . DTY A 1 13 ? 0.529   13.530  10.141 1.00 13.05 13 A 1 
+HETATM 168 C CE1  . DTY A 1 13 ? 0.902   11.988  12.331 1.00 17.01 13 A 1 
+HETATM 169 C CE2  . DTY A 1 13 ? 1.715   13.576  10.817 1.00 16.37 13 A 1 
+HETATM 170 C CZ   . DTY A 1 13 ? 1.868   12.856  11.923 1.00 17.58 13 A 1 
+HETATM 171 O OH   . DTY A 1 13 ? 3.028   12.946  12.596 1.00 20.22 13 A 1 
+HETATM 172 H H    . DTY A 1 13 ? -3.150  12.322  7.798  1.00 10.85 13 A 1 
+HETATM 173 H HA   . DTY A 1 13 ? -2.093  10.641  9.494  1.00 10.73 13 A 1 
+HETATM 174 H HB2  . DTY A 1 13 ? -2.457  12.680  10.275 1.00 10.40 13 A 1 
+HETATM 175 H HB3  . DTY A 1 13 ? -1.686  13.364  9.066  1.00 10.40 13 A 1 
+HETATM 176 H HD1  . DTY A 1 13 ? -0.970  11.356  11.903 1.00 16.71 13 A 1 
+HETATM 177 H HD2  . DTY A 1 13 ? 0.396   14.106  9.423  1.00 15.75 13 A 1 
+HETATM 178 H HE1  . DTY A 1 13 ? 1.035   11.449  13.077 1.00 20.50 13 A 1 
+HETATM 179 H HE2  . DTY A 1 13 ? 2.412   14.107  10.505 1.00 19.73 13 A 1 
+HETATM 180 H HH   . DTY A 1 13 ? 3.620   13.217  12.089 1.00 24.35 13 A 1 
+HETATM 181 N N    . DLE A 1 14 ? -0.056  11.492  7.190  1.00 8.99  14 A 1 
+HETATM 182 C CA   . DLE A 1 14 ? 1.188   11.056  6.559  1.00 9.58  14 A 1 
+HETATM 183 C CB   . DLE A 1 14 ? 1.582   11.982  5.414  1.00 11.27 14 A 1 
+HETATM 184 C CG   . DLE A 1 14 ? 2.005   13.382  5.829  1.00 13.25 14 A 1 
+HETATM 185 C CD1  . DLE A 1 14 ? 2.352   14.187  4.594  1.00 15.75 14 A 1 
+HETATM 186 C CD2  . DLE A 1 14 ? 3.119   13.378  6.785  1.00 15.09 14 A 1 
+HETATM 187 C C    . DLE A 1 14 ? 1.058   9.623   6.036  1.00 9.22  14 A 1 
+HETATM 188 O O    . DLE A 1 14 ? 2.003   8.805   6.162  1.00 10.03 14 A 1 
+HETATM 189 H H    . DLE A 1 14 ? -0.439  12.162  6.811  1.00 10.87 14 A 1 
+HETATM 190 H HA   . DLE A 1 14 ? 1.896   11.086  7.222  1.00 11.59 14 A 1 
+HETATM 191 H HB2  . DLE A 1 14 ? 0.821   12.072  4.819  1.00 13.61 14 A 1 
+HETATM 192 H HB3  . DLE A 1 14 ? 2.328   11.581  4.941  1.00 13.61 14 A 1 
+HETATM 193 H HG   . DLE A 1 14 ? 1.263   13.803  6.291  1.00 15.99 14 A 1 
+HETATM 194 H HD11 . DLE A 1 14 ? 2.131   15.118  4.751  1.00 18.99 14 A 1 
+HETATM 195 H HD12 . DLE A 1 14 ? 1.842   13.848  3.842  1.00 18.99 14 A 1 
+HETATM 196 H HD13 . DLE A 1 14 ? 3.302   14.098  4.416  1.00 18.99 14 A 1 
+HETATM 197 H HD21 . DLE A 1 14 ? 3.680   14.151  6.618  1.00 18.19 14 A 1 
+HETATM 198 H HD22 . DLE A 1 14 ? 3.633   12.564  6.668  1.00 18.19 14 A 1 
+HETATM 199 H HD23 . DLE A 1 14 ? 2.762   13.417  7.686  1.00 18.19 14 A 1 
+HETATM 200 N N    . DAS A 1 15 ? -0.113  9.263   5.508  1.00 9.31  15 A 1 
+HETATM 201 C CA   . DAS A 1 15 ? -0.351  7.900   5.035  1.00 9.53  15 A 1 
+HETATM 202 C C    . DAS A 1 15 ? -0.258  6.938   6.198  1.00 8.07  15 A 1 
+HETATM 203 O O    . DAS A 1 15 ? 0.255   5.839   6.052  1.00 8.64  15 A 1 
+HETATM 204 C CB   . DAS A 1 15 ? -1.761  7.743   4.482  1.00 11.83 15 A 1 
+HETATM 205 C CG   . DAS A 1 15 ? -2.025  8.423   3.172  1.00 14.16 15 A 1 
+HETATM 206 O OD1  . DAS A 1 15 ? -1.109  8.810   2.436  1.00 15.26 15 A 1 
+HETATM 207 O OD2  . DAS A 1 15 ? -3.276  8.548   2.935  1.00 17.89 15 A 1 
+HETATM 208 H H    . DAS A 1 15 ? -0.786  9.791   5.413  1.00 11.26 15 A 1 
+HETATM 209 H HA   . DAS A 1 15 ? 0.300   7.705   4.343  1.00 11.53 15 A 1 
+HETATM 210 H HB2  . DAS A 1 15 ? -2.385  8.111   5.128  1.00 14.29 15 A 1 
+HETATM 211 H HB3  . DAS A 1 15 ? -1.936  6.797   4.355  1.00 14.29 15 A 1 
+HETATM 212 N N    . DSN A 1 16 ? -0.716  7.321   7.360  0.46 8.59  16 A 1 
+HETATM 213 C CA   . DSN A 1 16 ? -0.696  6.434   8.511  0.46 9.36  16 A 1 
+HETATM 214 C C    . DSN A 1 16 ? 0.709   6.277   9.103  0.46 9.12  16 A 1 
+HETATM 215 O O    . DSN A 1 16 ? 1.102   5.217   9.627  0.46 8.87  16 A 1 
+HETATM 216 C CB   . DSN A 1 16 ? -1.642  7.027   9.539  0.46 9.94  16 A 1 
+HETATM 217 O OG   . DSN A 1 16 ? -1.549  6.357   10.758 0.46 10.34 16 A 1 
+HETATM 218 H H    . DSN A 1 16 ? -1.050  8.098   7.519  0.46 10.40 16 A 1 
+HETATM 219 H HA   . DSN A 1 16 ? -0.975  5.540   8.259  0.46 11.32 16 A 1 
+HETATM 220 H HB2  . DSN A 1 16 ? -2.551  6.954   9.209  0.46 12.02 16 A 1 
+HETATM 221 H HB3  . DSN A 1 16 ? -1.412  7.960   9.676  0.46 12.02 16 A 1 
+HETATM 222 H HG   . DSN A 1 16 ? -2.179  6.569   11.268 0.46 12.50 16 A 1 
+HETATM 223 N N    . DAR A 1 17 ? 1.503   7.334   8.973  1.00 9.52  17 A 1 
+HETATM 224 C CA   . DAR A 1 17 ? 2.906   7.218   9.350  1.00 10.37 17 A 1 
+HETATM 225 C CB   . DAR A 1 17 ? 3.617   8.567   9.231  1.00 12.39 17 A 1 
+HETATM 226 C CG   . DAR A 1 17 ? 3.283   9.581   10.235 1.00 16.31 17 A 1 
+HETATM 227 C CD   . DAR A 1 17 ? 4.080   10.918  10.065 1.00 18.59 17 A 1 
+HETATM 228 N NE   . DAR A 1 17 ? 5.523   10.744  10.151 1.00 21.85 17 A 1 
+HETATM 229 C CZ   . DAR A 1 17 ? 6.229   10.866  11.251 1.00 24.62 17 A 1 
+HETATM 230 N NH1  . DAR A 1 17 ? 5.632   11.160  12.386 1.00 26.34 17 A 1 
+HETATM 231 N NH2  . DAR A 1 17 ? 7.535   10.684  11.201 1.00 25.39 17 A 1 
+HETATM 232 C C    . DAR A 1 17 ? 3.592   6.224   8.425  1.00 8.66  17 A 1 
+HETATM 233 O O    . DAR A 1 17 ? 4.386   5.384   8.861  1.00 9.51  17 A 1 
+HETATM 234 H H    . DAR A 1 17 ? 1.260   8.105   8.679  1.00 11.51 17 A 1 
+HETATM 235 H HA   . DAR A 1 17 ? 2.969   6.923   10.272 1.00 12.53 17 A 1 
+HETATM 236 H HB2  . DAR A 1 17 ? 3.400   8.944   8.364  1.00 14.96 17 A 1 
+HETATM 237 H HB3  . DAR A 1 17 ? 4.572   8.409   9.295  1.00 14.96 17 A 1 
+HETATM 238 H HG2  . DAR A 1 17 ? 3.484   9.227   11.116 1.00 19.67 17 A 1 
+HETATM 239 H HG3  . DAR A 1 17 ? 2.338   9.789   10.168 1.00 19.67 17 A 1 
+HETATM 240 H HD2  . DAR A 1 17 ? 3.813   11.535  10.764 1.00 22.40 17 A 1 
+HETATM 241 H HD3  . DAR A 1 17 ? 3.878   11.296  9.194  1.00 22.40 17 A 1 
+HETATM 242 H HE   . DAR A 1 17 ? 5.944   10.548  9.427  1.00 26.30 17 A 1 
+HETATM 243 H HH11 . DAR A 1 17 ? 4.779   11.282  12.419 1.00 31.70 17 A 1 
+HETATM 244 H HH12 . DAR A 1 17 ? 6.099   11.236  13.103 1.00 31.70 17 A 1 
+HETATM 245 H HH21 . DAR A 1 17 ? 7.912   10.482  10.454 1.00 30.56 17 A 1 
+HETATM 246 H HH22 . DAR A 1 17 ? 8.005   10.752  11.920 1.00 30.56 17 A 1 
+HETATM 247 N N    . DAR A 1 18 ? 3.323   6.309   7.139  1.00 8.65  18 A 1 
+HETATM 248 C CA   . DAR A 1 18 ? 3.954   5.410   6.187  1.00 8.53  18 A 1 
+HETATM 249 C CB   . DAR A 1 18 ? 3.648   5.831   4.778  1.00 10.41 18 A 1 
+HETATM 250 C CG   . DAR A 1 18 ? 4.139   4.980   3.696  1.00 12.66 18 A 1 
+HETATM 251 C CD   . DAR A 1 18 ? 5.626   4.806   3.744  1.00 15.19 18 A 1 
+HETATM 252 N NE   . DAR A 1 18 ? 6.366   6.041   3.564  1.00 16.94 18 A 1 
+HETATM 253 C CZ   . DAR A 1 18 ? 6.758   6.497   2.378  1.00 19.29 18 A 1 
+HETATM 254 N NH1  . DAR A 1 18 ? 7.418   7.651   2.342  1.00 20.02 18 A 1 
+HETATM 255 N NH2  . DAR A 1 18 ? 6.498   5.834   1.232  1.00 20.58 18 A 1 
+HETATM 256 C C    . DAR A 1 18 ? 3.492   3.977   6.395  1.00 7.96  18 A 1 
+HETATM 257 O O    . DAR A 1 18 ? 4.292   3.043   6.412  1.00 8.97  18 A 1 
+HETATM 258 H H    . DAR A 1 18 ? 2.780   6.876   6.789  1.00 10.47 18 A 1 
+HETATM 259 H HA   . DAR A 1 18 ? 4.915   5.447   6.319  1.00 10.33 18 A 1 
+HETATM 260 H HB2  . DAR A 1 18 ? 4.035   6.710   4.639  1.00 12.59 18 A 1 
+HETATM 261 H HB3  . DAR A 1 18 ? 2.684   5.875   4.684  1.00 12.59 18 A 1 
+HETATM 262 H HG2  . DAR A 1 18 ? 3.909   5.382   2.844  1.00 15.29 18 A 1 
+HETATM 263 H HG3  . DAR A 1 18 ? 3.730   4.103   3.770  1.00 15.29 18 A 1 
+HETATM 264 H HD2  . DAR A 1 18 ? 5.892   4.197   3.038  1.00 18.32 18 A 1 
+HETATM 265 H HD3  . DAR A 1 18 ? 5.869   4.439   4.608  1.00 18.32 18 A 1 
+HETATM 266 H HE   . DAR A 1 18 ? 6.562   6.503   4.263  1.00 20.42 18 A 1 
+HETATM 267 H HH11 . DAR A 1 18 ? 7.586   8.064   3.078  1.00 24.12 18 A 1 
+HETATM 268 H HH12 . DAR A 1 18 ? 7.692   7.967   1.591  1.00 24.12 18 A 1 
+HETATM 269 H HH21 . DAR A 1 18 ? 6.064   5.093   1.241  1.00 24.78 18 A 1 
+HETATM 270 H HH22 . DAR A 1 18 ? 6.767   6.166   0.482  1.00 24.78 18 A 1 
+HETATM 271 N N    . DAL A 1 19 ? 2.200   3.764   6.549  1.00 7.47  19 A 1 
+HETATM 272 C CA   . DAL A 1 19 ? 1.687   2.446   6.795  1.00 7.89  19 A 1 
+HETATM 273 C CB   . DAL A 1 19 ? 0.171   2.451   6.808  1.00 9.31  19 A 1 
+HETATM 274 C C    . DAL A 1 19 ? 2.245   1.853   8.069  1.00 7.71  19 A 1 
+HETATM 275 O O    . DAL A 1 19 ? 2.564   0.662   8.110  1.00 8.39  19 A 1 
+HETATM 276 H H    . DAL A 1 19 ? 1.598   4.377   6.514  1.00 9.05  19 A 1 
+HETATM 277 H HA   . DAL A 1 19 ? 1.969   1.869   6.069  1.00 9.55  19 A 1 
+HETATM 278 H HB1  . DAL A 1 19 ? -0.145  1.593   7.130  1.00 11.27 19 A 1 
+HETATM 279 H HB2  . DAL A 1 19 ? -0.151  2.606   5.906  1.00 11.27 19 A 1 
+HETATM 280 H HB3  . DAL A 1 19 ? -0.137  3.159   7.396  1.00 11.27 19 A 1 
+HETATM 281 N N    . DGN A 1 20 ? 2.417   2.701   9.094  0.53 9.14  20 A 1 
+HETATM 282 C CA   . DGN A 1 20 ? 3.009   2.251   10.340 0.53 10.25 20 A 1 
+HETATM 283 C C    . DGN A 1 20 ? 4.471   1.855   10.157 0.53 10.00 20 A 1 
+HETATM 284 O O    . DGN A 1 20 ? 4.961   0.908   10.772 0.53 10.41 20 A 1 
+HETATM 285 C CB   . DGN A 1 20 ? 2.866   3.302   11.442 0.53 12.65 20 A 1 
+HETATM 286 C CG   . DGN A 1 20 ? 1.418   3.419   11.896 0.53 15.10 20 A 1 
+HETATM 287 C CD   . DGN A 1 20 ? 1.188   4.436   13.006 0.53 18.32 20 A 1 
+HETATM 288 O OE1  . DGN A 1 20 ? 2.060   5.232   13.345 0.53 20.29 20 A 1 
+HETATM 289 N NE2  . DGN A 1 20 ? -0.003  4.399   13.589 0.53 18.52 20 A 1 
+HETATM 290 H H    . DGN A 1 20 ? 2.199   3.533   9.082  0.53 11.05 20 A 1 
+HETATM 291 H HA   . DGN A 1 20 ? 2.526   1.462   10.635 0.53 12.38 20 A 1 
+HETATM 292 H HB2  . DGN A 1 20 ? 3.409   3.047   12.205 0.53 15.27 20 A 1 
+HETATM 293 H HB3  . DGN A 1 20 ? 3.154   4.165   11.105 0.53 15.27 20 A 1 
+HETATM 294 H HG2  . DGN A 1 20 ? 1.126   2.555   12.225 0.53 18.21 20 A 1 
+HETATM 295 H HG3  . DGN A 1 20 ? 0.876   3.685   11.137 0.53 18.21 20 A 1 
+HETATM 296 H HE21 . DGN A 1 20 ? -0.591  3.832   13.324 0.53 22.31 20 A 1 
+HETATM 297 H HE22 . DGN A 1 20 ? -0.190  4.949   14.221 0.53 22.31 20 A 1 
+HETATM 298 N N    . DAS A 1 21 ? 5.195   2.624   9.349  0.54 9.59  21 A 1 
+HETATM 299 C CA   . DAS A 1 21 ? 6.572   2.279   9.009  0.54 10.59 21 A 1 
+HETATM 300 C C    . DAS A 1 21 ? 6.599   0.883   8.419  0.54 10.72 21 A 1 
+HETATM 301 O O    . DAS A 1 21 ? 7.484   0.065   8.790  0.54 11.06 21 A 1 
+HETATM 302 C CB   . DAS A 1 21 ? 7.129   3.278   7.971  0.54 12.17 21 A 1 
+HETATM 303 C CG   . DAS A 1 21 ? 7.463   4.614   8.555  0.54 14.19 21 A 1 
+HETATM 304 O OD1  . DAS A 1 21 ? 7.649   5.560   7.749  0.54 14.99 21 A 1 
+HETATM 305 O OD2  . DAS A 1 21 ? 7.517   4.742   9.790  0.54 15.09 21 A 1 
+HETATM 306 H H    . DAS A 1 21 ? 4.912   3.350   8.985  0.53 11.60 21 A 1 
+HETATM 307 H HA   . DAS A 1 21 ? 7.133   2.317   9.800  0.54 12.80 21 A 1 
+HETATM 308 H HB2  . DAS A 1 21 ? 6.464   3.414   7.278  0.54 14.69 21 A 1 
+HETATM 309 H HB3  . DAS A 1 21 ? 7.940   2.911   7.585  0.54 14.69 21 A 1 
+HETATM 310 N N    . DPN A 1 22 ? 5.698   0.639   7.470  1.00 9.68  22 A 1 
+HETATM 311 C CA   . DPN A 1 22 ? 5.649   -0.635  6.785  1.00 9.02  22 A 1 
+HETATM 312 C C    . DPN A 1 22 ? 5.333   -1.783  7.759  1.00 9.50  22 A 1 
+HETATM 313 O O    . DPN A 1 22 ? 5.968   -2.835  7.709  1.00 10.34 22 A 1 
+HETATM 314 C CB   . DPN A 1 22 ? 4.639   -0.530  5.641  1.00 8.61  22 A 1 
+HETATM 315 C CG   . DPN A 1 22 ? 4.431   -1.786  4.824  1.00 8.72  22 A 1 
+HETATM 316 C CD1  . DPN A 1 22 ? 5.498   -2.515  4.314  1.00 8.69  22 A 1 
+HETATM 317 C CD2  . DPN A 1 22 ? 3.169   -2.194  4.496  1.00 10.77 22 A 1 
+HETATM 318 C CE1  . DPN A 1 22 ? 5.274   -3.615  3.510  1.00 10.35 22 A 1 
+HETATM 319 C CE2  . DPN A 1 22 ? 2.929   -3.273  3.726  1.00 12.27 22 A 1 
+HETATM 320 C CZ   . DPN A 1 22 ? 3.997   -3.994  3.234  1.00 11.89 22 A 1 
+HETATM 321 H H    . DPN A 1 22 ? 5.104   1.202   7.207  1.00 11.70 22 A 1 
+HETATM 322 H HA   . DPN A 1 22 ? 6.510   -0.860  6.400  1.00 10.92 22 A 1 
+HETATM 323 H HB2  . DPN A 1 22 ? 4.942   0.162   5.032  1.00 10.42 22 A 1 
+HETATM 324 H HB3  . DPN A 1 22 ? 3.779   -0.287  6.017  1.00 10.42 22 A 1 
+HETATM 325 H HD1  . DPN A 1 22 ? 6.369   -2.261  4.516  1.00 10.52 22 A 1 
+HETATM 326 H HD2  . DPN A 1 22 ? 2.445   -1.706  4.818  1.00 13.01 22 A 1 
+HETATM 327 H HE1  . DPN A 1 22 ? 5.990   -4.092  3.159  1.00 12.50 22 A 1 
+HETATM 328 H HE2  . DPN A 1 22 ? 2.057   -3.529  3.530  1.00 14.81 22 A 1 
+HETATM 329 H HZ   . DPN A 1 22 ? 3.842   -4.746  2.709  1.00 14.36 22 A 1 
+HETATM 330 N N    . DVA A 1 23 ? 4.361   -1.578  8.640  1.00 9.31  23 A 1 
+HETATM 331 C CA   . DVA A 1 23 ? 4.042   -2.556  9.701  1.00 10.85 23 A 1 
+HETATM 332 C CB   . DVA A 1 23 ? 2.911   -2.070  10.637 1.00 11.49 23 A 1 
+HETATM 333 C CG1  . DVA A 1 23 ? 2.759   -2.940  11.859 1.00 13.53 23 A 1 
+HETATM 334 C CG2  . DVA A 1 23 ? 1.616   -2.003  9.871  1.00 11.49 23 A 1 
+HETATM 335 C C    . DVA A 1 23 ? 5.320   -2.897  10.475 1.00 12.33 23 A 1 
+HETATM 336 O O    . DVA A 1 23 ? 5.618   -4.080  10.761 1.00 13.36 23 A 1 
+HETATM 337 H H    . DVA A 1 23 ? 3.862   -0.878  8.654  1.00 11.27 23 A 1 
+HETATM 338 H HA   . DVA A 1 23 ? 3.706   -3.367  9.289  1.00 13.11 23 A 1 
+HETATM 339 H HB   . DVA A 1 23 ? 3.145   -1.185  10.958 1.00 13.87 23 A 1 
+HETATM 340 H HG11 . DVA A 1 23 ? 1.942   -2.695  12.321 1.00 16.33 23 A 1 
+HETATM 341 H HG12 . DVA A 1 23 ? 3.522   -2.803  12.442 1.00 16.33 23 A 1 
+HETATM 342 H HG13 . DVA A 1 23 ? 2.717   -3.869  11.583 1.00 16.33 23 A 1 
+HETATM 343 H HG21 . DVA A 1 23 ? 0.931   -1.621  10.442 1.00 13.87 23 A 1 
+HETATM 344 H HG22 . DVA A 1 23 ? 1.361   -2.899  9.602  1.00 13.87 23 A 1 
+HETATM 345 H HG23 . DVA A 1 23 ? 1.742   -1.445  9.087  1.00 13.87 23 A 1 
+HETATM 346 N N    . DGN A 1 24 ? 6.079   -1.860  10.861 1.00 12.60 24 A 1 
+HETATM 347 C CA   . DGN A 1 24 ? 7.319   -2.080  11.584 1.00 15.13 24 A 1 
+HETATM 348 C C    . DGN A 1 24 ? 8.345   -2.856  10.742 1.00 14.75 24 A 1 
+HETATM 349 O O    . DGN A 1 24 ? 8.953   -3.836  11.225 1.00 15.78 24 A 1 
+HETATM 350 C CB   . DGN A 1 24 ? 7.864   -0.724  12.069 1.00 17.40 24 A 1 
+HETATM 351 C CG   . DGN A 1 24 ? 8.986   -0.829  13.047 1.00 20.35 24 A 1 
+HETATM 352 C CD   . DGN A 1 24 ? 8.601   -1.455  14.410 1.00 23.03 24 A 1 
+HETATM 353 O OE1  . DGN A 1 24 ? 7.404   -1.444  14.857 1.00 24.26 24 A 1 
+HETATM 354 N NE2  . DGN A 1 24 ? 9.586   -2.082  15.033 1.00 24.78 24 A 1 
+HETATM 355 H H    . DGN A 1 24 ? 5.891   -1.034  10.714 1.00 15.20 24 A 1 
+HETATM 356 H HA   . DGN A 1 24 ? 7.159   -2.634  12.364 1.00 18.25 24 A 1 
+HETATM 357 H HB2  . DGN A 1 24 ? 7.144   -0.236  12.498 1.00 20.96 24 A 1 
+HETATM 358 H HB3  . DGN A 1 24 ? 8.189   -0.228  11.301 1.00 20.96 24 A 1 
+HETATM 359 H HG2  . DGN A 1 24 ? 9.327   0.062   13.221 1.00 24.51 24 A 1 
+HETATM 360 H HG3  . DGN A 1 24 ? 9.682   -1.381  12.659 1.00 24.51 24 A 1 
+HETATM 361 H HE21 . DGN A 1 24 ? 10.380  -2.091  14.693 1.00 29.82 24 A 1 
+HETATM 362 H HE22 . DGN A 1 24 ? 9.439   -2.463  15.791 1.00 29.82 24 A 1 
+HETATM 363 N N    . DTR A 1 25 ? 8.494   -2.492  9.477  1.00 14.30 25 A 1 
+HETATM 364 C CA   . DTR A 1 25 ? 9.437   -3.163  8.600  1.00 14.08 25 A 1 
+HETATM 365 C CB   . DTR A 1 25 ? 9.422   -2.512  7.205  1.00 15.32 25 A 1 
+HETATM 366 C CG   . DTR A 1 25 ? 10.357  -3.196  6.204  1.00 16.16 25 A 1 
+HETATM 367 C CD1  . DTR A 1 25 ? 11.719  -2.985  6.068  1.00 18.34 25 A 1 
+HETATM 368 N NE1  . DTR A 1 25 ? 12.223  -3.790  5.081  1.00 18.37 25 A 1 
+HETATM 369 C CE2  . DTR A 1 25 ? 11.183  -4.532  4.553  1.00 17.45 25 A 1 
+HETATM 370 C CZ2  . DTR A 1 25 ? 11.175  -5.475  3.517  1.00 18.42 25 A 1 
+HETATM 371 C CH2  . DTR A 1 25 ? 9.997   -6.070  3.179  1.00 18.03 25 A 1 
+HETATM 372 C CZ3  . DTR A 1 25 ? 8.793   -5.704  3.833  1.00 16.50 25 A 1 
+HETATM 373 C CE3  . DTR A 1 25 ? 8.789   -4.777  4.849  1.00 15.70 25 A 1 
+HETATM 374 C CD2  . DTR A 1 25 ? 9.991   -4.146  5.201  1.00 15.94 25 A 1 
+HETATM 375 C C    . DTR A 1 25 ? 9.095   -4.670  8.432  1.00 13.62 25 A 1 
+HETATM 376 O O    . DTR A 1 25 ? 9.980   -5.510  8.400  1.00 14.23 25 A 1 
+HETATM 377 H H    . DTR A 1 25 ? 8.057   -1.855  9.100  1.00 17.26 25 A 1 
+HETATM 378 H HA   . DTR A 1 25 ? 10.320  -3.084  8.992  1.00 16.99 25 A 1 
+HETATM 379 H HB2  . DTR A 1 25 ? 9.702   -1.587  7.288  1.00 18.48 25 A 1 
+HETATM 380 H HB3  . DTR A 1 25 ? 8.522   -2.556  6.848  1.00 18.48 25 A 1 
+HETATM 381 H HD1  . DTR A 1 25 ? 12.218  -2.385  6.573  1.00 22.10 25 A 1 
+HETATM 382 H HE1  . DTR A 1 25 ? 13.046  -3.827  4.832  1.00 22.13 25 A 1 
+HETATM 383 H HZ2  . DTR A 1 25 ? 11.960  -5.691  3.067  1.00 22.20 25 A 1 
+HETATM 384 H HH2  . DTR A 1 25 ? 9.982   -6.721  2.515  1.00 21.73 25 A 1 
+HETATM 385 H HZ3  . DTR A 1 25 ? 7.992   -6.098  3.570  1.00 19.90 25 A 1 
+HETATM 386 H HE3  . DTR A 1 25 ? 8.000   -4.571  5.296  1.00 18.93 25 A 1 
+HETATM 387 N N    . DLE A 1 26 ? 7.811   -4.973  8.321  1.00 12.86 26 A 1 
+HETATM 388 C CA   . DLE A 1 26 ? 7.397   -6.348  8.246  1.00 12.24 26 A 1 
+HETATM 389 C CB   . DLE A 1 26 ? 5.883   -6.450  8.051  1.00 11.66 26 A 1 
+HETATM 390 C CG   . DLE A 1 26 ? 5.363   -5.924  6.730  1.00 11.78 26 A 1 
+HETATM 391 C CD1  . DLE A 1 26 ? 3.899   -5.617  6.760  1.00 11.72 26 A 1 
+HETATM 392 C CD2  . DLE A 1 26 ? 5.631   -6.899  5.597  1.00 12.92 26 A 1 
+HETATM 393 C C    . DLE A 1 26 ? 7.849   -7.221  9.429  1.00 12.84 26 A 1 
+HETATM 394 O O    . DLE A 1 26 ? 8.100   -8.457  9.199  1.00 13.65 26 A 1 
+HETATM 395 H H    . DLE A 1 26 ? 7.171   -4.400  8.289  1.00 15.53 26 A 1 
+HETATM 396 H HA   . DLE A 1 26 ? 7.840   -6.725  7.470  1.00 14.78 26 A 1 
+HETATM 397 H HB2  . DLE A 1 26 ? 5.450   -5.943  8.755  1.00 14.08 26 A 1 
+HETATM 398 H HB3  . DLE A 1 26 ? 5.630   -7.384  8.111  1.00 14.08 26 A 1 
+HETATM 399 H HG   . DLE A 1 26 ? 5.841   -5.096  6.568  1.00 14.22 26 A 1 
+HETATM 400 H HD11 . DLE A 1 26 ? 3.714   -4.899  6.134  1.00 14.15 26 A 1 
+HETATM 401 H HD12 . DLE A 1 26 ? 3.651   -5.346  7.658  1.00 14.15 26 A 1 
+HETATM 402 H HD13 . DLE A 1 26 ? 3.404   -6.412  6.507  1.00 14.15 26 A 1 
+HETATM 403 H HD21 . DLE A 1 26 ? 5.013   -6.718  4.872  1.00 15.59 26 A 1 
+HETATM 404 H HD22 . DLE A 1 26 ? 5.503   -7.804  5.922  1.00 15.59 26 A 1 
+HETATM 405 H HD23 . DLE A 1 26 ? 6.544   -6.784  5.290  1.00 15.59 26 A 1 
+HETATM 406 N N    . MED A 1 27 ? 8.019   -6.686  10.661 1.00 13.65 27 A 1 
+HETATM 407 C CA   . MED A 1 27 ? 8.521   -7.422  11.835 1.00 13.60 27 A 1 
+HETATM 408 C C    . MED A 1 27 ? 10.007  -7.465  11.895 1.00 13.30 27 A 1 
+HETATM 409 O O    . MED A 1 27 ? 10.528  -8.274  12.628 1.00 14.85 27 A 1 
+HETATM 410 C CB   . MED A 1 27 ? 8.033   -6.785  13.146 1.00 15.14 27 A 1 
+HETATM 411 C CG   . MED A 1 27 ? 6.549   -6.948  13.425 1.00 14.79 27 A 1 
+HETATM 412 S SD   . MED A 1 27 ? 6.044   -6.319  15.060 1.00 15.16 27 A 1 
+HETATM 413 C CE   . MED A 1 27 ? 6.075   -4.605  14.625 1.00 16.08 27 A 1 
+HETATM 414 H H    . MED A 1 27 ? 7.843   -5.864  10.844 1.00 16.47 27 A 1 
+HETATM 415 H HA   . MED A 1 27 ? 8.169   -8.323  11.755 1.00 16.41 27 A 1 
+HETATM 416 H HB2  . MED A 1 27 ? 8.220   -5.834  13.114 1.00 18.26 27 A 1 
+HETATM 417 H HB3  . MED A 1 27 ? 8.514   -7.194  13.884 1.00 18.26 27 A 1 
+HETATM 418 H HG2  . MED A 1 27 ? 6.325   -7.891  13.387 1.00 17.84 27 A 1 
+HETATM 419 H HG3  . MED A 1 27 ? 6.049   -6.461  12.752 1.00 17.84 27 A 1 
+HETATM 420 H HE1  . MED A 1 27 ? 5.685   -4.089  15.348 1.00 19.38 27 A 1 
+HETATM 421 H HE2  . MED A 1 27 ? 5.560   -4.476  13.813 1.00 19.38 27 A 1 
+HETATM 422 H HE3  . MED A 1 27 ? 6.994   -4.331  14.482 1.00 19.38 27 A 1 
+HETATM 423 N N    . DSG A 1 28 ? 10.686  -6.577  11.168 1.00 13.71 28 A 1 
+HETATM 424 C CA   . DSG A 1 28 ? 12.115  -6.425  11.249 1.00 14.42 28 A 1 
+HETATM 425 C C    . DSG A 1 28 ? 12.809  -7.639  10.620 1.00 13.18 28 A 1 
+HETATM 426 O O    . DSG A 1 28 ? 12.245  -8.299  9.700  1.00 14.50 28 A 1 
+HETATM 427 C CB   . DSG A 1 28 ? 12.587  -5.190  10.509 1.00 14.97 28 A 1 
+HETATM 428 C CG   . DSG A 1 28 ? 12.395  -3.871  11.319 1.00 17.08 28 A 1 
+HETATM 429 O OD1  . DSG A 1 28 ? 11.845  -3.838  12.468 1.00 18.50 28 A 1 
+HETATM 430 N ND2  . DSG A 1 28 ? 12.787  -2.761  10.672 1.00 17.09 28 A 1 
+HETATM 431 H H    . DSG A 1 28 ? 10.319  -6.039  10.606 1.00 16.54 28 A 1 
+HETATM 432 H HA   . DSG A 1 28 ? 12.358  -6.338  12.185 1.00 17.39 28 A 1 
+HETATM 433 N N    . DTH A 1 29 ? 13.988  -7.927  11.126 1.00 13.22 29 A 1 
+HETATM 434 C CA   . DTH A 1 29 ? 14.812  -8.956  10.541 1.00 14.48 29 A 1 
+HETATM 435 C CB   . DTH A 1 29 ? 14.860  -10.241 11.374 1.00 16.13 29 A 1 
+HETATM 436 C CG2  . DTH A 1 29 ? 13.524  -10.919 11.487 1.00 16.78 29 A 1 
+HETATM 437 O OG1  . DTH A 1 29 ? 15.393  -9.878  12.641 1.00 17.07 29 A 1 
+HETATM 438 C C    . DTH A 1 29 ? 16.230  -8.462  10.341 1.00 15.88 29 A 1 
+HETATM 439 O O    . DTH A 1 29 ? 17.017  -9.153  9.682  1.00 18.96 29 A 1 
+HETATM 440 O OXT  . DTH A 1 29 ? 16.555  -7.383  10.824 1.00 15.55 29 A 1 
+HETATM 441 H H    . DTH A 1 29 ? 14.335  -7.539  11.811 1.00 15.95 29 A 1 
+HETATM 442 H HA   . DTH A 1 29 ? 14.428  -9.186  9.680  1.00 17.46 29 A 1 
+HETATM 443 H HB   . DTH A 1 29 ? 15.419  -10.911 10.951 1.00 19.44 29 A 1 
+HETATM 444 H HG21 . DTH A 1 29 ? 13.639  -11.828 11.804 1.00 20.23 29 A 1 
+HETATM 445 H HG22 . DTH A 1 29 ? 13.088  -10.939 10.621 1.00 20.23 29 A 1 
+HETATM 446 H HG23 . DTH A 1 29 ? 12.959  -10.437 12.112 1.00 20.23 29 A 1 
+HETATM 447 H HG1  . DTH A 1 29 ? 15.421  -10.555 13.148 1.00 20.58 29 A 1 
+#

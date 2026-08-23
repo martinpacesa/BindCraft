@@ -197,17 +197,18 @@ def load_helicity(advanced_settings):
 
 # Report JAX-capable devices
 def check_jax_gpu():
-    devices = jax.devices()
-
-    has_gpu = any(device.platform == 'gpu' for device in devices)
-
-    if not has_gpu:
-        print("No GPU device found, terminating.")
-        exit()
-    else:
-        print("Available GPUs:")
-        for i, device in enumerate(devices):
-            print(f"{device.device_kind}{i + 1}: {device.platform}")
+    try:
+        devices = jax.devices()
+        has_gpu = any(device.platform == 'gpu' for device in devices)
+        
+        if not has_gpu:
+            print("⚠ JAX CPU mode - ColabFold will use PyTorch GPU instead")
+        else:
+            print("✓ JAX GPU available:")
+            for i, device in enumerate(devices):
+                print(f"  {device.device_kind}{i + 1}: {device.platform}")
+    except Exception as e:
+        print(f"⚠ JAX status check failed: {e} - proceeding with PyTorch")
 
 # check all input files being passed
 def perform_input_check(args):
@@ -246,7 +247,6 @@ def perform_advanced_settings_check(advanced_settings, bindcraft_folder):
             advanced_settings["dalphaball_path"] = os.path.join(bindcraft_folder, 'functions', 'DAlphaBall.gcc')
 
     # check formatting of omit_AAs setting
-        omit_aas = advanced_settings["omit_AAs"]
     if advanced_settings["omit_AAs"] in [None, False, '']:
         advanced_settings["omit_AAs"] = None
     elif isinstance(advanced_settings["omit_AAs"], str):

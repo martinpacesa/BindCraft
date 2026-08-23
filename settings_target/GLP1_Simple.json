@@ -1,0 +1,13 @@
+{
+  "design_name": "GLP1_Simple",
+  "description": "GLP-1 receptor peptide - Version simplifiée avec modèles disponibles",
+  "starting_pdb": "./example/6X18_real.pdb",
+  "chains": "A",
+  "design_path": "./results/GLP1_Simple",
+  "binder_name": "glp1_peptide",
+  "target_hotspot_residues": "140,143,146,149,152",
+  "lengths": [30, 35],
+  "number_of_final_designs": 5,
+  "number_of_trajectories": 10,
+  "number_of_mpnn_designs": 2
+}

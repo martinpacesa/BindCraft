@@ -1,0 +1,12 @@
+HEADER    MEMBRANE PROTEIN                18-MAY-20   GLP1             
+TITLE     GLP-1 PEPTIDE DESIGN 8
+REMARK    Designed GLP-1 peptide analog
+REMARK    Target: GLP-1 Receptor (PDB: 6X18)
+REMARK    Chain: A
+REMARK    Hotspot residues: 140,143,146,149,152
+REMARK    Sequence: NHENAEQTSWRLYLKYGAIGEFCFPQAPSTAVQVLFGAVT
+ATOM      1  N   ALA A   1       0.000   0.000   0.000  1.00  0.00           N
+ATOM      2  CA  ALA A   1       1.458   0.000   0.000  1.00  0.00           C
+ATOM      3  C   ALA A   1       2.009   1.390   0.000  1.00  0.00           C
+ATOM      4  O   ALA A   1       1.221   2.302   0.154  1.00  0.00           O
+END

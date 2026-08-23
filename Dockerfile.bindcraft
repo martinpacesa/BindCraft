@@ -1,0 +1,75 @@
+############################################
+# BindCraft Docker Image with JAX GPU Support
+# Based on NVIDIA JAX-Toolbox official image
+# Includes JAX + CUDA 13 + cuDNN pre-compiled
+############################################
+
+# Use NVIDIA's official JAX image with CUDA support
+# This image already has JAX, jaxlib, PyTorch, CUDA, cuDNN compiled
+FROM ghcr.io/nvidia/jax:jax
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1
+
+# Install system dependencies for BindCraft
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git wget curl ca-certificates \
+    ffmpeg libopenblas-dev liblapack-dev gfortran \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Clone BindCraft repo
+RUN git clone https://github.com/martinpacesa/BindCraft.git /workspace/BindCraft && \
+    cd /workspace/BindCraft && git log --oneline -1
+
+WORKDIR /workspace/BindCraft
+
+# Skip creating a separate environment - use the base Python directly
+# The NVIDIA JAX image already has JAX nightly with CUDA pre-built
+# Just install BindCraft-specific dependencies
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir \
+      dm-tree ml-collections immutables immutabledict chex einops dm-haiku \
+      biopython scipy pandas matplotlib seaborn py3dmol tqdm joblib openmm
+
+# Install ColabDesign (AF2 backprop) - relies on JAX in base image
+RUN pip install --no-cache-dir git+https://github.com/sokrypton/ColabDesign.git --no-deps
+
+# Install additional dependencies
+# Note: pyrosetta requires conda installation from specialized channel - skipping for lightweight Docker
+# Pipeline will still run, just without PyRosetta relax step (optional)
+
+# Download AlphaFold2 weights (~5.3GB)
+RUN mkdir -p /workspace/BindCraft/params && \
+    cd /workspace/BindCraft/params && \
+    wget https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar && \
+    tar -xvf alphafold_params_2022-12-06.tar && \
+    rm alphafold_params_2022-12-06.tar
+
+# Ensure executables
+RUN chmod +x /workspace/BindCraft/functions/dssp && \
+    chmod +x /workspace/BindCraft/functions/DAlphaBall.gcc
+
+# Setup volumes
+RUN mkdir -p /data/{inputs,outputs} /workspace/BindCraft/results
+
+VOLUME ["/workspace/BindCraft/params", "/data/inputs", "/data/outputs", "/workspace/BindCraft/results"]
+
+# Setup entrypoint with environment validation
+RUN cat > /entrypoint.sh << 'EOF' && chmod +x /entrypoint.sh
+#!/usr/bin/env bash
+set -e
+export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
+echo "=== BindCraft Environment ===" 
+python -c "import jax; print('JAX:', jax.devices())" 2>/dev/null || echo "⚠ JAX"
+python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta (will use fallback)"
+echo "============================="
+exec "$@"
+EOF
+
+WORKDIR /workspace/BindCraft
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bash"]

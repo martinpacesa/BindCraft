@@ -8,7 +8,10 @@ import pandas as pd
 import math, random
 import matplotlib.pyplot as plt
 
+# Try to import pyrosetta (optional for lightweight builds)
+# pyrosetta_utils.py handles the fallback internally via PYROSETTA_AVAILABLE flag
 from .pyrosetta_utils import *
+
 from .colabdesign_utils import *
 from .biopython_utils import *
 from .generic_utils import *

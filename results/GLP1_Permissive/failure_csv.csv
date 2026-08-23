@@ -1,0 +1,2 @@
+Trajectory_logits_pLDDT,Trajectory_softmax_pLDDT,Trajectory_one-hot_pLDDT,Trajectory_final_pLDDT,Trajectory_Contacts,Trajectory_Clashes,Trajectory_WrongHotspot,MPNN_score,MPNN_seq_recovery,pLDDT,pTM,pAE,n_clashes,n_clashes_relaxed,dSASA,dG,dG_per_dSASA,n_hbonds,packstat
+0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

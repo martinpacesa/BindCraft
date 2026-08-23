@@ -1,0 +1,748 @@
+>query
+YGEGTFTSDYSIGLDKIAQKAFVQWLIAGGPSSGAPPPS
+>UniRef90_O42143/54-79 [subseq from] Glucagon-1 n=9 Tax=Xenopus TaxID=8353 RepID=GLUC1_XENLA
+-SQGTFTSDYSKYLDSRRAQDFVQWLM------------
+>UniRef90_O42143/98-129 [subseq from] Glucagon-1 n=9 Tax=Xenopus TaxID=8353 RepID=GLUC1_XENLA
+-AEGTFTSDVTQQLDEKAAKEFIDWLINGGPSK------
+>UniRef90_O42143/143-173 [subseq from] Glucagon-1 n=9 Tax=Xenopus TaxID=8353 RepID=GLUC1_XENLA
+-AEGTYTNDVTEYLEEKAAKEFIEWLIKGKPK-------
+>UniRef90_O42143/181-211 [subseq from] Glucagon-1 n=9 Tax=Xenopus TaxID=8353 RepID=GLUC1_XENLA
+-AEGTFTNDMTNYLEEKAAKEFVGWLIKGRPK-------
+>UniRef90_O42143/228-253 [subseq from] Glucagon-1 n=9 Tax=Xenopus TaxID=8353 RepID=GLUC1_XENLA
+-ADGSFTNDINKVLDIIAAQEFLDWVI------------
+>UniRef90_A0A8J6EY18/54-86 [subseq from] Glucagon n=4 Tax=Hyloidea TaxID=8417 RepID=A0A8J6EY18_ELECQ
+-SQGTFTSDYSKYLDSRRAQDFVQWLMNSKRSGG-----
+>UniRef90_A0A8J6EY18/98-128 [subseq from] Glucagon n=4 Tax=Hyloidea TaxID=8417 RepID=A0A8J6EY18_ELECQ
+-AEGTYTNDVTQFLEEKAAKEFIDWLIKGKPK-------
+>UniRef90_A0A8J6EY18/136-166 [subseq from] Glucagon n=4 Tax=Hyloidea TaxID=8417 RepID=A0A8J6EY18_ELECQ
+-AEGTFTSDMTSFLEEKAAKEFVDWLIKGRPK-------
+>UniRef90_A0A8J6EY18/183-208 [subseq from] Glucagon n=4 Tax=Hyloidea TaxID=8417 RepID=A0A8J6EY18_ELECQ
+-ADGSFTSDFNKALDIKAAQEFLDWLI------------
+>UniRef90_A0A8J6EZ24/142-173 [subseq from] Glucagon n=5 Tax=Neobatrachia TaxID=8416 RepID=A0A8J6EZ24_ELECQ
+-AEGTFTSDMTSFLEEKAAKEFVDWLIKGRPKN------
+>UniRef90_A0A2G9S217/54-81 [subseq from] Glucagon n=1 Tax=Lithobates catesbeianus TaxID=8400 RepID=A0A2G9S217_LITCT
+-SQGTFTSDYSKYLDSRRAQDFVQWLMNS----------
+>UniRef90_A0A2G9S217/125-159 [subseq from] Glucagon n=1 Tax=Lithobates catesbeianus TaxID=8400 RepID=A0A2G9S217_LITCT
+-ADGTFTSDMSSYLEEKAAKEFVDWLIKGRPKRNFP---
+>UniRef90_A0A2G9S217/171-197 [subseq from] Glucagon n=1 Tax=Lithobates catesbeianus TaxID=8400 RepID=A0A2G9S217_LITCT
+-ADGSFTSDFNKALDIKAAQEFLDWIIN-----------
+>UniRef90_UPI0021525CA8/34-61 [subseq from] gastric inhibitory polypeptide isoform X1 n=2 Tax=Microtus fortis TaxID=100897 RepID=UPI0021525CA8
+YAEGTLISDYSILMDKIRQHEFVNWLLA-----------
+>UniRef90_A0A8C5R4V5/54-82 [subseq from] Glucagon n=1 Tax=Leptobrachium leishanense TaxID=445787 RepID=A0A8C5R4V5_9ANUR
+-SQGTFTSDYSKYLDSRRTQDFVQWLMNSK---------
+>UniRef90_A0A8C5R4V5/136-166 [subseq from] Glucagon n=1 Tax=Leptobrachium leishanense TaxID=445787 RepID=A0A8C5R4V5_9ANUR
+-AEGTFTNDMSNFLEEKAAKEFVDWLIKGRPK-------
+>UniRef90_A0A8C5R4V5/183-208 [subseq from] Glucagon n=1 Tax=Leptobrachium leishanense TaxID=445787 RepID=A0A8C5R4V5_9ANUR
+-ADGSFTNDVNKVLDIIAAQEFLDWLV------------
+>UniRef90_UPI001BB13382/43-70 [subseq from] gastric inhibitory polypeptide-like n=1 Tax=Microtus oregoni TaxID=111838 RepID=UPI001BB13382
+YAEGTLISDYSILMDKIRQHEFVNWLLS-----------
+>UniRef90_A0A670IXF6/54-80 [subseq from] Glucagon n=4 Tax=Lacertinae TaxID=162266 RepID=A0A670IXF6_PODMU
+-SQGTFTSDYSKYLDTIRAQDFVQWLMN-----------
+>UniRef90_A0A670IXF6/116-145 [subseq from] Glucagon n=4 Tax=Lacertinae TaxID=162266 RepID=A0A670IXF6_PODMU
+-ADGTFTSDISSYLESQAAKEFIAWLANGGG--------
+>UniRef90_A0A670IXF6/164-194 [subseq from] Glucagon n=4 Tax=Lacertinae TaxID=162266 RepID=A0A670IXF6_PODMU
+-ADGTFTSDYHKFLDEEAGKEFLKWLMSNKPT-------
+>UniRef90_G3HJN5/44-72 [subseq from] Gastric inhibitory polypeptide n=1 Tax=Cricetulus griseus TaxID=10029 RepID=G3HJN5_CRIGR
+YAEGTFISDYSIALDKIRQQDFVNWLLAQ----------
+>UniRef90_G3HJN5/93-120 [subseq from] Gastric inhibitory polypeptide n=1 Tax=Cricetulus griseus TaxID=10029 RepID=G3HJN5_CRIGR
+YAEGTFISDYSIALDKIRQQDFVNWLLA-----------
+>UniRef90_P15438/40-70 [subseq from] Pro-glucagon (Fragments) n=1 Tax=Lithobates catesbeianus TaxID=8400 RepID=GLUC_LITCT
+-ADGTFTSDMSSYLEEKAAKEFVDWLIKGRPK-------
+>UniRef90_P15438/72-97 [subseq from] Pro-glucagon (Fragments) n=1 Tax=Lithobates catesbeianus TaxID=8400 RepID=GLUC_LITCT
+-ADGSFTSDFNKALDIKAAQEFLDWII------------
+>UniRef90_UPI001403BEB7/54-80 [subseq from] pro-glucagon n=1 Tax=Amblyraja radiata TaxID=386614 RepID=UPI001403BEB7
+-SEGMIASDLSIHMDKLRAKEFVDWLLN-----------
+>UniRef90_UPI001403BEB7/193-219 [subseq from] pro-glucagon n=1 Tax=Amblyraja radiata TaxID=386614 RepID=UPI001403BEB7
+-ADGTFSSELITVLDAMATKDFINWALN-----------
+>UniRef90_UPI001403BEB7/229-254 [subseq from] pro-glucagon n=1 Tax=Amblyraja radiata TaxID=386614 RepID=UPI001403BEB7
+-ADGSFSSELSTVLDTMAAKDFVNWIL------------
+>UniRef90_Q6RYB2/26-56 [subseq from] Proglucagon (Fragment) n=1 Tax=Rhinella marina TaxID=8386 RepID=Q6RYB2_RHIMB
+-AEGTYTNDVTQFLEEKAAKEFIDWLLKGIPK-------
+>UniRef90_A0A8D0EEM8/54-85 [subseq from] Glucagon n=1 Tax=Salvator merianae TaxID=96440 RepID=A0A8D0EEM8_SALMN
+-SQGTFTSDYSKYLDTRRAQDFVQWLMNT-KRSG-----
+>UniRef90_A0A8D0EEM8/117-146 [subseq from] Glucagon n=1 Tax=Salvator merianae TaxID=96440 RepID=A0A8D0EEM8_SALMN
+-ADGTYTSDISSYLEGQAAKEFIDWLVNGQG--------
+>UniRef90_A0A8D0EEM8/165-190 [subseq from] Glucagon n=1 Tax=Salvator merianae TaxID=96440 RepID=A0A8D0EEM8_SALMN
+-ADGTFTSDYNKLLDEMATQEFLKWLI------------
+>UniRef90_K7FV67/56-87 [subseq from] Glucagon n=17 Tax=Testudines TaxID=8459 RepID=K7FV67_PELSI
+-SQGTFTSDYSKYLDTRRAQDFVQWLMSTK-RSG-----
+>UniRef90_K7FV67/119-146 [subseq from] Glucagon n=17 Tax=Testudines TaxID=8459 RepID=K7FV67_PELSI
+-AEGTYTSDITSYLEGQAAKEFIAWLVNG----------
+>UniRef90_K7FV67/167-192 [subseq from] Glucagon n=17 Tax=Testudines TaxID=8459 RepID=K7FV67_PELSI
+-ADGTFTSDFNKILDDMAAKEFLKWLI------------
+>UniRef90_A0A6P3WDK7/53-86 [subseq from] glucagon-1-like n=3 Tax=Clupeidae TaxID=55118 RepID=A0A6P3WDK7_CLUHA
+-SEGTFSNDYSKYLENRRAQDFVQWLMNAKR-SGGP---
+>UniRef90_A0A6P3WDK7/91-119 [subseq from] glucagon-1-like n=3 Tax=Clupeidae TaxID=55118 RepID=A0A6P3WDK7_CLUHA
+-ADGTFTSDVSTYLQDQAAKEFVSWLKSGQ---------
+>UniRef90_A0A6P3WDK7/139-169 [subseq from] glucagon-1-like n=3 Tax=Clupeidae TaxID=55118 RepID=A0A6P3WDK7_CLUHA
+--DGSFTSDMNKVLDSIAAKEYLQWVMNSKPSV------
+>UniRef90_A0A3B3R6F8/53-86 [subseq from] Glucagon-2-like n=3 Tax=Mormyridae TaxID=31092 RepID=A0A3B3R6F8_9TELE
+-SQGTFTNDYSKYLETKRAQDFVQWLMNSK-TNGGP---
+>UniRef90_A0A3B3R6F8/92-118 [subseq from] Glucagon-2-like n=3 Tax=Mormyridae TaxID=31092 RepID=A0A3B3R6F8_9TELE
+--DGTYTSDFSSYLQDLAAKEFVSWLKSG----------
+>UniRef90_A0A3B3R6F8/140-174 [subseq from] Glucagon-2-like n=3 Tax=Mormyridae TaxID=31092 RepID=A0A3B3R6F8_9TELE
+--DGSFTSDLHKILDSIAAKEYILWVMNSKPSDASAP--
+>UniRef90_A0A7L4N079/24-50 [subseq from] GLUC protein (Fragment) n=1 Tax=Ceyx cyanopectus TaxID=390723 RepID=A0A7L4N079_9AVES
+-SQGTFTSDYSKYLDTRRAQDFVQWLMS-----------
+>UniRef90_A0A7L4N079/87-115 [subseq from] GLUC protein (Fragment) n=1 Tax=Ceyx cyanopectus TaxID=390723 RepID=A0A7L4N079_9AVES
+-AEGTYTSDITSYLEGQAAKEFIAWLVNGR---------
+>UniRef90_A0A7L4N079/135-160 [subseq from] GLUC protein (Fragment) n=1 Tax=Ceyx cyanopectus TaxID=390723 RepID=A0A7L4N079_9AVES
+-ADGTFTSDINKVLDDMAAKEFLKWLI------------
+>UniRef90_UPI001C4C0C10/56-82 [subseq from] pro-glucagon isoform X1 n=1 Tax=Sceloporus undulatus TaxID=8520 RepID=UPI001C4C0C10
+-SQGTFTSDYSKYLDTRRAQDFVQWLMN-----------
+>UniRef90_UPI001C4C0C10/119-146 [subseq from] pro-glucagon isoform X1 n=1 Tax=Sceloporus undulatus TaxID=8520 RepID=UPI001C4C0C10
+-ADGTYTSDISSYLEGQAAKEFIAWLVNG----------
+>UniRef90_UPI001C4C0C10/167-192 [subseq from] pro-glucagon isoform X1 n=1 Tax=Sceloporus undulatus TaxID=8520 RepID=UPI001C4C0C10
+-ADGTFTSDYNKLLDDMATQEFLKWLI------------
+>UniRef90_A0A8B9CWE1/166-192 [subseq from] Glucagon n=4 Tax=Neognathae TaxID=8825 RepID=A0A8B9CWE1_9AVES
+YADGTFTSDINKILDDMAAKEFLKWLI------------
+>UniRef90_A0A8C6X6T2/118-145 [subseq from] Glucagon n=13 Tax=Serpentes TaxID=8570 RepID=A0A8C6X6T2_NAJNA
+-ADGSYTSDISSYLEGQAAKEFIAWLVNG----------
+>UniRef90_A0A8C6X6T2/166-191 [subseq from] Glucagon n=13 Tax=Serpentes TaxID=8570 RepID=A0A8C6X6T2_NAJNA
+-ADGTFTSDYNKLLDDIATQEFLKWLI------------
+>UniRef90_UPI001127271F/56-87 [subseq from] glucagon n=1 Tax=Rhinatrema bivittatum TaxID=194408 RepID=UPI001127271F
+-SQGTFTSDYSKYLDIKKAQEFVSWLMKNKRNG------
+>UniRef90_UPI001127271F/100-131 [subseq from] glucagon n=1 Tax=Rhinatrema bivittatum TaxID=194408 RepID=UPI001127271F
+-AEGTYTSDISSYLEGEAAKKFVEWLVNGEGKS------
+>UniRef90_UPI001127271F/148-173 [subseq from] glucagon n=1 Tax=Rhinatrema bivittatum TaxID=194408 RepID=UPI001127271F
+-ADGSFTSEINKVLDTIATKEFINWLL------------
+>UniRef90_UPI0007AD4106/12-45 [subseq from] glucagon-1-like n=1 Tax=Sinocyclocheilus grahami TaxID=75366 RepID=UPI0007AD4106
+YSEGTFSNDYSKYLETRRAQDFVQWLMNSKRNGG-----
+>UniRef90_UPI0007AD4106/51-82 [subseq from] glucagon-1-like n=1 Tax=Sinocyclocheilus grahami TaxID=75366 RepID=UPI0007AD4106
+-AEGTYTSDVSSYLQDQAAQNFVAWLKSGQPKQ------
+>UniRef90_UPI0007AD4106/99-126 [subseq from] glucagon-1-like n=1 Tax=Sinocyclocheilus grahami TaxID=75366 RepID=UPI0007AD4106
+--DGSFTSDVNKVLDSIAAKEYLQWVMNSK---------
+>UniRef90_A0A2I0MIP2/167-192 [subseq from] Glucagon n=2 Tax=Columba livia TaxID=8932 RepID=A0A2I0MIP2_COLLI
+-ADGTFTSDINKVLDDMATKEFLKWLI------------
+>UniRef90_W5MPN6/53-85 [subseq from] Glucagon n=1 Tax=Lepisosteus oculatus TaxID=7918 RepID=W5MPN6_LEPOC
+-SQGTFTNDYSKYLDTRRAQDFVQWLMSTKRSGG-----
+>UniRef90_W5MPN6/91-118 [subseq from] Glucagon n=1 Tax=Lepisosteus oculatus TaxID=7918 RepID=W5MPN6_LEPOC
+-ADGTYTSDVSSYLQDQAAKKFVTWLKQG----------
+>UniRef90_W5MPN6/139-174 [subseq from] Glucagon n=1 Tax=Lepisosteus oculatus TaxID=7918 RepID=W5MPN6_LEPOC
+-ADGSFTSDVNNVLDSIAAKEFIIWVMNSKPSEESEP--
+>UniRef90_P68259/56-82 [subseq from] Pro-glucagon n=359 Tax=Archosauria TaxID=8492 RepID=GLUC_CHICK
+-SQGTFTSDYSKYLDSRRAQDFVQWLMS-----------
+>UniRef90_P68259/167-192 [subseq from] Pro-glucagon n=359 Tax=Archosauria TaxID=8492 RepID=GLUC_CHICK
+-ADGTFTSDINKILDDMAAKEFLKWLI------------
+>UniRef90_UPI0018F7B13E/48-74 [subseq from] glucagon b n=1 Tax=Scyliorhinus canicula TaxID=7830 RepID=UPI0018F7B13E
+-SEGTFTSDYSKYMDNRRAKDFVQWLMS-----------
+>UniRef90_UPI0018F7B13E/186-212 [subseq from] glucagon b n=1 Tax=Scyliorhinus canicula TaxID=7830 RepID=UPI0018F7B13E
+-ADGTFTSEINVVLDTIAAKEFLNWLLN-----------
+>UniRef90_O12956/117-144 [subseq from] Pro-glucagon n=3 Tax=Anguimorpha TaxID=8548 RepID=GLUC_HELSU
+-ADGRYTSDISSYLEGQAAKEFIAWLVNG----------
+>UniRef90_O12956/165-190 [subseq from] Pro-glucagon n=3 Tax=Anguimorpha TaxID=8548 RepID=GLUC_HELSU
+-ADGTFTSDYNQLLDDIATQEFLKWLI------------
+>UniRef90_A0A384TVE5/66-92 [subseq from] Preproglucagon B1 (Fragment) n=3 Tax=Unidentata TaxID=1329950 RepID=A0A384TVE5_9SAUR
+-SQGTFTSDYSKFLDTRRAQDFVQWLMN-----------
+>UniRef90_A0A384TVE5/129-156 [subseq from] Preproglucagon B1 (Fragment) n=3 Tax=Unidentata TaxID=1329950 RepID=A0A384TVE5_9SAUR
+-ADGTYTSDISSYLEGQAAKDFIAWLMNG----------
+>UniRef90_L5LRQ3/63-91 [subseq from] Glucagon n=1 Tax=Myotis davidii TaxID=225400 RepID=L5LRQ3_MYODS
+-SQGTFTSDYSKYLDAKRAQDFVEWLMTSK---------
+>UniRef90_L5LRQ3/108-134 [subseq from] Glucagon n=1 Tax=Myotis davidii TaxID=225400 RepID=L5LRQ3_MYODS
+-SEGTFTSDFSSYLDGKAAKEFVAWLVK-----------
+>UniRef90_L5LRQ3/154-180 [subseq from] Glucagon n=1 Tax=Myotis davidii TaxID=225400 RepID=L5LRQ3_MYODS
+-AEGSFSDEMNTVLDNLATQDFINWLLQ-----------
+>UniRef90_UPI0003EC183B/99-126 [subseq from] glucagon n=1 Tax=Myotis davidii TaxID=225400 RepID=UPI0003EC183B
+-SEGTFTSDFSSYLDGKAAKEFVAWLVKS----------
+>UniRef90_A0A0R4IS85/51-81 [subseq from] Glucagon a n=3 Tax=Danio rerio TaxID=7955 RepID=A0A0R4IS85_DANRE
+-SEGTFSNDYSKYLETRRAQDFVQWLMNAKRN-------
+>UniRef90_A0A0R4IS85/89-119 [subseq from] Glucagon a n=3 Tax=Danio rerio TaxID=7955 RepID=A0A0R4IS85_DANRE
+-AEGTYTSDVSSYLQDQAAQSFVAWLKSGQPK-------
+>UniRef90_A0A8T2PHX6/53-86 [subseq from] Glucagon (Fragment) n=1 Tax=Albula glossodonta TaxID=121402 RepID=A0A8T2PHX6_9TELE
+-SQGTFTNDYSKYLETRRAQDFVQWLMNS-KRSGSP---
+>UniRef90_A0A8T2PHX6/91-119 [subseq from] Glucagon (Fragment) n=1 Tax=Albula glossodonta TaxID=121402 RepID=A0A8T2PHX6_9TELE
+-AEGTYTSDVSSYLQDKAAKEFVSWLKTGR---------
+>UniRef90_A0A8T2PHX6/140-169 [subseq from] Glucagon (Fragment) n=1 Tax=Albula glossodonta TaxID=121402 RepID=A0A8T2PHX6_9TELE
+--DGSFTTEVHKVLDSIAAKEYIQWLMNSKPS-------
+>UniRef90_UPI00174C8F5C/44-71 [subseq from] pro-glucagon-like n=1 Tax=Myotis myotis TaxID=51298 RepID=UPI00174C8F5C
+-SQGTFTSDYSKYLDARRAQDFVEWLMTS----------
+>UniRef90_UPI00174C8F5C/89-118 [subseq from] pro-glucagon-like n=1 Tax=Myotis myotis TaxID=51298 RepID=UPI00174C8F5C
+-SEGTFTSDFSSYLEGKAAKEFIAWLVKGLE--------
+>UniRef90_A0A3B4EEM2/50-82 [subseq from] Glucagon-like n=2 Tax=Serrasalmidae TaxID=42495 RepID=A0A3B4EEM2_PYGNA
+-SEGTFSNDYSKYLETQRAQDFVQWLMNSKRS-GG----
+>UniRef90_A0A3B4EEM2/88-119 [subseq from] Glucagon-like n=2 Tax=Serrasalmidae TaxID=42495 RepID=A0A3B4EEM2_PYGNA
+-ADGTYTSDVSAYLQDQAAKDFITWLKSGQPKQ------
+>UniRef90_A0A3B4EEM2/136-163 [subseq from] Glucagon-like n=2 Tax=Serrasalmidae TaxID=42495 RepID=A0A3B4EEM2_PYGNA
+--DGSFTSDVNKVLDSMAAKEYLQWVMSQS---------
+>UniRef90_Q6RYB9/52-80 [subseq from] Proglucagon I n=6 Tax=Siluroidei TaxID=1489793 RepID=Q6RYB9_ICTPU
+-SEGTFSNDYSKYLETRRAQDFVQWLMNSK---------
+>UniRef90_Q6RYB9/90-122 [subseq from] Proglucagon I n=6 Tax=Siluroidei TaxID=1489793 RepID=Q6RYB9_ICTPU
+-ADGTYTSDVSSYLQDQAAKDFITWLKSGQPKPD-----
+>UniRef90_Q6RYB9/138-168 [subseq from] Proglucagon I n=6 Tax=Siluroidei TaxID=1489793 RepID=Q6RYB9_ICTPU
+--DGSFTSDVNKVLDSLAAKEYLQWVM-NSPSSA-----
+>UniRef90_A0A8T2INB6/62-92 [subseq from] Glucagon n=1 Tax=Hymenochirus boettgeri TaxID=247094 RepID=A0A8T2INB6_9PIPI
+-ADGSYTNDVTEYLEEKAAKEFIEWLIKGKPK-------
+>UniRef90_A0A8T2INB6/109-134 [subseq from] Glucagon n=1 Tax=Hymenochirus boettgeri TaxID=247094 RepID=A0A8T2INB6_9PIPI
+-ADGSFTNDINKVLDAIAAQEFLDWVL------------
+>UniRef90_A0A7L2XU19/56-82 [subseq from] GLUC protein (Fragment) n=1 Tax=Erpornis zantholeuca TaxID=1112836 RepID=A0A7L2XU19_9PASS
+-SQGTFTSDYTKYLDTRRAQDFVQWLMS-----------
+>UniRef90_A0A7L2XU19/165-190 [subseq from] GLUC protein (Fragment) n=1 Tax=Erpornis zantholeuca TaxID=1112836 RepID=A0A7L2XU19_9PASS
+-ADGTFTSDINKVLDDMAAQEFLKWLI------------
+>UniRef90_A0A8C6MW67/99-127 [subseq from] Glucagon n=3 Tax=Murinae TaxID=39107 RepID=A0A8C6MW67_MUSSI
+-AEGTFTSDVSSYLEGQAAKEFIAWLVKGR---------
+>UniRef90_A0A8C6MW67/147-173 [subseq from] Glucagon n=3 Tax=Murinae TaxID=39107 RepID=A0A8C6MW67_MUSSI
+-ADGSFSDEMSTILDNLATRDFINWLIQ-----------
+>UniRef90_UPI001B7EFF71/92-120 [subseq from] glucagon b n=1 Tax=Carcharodon carcharias TaxID=13397 RepID=UPI001B7EFF71
+-TEGIYSNDIRSYMEAKAAKDFINWLIKGR---------
+>UniRef90_UPI001864CBBD/94-121 [subseq from] LOW QUALITY PROTEIN: glucagon-2-like n=1 Tax=Megalops cyprinoides TaxID=118141 RepID=UPI001864CBBD
+-AEGTYTSDVSSYLQDQAAKEFVSWLKTG----------
+>UniRef90_UPI001864CBBD/143-172 [subseq from] LOW QUALITY PROTEIN: glucagon-2-like n=1 Tax=Megalops cyprinoides TaxID=118141 RepID=UPI001864CBBD
+--DGSFTSDVNKVLDSIAAKEYILWVMNSKPS-------
+>UniRef90_UPI00187AC00B/54-80 [subseq from] pro-glucagon isoform X1 n=5 Tax=Manis TaxID=9973 RepID=UPI00187AC00B
+-SQGTFTSDYTKYLDALRAQEFVQWLMN-----------
+>UniRef90_UPI00187AC00B/147-172 [subseq from] pro-glucagon isoform X1 n=5 Tax=Manis TaxID=9973 RepID=UPI00187AC00B
+-ADGSFSDEMNTVLDNLATRDFINWLL------------
+>UniRef90_A0A1L3MY50/54-80 [subseq from] Glucagon n=2 Tax=Ornithorhynchus anatinus TaxID=9258 RepID=A0A1L3MY50_ORNAN
+-SQGTFTSDYSKHLDAIRAKQFVDWLMN-----------
+>UniRef90_A0A1L3MY50/99-126 [subseq from] Glucagon n=2 Tax=Ornithorhynchus anatinus TaxID=9258 RepID=A0A1L3MY50_ORNAN
+-SEGTFTNDVTRLLEEKATSEFIAWLLKG----------
+>UniRef90_A0A1L3MY50/146-171 [subseq from] Glucagon n=2 Tax=Ornithorhynchus anatinus TaxID=9258 RepID=A0A1L3MY50_ORNAN
+-ADGTFSHELSGVLDQLATKDFLNWLL------------
+>UniRef90_A0A2K6F8D0/147-173 [subseq from] Glucagon n=2 Tax=Propithecus coquereli TaxID=379532 RepID=A0A2K6F8D0_PROCO
+-ADGSFSDEMNTVLDNLATRDFINWLIQ-----------
+>UniRef90_F7F3N7/100-129 [subseq from] Glucagon n=11 Tax=Metatheria TaxID=9263 RepID=F7F3N7_MONDO
+-AEGTFTSDVSSYLEGQAAKEFIAWLVKGRG--------
+>UniRef90_F7F3N7/148-174 [subseq from] Glucagon n=11 Tax=Metatheria TaxID=9263 RepID=F7F3N7_MONDO
+-ADGSFSDEMNTVLDTLATRDFINWLLQ-----------
+>UniRef90_A0A7J6BFQ1/174-205 [subseq from] Glucagon n=1 Tax=Ameiurus melas TaxID=219545 RepID=A0A7J6BFQ1_AMEME
+--DGSFTSDVTKVLDSMAAKQYLQWVMSSQSASG-----
+>UniRef90_A0A091DI12/127-152 [subseq from] Glucagon n=1 Tax=Fukomys damarensis TaxID=885580 RepID=A0A091DI12_FUKDA
+-ADGSFSDEMNTVLDTLATRDFINWLI------------
+>UniRef90_UPI0019558381/51-79 [subseq from] glucagon a n=2 Tax=Cyprinoidei TaxID=30727 RepID=UPI0019558381
+-SEGTFSNDYSKYLETRRAQDFVQWLMDSK---------
+>UniRef90_UPI0019558381/89-120 [subseq from] glucagon a n=2 Tax=Cyprinoidei TaxID=30727 RepID=UPI0019558381
+-AEGTYTSDISSYLQDQAAQNFVAWLKSGQPKQ------
+>UniRef90_A0A2R9ZQ26/56-84 [subseq from] Preproglucagon B1 n=3 Tax=Gekkota TaxID=8560 RepID=A0A2R9ZQ26_GEKJA
+-SQGTFTSDYSKFLDTRRAQDFVEWLMSSK---------
+>UniRef90_A0A2R9ZQ26/119-146 [subseq from] Preproglucagon B1 n=3 Tax=Gekkota TaxID=8560 RepID=A0A2R9ZQ26_GEKJA
+-ADGTYTSDISSYLEEQAAKEFIAWLMSG----------
+>UniRef90_A0A2R9ZQ26/166-193 [subseq from] Preproglucagon B1 n=3 Tax=Gekkota TaxID=8560 RepID=A0A2R9ZQ26_GEKJA
+YSEGTYNSELHEILDEIATQEFLNWLLE-----------
+>UniRef90_A0A3P8Z2S3/53-84 [subseq from] Glucagon-1-like n=1 Tax=Esox lucius TaxID=8010 RepID=A0A3P8Z2S3_ESOLU
+-SDGTFSNDYSKYQEDMRAKDFVQWLLDSKR-SG-----
+>UniRef90_A0A3P8Z2S3/91-119 [subseq from] Glucagon-1-like n=1 Tax=Esox lucius TaxID=8010 RepID=A0A3P8Z2S3_ESOLU
+-AEGTYTSDVSAYLQDQAAKDFVSWLKSGR---------
+>UniRef90_A0A3P8Z2S3/140-170 [subseq from] Glucagon-1-like n=1 Tax=Esox lucius TaxID=8010 RepID=A0A3P8Z2S3_ESOLU
+--DGSFTSDVSKVLDSMAAKEYLLWVMTSKPSR------
+>UniRef90_UPI001BB189CE/122-149 [subseq from] gastric inhibitory polypeptide-like n=1 Tax=Microtus oregoni TaxID=111838 RepID=UPI001BB189CE
+YAEGTLISDYSILMDKIRQLEFVNWLLA-----------
+>UniRef90_UPI001E1DE16B/146-171 [subseq from] pro-glucagon n=1 Tax=Echinops telfairi TaxID=9371 RepID=UPI001E1DE16B
+-ADGSFSDEMNTILDNLAARDFINWLL------------
+>UniRef90_P06883/147-173 [subseq from] Pro-glucagon n=33 Tax=Tetrapoda TaxID=32523 RepID=GLUC_RAT
+-ADGSFSDEMNTILDNLATRDFINWLIQ-----------
+>UniRef90_P01275/147-173 [subseq from] Pro-glucagon n=28 Tax=Simiiformes TaxID=314293 RepID=GLUC_HUMAN
+-ADGSFSDEMNTILDNLAARDFINWLIQ-----------
+>UniRef90_G1QG18/54-80 [subseq from] Glucagon n=4 Tax=Myotis TaxID=9434 RepID=G1QG18_MYOLU
+-SQGTFTSDYSKYLDTRRAQDFVEWLMT-----------
+>UniRef90_G1QG18/99-128 [subseq from] Glucagon n=4 Tax=Myotis TaxID=9434 RepID=G1QG18_MYOLU
+-SEGTFTSDLSSYLEGKATKEFIAWLVKGLE--------
+>UniRef90_Q8MJ25/147-172 [subseq from] Pro-glucagon (Fragment) n=14 Tax=Pecora TaxID=35500 RepID=GLUC_SHEEP
+-ADGSFSDEMNTVLDSLATRDFINWLL------------
+>UniRef90_A0A8J7NYT8/53-80 [subseq from] GLUC protein (Fragment) n=1 Tax=Atractosteus spatula TaxID=7917 RepID=A0A8J7NYT8_ATRSP
+-SQGTFTNDYSKYLDTRRAQDFVQWLMST----------
+>UniRef90_A0A8J7NYT8/190-220 [subseq from] GLUC protein (Fragment) n=1 Tax=Atractosteus spatula TaxID=7917 RepID=A0A8J7NYT8_ATRSP
+-ADGSFTSDVNNVLDSIAAKEFIIWVMNSKPS-------
+>UniRef90_A0A673I184/112-143 [subseq from] Glucagon n=2 Tax=Sinocyclocheilus rhinocerous TaxID=307959 RepID=A0A673I184_9TELE
+-SEGTFSNDYSKYLETRRAQDFVQWLMNSKRNG------
+>UniRef90_A0A7J7XUQ7/54-79 [subseq from] Glucagon n=5 Tax=Microchiroptera TaxID=30560 RepID=A0A7J7XUQ7_PIPKU
+-SQGTFTSDYSKYLDSRRAQDFVEWLM------------
+>UniRef90_A0A7J7XUQ7/99-129 [subseq from] Glucagon n=5 Tax=Microchiroptera TaxID=30560 RepID=A0A7J7XUQ7_PIPKU
+-AEGTFTSDLSTYLEDQAVREFIAWLVKGRDR-------
+>UniRef90_A0A7J7XUQ7/146-172 [subseq from] Glucagon n=5 Tax=Microchiroptera TaxID=30560 RepID=A0A7J7XUQ7_PIPKU
+-AEGSFSDEMNTVLDNLATRDFINWLLQ-----------
+>UniRef90_A0A2R9ZLX1/56-83 [subseq from] Preproglucagon B1 n=1 Tax=Eublepharis macularius TaxID=481883 RepID=A0A2R9ZLX1_EUBMA
+-SQGTFTSDYSKFLDTIRAQDFVEWLMTS----------
+>UniRef90_A0A2R9ZLX1/119-146 [subseq from] Preproglucagon B1 n=1 Tax=Eublepharis macularius TaxID=481883 RepID=A0A2R9ZLX1_EUBMA
+-ADGTYTSDISSYLEEQAAKEFIAWLMNG----------
+>UniRef90_A0A2R9ZLX1/168-193 [subseq from] Preproglucagon B1 n=1 Tax=Eublepharis macularius TaxID=481883 RepID=A0A2R9ZLX1_EUBMA
+--DGTYNSDLHEILDEIATQEFLKWVLE-----------
+>UniRef90_T0MG31/131-156 [subseq from] Glucagon-like protein n=1 Tax=Camelus ferus TaxID=419612 RepID=T0MG31_CAMFR
+-ADGSFSDEMNTILDNLATQDFINWLL------------
+>UniRef90_UPI00032B0CB9/147-172 [subseq from] pro-glucagon n=2 Tax=Ochotona TaxID=9977 RepID=UPI00032B0CB9
+-ADGSFSDEMNAILDSLATRDFINWLL------------
+>UniRef90_A0A8C9SP65/53-86 [subseq from] Glucagon n=3 Tax=Scleropages formosus TaxID=113540 RepID=A0A8C9SP65_SCLFO
+-SQGTFTNDYSKYLETRRAQDFVQWLMNS-KRNGSP---
+>UniRef90_A0A8C9SP65/91-116 [subseq from] Glucagon n=3 Tax=Scleropages formosus TaxID=113540 RepID=A0A8C9SP65_SCLFO
+-ADGTYTSDISSYLQDQAAKEFVSWLK------------
+>UniRef90_A0A8C9SP65/140-170 [subseq from] Glucagon n=3 Tax=Scleropages formosus TaxID=113540 RepID=A0A8C9SP65_SCLFO
+--DGSFTSDVHNALDSIAAKEFLLWVMNSKPSE------
+>UniRef90_A0A3B1IIC4/51-83 [subseq from] Glucagon n=3 Tax=Astyanax mexicanus TaxID=7994 RepID=A0A3B1IIC4_ASTMX
+-SEGTFSNDYSKYLETQRAQDFVQWLMNSKRSGG-----
+>UniRef90_A0A3B1IIC4/89-119 [subseq from] Glucagon n=3 Tax=Astyanax mexicanus TaxID=7994 RepID=A0A3B1IIC4_ASTMX
+-ADGTYTSDISAYLQDQAAKDFITWLKNGQPK-------
+>UniRef90_A0A3B1IIC4/137-162 [subseq from] Glucagon n=3 Tax=Astyanax mexicanus TaxID=7994 RepID=A0A3B1IIC4_ASTMX
+--DGSFTSDVNKVLDSMAAKEYLQWVMN-----------
+>UniRef90_UPI001879C167/224-249 [subseq from] LOW QUALITY PROTEIN: pro-glucagon n=1 Tax=Sturnira hondurensis TaxID=192404 RepID=UPI001879C167
+-ADGSFSDEMNTVLDNLATRDFINWLI------------
+>UniRef90_A0A8C5F4I9/48-82 [subseq from] Glucagon a n=1 Tax=Gadus morhua TaxID=8049 RepID=A0A8C5F4I9_GADMO
+-SDGTFSSDYSKYLEDRKAQDFVKWLMNNKRGS--SPP-
+>UniRef90_A0A8C5F4I9/87-114 [subseq from] Glucagon a n=1 Tax=Gadus morhua TaxID=8049 RepID=A0A8C5F4I9_GADMO
+-ADGTYTSDVSAFLEEQAAKDFVAWLKNG----------
+>UniRef90_A0A8C5F4I9/135-165 [subseq from] Glucagon a n=1 Tax=Gadus morhua TaxID=8049 RepID=A0A8C5F4I9_GADMO
+--DGSFTSDVNKVLDAMAAKEYLHWVMTAKPSG------
+>UniRef90_UPI001F08568C/52-79 [subseq from] glucagon-1-like n=1 Tax=Hypomesus transpacificus TaxID=137520 RepID=UPI001F08568C
+-SEGTFSNDYSNYMEERRAQDFVQWLMNS----------
+>UniRef90_UPI001F08568C/90-117 [subseq from] glucagon-1-like n=1 Tax=Hypomesus transpacificus TaxID=137520 RepID=UPI001F08568C
+-ADGTYTSDVSSYLQDQAAKDFVTWLKSG----------
+>UniRef90_UPI001F08568C/136-167 [subseq from] glucagon-1-like n=1 Tax=Hypomesus transpacificus TaxID=137520 RepID=UPI001F08568C
+--DGSFTSDVNKVLDSMAAKEYLLWVMTSNPSGA-----
+>UniRef90_A0A8C4BQJ9/46-73 [subseq from] Glucagon-2-like n=3 Tax=Denticeps clupeoides TaxID=299321 RepID=A0A8C4BQJ9_9TELE
+-SEGTFSNDYSKYLENRRAQDFVQWLMNS----------
+>UniRef90_A0A8C4BQJ9/83-112 [subseq from] Glucagon-2-like n=3 Tax=Denticeps clupeoides TaxID=299321 RepID=A0A8C4BQJ9_9TELE
+-ADGTFTSDVSSYLQDQAAKDFISWLKTGAA--------
+>UniRef90_A0A8C4BQJ9/131-159 [subseq from] Glucagon-2-like n=3 Tax=Denticeps clupeoides TaxID=299321 RepID=A0A8C4BQJ9_9TELE
+--DGSFTSDVNQVLDSIAAKQYLLWVMNSKP--------
+>UniRef90_G3PL47/58-85 [subseq from] Glucagon a n=1 Tax=Gasterosteus aculeatus TaxID=69293 RepID=G3PL47_GASAC
+-SEGTFSNDYSKFLEEKKAQDFVQWLMNN----------
+>UniRef90_G3PL47/105-132 [subseq from] Glucagon a n=1 Tax=Gasterosteus aculeatus TaxID=69293 RepID=G3PL47_GASAC
+-ADGTFTSDVSSYLKEQAIKDFVDKLKSG----------
+>UniRef90_G3PL47/142-174 [subseq from] Glucagon a n=1 Tax=Gasterosteus aculeatus TaxID=69293 RepID=G3PL47_GASAC
+--DGSFTSDVNKVLDSLAAKEYLLWVMTSKPSGES----
+>UniRef90_A0A8C1EY03/51-83 [subseq from] Glucagon-like n=11 Tax=Cyprinidae TaxID=7953 RepID=A0A8C1EY03_CYPCA
+-SEGTFSNDYSKYLETRRAQDFVQWLMDSKRNGG-----
+>UniRef90_A0A8C1EY03/89-120 [subseq from] Glucagon-like n=11 Tax=Cyprinidae TaxID=7953 RepID=A0A8C1EY03_CYPCA
+-AEGTYTSDVSSYLqDRVAQ-NFVAWPKSGQPKQ------
+>UniRef90_A0A8C1EY03/137-162 [subseq from] Glucagon-like n=11 Tax=Cyprinidae TaxID=7953 RepID=A0A8C1EY03_CYPCA
+--DGSFTSDVNKVLDSIAAKEYLQWVMN-----------
+>UniRef90_A0A6J2V6I4/51-84 [subseq from] glucagon-like n=1 Tax=Chanos chanos TaxID=29144 RepID=A0A6J2V6I4_CHACN
+-SEGTFSNDYSKYLETRRAQDFVQWLMNSKR-SGGP---
+>UniRef90_A0A6J2V6I4/89-117 [subseq from] glucagon-like n=1 Tax=Chanos chanos TaxID=29144 RepID=A0A6J2V6I4_CHACN
+-ADGTYTSDISSYLQDKAAQDFVSWLKSGQ---------
+>UniRef90_A0A6J2V6I4/137-167 [subseq from] glucagon-like n=1 Tax=Chanos chanos TaxID=29144 RepID=A0A6J2V6I4_CHACN
+--DGSFTSDVNKVLDSMAAKEYLLWVMNSQPSG------
+>UniRef90_UPI00101A0D0B/53-78 [subseq from] LOW QUALITY PROTEIN: glucagon n=1 Tax=Eptesicus fuscus TaxID=29078 RepID=UPI00101A0D0B
+-SQGTFTSDYSKYLDTRRAQDFVDWLM------------
+>UniRef90_UPI00101A0D0B/98-124 [subseq from] LOW QUALITY PROTEIN: glucagon n=1 Tax=Eptesicus fuscus TaxID=29078 RepID=UPI00101A0D0B
+-AEGTFTSDLSAYLENEAVREFVAWLVE-----------
+>UniRef90_UPI00101A0D0B/145-171 [subseq from] LOW QUALITY PROTEIN: glucagon n=1 Tax=Eptesicus fuscus TaxID=29078 RepID=UPI00101A0D0B
+-AEGSFSDEMNTVLDNLATREFINWLLQ-----------
+>UniRef90_Q91971/53-87 [subseq from] Glucagon-1 n=18 Tax=Salmoninae TaxID=504568 RepID=GLUC1_ONCMY
+-SEGTFSNDYSKYQEERMAQDFVQWLMN-SKRSGAPS--
+>UniRef90_Q91971/91-119 [subseq from] Glucagon-1 n=18 Tax=Salmoninae TaxID=504568 RepID=GLUC1_ONCMY
+-ADGTYTSDVSTYLQDQAAKDFVSWLKSGR---------
+>UniRef90_Q91971/139-167 [subseq from] Glucagon-1 n=18 Tax=Salmoninae TaxID=504568 RepID=GLUC1_ONCMY
+--DGSFTSDVNKVLDSLAAKEYLLWVMTSKT--------
+>UniRef90_UPI0003F08D56/137-162 [subseq from] glucagon n=1 Tax=Elephantulus edwardii TaxID=28737 RepID=UPI0003F08D56
+-SQGTFTSDYSKYLDSRRALDFVQWLM------------
+>UniRef90_UPI001561933A/55-82 [subseq from] glucagon-2-like n=1 Tax=Acipenser ruthenus TaxID=7906 RepID=UPI001561933A
+-SQGTFTNEYNKYLETKHAQEFVQWLIGS----------
+>UniRef90_UPI001561933A/93-120 [subseq from] glucagon-2-like n=1 Tax=Acipenser ruthenus TaxID=7906 RepID=UPI001561933A
+-ADGTYTSDISSFLQDQAAKEFVSWLKKG----------
+>UniRef90_UPI001561933A/141-172 [subseq from] glucagon-2-like n=1 Tax=Acipenser ruthenus TaxID=7906 RepID=UPI001561933A
+-ADGTYSSEIKTVLDSIAAKEFLNWVMNSKPSE------
+>UniRef90_A0A668UCV8/46-71 [subseq from] Glucagon n=1 Tax=Oreochromis aureus TaxID=47969 RepID=A0A668UCV8_OREAU
+-SDGTFTSDFTHYLDKIKAKDFVEWLT------------
+>UniRef90_A0A556VW44/549-582 [subseq from] Dipeptidyl peptidase 4 n=1 Tax=Bagarius yarrelli TaxID=175774 RepID=A0A556VW44_BAGYA
+-SEGTFSNDYSKYLETRRAQDFVQWLMNSKRS-GGP---
+>UniRef90_A0A556VW44/587-620 [subseq from] Dipeptidyl peptidase 4 n=1 Tax=Bagarius yarrelli TaxID=175774 RepID=A0A556VW44_BAGYA
+-ADGTYTSDVSSYLQDQAAKDFITWLKSGQPKPDA----
+>UniRef90_A0A556VW44/635-661 [subseq from] Dipeptidyl peptidase 4 n=1 Tax=Bagarius yarrelli TaxID=175774 RepID=A0A556VW44_BAGYA
+--DGSFTSDVNKVLDSIAAKEYLQWVMNS----------
+>UniRef90_A0A674F7B0/53-86 [subseq from] Glucagon-2 n=3 Tax=Salmonidae TaxID=8015 RepID=A0A674F7B0_SALTR
+-SEGTFSNHYSKYQEERMARDFVQWLMNT-RRSGAP---
+>UniRef90_A0A674F7B0/91-119 [subseq from] Glucagon-2 n=3 Tax=Salmonidae TaxID=8015 RepID=A0A674F7B0_SALTR
+-ADGTYTSDVSTYLQDQAAKDFVSWLKSG-P--------
+>UniRef90_A0A674F7B0/139-169 [subseq from] Glucagon-2 n=3 Tax=Salmonidae TaxID=8015 RepID=A0A674F7B0_SALTR
+--DGSFTSDVNNVLDSLAAKEYLLWVMTSKPSG------
+>UniRef90_A0A8C2BCG2/89-120 [subseq from] Glucagon a n=1 Tax=Cyprinus carpio TaxID=7962 RepID=A0A8C2BCG2_CYPCA
+-AEGTYTSDVSSYLQDRVPQNFVAWPKSGQPKQ------
+>UniRef90_A0A8C2BCG2/137-161 [subseq from] Glucagon a n=1 Tax=Cyprinus carpio TaxID=7962 RepID=A0A8C2BCG2_CYPCA
+--DGSFTSDVNKVLDSIAAKEYLQWVM------------
+>UniRef90_UPI001B7DAA19/20-47 [subseq from] LOW QUALITY PROTEIN: pro-glucagon-like n=1 Tax=Polyodon spathula TaxID=7913 RepID=UPI001B7DAA19
+-SQDTFTNEYNXYLEAKHAQEFVQWLINS----------
+>UniRef90_UPI001B7DAA19/98-130 [subseq from] LOW QUALITY PROTEIN: pro-glucagon-like n=1 Tax=Polyodon spathula TaxID=7913 RepID=UPI001B7DAA19
+YVDGTYTSEVNTVLDNTAAKEFLNWVMNSKPSE------
+>UniRef90_A0A8C7LGL8/39-73 [subseq from] Glucagon-2 n=1 Tax=Oncorhynchus kisutch TaxID=8019 RepID=A0A8C7LGL8_ONCKI
+-SEGTFSNYYSKYQEERMARDFLQWLMN-SKRSGAPS--
+>UniRef90_A0A8C7LGL8/125-155 [subseq from] Glucagon-2 n=1 Tax=Oncorhynchus kisutch TaxID=8019 RepID=A0A8C7LGL8_ONCKI
+--DGSFTSDVNKVLDSLAAKEYLLWVMTSKPSG------
+>UniRef90_UPI00155F9322/55-83 [subseq from] glucagon-2-like n=1 Tax=Acipenser ruthenus TaxID=7906 RepID=UPI00155F9322
+-SQGMFTNDYSKYLEEKLAQEFVEWLKNGK---------
+>UniRef90_UPI00155F9322/95-122 [subseq from] glucagon-2-like n=1 Tax=Acipenser ruthenus TaxID=7906 RepID=UPI00155F9322
+-ADGTYTSDVSSFLQDQAARDFVSWLKKG----------
+>UniRef90_UPI00155F9322/142-169 [subseq from] glucagon-2-like n=1 Tax=Acipenser ruthenus TaxID=7906 RepID=UPI00155F9322
+HGDGSFTHDMTTVLDSIAAKEFLNWVMN-----------
+>UniRef90_A0A1L3MY66/54-80 [subseq from] Preproglucagon n=1 Tax=Tachyglossus aculeatus TaxID=9261 RepID=A0A1L3MY66_TACAU
+-SQGTFTSDYSKLLDTIRAQQFVQWLMN-----------
+>UniRef90_A0A1L3MY66/100-127 [subseq from] Preproglucagon n=1 Tax=Tachyglossus aculeatus TaxID=9261 RepID=A0A1L3MY66_TACAU
+--DGVYTDYFSRYLEEKATNEFIDWLLKGQ---------
+>UniRef90_A0A1L3MY66/147-173 [subseq from] Preproglucagon n=1 Tax=Tachyglossus aculeatus TaxID=9261 RepID=A0A1L3MY66_TACAU
+-ADGTFSHELSGVLDQLATKDFLNWLLQ-----------
+>UniRef90_G3HZV5/529-554 [subseq from] Seprase n=2 Tax=Cricetulus griseus TaxID=10029 RepID=G3HZV5_CRIGR
+-ADGSFSDEMNTILDSLATRDFINWLI------------
+>UniRef90_A0A3Q3DR78/42-67 [subseq from] Glucagon-1-like n=1 Tax=Hippocampus comes TaxID=109280 RepID=A0A3Q3DR78_HIPCM
+-SEGTFSNDYSRYLEDQKAQDFVRWLM------------
+>UniRef90_A0A3Q3DR78/80-109 [subseq from] Glucagon-1-like n=1 Tax=Hippocampus comes TaxID=109280 RepID=A0A3Q3DR78_HIPCM
+-TEGTYTSDVSSYLQDQAAKDFVTWLIMTGQ--------
+>UniRef90_A0A3Q3DR78/130-160 [subseq from] Glucagon-1-like n=1 Tax=Hippocampus comes TaxID=109280 RepID=A0A3Q3DR78_HIPCM
+--DGSFTSDVNKVLDSMAAKEYLLWVMN-SKSSG-----
+>UniRef90_A0A7J6BR94/875-906 [subseq from] Dipeptidyl peptidase 4 n=1 Tax=Onychostoma macrolepis TaxID=369639 RepID=A0A7J6BR94_9TELE
+-AEGTYTSDVSSYLQDQAEQNFVAWLKSGQPKQ------
+>UniRef90_UPI001444B751/53-84 [subseq from] glucagon-1-like n=2 Tax=Epinephelus TaxID=94231 RepID=UPI001444B751
+-SEGTFSNDYSKYLEERRAQDFVQWLMNN-KRSG-----
+>UniRef90_UPI001444B751/91-118 [subseq from] glucagon-1-like n=2 Tax=Epinephelus TaxID=94231 RepID=UPI001444B751
+-ADGTFTSDVSSYLKEQAIKDFVARLKSG----------
+>UniRef90_UPI001444B751/139-169 [subseq from] glucagon-1-like n=2 Tax=Epinephelus TaxID=94231 RepID=UPI001444B751
+--DGSFTSDVSKVLDSMAAKEYLLWVMTSKPSG------
+>UniRef90_A0A3Q4H9B9/53-77 [subseq from] Glucagon b n=1 Tax=Neolamprologus brichardi TaxID=32507 RepID=A0A3Q4H9B9_NEOBR
+-SEGTFSNDYSKYLETRRAQDFVQWL-------------
+>UniRef90_A0A3Q4H9B9/88-113 [subseq from] Glucagon b n=1 Tax=Neolamprologus brichardi TaxID=32507 RepID=A0A3Q4H9B9_NEOBR
+-ADGTYTSDVSSYLQDQAAKEFVSWLK------------
+>UniRef90_A0A3Q4H9B9/126-153 [subseq from] Glucagon b n=1 Tax=Neolamprologus brichardi TaxID=32507 RepID=A0A3Q4H9B9_NEOBR
+-ADGTYTSDVSSYLQDQAAKEFVSWLKTG----------
+>UniRef90_G3PL53/54-85 [subseq from] Glucagon a n=2 Tax=Gasterosteidae TaxID=69291 RepID=G3PL53_GASAC
+-SEGTFSNDYSKFLEEKKAQDFVQWLMNN-KRSG-----
+>UniRef90_A0A8D0HEM0/56-83 [subseq from] Glucagon n=1 Tax=Sphenodon punctatus TaxID=8508 RepID=A0A8D0HEM0_SPHPU
+-SQGTFTSDYSKYLDTRRAQDFVQWLMST----------
+>UniRef90_A0A8D0HEM0/156-181 [subseq from] Glucagon n=1 Tax=Sphenodon punctatus TaxID=8508 RepID=A0A8D0HEM0_SPHPU
+-ADGTFTSDINKVLDDMAAKEFIEWLI------------
+>UniRef90_H2TB61/53-85 [subseq from] Glucagon-1-like n=1 Tax=Takifugu rubripes TaxID=31033 RepID=H2TB61_TAKRU
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNKRKHG-----
+>UniRef90_H2TB61/91-118 [subseq from] Glucagon-1-like n=1 Tax=Takifugu rubripes TaxID=31033 RepID=H2TB61_TAKRU
+-ADGTFTSDVSSYLKDQAIKDFVARLKAG----------
+>UniRef90_H2TB61/139-169 [subseq from] Glucagon-1-like n=1 Tax=Takifugu rubripes TaxID=31033 RepID=H2TB61_TAKRU
+--DGTFTSDVNKVLDSMAAKEYLLWVMASKPSG------
+>UniRef90_UPI00140389E3/63-89 [subseq from] glucagon-like n=1 Tax=Petromyzon marinus TaxID=7757 RepID=UPI00140389E3
+-SEGTFTSDYSKYLDTVRAKDFVHWLIG-----------
+>UniRef90_UPI00140389E3/107-133 [subseq from] glucagon-like n=1 Tax=Petromyzon marinus TaxID=7757 RepID=UPI00140389E3
+-AEGTIASDYSSVLDGKAAKDFVDWLVR-----------
+>UniRef90_UPI001885EAEB/48-74 [subseq from] pro-glucagon-like isoform X1 n=3 Tax=Syngnathus TaxID=103719 RepID=UPI001885EAEB
+-SEGTFSNDYSKYLEDRKAQDFVQWLMN-----------
+>UniRef90_UPI001885EAEB/85-113 [subseq from] pro-glucagon-like isoform X1 n=3 Tax=Syngnathus TaxID=103719 RepID=UPI001885EAEB
+-AEGTYTSDVSSYLQDQAVKDFVAGLMSGQ---------
+>UniRef90_UPI001885EAEB/134-164 [subseq from] pro-glucagon-like isoform X1 n=3 Tax=Syngnathus TaxID=103719 RepID=UPI001885EAEB
+--DGSFTSDVNKVLDSMAAKEYLLWVMNSKPSE------
+>UniRef90_UPI001C4AE61A/50-77 [subseq from] glucagon-1-like n=1 Tax=Plectropomus leopardus TaxID=160734 RepID=UPI001C4AE61A
+-SEGTFSNDYSKYLEDRRAQDFVQWLMNN----------
+>UniRef90_UPI001C4AE61A/90-116 [subseq from] glucagon-1-like n=1 Tax=Plectropomus leopardus TaxID=160734 RepID=UPI001C4AE61A
+-ADGTFTSDVSSYLKEQAIKDFVDRLKQ-----------
+>UniRef90_A0A672I3H1/52-79 [subseq from] Glucagon a n=2 Tax=Salarias fasciatus TaxID=181472 RepID=A0A672I3H1_SALFA
+-SEGTFSNDYSKYLEDRKAQDFVQWLMNN----------
+>UniRef90_A0A672I3H1/91-117 [subseq from] Glucagon a n=2 Tax=Salarias fasciatus TaxID=181472 RepID=A0A672I3H1_SALFA
+--DGTFTSDVSAYLNDRAVKEFVARLKSG----------
+>UniRef90_A0A672I3H1/128-158 [subseq from] Glucagon a n=2 Tax=Salarias fasciatus TaxID=181472 RepID=A0A672I3H1_SALFA
+--DGSFTSDVNKVLDSMAAKEYLLWVMTSKPSG------
+>UniRef90_A0A3Q3WAU4/52-83 [subseq from] Glucagon n=1 Tax=Mola mola TaxID=94237 RepID=A0A3Q3WAU4_MOLML
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNKRS-G-----
+>UniRef90_A0A3Q3WAU4/90-117 [subseq from] Glucagon n=1 Tax=Mola mola TaxID=94237 RepID=A0A3Q3WAU4_MOLML
+-ADGTFTSDVSSFLKDLAVKDFVARLKSG----------
+>UniRef90_A0A3Q3WAU4/138-168 [subseq from] Glucagon n=1 Tax=Mola mola TaxID=94237 RepID=A0A3Q3WAU4_MOLML
+--DGSFTSDVNKVLDSLAAKEYLIWVMTSKPSG------
+>UniRef90_H2LC36/54-89 [subseq from] Glucagon-1-like n=5 Tax=Oryzias TaxID=8089 RepID=H2LC36_ORYLA
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNKRSGAALP--
+>UniRef90_H2LC36/102-129 [subseq from] Glucagon-1-like n=5 Tax=Oryzias TaxID=8089 RepID=H2LC36_ORYLA
+-ADGTFTSDVSAYLKEQAIKDFVAKLKSG----------
+>UniRef90_H2LC36/148-178 [subseq from] Glucagon-1-like n=5 Tax=Oryzias TaxID=8089 RepID=H2LC36_ORYLA
+--DGSFTSDVNKVLDSMAAKEYLLWVMTSKPSN------
+>UniRef90_A0A3M0KZ74/1431-1457 [subseq from] IFIH1 protein n=3 Tax=Passeriformes TaxID=9126 RepID=A0A3M0KZ74_HIRRU
+-ADGTFTSDINKVLDDMAAKEFLKWLIN-----------
+>UniRef90_A0A3Q2ZEK2/54-85 [subseq from] Glucagon-1-like n=3 Tax=Kryptolebias marmoratus TaxID=37003 RepID=A0A3Q2ZEK2_KRYMA
+-SEGTFANDYSKFLEDRKAQDFVRWLMSNKRSG------
+>UniRef90_A0A3Q2ZEK2/92-119 [subseq from] Glucagon-1-like n=3 Tax=Kryptolebias marmoratus TaxID=37003 RepID=A0A3Q2ZEK2_KRYMA
+-AEGTFTSDVSSYLNDQAIKDFVAKLKSG----------
+>UniRef90_H3D6X5/56-86 [subseq from] Glucagon a n=1 Tax=Tetraodon nigroviridis TaxID=99883 RepID=H3D6X5_TETNG
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNKRS-------
+>UniRef90_H3D6X5/142-172 [subseq from] Glucagon a n=1 Tax=Tetraodon nigroviridis TaxID=99883 RepID=H3D6X5_TETNG
+--DGTFTSDVNKVLDSMAAKEYLLWVMTSKPSG------
+>UniRef90_A0A6B0RD78/223-248 [subseq from] Dipeptidyl peptidase 4 n=4 Tax=Bovidae TaxID=9895 RepID=A0A6B0RD78_9CETA
+-ADGSFSDEMNTVLDSLAARDFINWLL------------
+>UniRef90_A0A8D0ABA9/54-82 [subseq from] Glucagon a n=4 Tax=Perciformes TaxID=8111 RepID=A0A8D0ABA9_SANLU
+-SEGTFSNDYSKYLEDMKAQDFVRWLMNNK---------
+>UniRef90_A0A8D0ABA9/94-121 [subseq from] Glucagon a n=4 Tax=Perciformes TaxID=8111 RepID=A0A8D0ABA9_SANLU
+-ADGTFTSDVSSYLKDQAIKDFVNRLKSG----------
+>UniRef90_A0A8D0ABA9/142-172 [subseq from] Glucagon a n=4 Tax=Perciformes TaxID=8111 RepID=A0A8D0ABA9_SANLU
+--DGSFTSDVNKVLDSMAAKEYLHWVMTSKPSG------
+>UniRef90_UPI0003C1A5A2/55-83 [subseq from] glucagon n=1 Tax=Latimeria chalumnae TaxID=7897 RepID=UPI0003C1A5A2
+-SQGTFTSDYTKYLDTIRAQDFVQWLMSTK---------
+>UniRef90_UPI0003C1A5A2/102-133 [subseq from] glucagon n=1 Tax=Latimeria chalumnae TaxID=7897 RepID=UPI0003C1A5A2
+-ADGSFTSDINKVLDTIAAKEFLNWLINSKDSQ------
+>UniRef90_A0A2S0D698/116-144 [subseq from] Preproglucagon A1 n=1 Tax=Takydromus tachydromoides TaxID=118850 RepID=A0A2S0D698_9SAUR
+-ADGTFTSDISSYLESQAAKEFIAWLANGG---------
+>UniRef90_A0A3B4U1B0/52-83 [subseq from] Glucagon-1-like n=4 Tax=Percomorphaceae TaxID=1489872 RepID=A0A3B4U1B0_SERDU
+-SEGTFSNDYSKYLEDRKAKDFVRWLMNNKRS-G-----
+>UniRef90_A0A3B4U1B0/90-117 [subseq from] Glucagon-1-like n=4 Tax=Percomorphaceae TaxID=1489872 RepID=A0A3B4U1B0_SERDU
+-ADGTFTSDVSSYLKDQAIKDFVAKLKSG----------
+>UniRef90_A0A3Q3EWD0/54-85 [subseq from] Glucagon-1-like n=5 Tax=Eupercaria TaxID=1489922 RepID=A0A3Q3EWD0_9LABR
+-SEGTFSNDYSKYLEDRKAQDFVRWLMSNKRSG------
+>UniRef90_A0A3Q3EWD0/92-119 [subseq from] Glucagon-1-like n=5 Tax=Eupercaria TaxID=1489922 RepID=A0A3Q3EWD0_9LABR
+-ADGTFTSDVSSYLKDQAIKDFVASLKSG----------
+>UniRef90_A0A3Q3M0D9/54-85 [subseq from] Glucagon-1-like n=2 Tax=Mastacembelus armatus TaxID=205130 RepID=A0A3Q3M0D9_9TELE
+-SEGTFSNDYSKYLEERKAQDFVRWLMNNK-RSG-----
+>UniRef90_A0A3Q3M0D9/92-119 [subseq from] Glucagon-1-like n=2 Tax=Mastacembelus armatus TaxID=205130 RepID=A0A3Q3M0D9_9TELE
+-AEGTFTSDVSSYLKDQAIKDFVAKLKSG----------
+>UniRef90_UPI001FAB851A/93-124 [subseq from] glucagon-1-like n=1 Tax=Girardinichthys multiradiatus TaxID=208333 RepID=UPI001FAB851A
+-SEGTFSNDYSKYLEDRKAQDFVRWLMSNKR-SG-----
+>UniRef90_UPI001FAB851A/130-157 [subseq from] glucagon-1-like n=1 Tax=Girardinichthys multiradiatus TaxID=208333 RepID=UPI001FAB851A
+-ADGTFTSDVSSYLKEQAIKDFVANLKSG----------
+>UniRef90_UPI001FAB851A/178-208 [subseq from] glucagon-1-like n=1 Tax=Girardinichthys multiradiatus TaxID=208333 RepID=UPI001FAB851A
+--DGSFTSDVNKVLDSIAAKEYLLWVMTSKPSG------
+>UniRef90_UPI001C03B917/54-85 [subseq from] glucagon-1-like n=1 Tax=Melanotaenia boesemani TaxID=1250792 RepID=UPI001C03B917
+-SEGTFSNDYSKYLEDRKAQDFVQWLMNNKRS-G-----
+>UniRef90_UPI001C03B917/150-180 [subseq from] glucagon-1-like n=1 Tax=Melanotaenia boesemani TaxID=1250792 RepID=UPI001C03B917
+--DGSFTSDVNKVLDAMAAKKYLLWVMTAKPSG------
+>UniRef90_A0A8C3A3W7/54-85 [subseq from] Glucagon a n=1 Tax=Cyclopterus lumpus TaxID=8103 RepID=A0A8C3A3W7_CYCLU
+-SEGTFSNDYSKYLEDRKAQDFVQWLMNN-KRSG-----
+>UniRef90_A0A8C3A3W7/92-119 [subseq from] Glucagon a n=1 Tax=Cyclopterus lumpus TaxID=8103 RepID=A0A8C3A3W7_CYCLU
+-ADGTFTSDVSSYLKDKAIKEFVAKLKSG----------
+>UniRef90_A0A8C3A3W7/140-169 [subseq from] Glucagon a n=1 Tax=Cyclopterus lumpus TaxID=8103 RepID=A0A8C3A3W7_CYCLU
+--DGSFTSDVNKVLDSMAAKEYLLWVMTSKPS-------
+>UniRef90_A0A3P9PF57/85-112 [subseq from] Glucagon-1-like n=1 Tax=Poecilia reticulata TaxID=8081 RepID=A0A3P9PF57_POERE
+-ADGTFTSDISSYLKDQAIKDFVAQLKSG----------
+>UniRef90_A0A3B3Y730/91-118 [subseq from] Glucagon-1-like n=8 Tax=Poeciliinae TaxID=586240 RepID=A0A3B3Y730_9TELE
+-ADGTFTSDVSSYLKDQAIKDFVAQLKSG----------
+>UniRef90_Q6RYB0/51-82 [subseq from] Proglucagon I n=1 Tax=Sebastes caurinus TaxID=72063 RepID=Q6RYB0_SEBCA
+-SEGTFSNDYSRYLEERKAQDFVRWLMNN-KRSG-----
+>UniRef90_UPI001FAFA1FD/92-119 [subseq from] glucagon-1 n=3 Tax=Pleuronectoidei TaxID=30942 RepID=UPI001FAFA1FD
+-ADGTFTSDMSSFMEDQALKDFVARLKSG----------
+>UniRef90_A0A673A6D7/54-80 [subseq from] Glucagon n=2 Tax=Sphaeramia orbicularis TaxID=375764 RepID=A0A673A6D7_9TELE
+-SEGTFSNDYSKYLEERKAQDFVRWLMN-----------
+>UniRef90_A0A673A6D7/92-119 [subseq from] Glucagon n=2 Tax=Sphaeramia orbicularis TaxID=375764 RepID=A0A673A6D7_9TELE
+-ADGTFTSDVSSYLKEQAVKDFVARLKSG----------
+>UniRef90_A0A673A6D7/140-170 [subseq from] Glucagon n=2 Tax=Sphaeramia orbicularis TaxID=375764 RepID=A0A673A6D7_9TELE
+--DGSFTSDVNKVLDSMAAKEYLLWVMTSKPSE------
+>UniRef90_A0A437DK50/111-140 [subseq from] Glucagon n=1 Tax=Oryzias javanicus TaxID=123683 RepID=A0A437DK50_ORYJA
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNKR--------
+>UniRef90_A0A437DK50/149-176 [subseq from] Glucagon n=1 Tax=Oryzias javanicus TaxID=123683 RepID=A0A437DK50_ORYJA
+-ADGTFTSDVSAYLKEQAIKDFVAKLKAG----------
+>UniRef90_A0A437DK50/195-225 [subseq from] Glucagon n=1 Tax=Oryzias javanicus TaxID=123683 RepID=A0A437DK50_ORYJA
+--DGSFTSDVNKVLDSMAAKQYLLWVMTSKPSN------
+>UniRef90_A0A6G1QV18/54-84 [subseq from] Glucagon-1 Glucagon I Glicentin-related polypeptide 1 n=1 Tax=Channa argus TaxID=215402 RepID=A0A6G1QV18_9TELE
+-SEGTFSNDYSKYLEERKAQDFVRWLMNNKRS-------
+>UniRef90_A0A6G1QV18/135-166 [subseq from] Glucagon-1 Glucagon I Glicentin-related polypeptide 1 n=1 Tax=Channa argus TaxID=215402 RepID=A0A6G1QV18_9TELE
+--DGSFTSDVNKVLDSLAAKEYLLWVMNSKPSGN-----
+>UniRef90_A0A3Q3JF44/54-85 [subseq from] Glucagon-1-like n=2 Tax=Monopterus albus TaxID=43700 RepID=A0A3Q3JF44_MONAL
+-SEGTFSNDYSKFLEERKAQDFVRWLMNNKRS-G-----
+>UniRef90_A0A3Q3JF44/92-119 [subseq from] Glucagon-1-like n=2 Tax=Monopterus albus TaxID=43700 RepID=A0A3Q3JF44_MONAL
+-ADGTFTSDMSSYLKDQAIKDFVAKLKSG----------
+>UniRef90_A0A3B5QC59/54-82 [subseq from] Glucagon-1-like n=5 Tax=Poeciliinae TaxID=586240 RepID=A0A3B5QC59_XIPMA
+-SEGTFSNDYSKYLEDRKAQDFVRWLMSNK---------
+>UniRef90_S4RB06/44-70 [subseq from] Glucagon n=2 Tax=Petromyzon marinus TaxID=7757 RepID=S4RB06_PETMA
+-SEGTFTSDYSKYLENKQAKDFVRWLMN-----------
+>UniRef90_S4RB06/83-110 [subseq from] Glucagon n=2 Tax=Petromyzon marinus TaxID=7757 RepID=S4RB06_PETMA
+-ADGTFTNDMTSYLDAKAARDFVSWLARS----------
+>UniRef90_UPI00189C0E21/54-85 [subseq from] glucagon-1-like n=1 Tax=Nematolebias whitei TaxID=451745 RepID=UPI00189C0E21
+-SDGTFANDYSKFLEDRKAQDFVRWLMSNKRSG------
+>UniRef90_UPI00189C0E21/92-119 [subseq from] glucagon-1-like n=1 Tax=Nematolebias whitei TaxID=451745 RepID=UPI00189C0E21
+-ADGTFTSDVSSYLKEQAIKDFVAKLKSG----------
+>UniRef90_A0A4W6CW86/54-82 [subseq from] Glucagon a n=5 Tax=Carangaria TaxID=1489904 RepID=A0A4W6CW86_LATCA
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNK---------
+>UniRef90_A0A4W6CW86/94-121 [subseq from] Glucagon a n=5 Tax=Carangaria TaxID=1489904 RepID=A0A4W6CW86_LATCA
+-ADGTFTSDVSSYLKNQAIKDFVDRLKSG----------
+>UniRef90_A0A6J2R6I7/137-167 [subseq from] glucagon-1-like n=6 Tax=Percomorphaceae TaxID=1489872 RepID=A0A6J2R6I7_COTGO
+--DGSFTSDVNKVLDSLAAKEYLLWVMTSK-SSG-----
+>UniRef90_UPI000A1C3800/54-85 [subseq from] glucagon-1-like n=1 Tax=Boleophthalmus pectinirostris TaxID=150288 RepID=UPI000A1C3800
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNKRSS------
+>UniRef90_UPI000A1C3800/92-119 [subseq from] glucagon-1-like n=1 Tax=Boleophthalmus pectinirostris TaxID=150288 RepID=UPI000A1C3800
+-ADGTFTSDVSSYLKDQAIKDFVARLKSG----------
+>UniRef90_UPI000A1C3800/138-168 [subseq from] glucagon-1-like n=1 Tax=Boleophthalmus pectinirostris TaxID=150288 RepID=UPI000A1C3800
+--DGSFTSDVNKVLDSMAAKEYLYWVMTSKPSG------
+>UniRef90_A0A667XLC6/54-85 [subseq from] Glucagon-1-like n=2 Tax=Myripristis murdjan TaxID=586833 RepID=A0A667XLC6_9TELE
+-SEGTFSNDYSKYLEDRRAQDFVRWLMNNKRS-G-----
+>UniRef90_A0A667XLC6/92-119 [subseq from] Glucagon-1-like n=2 Tax=Myripristis murdjan TaxID=586833 RepID=A0A667XLC6_9TELE
+-ADGTFTSDVSSYLQDQAVKDFVARLKSG----------
+>UniRef90_A0A667XLC6/140-166 [subseq from] Glucagon-1-like n=2 Tax=Myripristis murdjan TaxID=586833 RepID=A0A667XLC6_9TELE
+--DGTFTSDVNKVLDSMAAKEYLLWVMNS----------
+>UniRef90_Q91189/53-87 [subseq from] Glucagon-2 n=8 Tax=Oncorhynchus TaxID=8016 RepID=GLUC2_ONCMY
+-SEGTFSNYYSKYQEERMARDFLHWLMN-SKRSGAPS--
+>UniRef90_A0A3Q2SYJ6/64-92 [subseq from] Glucagon-1-like n=3 Tax=Fundulus heteroclitus TaxID=8078 RepID=A0A3Q2SYJ6_FUNHE
+-SEGTFSNDYSKYLEDRKAQDFVRWLMSDK---------
+>UniRef90_UPI001FB81200/54-85 [subseq from] glucagon-1-like n=1 Tax=Mugil cephalus TaxID=48193 RepID=UPI001FB81200
+-SEGTFSNDYSKYLEDRKAQDFIRWLMNNKRS-G-----
+>UniRef90_A0A3B4AQY3/48-74 [subseq from] Glucagon a n=2 Tax=Periophthalmus magnuspinnatus TaxID=409849 RepID=A0A3B4AQY3_9GOBI
+-SEGTFSNDYSKYLEDRKAQDFVRWLMN-----------
+>UniRef90_A0A3B4AQY3/132-162 [subseq from] Glucagon a n=2 Tax=Periophthalmus magnuspinnatus TaxID=409849 RepID=A0A3B4AQY3_9GOBI
+--DGSFTSDVNKVLDSMAAKEYLLWVMTSNPSG------
+>UniRef90_A0A3Q2W225/54-84 [subseq from] Glucagon-1-like n=10 Tax=Cichlidae TaxID=8113 RepID=A0A3Q2W225_HAPBU
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNNK-RS------
+>UniRef90_A0A3P8SM16/92-119 [subseq from] Glucagon n=7 Tax=Pomacentridae TaxID=30863 RepID=A0A3P8SM16_AMPPE
+-ADGTFTSDVSSYLTDQAIKDFVARLKSG----------
+>UniRef90_A0A8C6TJV8/54-81 [subseq from] Glucagon a n=2 Tax=Neogobius melanostomus TaxID=47308 RepID=A0A8C6TJV8_9GOBI
+-SEGTFSNDYSKYLEDRKAQDFVRWLMNN----------
+>UniRef90_A0A8C6TJV8/137-167 [subseq from] Glucagon a n=2 Tax=Neogobius melanostomus TaxID=47308 RepID=A0A8C6TJV8_9GOBI
+--DGSFTSDVNKVLDSMAAKEYLEWVMRQKPSG------
+>UniRef90_A0A484BY85/54-85 [subseq from] Glucagon n=6 Tax=Percidae TaxID=8165 RepID=A0A484BY85_PERFV
+-SEGTFSNDYSKYLEDMKAQDFVRWLMNN-KRSG-----
+>UniRef90_A0A484BY85/140-168 [subseq from] Glucagon n=6 Tax=Percidae TaxID=8165 RepID=A0A484BY85_PERFV
+--DGSFTSDVNKVLDSMAAKEYLLWVMTSKT--------
+>UniRef90_A0A2I4DAE6/96-126 [subseq from] glucagon-1-like n=1 Tax=Austrofundulus limnaeus TaxID=52670 RepID=A0A2I4DAE6_9TELE
+-SEGTFANDYSKFLEDRKAQDFVRWLMSTKRS-------
+>UniRef90_A0A8D2ZE72/54-80 [subseq from] Glucagon n=1 Tax=Scophthalmus maximus TaxID=52904 RepID=A0A8D2ZE72_SCOMX
+-SEGTFSNDYSKYLEDQKAQDFVRWLMN-----------
+>UniRef90_A0A8D2ZE72/91-118 [subseq from] Glucagon n=1 Tax=Scophthalmus maximus TaxID=52904 RepID=A0A8D2ZE72_SCOMX
+-ADGTFTSDVSSYLKDQALKDFVARLKSG----------
+>UniRef90_A0A4Z2GDM0/54-85 [subseq from] Glucagon-1 n=1 Tax=Liparis tanakae TaxID=230148 RepID=A0A4Z2GDM0_9TELE
+-SEGTFSNDYSRYLEDRKAQDFVTWLMNS-KRSG-----
+>UniRef90_A0A4Z2GDM0/92-116 [subseq from] Glucagon-1 n=1 Tax=Liparis tanakae TaxID=230148 RepID=A0A4Z2GDM0_9TELE
+-ADGTFTSDVSSYLNDKAIKEFVAKL-------------
+>UniRef90_A0A140EH97/54-82 [subseq from] Glucagon-1-like protein n=2 Tax=Solea senegalensis TaxID=28829 RepID=A0A140EH97_SOLSE
+-SEGTFSNDYSKYLEGRKAQDFVRWLMNNK---------
+>UniRef90_A0A140EH97/92-119 [subseq from] Glucagon-1-like protein n=2 Tax=Solea senegalensis TaxID=28829 RepID=A0A140EH97_SOLSE
+-ADGTFTSDVSSYLTDQAIKDFVAKLKSG----------
+>UniRef90_A0A5A9NST7/51-80 [subseq from] Glucagon Glicentin-related polypeptide n=1 Tax=Triplophysa tibetana TaxID=1572043 RepID=A0A5A9NST7_9TELE
+-SEGTFSNDYSKYLETRRAQDFVQWLMNSKR--------
+>UniRef90_A0A5A9NST7/89-119 [subseq from] Glucagon Glicentin-related polypeptide n=1 Tax=Triplophysa tibetana TaxID=1572043 RepID=A0A5A9NST7_9TELE
+-AEGTYTSDISSYLDDQAAKNFVAWLKSGQPK-------
+>UniRef90_P20394/49-86 [subseq from] Exendin-3 n=3 Tax=Heloderma TaxID=8550 RepID=EXE3_HELHO
+-SDGTFTSDLSKQMEEEAVRLFIEWLKNGGPSSGAPPPS
+>UniRef90_A0A1A8LP61/97-128 [subseq from] Glucagon a (Fragment) n=4 Tax=Nothobranchius TaxID=28779 RepID=A0A1A8LP61_9TELE
+-SEGTFANDYSKFLEDRKAQDFVRWLMSNKR-SG-----
+>UniRef90_A0A1A8LP61/135-162 [subseq from] Glucagon a (Fragment) n=4 Tax=Nothobranchius TaxID=28779 RepID=A0A1A8LP61_9TELE
+-ADGTFTSDVSSYLSDQAIKDFVAKLKSG----------
+>UniRef90_A0A1A8LP61/183-212 [subseq from] Glucagon a (Fragment) n=4 Tax=Nothobranchius TaxID=28779 RepID=A0A1A8LP61_9TELE
+--DGSFTSDVNKVLDSLAAKEYLLWVMTSKPP-------
+>UniRef90_A0A3Q2GHH2/63-94 [subseq from] Glucagon-1-like n=4 Tax=Cyprinodon TaxID=28741 RepID=A0A3Q2GHH2_CYPVA
+-SEGTFSNDYSKYLEDRKAQDFVRWLMSDKRSG------
+>UniRef90_A0A3Q2GHH2/149-178 [subseq from] Glucagon-1-like n=4 Tax=Cyprinodon TaxID=28741 RepID=A0A3Q2GHH2_CYPVA
+--DGSFTSDVNKVLDAMAAKEYLLWVMTSKPT-------
+>UniRef90_Q6RYB4/74-100 [subseq from] Proglucagon (Fragment) n=1 Tax=Squalus acanthias TaxID=7797 RepID=Q6RYB4_SQUAC
+--EGSY-RDISSYLEAKAAKDFINWLIKGR---------
+>UniRef90_Q6RYB4/126-151 [subseq from] Proglucagon (Fragment) n=1 Tax=Squalus acanthias TaxID=7797 RepID=Q6RYB4_SQUAC
+-ADGTFTSEINIVLDTIAAKEFLNWIL------------
+>UniRef90_A0A3P8V3F5/54-81 [subseq from] Glucagon a n=2 Tax=Cynoglossus semilaevis TaxID=244447 RepID=A0A3P8V3F5_CYNSE
+-SEGTFSNDFSKYLEDRKAQDFVRWLMNN----------
+>UniRef90_A0A3P8V3F5/92-119 [subseq from] Glucagon a n=2 Tax=Cynoglossus semilaevis TaxID=244447 RepID=A0A3P8V3F5_CYNSE
+-ADGTFTSDMSSYLTDKAIRDFVARLKAG----------
+>UniRef90_A0A6P8RE26/55-82 [subseq from] glucagon n=1 Tax=Geotrypetes seraphini TaxID=260995 RepID=A0A6P8RE26_GEOSA
+-SQGTFTSDYSKYLENKKAQEFISWLIKN----------
+>UniRef90_A0A6P8RE26/98-125 [subseq from] glucagon n=1 Tax=Geotrypetes seraphini TaxID=260995 RepID=A0A6P8RE26_GEOSA
+-ADGTFTSDLSIYLQNQAVKRFVEWLLSS----------
+>UniRef90_A0A384UDJ2/46-74 [subseq from] Preproglucagon B2s n=7 Tax=Serpentes TaxID=8570 RepID=A0A384UDJ2_ELACL
+-ADGTYTSDISSYLEGQAAKEFIAWLVNGR---------
+>UniRef90_A0A3Q1JA68/55-83 [subseq from] Glucagon-1-like n=2 Tax=Anabas testudineus TaxID=64144 RepID=A0A3Q1JA68_ANATE
+-SEGTFSNDYSKYLEERKAQDFVRWLMNNK---------
+>UniRef90_A0A3Q1JA68/137-167 [subseq from] Glucagon-1-like n=2 Tax=Anabas testudineus TaxID=64144 RepID=A0A3Q1JA68_ANATE
+--DGSFSSDVNHVLDTLAAREYILWVMSTKPSK------
+>UniRef90_A0A7J7WHV2/185-215 [subseq from] GLUCAGON domain-containing protein n=1 Tax=Myotis myotis TaxID=51298 RepID=A0A7J7WHV2_MYOMY
+-SEGIFNSDLSSYLDKKATKEFIAWLVKGLER-------
+>UniRef90_A0A7J7WHV2/231-256 [subseq from] GLUCAGON domain-containing protein n=1 Tax=Myotis myotis TaxID=51298 RepID=A0A7J7WHV2_MYOMY
+-AEGSFSDEMNTVLDKFVTRDFIKWLL------------
+>UniRef90_A0A4W4FPL5/51-77 [subseq from] Glucagon-like n=3 Tax=Electrophorus electricus TaxID=8005 RepID=A0A4W4FPL5_ELEEL
+-SEGTFSNDYSKYLETRRAQDFVHWLMN-----------
+>UniRef90_A0A4W4FPL5/128-155 [subseq from] Glucagon-like n=3 Tax=Electrophorus electricus TaxID=8005 RepID=A0A4W4FPL5_ELEEL
+--DGSFTSDVNKVLDSLAAKEYLKWVMSSQ---------
+>UniRef90_Q6RYB5/69-96 [subseq from] Proglucagon (Fragment) n=1 Tax=Neoceratodus forsteri TaxID=7892 RepID=Q6RYB5_NEOFS
+-AEGTYTSDISSYLEGQAANEFVRWLLKG----------
+>UniRef90_Q6RYB5/115-141 [subseq from] Proglucagon (Fragment) n=1 Tax=Neoceratodus forsteri TaxID=7892 RepID=Q6RYB5_NEOFS
+-ADGTITNDMNNVLESIATREFLNWLIN-----------
+>UniRef90_A0A401RV72/97-124 [subseq from] GLUCAGON domain-containing protein n=7 Tax=Orectolobiformes TaxID=30503 RepID=A0A401RV72_CHIPU
+--ERSYTNDIRSYLEEKAAKDFINWLIKGR---------
+>UniRef90_A0A401RV72/148-174 [subseq from] GLUCAGON domain-containing protein n=7 Tax=Orectolobiformes TaxID=30503 RepID=A0A401RV72_CHIPU
+-ADGTFTSEINIVLDTIAAKEFLNWLLN-----------
+>UniRef90_P04093/2-28 [subseq from] Pro-glucagon (Fragment) n=1 Tax=Ictalurus punctatus TaxID=7998 RepID=GLUC_ICTPU
+-SEGTFSNDYSKYLETRRAQDFVQWLMN-----------
+>UniRef90_P04093/39-69 [subseq from] Pro-glucagon (Fragment) n=1 Tax=Ictalurus punctatus TaxID=7998 RepID=GLUC_ICTPU
+-ADGTYTSDVSSYLQEQAAKDFITWLKSGQPK-------
+>UniRef90_A0A672NRI6/83-113 [subseq from] Glucagon n=1 Tax=Sinocyclocheilus grahami TaxID=75366 RepID=A0A672NRI6_SINGR
+-AEGTYTSDVSSYLQDQAAQNFVAWLKSGQPK-------
+>UniRef90_A0A8C5I3U9/53-81 [subseq from] Glucagon-1-like n=2 Tax=Gouania willdenowi TaxID=441366 RepID=A0A8C5I3U9_9TELE
+-SEGTFSNDDSKYLEDRKAQDFVQWLMNNK---------
+>UniRef90_A0A8C5I3U9/91-118 [subseq from] Glucagon-1-like n=2 Tax=Gouania willdenowi TaxID=441366 RepID=A0A8C5I3U9_9TELE
+-ADGTFTSDVSSYLTDQAIKDFIANLKSG----------
+>UniRef90_P81880/2-28 [subseq from] Pro-glucagon (Fragment) n=1 Tax=Piaractus mesopotamicus TaxID=42528 RepID=GLUC_PIAME
+-SEGTFSNDYSKYLETQRAQDFVQWLMN-----------
+>UniRef90_P81880/39-69 [subseq from] Pro-glucagon (Fragment) n=1 Tax=Piaractus mesopotamicus TaxID=42528 RepID=GLUC_PIAME
+-ADGTYTSDVSAYLQDQAAKDFITWLKSGQPK-------
+>UniRef90_A0A2S0D6T1/99-124 [subseq from] Preproglucagon B2 (Fragment) n=1 Tax=Cordylus tropidosternum TaxID=126612 RepID=A0A2S0D6T1_9SAUR
+-ADGTFTSDYNKLLDDMAAQEFLKWLM------------
+>UniRef90_A0A6J2WHU2/91-118 [subseq from] glucagon n=1 Tax=Chanos chanos TaxID=29144 RepID=A0A6J2WHU2_CHACN
+-ADGTFTSDVSSYLQDQAAKEFVSWLKTG----------
+>UniRef90_A0A6P7YL73/55-85 [subseq from] glucagon n=1 Tax=Microcaecilia unicolor TaxID=1415580 RepID=A0A6P7YL73_9AMPH
+-SQGTFTSDYSKYLDNKKAQEFVNWLMNNKRN-------
+>UniRef90_A0A6P7YL73/93-119 [subseq from] glucagon n=1 Tax=Microcaecilia unicolor TaxID=1415580 RepID=A0A6P7YL73_9AMPH
+-ADGTYTSDISSYLEGQAAKKFVDWLLS-----------
+>UniRef90_A0A6J0U2E0/114-139 [subseq from] glucagon isoform X2 n=3 Tax=Iguania TaxID=8511 RepID=A0A6J0U2E0_9SAUR
+-ADGTFTSDYNKLLDDLATQEFLKWLI------------
+>UniRef90_Q6RYB6/77-104 [subseq from] Proglucagon (Fragment) n=2 Tax=Protopterus TaxID=7885 RepID=Q6RYB6_PRODO
+-AEGTYTSDISSYLEGQAVNEFIRWLMKG----------
+>UniRef90_Q6RYB6/123-149 [subseq from] Proglucagon (Fragment) n=2 Tax=Protopterus TaxID=7885 RepID=Q6RYB6_PRODO
+-ADGTVTSDINSVLESIATREFLNWLIN-----------
+>UniRef90_A0A674F1M7/53-85 [subseq from] Glucagon-1-like n=20 Tax=Protacanthopterygii TaxID=41705 RepID=A0A674F1M7_SALTR
+-SEGTFSNDYSKYLESRRAQDFVQWLMNSKRS-GG----
+>UniRef90_A0A674F1M7/91-118 [subseq from] Glucagon-1-like n=20 Tax=Protacanthopterygii TaxID=41705 RepID=A0A674F1M7_SALTR
+-AEGTYTSDVSSYLQDQAAKEFVSWLKNG----------
+>UniRef90_A0A6P3W7W6/48-81 [subseq from] glucagon b n=2 Tax=Clupeidae TaxID=55118 RepID=A0A6P3W7W6_CLUHA
+-SEGTFSNDYSKYLESRRAQDFVQWLMNSKRS-GGP---
+>UniRef90_A0A7J6CNH1/55-88 [subseq from] Glucagon-2 Glucagon II n=17 Tax=Cyprinoidei TaxID=30727 RepID=A0A7J6CNH1_9TELE
+-SEGTFSNDYSKYLETRRAQDFVQWLMNS-KRSGVP---
+>UniRef90_UPI0007B837DA/13-44 [subseq from] glucagon-1-like n=1 Tax=Sinocyclocheilus rhinocerous TaxID=307959 RepID=UPI0007B837DA
+-AEGTYTSDVSSHLQDQEAQNFVAWLKSGQPKQ------
+>UniRef90_A0A8C4BXA0/48-82 [subseq from] Glucagon n=1 Tax=Denticeps clupeoides TaxID=299321 RepID=A0A8C4BXA0_9TELE
+-SEGTFSNDYSKYLETRRAQDFVQWLMNSKRSGSSP---
+>UniRef90_Q9PUR0/45-70 [subseq from] Glucagon-2 n=2 Tax=Petromyzon marinus TaxID=7757 RepID=GLUC2_PETMA
+-SQGSFTSDYSKHLDVKQAKDFVTWLL------------
+>UniRef90_Q9PUR0/90-117 [subseq from] Glucagon-2 n=2 Tax=Petromyzon marinus TaxID=7757 RepID=GLUC2_PETMA
+-SDGSFTNDMNVMLDRMSAKNFLEWLKQQ----------
+>UniRef90_UPI0014719DA9/54-84 [subseq from] glucagon-1-like isoform X1 n=2 Tax=Thalassophryne amazonica TaxID=390379 RepID=UPI0014719DA9
+-SEGTFANDYSKYLEDRKAHDFVQRLMNSKGN-------
+>UniRef90_UPI0014719DA9/92-119 [subseq from] glucagon-1-like isoform X1 n=2 Tax=Thalassophryne amazonica TaxID=390379 RepID=UPI0014719DA9
+-ADGTFTSDVSAYLNNQAVKDFVAMLKSG----------
+>UniRef90_UPI0014719DA9/140-166 [subseq from] glucagon-1-like isoform X1 n=2 Tax=Thalassophryne amazonica TaxID=390379 RepID=UPI0014719DA9
+--DGSFTSDVNKVLDSMAAKEYLLWVMTS----------
+>UniRef90_UPI001864411F/91-116 [subseq from] pro-glucagon-like n=1 Tax=Megalops cyprinoides TaxID=118141 RepID=UPI001864411F
+-AEGTFTSDVSSYLQDQALKEFVSWLK------------
+>UniRef90_Q91409/3-36 [subseq from] Proglucagon protein (Fragment) n=1 Tax=Oncorhynchus tshawytscha TaxID=74940 RepID=Q91409_ONCTS
+--XGTFSNDYSKYQEERMAQDFVQWLMN-SKRSGAPS--
+>UniRef90_Q91409/40-67 [subseq from] Proglucagon protein (Fragment) n=1 Tax=Oncorhynchus tshawytscha TaxID=74940 RepID=Q91409_ONCTS
+-ADGTYTSDVSTYLQDQAAKDFVSWLKSG----------
+>UniRef90_A0A3Q2Z391/51-76 [subseq from] Glucagon n=6 Tax=Syngnathidae TaxID=72045 RepID=A0A3Q2Z391_HIPCM
+-SEGTFSNDYSKYLETRRAQDFVQWLK------------
+>UniRef90_A0A3Q2Z391/89-116 [subseq from] Glucagon n=6 Tax=Syngnathidae TaxID=72045 RepID=A0A3Q2Z391_HIPCM
+-ADGTFTSDMSAYLQDQAAKEFVSWLKAG----------
+>UniRef90_Q6RYB8/90-120 [subseq from] Proglucagon I n=2 Tax=Siluroidei TaxID=1489793 RepID=Q6RYB8_ICTPU
+-ADGTYTSDVSSYLQDQAAKDFITWLKSGQPK-------
+>UniRef90_A0A384UJH5/111-136 [subseq from] Preproglucagon B2 n=1 Tax=Varanus exanthematicus TaxID=8557 RepID=A0A384UJH5_VAREA
+-ADGTFTSEYYKILDEMATQEFLKWLL------------
+>UniRef90_P01281/1-29 [subseq from] Gastric inhibitory polypeptide n=2 Tax=Artiodactyla TaxID=91561 RepID=GIP_PIG
+YAEGTFISDYSIAMDKIRQQDFVNWLLAQ----------
+>UniRef90_A0A452H3K0/88-113 [subseq from] GLUCAGON domain-containing protein n=1 Tax=Gopherus agassizii TaxID=38772 RepID=A0A452H3K0_9SAUR
+-ADGTFTSDINKILDEMTAKDFLKWLI------------
+>UniRef90_A0A5A9P0K9/92-119 [subseq from] Glucagon-2 Glucagon II n=1 Tax=Triplophysa tibetana TaxID=1572043 RepID=A0A5A9P0K9_9TELE
+-ADGTYTSDISSYLQDQAAKEFVSWLKTG----------
+>UniRef90_A0A3B3ST67/51-76 [subseq from] Glucagon b n=3 Tax=Mormyridae TaxID=31092 RepID=A0A3B3ST67_9TELE
+-SQGTFTNDYSKYLETRRAQDFIQWLM------------
+>UniRef90_A0A3B3ST67/84-111 [subseq from] Glucagon b n=3 Tax=Mormyridae TaxID=31092 RepID=A0A3B3ST67_9TELE
+-ADGTYTSDFSSYLQNQAGKQFVSWLKMG----------
+>UniRef90_A0A0P7UVB7/60-86 [subseq from] Glucagon n=2 Tax=Scleropages formosus TaxID=113540 RepID=A0A0P7UVB7_SCLFO
+-SQGTFTNDYSKYLETRRAQDFVQWLMN-----------
+>UniRef90_A0A0P7UVB7/98-125 [subseq from] Glucagon n=2 Tax=Scleropages formosus TaxID=113540 RepID=A0A0P7UVB7_SCLFO
+-AEGTYTSDMSSYLQDQAAKEFVSWLKMG----------
+>UniRef90_P79695/51-83 [subseq from] Pro-glucagon n=8 Tax=Cyprinoidei TaxID=30727 RepID=GLUC_CARAU
+-SEGTFSNDYSKYLETRRAQDFVEWLMNSKSNGG-----
+>UniRef90_P79695/89-119 [subseq from] Pro-glucagon n=8 Tax=Cyprinoidei TaxID=30727 RepID=GLUC_CARAU
+-AEGTYTSDISSFLRDQAAQNFVAWLKSGQPK-------
+>UniRef90_A0A4W5QQA8/52-79 [subseq from] Glucagon n=1 Tax=Hucho hucho TaxID=62062 RepID=A0A4W5QQA8_9TELE
+-SEGTFSNHYSKYQeDRMAQ-DFVQWLMNS----------
+>UniRef90_A0A4W5QQA8/92-114 [subseq from] Glucagon n=1 Tax=Hucho hucho TaxID=62062 RepID=A0A4W5QQA8_9TELE
+-------SDVSTYLLDQAAKDFVSWLKSG-P--------
+>UniRef90_A0A4W5QQA8/134-162 [subseq from] Glucagon n=1 Tax=Hucho hucho TaxID=62062 RepID=A0A4W5QQA8_9TELE
+--DGSFTSDVNKVLDSLAAKEYLLWVMTSKA--------
+>UniRef90_A0A6A5F2T7/91-118 [subseq from] Glucagon-2 Glucagon II n=18 Tax=Eupercaria TaxID=1489922 RepID=A0A6A5F2T7_PERFL
+-ADGTYTSDVSSYLQDLAAKEFVSWLKTG----------
+>UniRef90_A0A8C2VXB7/42-70 [subseq from] Gastric inhibitory polypeptide n=1 Tax=Chinchilla lanigera TaxID=34839 RepID=A0A8C2VXB7_CHILA
+YSEGTFISDYSIALDKIRQQEFVNWLLAQ----------
+>UniRef90_A0A3B4EGG1/49-76 [subseq from] Glucagon n=1 Tax=Pygocentrus nattereri TaxID=42514 RepID=A0A3B4EGG1_PYGNA
+-SEGTFSNDYSKYLETRRAQDFVQWLMNS----------
+>UniRef90_A0A8C6V232/87-114 [subseq from] Glucagon b n=3 Tax=Gobiidae TaxID=8220 RepID=A0A8C6V232_9GOBI
+-ADGTFTSDVSTYLQDQAAKEFVSWLKTG----------
+>UniRef90_S9X9V9/44-73 [subseq from] Gastric inhibitory polypeptide n=1 Tax=Camelus ferus TaxID=419612 RepID=S9X9V9_CAMFR
+YAEGTFISDYSIAMDKIRQQDFVNWLLAQK---------
+>UniRef90_UPI001F07FE05/52-83 [subseq from] glucagon b n=1 Tax=Hypomesus transpacificus TaxID=137520 RepID=UPI001F07FE05
+-SEGTFSNDYSKYLETRRAQDFVQWLKN-SKRSG-----
+>UniRef90_UPI0014029EAF/77-107 [subseq from] VIP peptides-like n=1 Tax=Amblyraja radiata TaxID=386614 RepID=UPI0014029EAF
+--DGLFTSEYSKMLGQLSARAYLESLIGNEPIS------
+>UniRef90_UPI0014029EAF/112-139 [subseq from] VIP peptides-like n=1 Tax=Amblyraja radiata TaxID=386614 RepID=UPI0014029EAF
+--DGLFTSEYSKMLGQLSTRAFLESLIGGY---------
+>UniRef90_UPI0018A09F6D/54-82 [subseq from] gastric inhibitory polypeptide n=1 Tax=Choloepus didactylus TaxID=27675 RepID=UPI0018A09F6D
+YSEGTFISDYSIAMDKIRQKDFVNWLLAQ----------
+>UniRef90_A0A8C4X1J3/28-55 [subseq from] Glucagon b n=1 Tax=Eptatretus burgeri TaxID=7764 RepID=A0A8C4X1J3_EPTBU
+-SEGTFTSDFSKYLEAKQAKEFVLWLMNN----------
+>UniRef90_A0A8C4X1J3/67-96 [subseq from] Glucagon b n=1 Tax=Eptatretus burgeri TaxID=7764 RepID=A0A8C4X1J3_EPTBU
+-ADGAFSDDLTKYLDKQAAKNFISWLSRSRP--------
+>EXE4_HELSU/48-86 [subseq from] EXE4_HELSU
+HGEGTFTSDLSKQMEEEAVRLFIEWLKNGGPSSGAPPPS
+>SRR3989344_2548026/41-66 [subseq from] SRR3989344_2548026
+-----------IGICGPATRAYVEKLNSGAPSTPTPP--
+>SRR3989344_2548026/138-163 [subseq from] SRR3989344_2548026
+-----------IGIFGPATRAYVEKLNSGAPSTPTPP--
+>M7BLE3_CHEMY/1542-1567 [subseq from] M7BLE3_CHEMY
+-ADGTFTSDINKILDDMAAKEFLKWLL------------
