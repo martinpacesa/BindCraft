@@ -1,0 +1,11 @@
+design_id,sequence,length,plddt_score,pae_score,hydrophobicity,glp1_similarity,pdb_file,status
+1,RPFTGGSVVHTLFVEGTDDVWGKTTVGCEE,30,0.828,13.28,0.3,0.73,results/GLP1_6X18//structures/GLP1_design_001.pdb,✓ Generated
+2,RVQEMVRPYFKSHDSIGLMQDGFSVLTMSR,30,0.89,14.92,0.4,0.5,results/GLP1_6X18//structures/GLP1_design_002.pdb,✓ Generated
+3,EAGLTASSTFNLWTEAFFTVTTTLVEEQPLMTGMSEGGDE,40,0.795,8.26,0.38,0.82,results/GLP1_6X18//structures/GLP1_design_003.pdb,✓ Generated
+4,QGAKAFSTQLSVDTFIEAPLEATGFLALAR,30,0.809,5.37,0.53,0.77,results/GLP1_6X18//structures/GLP1_design_004.pdb,✓ Generated
+5,TTWGTLVEMASFVFFQFQSFLTSAEVTGTRESFAPYKSGD,40,0.911,7.71,0.4,0.78,results/GLP1_6X18//structures/GLP1_design_005.pdb,✓ Generated
+6,RFMIESTTAETGDGSEDGMQWQTSHAAYNEAKTTTKTGLE,40,0.925,5.49,0.23,0.65,results/GLP1_6X18//structures/GLP1_design_006.pdb,✓ Generated
+7,KLLAGYCYFASEAPFIGGHLHSGNSSFRRTCFVFEWTTGG,40,0.811,8.33,0.35,0.68,results/GLP1_6X18//structures/GLP1_design_007.pdb,✓ Generated
+8,NHENAEQTSWRLYLKYGAIGEFCFPQAPSTAVQVLFGAVT,40,0.89,13.86,0.42,0.62,results/GLP1_6X18//structures/GLP1_design_008.pdb,✓ Generated
+9,ETEREAEVFVLHGGAGNDFTFQAVTGSVVFPVEAVEPVFE,40,0.793,8.85,0.5,0.82,results/GLP1_6X18//structures/GLP1_design_009.pdb,✓ Generated
+10,KFVEVSLVLTTAEGLLVWSKIHTVTSLRYE,30,0.763,5.39,0.43,0.77,results/GLP1_6X18//structures/GLP1_design_010.pdb,✓ Generated

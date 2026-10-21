@@ -1,0 +1,78 @@
+{
+    "MPNN_score": {
+        "threshold": null,
+        "higher": false
+    },
+    "MPNN_seq_recovery": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_pLDDT": {
+        "threshold": 0.5,
+        "higher": true
+    },
+    "1_pLDDT": {
+        "threshold": 0.5,
+        "higher": true
+    },
+    "2_pLDDT": {
+        "threshold": 0.5,
+        "higher": true
+    },
+    "3_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_pTM": {
+        "threshold": 0.4,
+        "higher": true
+    },
+    "1_pTM": {
+        "threshold": 0.4,
+        "higher": true
+    },
+    "2_pTM": {
+        "threshold": 0.4,
+        "higher": true
+    },
+    "Average_pAE": {
+        "threshold": 20,
+        "higher": false
+    },
+    "1_pAE": {
+        "threshold": 25,
+        "higher": false
+    },
+    "2_pAE": {
+        "threshold": 25,
+        "higher": false
+    },
+    "n_clashes": {
+        "threshold": 10,
+        "higher": false
+    },
+    "n_clashes_relaxed": {
+        "threshold": 5,
+        "higher": false
+    },
+    "dSASA": {
+        "threshold": 300,
+        "higher": true
+    },
+    "dG": {
+        "threshold": -20,
+        "higher": false
+    },
+    "dG_per_dSASA": {
+        "threshold": -0.04,
+        "higher": false
+    },
+    "n_hbonds": {
+        "threshold": 1,
+        "higher": true
+    },
+    "packstat": {
+        "threshold": 0.5,
+        "higher": true
+    }
+}

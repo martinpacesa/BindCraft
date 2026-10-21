@@ -1,0 +1,12 @@
+{
+    "design_path": "/workspace/BindCraft/results/PDL1_Best/",
+    "binder_name": "PDL1_Best",
+    "starting_pdb": "/workspace/BindCraft/example/PDL1.pdb",
+    "chains": ["A"],
+    "target_hotspot_residues": "56",
+    "lengths": [20, 25, 30],
+    "number_of_final_designs": 5,
+    "advanced_settings": {
+        "protocol": "default_4stage_multimer"
+    }
+}

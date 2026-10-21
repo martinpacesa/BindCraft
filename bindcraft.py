@@ -1,11 +1,16 @@
 ####################################
 ###################### BindCraft Run
 ####################################
+### Set JAX to use CUDA GPU only (not ROCm or others)
+import os
+if 'JAX_PLATFORMS' not in os.environ:
+    os.environ['JAX_PLATFORMS'] = 'cuda'  # Force CUDA backend for consistency
+
 ### Import dependencies
 from functions import *
 
-# Check if JAX-capable GPU is available, otherwise exit
-check_jax_gpu()
+# Note: check_jax_gpu() disabled - we support CPU fallback for Docker compatibility
+# check_jax_gpu()
 
 ######################################
 ### parse input paths

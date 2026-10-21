@@ -1,0 +1,81 @@
+############################################
+# BindCraft Full Pipeline - Conda option (TOS accepted)
+# Mirrors install_bindcraft.sh with conda + GrayLab PyRosetta
+############################################
+
+FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    CONDA_DIR=/opt/conda \
+    PATH=/opt/conda/bin:$PATH
+
+# System deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget curl ca-certificates git build-essential \
+    libgfortran5 ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+# Miniconda + accept Anaconda TOS (Option A)
+RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
+    bash miniconda.sh -b -p /opt/conda && \
+    rm miniconda.sh && \
+    conda config --set solver libmamba && \
+    conda config --set auto_activate_base false && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
+    conda clean -a -y
+
+WORKDIR /workspace
+
+# Clone BindCraft
+RUN git clone https://github.com/martinpacesa/BindCraft.git /workspace/BindCraft && \
+    cd /workspace/BindCraft && git log --oneline -1
+
+WORKDIR /workspace/BindCraft
+
+# Env BindCraft
+RUN conda create --name BindCraft python=3.10 -y && \
+    echo "source /opt/conda/bin/activate BindCraft" >> ~/.bashrc
+
+# Packages (GrayLab PyRosetta)
+RUN conda install -n BindCraft \
+    pip pandas matplotlib 'numpy<2.0.0' biopython scipy pdbfixer seaborn libgfortran5 \
+    tqdm jupyter ffmpeg pyrosetta fsspec py3dmol \
+    chex dm-haiku 'flax<0.10.0' dm-tree joblib ml-collections immutabledict optax \
+    'jax>=0.4,<=0.6.0' 'jaxlib>=0.4,<=0.6.0=*cuda*' cuda-nvcc cudnn \
+    -c conda-forge -c nvidia --channel https://conda.graylab.jhu.edu -y && \
+    conda clean -a -y
+
+# ColabDesign
+RUN /opt/conda/envs/BindCraft/bin/pip install git+https://github.com/sokrypton/ColabDesign.git --no-deps
+
+# AlphaFold2 weights
+RUN mkdir -p /workspace/BindCraft/params && \
+    cd /workspace/BindCraft/params && \
+    wget -q https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar && \
+    tar -xf alphafold_params_2022-12-06.tar && \
+    rm alphafold_params_2022-12-06.tar
+
+# ProteinMPNN
+RUN cd /workspace && git clone https://github.com/dauparas/ProteinMPNN.git
+
+# Executables
+RUN chmod +x /workspace/BindCraft/functions/dssp && \
+    chmod +x /workspace/BindCraft/functions/DAlphaBall.gcc
+
+# Entry
+RUN cat > /entrypoint.sh << 'EOF' && chmod +x /entrypoint.sh
+#!/usr/bin/env bash
+set -e
+source /opt/conda/bin/activate BindCraft
+export PYTHONPATH=/workspace/ProteinMPNN:$PYTHONPATH
+python -c "import jax; print('JAX:', jax.devices())" 2>/dev/null || echo "⚠ JAX"
+python -c "import colabdesign; print('✓ ColabDesign')" 2>/dev/null || echo "⚠ ColabDesign"
+python -c "import pyrosetta; print('✓ PyRosetta')" 2>/dev/null || echo "⚠ PyRosetta (will use fallback)"
+exec "$@"
+EOF
+
+WORKDIR /workspace/BindCraft
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["bash"]
